@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "70365746998",
+    "project_id": "eventra-1eb59",
+    "storage_bucket": "eventra-1eb59.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70365746998:android:e4a8a53e6d9a08c9920597",
+        "android_client_info": {
+          "package_name": "com.example.eventra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70365746998-rhr4f8l50ml73raj6b3nkguntf4l3c3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLCXqOO8O3Q2EbjL5I7sz4oPNFQA5ttgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70365746998-rhr4f8l50ml73raj6b3nkguntf4l3c3u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
