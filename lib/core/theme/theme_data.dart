@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart' as material;
+import 'package:flutter/material.dart';
 
-class ThemeData {
-  ThemeData.dark() {
-    material.ThemeData.dark();
-  }
-  ThemeData.light() {
-    material.ThemeData.light();
-  }
+class AppThemeData {
+  ThemeData get lightThemeData => ThemeData.light();
+
+  ThemeData get darkThemeData => ThemeData.dark();
 }

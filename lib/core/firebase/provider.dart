@@ -22,6 +22,6 @@ class AuthUserProvider extends ChangeNotifier{
     databaseUser=null;
     fireBUser=null;
     await FirebaseAuth.instance.signOut();
-    Navigator.pushNamedAndRemoveUntil(context, SignInPage.routeName, (route) => false);
+    // Navigator.pushNamedAndRemoveUntil(context, SignInPage.routeName, (route) => false);
   }
 }

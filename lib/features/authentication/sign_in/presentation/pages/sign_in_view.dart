@@ -1,23 +1,21 @@
 import 'package:eventra/core/constants/image_assets.dart';
 import 'package:eventra/core/constants/regex.dart';
+import 'package:eventra/core/constants/routes.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
+import 'package:eventra/core/firebase/firestore_helper.dart';
 import 'package:eventra/core/firebase/provider.dart';
 import 'package:eventra/core/firebase/user.dart' as MyUser;
+import 'package:eventra/features/authentication/sign_in/presentation/widgets/custom_dialog.dart';
 import 'package:eventra/features/authentication/sign_in/presentation/widgets/custom_text_field.dart';
-import 'package:eventra/features/authentication/sign_up/presentation/pages/sign_up_view.dart';
 import 'package:eventra/features/authentication/sign_up/presentation/widgets/custom_button.dart';
-import 'package:eventra/features/home/presentation/pages/home_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../../core/firebase/firestore_helper.dart';
-import '../widgets/custom_dialog.dart';
 
 class SignInPage extends StatefulWidget {
   SignInPage({super.key});
@@ -26,8 +24,6 @@ class SignInPage extends StatefulWidget {
   final TextEditingController passController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  static const String routeName = 'SignIn';
 
   bool remember = false;
 
@@ -73,7 +69,7 @@ class _SignInPageState extends State<SignInPage> {
                       return null;
                     },
                     obscure: false,
-                    controller: widget.emailController,//fix
+                    controller: widget.emailController, //fix
                     isPass: false,
                     icon: const Icon(Icons.email_outlined)
                     //SvgPicture.asset(ImageAssets.emailIcon),
@@ -183,7 +179,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, SignUpPage.routeName);
+                      context.pushNamed(Routes.sRegister);
                     },
                     child: Text(
                       StringsManager.signUp,
@@ -216,9 +212,7 @@ class _SignInPageState extends State<SignInPage> {
         MyUser.User? user = await FirestoreHelper.getUser(credential.user!.uid);
         authProvider.setUsers(user, credential.user);
         Fluttertoast.showToast(msg: StringsManager.accCreated);
-        Navigator.pushNamedAndRemoveUntil(
-            context, HomeView.routeName, (route) => false,
-            arguments: user!.name);
+        context.goNamed(Routes.sHome);
       } on FirebaseAuthException catch (e) {
         print("FirebaseAuthException${e.toString()}--------------------");
         if (e.code == 'user-not-found') {

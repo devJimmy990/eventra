@@ -1,17 +1,15 @@
 import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/constants/regex.dart';
-import 'package:eventra/core/firebase/firestore_helper.dart';
+import 'package:eventra/core/constants/routes.dart';
 import 'package:eventra/core/firebase/provider.dart';
-import 'package:eventra/core/firebase/user.dart' as MyUser;
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:eventra/core/constants/image_assets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/authentication/sign_in/presentation/pages/sign_in_view.dart';
 import 'package:eventra/features/authentication/sign_in/presentation/widgets/custom_text_field.dart';
 import 'package:eventra/features/authentication/sign_up/presentation/widgets/custom_button.dart';
-import 'package:eventra/features/home/presentation/pages/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +26,6 @@ class SignUpPage extends StatefulWidget {
   final TextEditingController confirmController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  static const String routeName = 'SignUp';
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -169,7 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                 TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, SignInPage.routeName);
+                      context.pushNamed(Routes.sLogin);
                     },
                     child: Text(
                       StringsManager.signIn,
@@ -204,11 +201,11 @@ class _SignUpPageState extends State<SignUpPage> {
           password: widget.passController.text,
         );
         print("fire base credentials -------------------");
-       // var user = FirestoreHelper.addUser(
-       //      name: widget.nameController.text,
-       //      email: widget.emailController.text,
-       //      userId: credential.user!.uid);
-       //  authProvider.setUsers(user, credential.user);
+        // var user = FirestoreHelper.addUser(
+        //      name: widget.nameController.text,
+        //      email: widget.emailController.text,
+        //      userId: credential.user!.uid);
+        //  authProvider.setUsers(user, credential.user);
         print("${credential.user?.displayName} --------------------");
         Fluttertoast.showToast(
             msg: StringsManager.accCreated,
@@ -216,8 +213,7 @@ class _SignUpPageState extends State<SignUpPage> {
             backgroundColor: ColorManager.purpleColor,
             textColor: Colors.white,
             toastLength: Toast.LENGTH_LONG);
-        Navigator.pushNamedAndRemoveUntil(
-            context, HomeView.routeName, (route) => false);
+        context.goNamed(Routes.sHome);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           print("Weak password ------------------------");

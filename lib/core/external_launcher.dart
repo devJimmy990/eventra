@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:eventra/core/const/acc.dart';
+import 'package:eventra/core/constants/acc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ExternalLauncher {

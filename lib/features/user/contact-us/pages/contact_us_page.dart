@@ -1,8 +1,8 @@
-import 'package:eventra/core/external_launcher.dart';
-import 'package:eventra/features/user/contact-us/presentation/general_info.dart';
-import 'package:eventra/features/user/contact-us/presentation/mail_form.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:eventra/core/external_launcher.dart';
+import 'package:eventra/features/user/contact-us/widgets/mail_form.dart';
+import 'package:eventra/features/user/contact-us/widgets/general_info.dart';
 
 class ContactUsScreen extends StatelessWidget {
   const ContactUsScreen({super.key});
