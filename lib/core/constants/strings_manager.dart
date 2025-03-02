@@ -24,6 +24,8 @@ class StringsManager {
   static const String usedEmail = "The account already exists for that email.";
   static const String noUser = "No user found for that email.";
 
+  //onboarding
+
   // Animations
 static const String loadingJson = "assets/animations/Animation - 1740842222236.json";
 }

@@ -1,3 +1,4 @@
+import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/constants/routes.dart';
 import 'package:eventra/features/home/pages/home_view.dart';
@@ -27,6 +28,11 @@ final router = GoRouter(
       name: Routes.sHome,
       path: Routes.sHome,
       builder: (context, state) => HomeView(),
+    ),
+    GoRoute(
+      name: Routes.sOnboarding,
+      path: Routes.sOnboarding,
+      builder: (context, state) => const OnboardingScreen(),
     ),
   ],
   // redirect: (context, state) {
