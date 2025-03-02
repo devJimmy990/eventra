@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.example.eventra"
-    compileSdk = 34
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
