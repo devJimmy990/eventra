@@ -17,19 +17,16 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await SharedPreference.initialize();
-  try {
-    await Firebase.initializeApp();
-    print("🔥 Firebase initialized successfully!");
-  } catch (e) {
-    print("❌ Firebase initialization failed: $e");
-  }
-  runApp(
-      ChangeNotifierProvider(
-          create: (context)=> AuthUserProvider(),
-      child:
-      const MyApp()));
-}
 
+  print("🔥 Firebase initialized successfully!");
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AuthUserProvider(),
+      child: const MyApp(),
+    ),
+  );
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

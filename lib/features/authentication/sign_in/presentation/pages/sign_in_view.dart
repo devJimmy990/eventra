@@ -73,7 +73,7 @@ class _SignInPageState extends State<SignInPage> {
                       return null;
                     },
                     obscure: false,
-                    controller: TextEditingController(),
+                    controller: widget.emailController,//fix
                     isPass: false,
                     icon: const Icon(Icons.email_outlined)
                     //SvgPicture.asset(ImageAssets.emailIcon),
@@ -96,7 +96,7 @@ class _SignInPageState extends State<SignInPage> {
                       return null;
                     },
                     obscure: true,
-                    controller: TextEditingController(),
+                    controller: widget.passController, //fix
                     isPass: true,
                     icon: const Icon(Icons.lock_outline)
                     //SvgPicture.asset(ImageAssets.passIcon),
