@@ -1,16 +1,18 @@
 #Todo if we want to add dark logo or light theme logo
 flutter_native_splash:
-  color: "#000000"
-  color_dark: "#000000"
-  image: assets/images/splash.png
-  image_dark: assets/images/splash.png
+  color: "#FFFFFF"
+  color_dark: "#FFFFFF"
+  image: assets/images/logo1.png
+  branding: assets/images/branding2.png
+  image_dark: assets/images/logo1.png
 
 
   android_12:
-    color: "#000000"
-    color_dark: "#000000"
-    image: assets/images/splash.png
-    image_dark: assets/images/splash.png
+    color: "#FFFFFF"
+    color_dark: "#FFFFFF"
+    image: assets/images/logo1.png
+    branding: assets/images/branding2.png
+    image_dark: assets/images/logo1.png
 
   web: false
   ios: true

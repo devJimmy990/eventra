@@ -5,6 +5,8 @@ import 'package:eventra/core/firebase_options.dart';
 import 'package:eventra/core/shared_preference.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'core/router.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         S.delegate,
@@ -26,11 +28,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello, World!'),
-        ),
-      ),
+      routerConfig: appRouter,
     );
   }
 }

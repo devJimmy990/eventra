@@ -1,2 +1,6 @@
 {
+  "appTitle": "My Flutter App",
+  "onboarding_welcome": "Welcome",
+  "onboarding_description": "Discover the app that makes your life easier",
+  "language": "Language"
 }
