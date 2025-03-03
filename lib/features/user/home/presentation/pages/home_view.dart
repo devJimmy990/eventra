@@ -1,4 +1,7 @@
+import 'package:eventra/core/routes/routes.dart';
+import 'package:eventra/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -8,8 +11,13 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.logout_rounded))
+          IconButton(
+              onPressed: () => context.push(Routes.sSettings),
+              icon: Icon(Icons.settings))
         ],
+      ),
+      body: Center(
+        child: Text(S.of(context).SignInWithGoogle),
       ),
     );
   }

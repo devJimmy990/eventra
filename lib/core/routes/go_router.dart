@@ -1,14 +1,15 @@
+import 'package:go_router/go_router.dart';
+import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
-import 'package:go_router/go_router.dart';
-import 'package:eventra/core/constants/routes.dart';
+import 'package:eventra/features/settings/presentation/settings_screen.dart';
 import 'package:eventra/features/user/home/presentation/pages/home_view.dart';
-import 'package:eventra/features/user/contact-us/pages/contact_us_page.dart';
+import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart';
 import 'package:eventra/features/authentication/sign_in/presentation/pages/sign_in_view.dart';
 import 'package:eventra/features/authentication/sign_up/presentation/pages/sign_up_view.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.sOnboarding,
+  initialLocation: Routes.sHome,
   routes: [
     GoRoute(
       name: Routes.sContact,
@@ -35,25 +36,21 @@ final router = GoRouter(
       path: Routes.sOnboarding,
       builder: (context, state) => const OnboardingScreen(),
     ),
+    GoRoute(
+      name: Routes.sSettings,
+      path: Routes.sSettings,
+      builder: (context, state) => const SettingsScreen(),
+    ),
   ],
-  redirect: (context, state) async {
-    await SharedPreference.initialize();
-    final bool? onboardingComplete = SharedPreference.getBool(key: 'onboarding_complete');
+  // redirect: (context, state) async {
+  //   await SharedPreference.initialize();
+  //   final bool? onboardingComplete =
+  //       SharedPreference.getBool(key: 'onboarding_complete');
 
-    if (onboardingComplete == true) {
-      return Routes.sLogin;
-    }
-    return null;
-  },
-);
-  // redirect: (context, state) {
-  //   // final isOnBoarding = false;
-  //   // final isLoggedIn = false;
-
-  //   // if (!isLoggedIn && state.uri.toString() != Routes.sLogin) {
-  //   //   return Routes.sLogin;
-  //   // }
-
-  //   // return null;
+  //   if (onboardingComplete == null) {
+  //     return Routes.sHome;
+  //   }
+  //   return state.matchedLocation;
   // },
-
+);
+  

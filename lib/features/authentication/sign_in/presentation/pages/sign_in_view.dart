@@ -1,6 +1,6 @@
 import 'package:eventra/core/constants/image_assets.dart';
 import 'package:eventra/core/constants/regex.dart';
-import 'package:eventra/core/constants/routes.dart';
+import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/core/firebase/firestore_helper.dart';
 import 'package:eventra/core/firebase/google_sign_in.dart';

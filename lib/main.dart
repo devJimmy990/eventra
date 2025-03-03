@@ -1,7 +1,7 @@
 import 'package:eventra/core/firebase/firebase_options.dart';
 import 'package:eventra/core/routes/go_router.dart';
-import 'package:eventra/core/theme/theme_cubit.dart';
-import 'package:eventra/core/theme/theme_state.dart';
+import 'package:eventra/features/settings/cubit/settings_cubit.dart';
+import 'package:eventra/features/settings/cubit/settings_state.dart';
 import 'package:flutter/material.dart';
 import 'package:eventra/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -39,28 +39,27 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider<ThemeCubit>(
-              create: (context) => ThemeCubit()..loadTheme(),
+            BlocProvider<SettingsCubit>(
+              create: (context) => SettingsCubit()..loadSettings(),
             ),
           ],
-          child: BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {
-            ThemeData themeData = ThemeData.light();
-
-            if (state is ThemeLoaded || state is ToggleThemeState) {
-              themeData = (state as dynamic).theme;
-            }
-            return MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              localizationsDelegates: [
-                S.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              theme: themeData,
-              routerConfig: router,
-            );
+          child: Builder(builder: (context) {
+            return BlocBuilder<SettingsCubit, SettingsState>(
+                builder: (context, state) {
+              return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+                localizationsDelegates: [
+                  S.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                theme: state.theme,
+                locale: Locale(state.locale),
+                routerConfig: router,
+              );
+            });
           }),
         );
       },

@@ -3,7 +3,7 @@ import 'package:eventra/features/onboarding/widget/onboarding_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:eventra/core/constants/routes.dart';
+import 'package:eventra/core/routes/routes.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
