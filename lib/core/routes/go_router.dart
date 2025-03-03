@@ -1,3 +1,4 @@
+import 'package:eventra/core/shared_preference.dart';
 import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/constants/routes.dart';
@@ -7,7 +8,7 @@ import 'package:eventra/features/authentication/sign_in/presentation/pages/sign_
 import 'package:eventra/features/authentication/sign_up/presentation/pages/sign_up_view.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.sContact,
+  initialLocation: Routes.sOnboarding,
   routes: [
     GoRoute(
       name: Routes.sContact,
@@ -35,6 +36,16 @@ final router = GoRouter(
       builder: (context, state) => const OnboardingScreen(),
     ),
   ],
+  redirect: (context, state) async {
+    await SharedPreference.initialize();
+    final bool? onboardingComplete = SharedPreference.getBool(key: 'onboarding_complete');
+
+    if (onboardingComplete == true) {
+      return Routes.sLogin;
+    }
+    return null;
+  },
+);
   // redirect: (context, state) {
   //   // final isOnBoarding = false;
   //   // final isLoggedIn = false;
@@ -45,4 +56,4 @@ final router = GoRouter(
 
   //   // return null;
   // },
-);
+

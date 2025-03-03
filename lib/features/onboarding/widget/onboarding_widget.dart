@@ -1,44 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 
-class Onboarding extends StatelessWidget {
-  final String title;
-  final String description;
-  final String imagePath;
-
-  const Onboarding(
-      {super.key,
-        required this.title,
-        required this.description,
-        required this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(
+PageViewModel onBoarding({
+  required String title,
+  required String body,
+  required String imagePath,
+  double imageHeight = 300,
+  double paddingTop = 100,
+}) {
+  return PageViewModel(
+    title: title,
+    body: body,
+    image: Padding(
+      padding: EdgeInsets.only(top: paddingTop),
+      child: Center(
+        child: Image.asset(
           imagePath,
-          height: 300,
+          height: imageHeight,
         ),
-        const SizedBox(
-          height: 30,
-        ),
-        Text(
-          title,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            description,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-          ),
-        )
-      ],
-    );
-  }
+      ),
+    ),
+  );
 }
+
+final List<PageViewModel> onboardingModel = [
+  onBoarding(
+    title: 'Welcome',
+    body: 'Discover the app that makes your life easier',
+    imagePath: 'assets/images/on_boarding_images/onboarding1.gif',
+    paddingTop: 100,
+  ),
+  onBoarding(
+    title: 'Feature Highlight',
+    body: 'Explore our exciting features',
+    imagePath: 'assets/images/on_boarding_images/onboardingC.gif',
+  ),
+  onBoarding(
+    title: 'Stay Connected',
+    body: 'Stay connected with friends and family',
+    imagePath: 'assets/images/on_boarding_images/onboarding1.gif',
+    paddingTop: 120,
+  ),
+  onBoarding(
+    title: 'Get Started',
+    body: 'Let’s get you started!',
+    imagePath: 'assets/images/on_boarding_images/onboarding1.gif',
+    paddingTop: 140,
+  ),
+];
