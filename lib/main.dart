@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:eventra/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:eventra/core/shared_preference.dart';
+import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

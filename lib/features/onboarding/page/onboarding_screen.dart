@@ -1,4 +1,4 @@
-import 'package:eventra/core/shared_preference.dart';
+import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/onboarding/widget/onboarding_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';

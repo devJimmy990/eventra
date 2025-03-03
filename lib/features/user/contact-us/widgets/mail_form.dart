@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:eventra/core/ui/inputs.dart';
 import 'package:eventra/core/validator/contact.dart';
-import 'package:eventra/core/external_launcher.dart';
+import 'package:eventra/core/helper/external_launcher.dart';
 
 class ContactUsMailFormBottomSheet extends StatefulWidget {
   const ContactUsMailFormBottomSheet({super.key});

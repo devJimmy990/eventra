@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/theme/theme_data.dart';
-import 'package:eventra/core/shared_preference.dart';
+import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/core/theme/theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {

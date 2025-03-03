@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:eventra/core/external_launcher.dart';
+import 'package:eventra/core/helper/external_launcher.dart';
 import 'package:eventra/features/user/contact-us/widgets/mail_form.dart';
 import 'package:eventra/features/user/contact-us/widgets/general_info.dart';
 
