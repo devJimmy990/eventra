@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "SignInWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "تسجيل الدخول بحساب جوجل",
+    ),
     "accCreated": MessageLookupByLibrary.simpleMessage("تم إنشاء الحساب بنجاح"),
     "appName": MessageLookupByLibrary.simpleMessage("إيفينترا"),
     "confirmPass": MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),

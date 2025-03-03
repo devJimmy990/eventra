@@ -230,11 +230,11 @@ class S {
     );
   }
 
-  /// `assets/animations/Animation - 1740842222236.json`
-  String get loadingJson {
+  /// `Sign in with Google`
+  String get SignInWithGoogle {
     return Intl.message(
-      'assets/animations/Animation - 1740842222236.json',
-      name: 'loadingJson',
+      'Sign in with Google',
+      name: 'SignInWithGoogle',
       desc: '',
       args: [],
     );

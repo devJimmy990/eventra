@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "SignInWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Sign in with Google",
+    ),
     "accCreated": MessageLookupByLibrary.simpleMessage(
       "Account created successfully",
     ),
@@ -34,9 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "hasAcc": MessageLookupByLibrary.simpleMessage("Already have an account?"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid Email",
-    ),
-    "loadingJson": MessageLookupByLibrary.simpleMessage(
-      "assets/animations/Animation - 1740842222236.json",
     ),
     "noAcc": MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
     "noUser": MessageLookupByLibrary.simpleMessage(

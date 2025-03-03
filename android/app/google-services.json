@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "70365746998-k542f2e2vlrtvap6cdglmc7oukkv9l86.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eventra",
+            "certificate_hash": "ee5eeef55a5d1bae04401cb340692dde39853860"
+          }
+        },
+        {
           "client_id": "70365746998-rhr4f8l50ml73raj6b3nkguntf4l3c3u.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "70365746998-rhr4f8l50ml73raj6b3nkguntf4l3c3u.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "70365746998-gvh1fvrldf385ugv57gpjougphtj0ha4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eventra"
+              }
             }
           ]
         }

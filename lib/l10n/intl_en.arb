@@ -20,5 +20,5 @@
   "shortPass": "Please enter at least 6 characters",
   "usedEmail": "The account already exists for that email.",
   "noUser": "No user found for that email.",
-  "loadingJson": "assets/animations/Animation - 1740842222236.json"
+  "SignInWithGoogle": "Sign in with Google"
 }
