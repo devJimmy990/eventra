@@ -3,11 +3,13 @@ import 'package:eventra/core/constants/regex.dart';
 import 'package:eventra/core/constants/routes.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/core/firebase/firestore_helper.dart';
+import 'package:eventra/core/firebase/google_sign_in.dart';
 import 'package:eventra/core/firebase/provider.dart';
 import 'package:eventra/core/firebase/user.dart' as MyUser;
 import 'package:eventra/features/authentication/sign_in/presentation/widgets/custom_dialog.dart';
 import 'package:eventra/features/authentication/sign_in/presentation/widgets/custom_text_field.dart';
 import 'package:eventra/features/authentication/sign_up/presentation/widgets/custom_button.dart';
+import 'package:eventra/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -47,24 +49,24 @@ class _SignInPageState extends State<SignInPage> {
             ),
             Center(
               child: Text(
-                StringsManager.appName,
+                S.of(context).appName,
                 style: Theme.of(context).textTheme.titleLarge,
               ).animate().fade(duration: const Duration(seconds: 4)),
             ),
             Padding(
               padding: REdgeInsets.only(top: 25, left: 25),
               child: Text(
-                StringsManager.signIn,
+                S.of(context).signIn,
                 style: Theme.of(context).textTheme.titleMedium,
               ).animate().fade(duration: const Duration(seconds: 4)),
             ),
             CustomTextField(
-                    hintText: StringsManager.emailEx,
+                    hintText: S.of(context).emailEx,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return StringsManager.empty;
+                        return S.of(context).empty;
                       } else if (!emailValid(value)) {
-                        return StringsManager.invalidEmail;
+                        return S.of(context).invalidEmail;
                       }
                       return null;
                     },
@@ -82,12 +84,12 @@ class _SignInPageState extends State<SignInPage> {
                     begin: 1.0,
                     end: 0),
             CustomTextField(
-                    hintText: StringsManager.yourPass,
+                    hintText: S.of(context).yourPass,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return StringsManager.empty;
+                        return S.of(context).empty;
                       } else if (value.length < 6) {
-                        return StringsManager.shortPass;
+                        return S.of(context).shortPass;
                       }
                       return null;
                     },
@@ -104,7 +106,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: REdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -135,7 +137,7 @@ class _SignInPageState extends State<SignInPage> {
                           });
                         },
                         child: Text(
-                          StringsManager.rememberPass,
+                          S.of(context).rememberPass,
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       ).animate().slideX(
@@ -150,7 +152,7 @@ class _SignInPageState extends State<SignInPage> {
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      StringsManager.forgetPass,
+                      S.of(context).forgetPass,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ).animate().slideX(
@@ -165,16 +167,37 @@ class _SignInPageState extends State<SignInPage> {
               onTap: () {
                 signIn();
               },
-              text: StringsManager.signIn,
+              text: S.of(context).signIn,
             ).animate().fade(duration: const Duration(seconds: 4)),
             const SizedBox(
               height: 20,
+            ),
+            InkWell(
+              onTap: () async {
+                final user = await GoogleSignInService.signInWithGoogle();
+                if (user != null) {
+                  print("Google Sign-In Successful: ${user.displayName}");
+                  context.goNamed(Routes.sHome);
+                } else {
+                  print("Google Sign-In Failed");
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(ImageAssets.googleImage),
+                  Padding(
+                    padding: REdgeInsets.only(left: 10),
+                    child: Text(S.of(context).SignInWithGoogle),
+                  )
+                ],
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  StringsManager.noAcc,
+                  S.of(context).noAcc,
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 TextButton(
@@ -182,7 +205,7 @@ class _SignInPageState extends State<SignInPage> {
                       context.pushNamed(Routes.sRegister);
                     },
                     child: Text(
-                      StringsManager.signUp,
+                      S.of(context).signUp,
                       style: Theme.of(context).textTheme.labelMedium,
                     ))
               ],
@@ -211,7 +234,7 @@ class _SignInPageState extends State<SignInPage> {
         );
         MyUser.User? user = await FirestoreHelper.getUser(credential.user!.uid);
         authProvider.setUsers(user, credential.user);
-        Fluttertoast.showToast(msg: StringsManager.accCreated);
+        Fluttertoast.showToast(msg: S.of(context).accCreated);
         context.goNamed(Routes.sHome);
       } on FirebaseAuthException catch (e) {
         print("FirebaseAuthException${e.toString()}--------------------");
@@ -223,10 +246,10 @@ class _SignInPageState extends State<SignInPage> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                content: const Text(StringsManager.noUser)),
+                content: Text(S.of(context).noUser)),
           );
           return ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text(StringsManager.noUser)));
+               SnackBar(content: Text(S.of(context).noUser)));
         } else if (e.code == 'wrong-password') {
           print("wrong password");
           showDialog(
@@ -235,12 +258,12 @@ class _SignInPageState extends State<SignInPage> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                content: Text(StringsManager.wrongPass)),
+                content: Text(S.of(context).wrongPass)),
           );
           print("No fire base auth exception");
           print("${e.toString()}--------------------");
           return ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text(StringsManager.wrongPass)));
+               SnackBar(content: Text(S.of(context).wrongPass)));
         }
       }
     }

@@ -6,7 +6,7 @@ import 'package:eventra/features/authentication/sign_in/presentation/pages/sign_
 import 'package:eventra/features/authentication/sign_up/presentation/pages/sign_up_view.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.sContact,
+  initialLocation: Routes.sLogin,
   routes: [
     GoRoute(
       name: Routes.sContact,
