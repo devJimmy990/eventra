@@ -1,11 +1,16 @@
 import 'package:eventra/core/routes/routes.dart';
-import 'package:eventra/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +24,7 @@ class HomeView extends StatelessWidget {
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        onTap: (val) => setState(() => _selectedIndex = val),
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey[500],
         backgroundColor: Colors.white,
@@ -46,6 +51,21 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+const pages = [
+  Center(
+      child: Text("Explore",
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+  Center(
+      child: Text("Events",
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+  Center(
+      child: Text("Map",
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+  Center(
+      child: Text("Profile",
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+];
 /**
  * Browse upcoming Events from today to end of the year {sorted by date}
  * Bookmarked, open event details
