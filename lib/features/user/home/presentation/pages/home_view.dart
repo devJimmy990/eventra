@@ -17,7 +17,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () => context.push(Routes.sSettings),
+              onPressed: () => context.push(Routes.settings),
               icon: Icon(Icons.settings))
         ],
       ),

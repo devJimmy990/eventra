@@ -11,7 +11,7 @@ class OnboardingScreen extends StatelessWidget {
   Future<void> _completeOnboarding(BuildContext context) async {
     await SharedPreference.setBool(key: 'onboarding_complete', value: true);
     print("Onboarding completed saved and should go to login screen");
-    context.go(Routes.sLogin);
+    context.go(Routes.login);
   }
   @override
   Widget build(BuildContext context) {
