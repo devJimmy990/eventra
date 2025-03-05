@@ -24,13 +24,14 @@ extension EventExtension on Event {
   }
 
   String encodeLongTime() {
-    DateTime dateTime = DateTime.parse(schedule.start.toString());
+    DateTime startTime = DateTime.parse(schedule.start.toString());
+    DateTime endTime = DateTime.parse(schedule.end.toString());
 
     final DateFormat formatter = DateFormat('EEEE h:mm a');
+    String formattedStartTime = formatter.format(startTime);
+    String formattedEndTime = formatter.format(endTime);
 
-    String formattedDateTime = formatter.format(dateTime);
-
-    return "$formattedDateTime - {encodeTime(schedule.end)}";
+    return "$formattedStartTime - $formattedEndTime";
   }
 }
 
