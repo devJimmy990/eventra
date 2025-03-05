@@ -9,21 +9,22 @@ class Event {
   final EventCategory category;
   final EventLocation location;
   final String adminID, title, desc, cover;
-//  final List<User> attendees;
+  final List<String> attendees;
 
-  Event({
-    this.id,
-    this.desc =
-        "lorem ipsum dolor sit amet, consectetur adip occum dolor sit amet, consectetur adip occum, dolor sit amet, consectetur adip occum, lorem ipsum dolor sit amet, consectetur adip occum dolor sit amet, consectetur adip occum, dolor sit amet, consectetur adip occum, ",
-    this.title = "Stay Safe Online",
-    required this.adminID,
-    required this.category,
-    required this.schedule,
-    this.price = 0,
-    this.cover = StringsManager.eventImage,
-    EventLocation? location,
-    // required this.attendees,
-  }) : location = location ??
+  Event(
+      {this.id,
+      this.desc =
+          "lorem ipsum dolor sit amet, consectetur adip occum dolor sit amet, consectetur adip occum, dolor sit amet, consectetur adip occum, lorem ipsum dolor sit amet, consectetur adip occum dolor sit amet, consectetur adip occum, dolor sit amet, consectetur adip occum, ",
+      this.title = "Stay Safe Online",
+      required this.adminID,
+      required this.category,
+      required this.schedule,
+      this.price = 0,
+      this.cover = StringsManager.eventImage,
+      EventLocation? location,
+      List<String>? attendees})
+      : attendees = attendees ?? List.generate(50, (index) => "User $index"),
+        location = location ??
             EventLocation(
               name: "U.S. Embassy Cairo",
               address: "5 Tawfik Diab Street, Garden City",
@@ -40,7 +41,7 @@ class Event {
       category: json['category'],
       schedule: EventSchedule.fromJson(json['schedule']),
       location: EventLocation.fromJson(json['location']),
-      // attendees: json['attendees'].map((id) => User.fromId(id)).toList(),
+      attendees: json['attendees'].map((txt) => txt).toList(),
     );
   }
   Map<String, dynamic> toJson() {
@@ -54,7 +55,7 @@ class Event {
       "location": location.toJson(),
       'schedule': schedule.toJson(),
       'category': category.toString(),
-      // 'attendees': attendees.map((user) => user.id).toList(),
+      'attendees': attendees.map((txt) => txt).toList(),
     };
   }
 
@@ -65,14 +66,14 @@ class Event {
 }
 
 class EventSchedule {
-  final DateTime start, end, date;
+  final String start, end, date;
 
   EventSchedule({required this.start, required this.end, required this.date});
   factory EventSchedule.fromJson(Map<String, dynamic> json) {
     return EventSchedule(
-      start: json['start'],
       end: json['end'],
       date: json['date'],
+      start: json['start'],
     );
   }
 
