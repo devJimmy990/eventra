@@ -1,6 +1,7 @@
 import 'package:eventra/features/admin/event/model/event.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_attendees_list_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_details_screen.dart';
+import 'package:eventra/features/admin/event/presentation/screens/events_request_screen.dart';
 import 'package:eventra/features/admin/home/screens/home_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
@@ -60,7 +61,11 @@ final router = GoRouter(
       path: "/admin/home",
       builder: (context, state) => AdminHomeScreen(),
     ),
-
+    GoRoute(
+      name: AdminRoutes.eventRequests,
+      path: "/admin/requests",
+      builder: (context, state) => EventsRequestScreen(),
+    ),
     GoRoute(
       name: AdminRoutes.eventDetails,
       path: "/admin/event",

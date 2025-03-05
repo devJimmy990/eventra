@@ -23,13 +23,19 @@ class AdminDrawer extends StatelessWidget {
           ListTile(
             title: Text("Requests"),
             leading: Icon(Icons.notifications),
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              context.pushNamed(AdminRoutes.eventRequests);
+            },
           ),
           Spacer(),
           ListTile(
             title: Text("Settings"),
             leading: Icon(Icons.settings),
-            onTap: () => context.pushNamed(Routes.settings),
+            onTap: () {
+              Navigator.pop(context);
+              context.pushNamed(Routes.settings);
+            },
           ),
           ListTile(
             title: Text("Logout"),
