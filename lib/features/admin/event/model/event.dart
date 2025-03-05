@@ -19,11 +19,16 @@ class Event {
     required this.adminID,
     required this.category,
     required this.schedule,
-    required this.location,
     this.price = 0,
     this.cover = StringsManager.eventImage,
+    EventLocation? location,
     // required this.attendees,
-  });
+  }) : location = location ??
+            EventLocation(
+              name: "U.S. Embassy Cairo",
+              address: "5 Tawfik Diab Street, Garden City",
+              url: "https://maps.app.goo.gl/XFgU1GQnb54WtviN9",
+            );
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
       id: json['id'],
@@ -36,7 +41,6 @@ class Event {
       schedule: EventSchedule.fromJson(json['schedule']),
       location: EventLocation.fromJson(json['location']),
       // attendees: json['attendees'].map((id) => User.fromId(id)).toList(),
-      // attendees: json['attendees'],
     );
   }
   Map<String, dynamic> toJson() {
@@ -61,7 +65,7 @@ class Event {
 }
 
 class EventSchedule {
-  final String start, end, date;
+  final DateTime start, end, date;
 
   EventSchedule({required this.start, required this.end, required this.date});
   factory EventSchedule.fromJson(Map<String, dynamic> json) {
@@ -74,9 +78,9 @@ class EventSchedule {
 
   Map<String, dynamic> toJson() {
     return {
-      'start': start,
       'end': end,
       'date': date,
+      'start': start,
     };
   }
 
@@ -86,23 +90,22 @@ class EventSchedule {
   }
 }
 
-//todo: event-location-class {name, address, url}
 class EventLocation {
   final String name, address, url;
   EventLocation({required this.name, required this.address, required this.url});
 
   factory EventLocation.fromJson(Map<String, dynamic> json) {
     return EventLocation(
+      url: json['url'],
       name: json['name'],
       address: json['address'],
-      url: json['url'],
     );
   }
   Map<String, dynamic> toJson() {
     return {
+      'url': url,
       'name': name,
       'address': address,
-      'url': url,
     };
   }
 
