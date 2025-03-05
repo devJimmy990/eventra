@@ -177,7 +177,7 @@ class _SignInPageState extends State<SignInPage> {
                 final user = await GoogleSignInService.signInWithGoogle();
                 if (user != null) {
                   print("Google Sign-In Successful: ${user.displayName}");
-                  context.goNamed(Routes.sHome);
+                  context.goNamed(UserRoutes.home);
                 } else {
                   print("Google Sign-In Failed");
                 }
@@ -202,7 +202,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 TextButton(
                     onPressed: () {
-                      context.pushNamed(Routes.sRegister);
+                      context.pushNamed(Routes.register);
                     },
                     child: Text(
                       S.of(context).signUp,
@@ -235,7 +235,7 @@ class _SignInPageState extends State<SignInPage> {
         MyUser.User? user = await FirestoreHelper.getUser(credential.user!.uid);
         authProvider.setUsers(user, credential.user);
         Fluttertoast.showToast(msg: S.of(context).accCreated);
-        context.goNamed(Routes.sHome);
+        context.goNamed(UserRoutes.home);
       } on FirebaseAuthException catch (e) {
         print("FirebaseAuthException${e.toString()}--------------------");
         if (e.code == 'user-not-found') {
@@ -248,8 +248,8 @@ class _SignInPageState extends State<SignInPage> {
                 },
                 content: Text(S.of(context).noUser)),
           );
-          return ScaffoldMessenger.of(context).showSnackBar(
-               SnackBar(content: Text(S.of(context).noUser)));
+          return ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(S.of(context).noUser)));
         } else if (e.code == 'wrong-password') {
           print("wrong password");
           showDialog(
@@ -262,8 +262,8 @@ class _SignInPageState extends State<SignInPage> {
           );
           print("No fire base auth exception");
           print("${e.toString()}--------------------");
-          return ScaffoldMessenger.of(context).showSnackBar(
-               SnackBar(content: Text(S.of(context).wrongPass)));
+          return ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(S.of(context).wrongPass)));
         }
       }
     }

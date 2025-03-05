@@ -161,7 +161,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 final user = await GoogleSignInService.signInWithGoogle();
                 if (user != null) {
                   print("Google Sign-In Successful: ${user.displayName}");
-                  context.goNamed(Routes.sHome);
+                  context.goNamed(UserRoutes.home);
                 } else {
                   print("Google Sign-In Failed");
                 }
@@ -190,7 +190,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                 TextButton(
                     onPressed: () {
-                      context.pushNamed(Routes.sLogin);
+                      context.pushNamed(Routes.login);
                     },
                     child: Text(
                       S.of(context).signIn,
@@ -226,10 +226,10 @@ class _SignUpPageState extends State<SignUpPage> {
         );
         print("fire base credentials -------------------");
         var user = FirestoreHelper.addUser(
-             name: widget.nameController.text,
-             email: widget.emailController.text,
-             userId: credential.user!.uid);
-         authProvider.setUsers(user, credential.user);
+            name: widget.nameController.text,
+            email: widget.emailController.text,
+            userId: credential.user!.uid);
+        authProvider.setUsers(user, credential.user);
         print("${credential.user?.displayName} --------------------");
         Fluttertoast.showToast(
             msg: S.of(context).accCreated,
@@ -237,15 +237,15 @@ class _SignUpPageState extends State<SignUpPage> {
             backgroundColor: ColorManager.purpleColor,
             textColor: Colors.white,
             toastLength: Toast.LENGTH_LONG);
-        context.goNamed(Routes.sHome);
+        context.goNamed(UserRoutes.home);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           print("Weak password ------------------------");
-          return ScaffoldMessenger.of(context).showSnackBar(
-               SnackBar(content: Text(S.of(context).shortPass)));
+          return ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(S.of(context).shortPass)));
         } else if (e.code == 'email-already-in-use') {
           print("used email ------------------------------");
-          return ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+          return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(S.of(context).usedEmail),
           ));
         }

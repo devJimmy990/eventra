@@ -1,10 +1,9 @@
-import 'package:eventra/features/admin/event/model/event.dart';
 import 'package:intl/intl.dart';
 
-extension EventExtension on Event {
+extension StringDateExtension on String {
   String encodeDate() {
     try {
-      DateTime dateTime = DateTime.parse(schedule.date.toString());
+      DateTime dateTime = DateTime.parse(this);
       final DateFormat formatter = DateFormat('d MMMM, y');
       return formatter.format(dateTime);
     } catch (e) {
@@ -12,9 +11,9 @@ extension EventExtension on Event {
     }
   }
 
-  String encodeTime(DateTime value) {
+  String encodeTime() {
     try {
-      DateTime dateTime = DateTime.parse(value.toString());
+      DateTime dateTime = DateTime.parse(this);
       final DateFormat formatter = DateFormat('h:mm a');
       String formattedTime = formatter.format(dateTime);
       return formattedTime;
@@ -23,14 +22,13 @@ extension EventExtension on Event {
     }
   }
 
-  String encodeLongTime() {
-    DateTime dateTime = DateTime.parse(schedule.start.toString());
+  String encodeLongTime(String end) {
+    DateTime dateTime = DateTime.parse(this);
 
     final DateFormat formatter = DateFormat('EEEE h:mm a');
 
     String formattedDateTime = formatter.format(dateTime);
 
-    return "$formattedDateTime - {encodeTime(schedule.end)}";
+    return "$formattedDateTime - ${end.encodeTime()}";
   }
 }
-

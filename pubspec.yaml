@@ -27,7 +27,7 @@ dependencies:
   flutter_animate: ^4.5.2
   flutter_screenutil: ^5.9.3
   flutter_native_splash: ^2.4.3
-  flutter_datetime_picker_plus: ^2.2.0
+  omni_datetime_picker: ^2.1.0  
   
   #UI
   icons_plus: ^5.0.0
