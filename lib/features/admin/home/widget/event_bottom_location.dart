@@ -27,7 +27,7 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 12,
-      shadowColor: Colors.amber,
+      shadowColor: Colors.grey,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
         child: Column(
@@ -60,15 +60,15 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
                 children: [
                   TextInputField(
                     controller: widget.nameController,
-                    label: "'Area Name",
+                    label: "Area Name",
                   ),
                   TextInputField(
                     label: "Address",
-                    controller: widget.nameController,
+                    controller: widget.addressController,
                   ),
                   TextInputField(
                     label: "Google Map URL",
-                    controller: widget.nameController,
+                    controller: widget.urlController,
                   ),
                 ],
               )
