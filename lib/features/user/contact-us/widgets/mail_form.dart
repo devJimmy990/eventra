@@ -104,7 +104,7 @@ class _ContactUsMailFormBottomSheetState
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      ExternalLauncher().launchMail(
+                      ExternalLauncher.launchMail(
                         name:
                             "${fNameController.text.trim()} ${lNameController.text.trim()}",
                         email: emailController.text.trim(),

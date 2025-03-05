@@ -8,7 +8,7 @@ class ExternalLauncher {
   ExternalLauncher._();
   factory ExternalLauncher() => _instance ??= ExternalLauncher._();
 
-  Future<void> launchMail({
+  static launchMail({
     required String name,
     required String email,
     required String phone,
@@ -26,36 +26,36 @@ $message
     await _launchUrl(uri);
   }
 
-  Future<void> launchCaller() async {
+  static launchCaller() async {
     final Uri uri = Uri.parse('tel:${AccConstants.phone}');
     await _launchUrl(uri);
   }
 
-  Future<void> launchWhatsapp() async {
+  static launchWhatsapp() async {
     final url = Platform.isAndroid
         ? 'https://wa.me/${AccConstants.whatsapp}'
         : 'https://api.whatsapp.com/send?phone=${AccConstants.whatsapp}';
     await _launchUrl(Uri.parse(url));
   }
 
-  Future<void> _launchUrl(Uri uri) async {
+  static _launchUrl(Uri uri) async {
     if (!await launchUrl(uri)) {
       throw Exception('Could not launch $uri');
     }
   }
 
-  Future<void> launchTwitter() async =>
+  static launchTwitter() async =>
       await _launchUrl(Uri.parse(AccConstants.twitter));
 
-  Future<void> launchYoutube() async =>
+  static launchYoutube() async =>
       await _launchUrl(Uri.parse(AccConstants.youtube));
 
-  Future<void> launchInstagram() async =>
+  static launchInstagram() async =>
       await _launchUrl(Uri.parse(AccConstants.instagram));
 
-  Future<void> launchLocation() async =>
-      await _launchUrl(Uri.parse(AccConstants.location));
+  static launchLocation({String? location}) async =>
+      await _launchUrl(Uri.parse(location ?? AccConstants.location));
 
-  Future<void> launchFacebook() async =>
+  static launchFacebook() async =>
       await _launchUrl(Uri.parse(AccConstants.facebook));
 }

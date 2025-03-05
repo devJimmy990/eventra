@@ -9,7 +9,6 @@ class ContactUsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ExternalLauncher launcher = ExternalLauncher();
     return Scaffold(
       appBar: AppBar(title: Text("Contact Us")),
       floatingActionButton: FloatingActionButton(
@@ -43,7 +42,7 @@ class ContactUsScreen extends StatelessWidget {
                       child: _BuildMasterContactCard(
                     icon: Icons.call,
                     text: "Call us",
-                    onPress: () => launcher.launchCaller(),
+                    onPress: () => ExternalLauncher.launchCaller(),
                   )),
                   Expanded(
                       child: _BuildMasterContactCard(
@@ -64,37 +63,37 @@ class ContactUsScreen extends StatelessWidget {
                 icon: Bootstrap.facebook,
                 title: "Facebook",
                 message: "follow us on facebook",
-                onPress: () => launcher.launchFacebook(),
+                onPress: () => ExternalLauncher.launchFacebook(),
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.instagram,
                 title: "Instagram",
                 message: "follow us on instagram",
-                onPress: () => launcher.launchInstagram(),
+                onPress: () => ExternalLauncher.launchInstagram(),
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.twitter_x,
                 title: "Twitter",
                 message: "follow us on twitter",
-                onPress: () => launcher.launchTwitter(),
+                onPress: () => ExternalLauncher.launchTwitter(),
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.youtube,
                 title: "YouTube",
                 message: "subscribe our channel",
-                onPress: () => launcher.launchYoutube(),
+                onPress: () => ExternalLauncher.launchYoutube(),
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.whatsapp,
                 title: "WhatsApp",
                 message: "contact us on whatsapp",
-                onPress: () => launcher.launchWhatsapp(),
+                onPress: () => ExternalLauncher.launchWhatsapp(),
               ),
               _BuildSocialContactCard(
                 icon: Icons.location_on,
                 title: "Location",
                 message: "visit our location",
-                onPress: () => launcher.launchLocation(),
+                onPress: () => ExternalLauncher.launchLocation(),
               ),
             ],
           ),
