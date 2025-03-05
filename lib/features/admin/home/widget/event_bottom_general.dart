@@ -21,7 +21,7 @@ class EventBottomGeneral extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 12,
-      shadowColor: Colors.amber,
+      shadowColor: Colors.grey,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
         child: Column(
