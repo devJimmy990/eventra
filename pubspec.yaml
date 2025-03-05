@@ -21,20 +21,22 @@ dependencies:
   google_maps_flutter: ^2.10.1
 
   # Helper
-  flutter_screenutil: ^5.9.3
+  intl: ^0.19.0
+  lottie: ^3.3.1
   fluttertoast: ^8.2.12
   flutter_animate: ^4.5.2
-
+  flutter_screenutil: ^5.9.3
+  flutter_native_splash: ^2.4.3
+  flutter_datetime_picker_plus: ^2.2.0
+  
   #UI
   icons_plus: ^5.0.0
   awesome_dialog: ^3.2.1
   cupertino_icons: ^1.0.8
+  introduction_screen: ^3.1.17
   smooth_page_indicator: ^1.2.1
   flutter_expandable_fab: ^2.3.0
   syncfusion_flutter_calendar: ^28.2.7
-  lottie: ^3.3.1
-  flutter_native_splash: ^2.4.3
-  introduction_screen: ^3.1.17
 
 
   # Controller
@@ -43,10 +45,10 @@ dependencies:
 
   # Firebase
   firebase_auth: ^5.5.1
+  google_sign_in: ^6.2.2
   firebase_core: ^3.12.1
   cloud_firestore: ^5.6.5
   firebase_messaging: ^15.2.4
-  google_sign_in: ^6.2.2
 
 
 dev_dependencies:
@@ -59,9 +61,9 @@ flutter:
 
   uses-material-design: true
   assets:
-     - assets/images/
-     - assets/images/on_boarding_images/
-     - assets/animations/
+    - assets/images/
+    - assets/images/on_boarding_images/
+    - assets/animations/
 
   # fonts:
   #   - family: Schyler
