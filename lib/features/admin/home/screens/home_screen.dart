@@ -1,3 +1,4 @@
+import 'package:eventra/features/admin/home/widget/admin_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/event/model/event.dart';
@@ -32,7 +33,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           ),
         ),
       ),
-      drawer: Drawer(),
+      drawer: AdminDrawer(),
       body: _events.isEmpty
           ? Center(
               child: Text(
