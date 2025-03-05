@@ -1,23 +1,19 @@
-import 'package:eventra/core/helper/external_launcher.dart';
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/features/admin/event/extension/event.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:eventra/core/helper/external_launcher.dart';
+import 'package:eventra/features/admin/event/model/event.dart';
 
 class EventDetailsScreen extends StatelessWidget {
   final Event event = Event(
       adminID: "adminID",
       schedule: EventSchedule(
-        start: DateTime.now().toString(),
-        end: DateTime.now().toString(),
-        date: "4 March, 2025",
-      ),
-      location: EventLocation(
-        name: "U.S. Embassy Cairo",
-        address: "5 Tawfik Diab Street, Garden City",
-        url: "https://maps.app.goo.gl/XFgU1GQnb54WtviN9",
+        start: DateTime.parse("2025-03-05 15:00:34.000"),
+        end: DateTime.parse("2025-03-05 17:00:34.000"),
+        date: DateTime.parse("2025-03-05 17:00:34.000"),
       ),
       category: EventCategory.software);
-
+//dateTime: [2025-03-05 15:00:34.000, 2025-03-05 17:00:34.000]
   EventDetailsScreen({super.key});
 
   @override
@@ -67,20 +63,13 @@ class EventDetailsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            title: Text(event.schedule.date),
-            subtitle: Row(
-              spacing: 5,
-              children: [
-                Text("Tuesday,"),
-                Text("12:00PM"),
-                Text(" - "),
-                Text("5:00PM"),
-              ],
-            ),
+            title: Text(event.encodeDate()),
+            subtitle: Text(event.encodeLongTime()),
           ),
 
           ListTile(
-            onTap: ExternalLauncher.launchLocation(location: event.location.url),
+            onTap: () =>
+                ExternalLauncher.launchLocation(location: event.location.url),
             leading: Card(
               margin: EdgeInsets.zero,
               color: Colors.amber,
