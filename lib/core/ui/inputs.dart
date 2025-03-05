@@ -9,7 +9,7 @@ class TextInputField extends StatelessWidget {
   final bool? phone;
   final int? maxLines;
   final String? hintText; // New hint text parameter
-
+final bool? enabled;
   const TextInputField({
     super.key,
     required this.label,
@@ -20,6 +20,7 @@ class TextInputField extends StatelessWidget {
     this.maxLines,
     this.validator,
     this.hintText,
+    this.enabled = true, 
   });
 
   @override
@@ -28,6 +29,8 @@ class TextInputField extends StatelessWidget {
       maxLines: maxLines,
       validator: validator,
       controller: controller,
+      enabled: enabled,
+      
       textAlignVertical: maxLines == null || maxLines == 1
           ? TextAlignVertical.center
           : TextAlignVertical.top,
