@@ -1,3 +1,4 @@
+import 'package:eventra/features/admin/event/extension/event_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
@@ -76,9 +77,7 @@ class _BuildEventCard extends StatelessWidget {
         ),
         onTap: () => context.pushNamed(AdminRoutes.eventDetails, extra: event),
         leading: SizedBox(
-            child: Image.asset(
-          event.cover,
-        )),
+            child: event.cover.asEventImage(),),
         title: Padding(
           padding: EdgeInsets.only(bottom: 10.h),
           child: Row(

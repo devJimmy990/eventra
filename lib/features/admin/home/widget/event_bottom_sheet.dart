@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:eventra/core/constants/strings_manager.dart';
+import 'package:eventra/features/admin/home/widget/event_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/event/model/event.dart';
@@ -35,6 +39,8 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
   late TextEditingController _locationUrlController;
   late TextEditingController _locationNameController;
   late TextEditingController _locationAddressController;
+
+  File? _pickImage;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
@@ -96,6 +102,9 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
             spacing: 10.h,
             mainAxisSize: MainAxisSize.min,
             children: [
+              EventImagePicker(onImagePicked: (image){
+                _pickImage = image;
+              }),
               EventBottomGeneral(
                 titleController: _titleController,
                 priceController: _priceController,
@@ -122,6 +131,9 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                       id: widget.event?.id ?? DateTime.now().toString(),
                       category: EventCategory.values.firstWhere((element) =>
                           element.name == _categoryController.value?.name),
+                      cover: _pickImage != null
+                          ? _pickImage!.path
+                          : StringsManager.eventImage,
                     ));
                     Navigator.pop(context);
                   }

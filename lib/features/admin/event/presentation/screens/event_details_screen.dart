@@ -1,3 +1,4 @@
+import 'package:eventra/features/admin/event/extension/event_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
@@ -32,10 +33,7 @@ class EventDetailsScreen extends StatelessWidget {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Image.asset(
-                    event.cover,
-                    fit: BoxFit.cover,
-                  ),
+                  event.cover.asEventImage(),
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -84,11 +82,11 @@ class EventDetailsScreen extends StatelessWidget {
                 ListTile(
                   leading: Card(
                     margin: EdgeInsets.zero,
-                    color: Colors.amber,
+                    color: Color(0xFFECEEFD),
                     child: CircleAvatar(
                       radius: 25,
                       backgroundColor: Colors.transparent,
-                      child: Icon(
+                      child: Icon(color:Color(0xFF5669FD),
                         Icons.calendar_month_outlined,
                         size: 30,
                       ),
@@ -102,11 +100,11 @@ class EventDetailsScreen extends StatelessWidget {
                       location: event.location.url),
                   leading: Card(
                     margin: EdgeInsets.zero,
-                    color: Colors.amber,
+                    color: Color(0xFFECEEFD),
                     child: CircleAvatar(
                       radius: 25,
                       backgroundColor: Colors.transparent,
-                      child: Icon(
+                      child: Icon(color:Color(0xFF5669FD),
                         Icons.location_on,
                         size: 30,
                       ),
@@ -173,7 +171,7 @@ class EventDetailsScreen extends StatelessWidget {
                 (_, inx) => inx == 24
                     ? CircleAvatar(
                         radius: 32,
-                        backgroundColor: Colors.amber,
+                        backgroundColor: Colors.grey,
                         child: CircleAvatar(
                           radius: 30,
                           child: Text(
@@ -189,7 +187,7 @@ class EventDetailsScreen extends StatelessWidget {
                       )
                     : CircleAvatar(
                         radius: 32,
-                        backgroundColor: Colors.amber,
+                        backgroundColor: Colors.grey,
                         child: CircleAvatar(
                           radius: 30,
                           child: Text("JI"),
