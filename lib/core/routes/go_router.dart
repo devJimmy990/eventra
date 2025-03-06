@@ -3,29 +3,28 @@ import 'package:eventra/features/admin/event/presentation/screens/event_attendee
 import 'package:eventra/features/admin/event/presentation/screens/event_details_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/events_request_screen.dart';
 import 'package:eventra/features/admin/home/screens/home_screen.dart';
+import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
+import 'package:eventra/features/landing/presentation/landing_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:eventra/features/settings/presentation/settings_screen.dart';
 import 'package:eventra/features/user/home/presentation/pages/home_view.dart';
 import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart';
-import 'package:eventra/features/authentication/sign_in/presentation/pages/sign_in_view.dart';
-import 'package:eventra/features/authentication/sign_up/presentation/pages/sign_up_view.dart';
 
 final router = GoRouter(
-  initialLocation: "/admin/home",
+  initialLocation: "/auth",
   routes: [
     // General Routes ================================================
     GoRoute(
-      name: Routes.register,
-      path: "/auth/register",
-      builder: (context, state) => SignUpPage(),
+      name: Routes.auth,
+      path: "/auth",
+      builder: (context, state) => AuthenticationScreen(),
     ),
-
     GoRoute(
-      name: Routes.login,
-      path: "/auth/login",
-      builder: (context, state) => SignInPage(),
+      name: Routes.landing,
+      path: "/landing",
+      builder: (context, state) => LandingScreen(),
     ),
 
     GoRoute(
