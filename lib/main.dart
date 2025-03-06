@@ -1,5 +1,6 @@
 import 'package:eventra/core/firebase/firebase_options.dart';
 import 'package:eventra/core/routes/go_router.dart';
+import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:eventra/features/settings/cubit/settings_cubit.dart';
 import 'package:eventra/features/settings/cubit/settings_state.dart';
 import 'package:flutter/material.dart';
@@ -10,21 +11,12 @@ import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-
-import 'core/firebase/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await SharedPreference.initialize();
-
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => AuthUserProvider(),
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -41,6 +33,9 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider<SettingsCubit>(
               create: (context) => SettingsCubit()..loadSettings(),
+            ),
+            BlocProvider<UserCubit>(
+              create: (context) => UserCubit()..loadUser(),
             ),
           ],
           child: Builder(builder: (context) {

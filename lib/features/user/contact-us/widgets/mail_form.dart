@@ -41,6 +41,7 @@ class _ContactUsMailFormBottomSheetState
 
   @override
   Widget build(BuildContext context) {
+    final ContactUsValidator validator = ContactUsValidator(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
       child: SingleChildScrollView(
@@ -62,7 +63,7 @@ class _ContactUsMailFormBottomSheetState
                           icon: Icons.person,
                           label: "First Name",
                           controller: fNameController,
-                          validator: ContactUsValidator.validateName,
+                          validator: validator.validateName,
                         ),
                       ),
                       Expanded(
@@ -70,7 +71,7 @@ class _ContactUsMailFormBottomSheetState
                           icon: Icons.person,
                           label: "Last Name",
                           controller: lNameController,
-                          validator: ContactUsValidator.validateName,
+                          validator: validator.validateName,
                         ),
                       ),
                     ],
@@ -80,14 +81,14 @@ class _ContactUsMailFormBottomSheetState
                     label: "Email",
                     icon: Icons.email,
                     controller: emailController,
-                    validator: ContactUsValidator.validateEmail,
+                    validator: validator.validateEmail,
                   ),
                   TextInputField(
                     phone: true,
                     label: "Phone Number",
                     icon: Icons.phone_android,
                     controller: phoneController,
-                    validator: ContactUsValidator.validatePhone,
+                    validator: validator.validatePhone,
                   ),
                   TextInputField(
                     maxLines: 4,
@@ -95,7 +96,7 @@ class _ContactUsMailFormBottomSheetState
                     label: "Message",
                     controller: messageController,
                     hintText: "Type your message here",
-                    validator: ContactUsValidator.validateMessage,
+                    validator: validator.validateMessage,
                   ),
                 ],
               ),

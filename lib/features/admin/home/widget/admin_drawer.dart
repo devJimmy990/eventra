@@ -40,7 +40,7 @@ class AdminDrawer extends StatelessWidget {
           ListTile(
             title: Text("Logout"),
             leading: Icon(Icons.logout),
-            onTap: () => context.goNamed(Routes.login),
+            onTap: () => context.goNamed(Routes.auth),
           ),
         ],
       ),
