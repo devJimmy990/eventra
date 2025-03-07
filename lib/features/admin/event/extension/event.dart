@@ -1,7 +1,7 @@
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:intl/intl.dart';
 
-extension EventExtension on Event {
+extension EventExtension on AdminEvent {
   String encodeDate() {
     try {
       DateTime dateTime = DateTime.parse(schedule.date.toString());
