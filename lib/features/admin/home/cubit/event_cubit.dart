@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/home/data/repositories/event_repository.dart';
 
 import '../data/data_source/event_data_source.dart';
@@ -28,7 +28,7 @@ class EventCubit extends Cubit<EventState> {
     );
   }
 
-  Future<void> addEvent(Event event) async {
+  Future<void> addEvent(AdminEvent event) async {
     try {
       await eventRepository.addEvent(event);
     } catch (e) {
@@ -36,7 +36,7 @@ class EventCubit extends Cubit<EventState> {
     }
   }
 
-  Future<void> updateEvent(Event event) async {
+  Future<void> updateEvent(AdminEvent event) async {
     emit(EventLoading());
     try {
       await eventRepository.updateEvent(event);
@@ -46,7 +46,7 @@ class EventCubit extends Cubit<EventState> {
     }
   }
 
-  Future<void> deleteEvent(Event event) async {
+  Future<void> deleteEvent(AdminEvent event) async {
     emit(EventLoading());
     try {
       await eventRepository.deleteEvent(event);

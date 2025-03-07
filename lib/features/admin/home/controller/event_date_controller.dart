@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/features/admin/event/model/base_event.dart';
 
 class EventDateController extends ChangeNotifier {
   EventSchedule _value;

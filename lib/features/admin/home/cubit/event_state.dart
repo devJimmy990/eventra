@@ -11,7 +11,7 @@ class EventLoading extends EventState {
 }
 
 class Eventloaded extends EventState {
-  final List<Event> events;
+  final List<AdminEvent> events;
   Eventloaded({required this.events});
 }
 
