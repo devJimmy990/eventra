@@ -46,10 +46,10 @@ class EventCubit extends Cubit<EventState> {
     }
   }
 
-  Future<void> deleteEvent(eventId) async {
+  Future<void> deleteEvent(Event event) async {
     emit(EventLoading());
     try {
-      await eventRepository.deleteEvent(eventId);
+      await eventRepository.deleteEvent(event);
       getEvents();
     } catch (e) {
       emit(EventError(message: e.toString()));
