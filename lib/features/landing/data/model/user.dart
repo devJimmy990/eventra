@@ -1,5 +1,5 @@
-import 'package:eventra/features/admin/event/model/booked_event.dart';
 import 'package:eventra/features/landing/data/model/person.dart';
+import 'package:eventra/features/admin/event/model/booked_event.dart';
 
 class User extends Person {
   List<BookedEvent>? _events;

@@ -1,26 +1,20 @@
-import 'package:eventra/core/routes/routes.dart';
+import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class UserHomeScreen extends StatefulWidget {
+  const UserHomeScreen({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<UserHomeScreen> createState() => _UserHomeScreenState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _UserHomeScreenState extends State<UserHomeScreen> {
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () => context.push(Routes.settings),
-              icon: Icon(Icons.settings))
-        ],
-      ),
+      appBar: AppBar(),
+      drawer: UserDrawer(),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,

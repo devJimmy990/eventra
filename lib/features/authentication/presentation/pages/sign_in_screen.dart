@@ -18,7 +18,8 @@ import 'package:eventra/features/authentication/presentation/widgets/auth_header
 import 'package:eventra/features/authentication/presentation/widgets/custom_button.dart';
 
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+  final void Function()? onRegister;
+  const SignInScreen({super.key, required this.onRegister});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -49,25 +50,23 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
-        key: formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AuthenticationHeader(),
-            _BuildLogonForm(
+    return Form(
+      key: formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AuthenticationHeader(),
+          _BuildLogonForm(
+            emailController: emailController,
+            passwordController: passController,
+            rememberController: rememberController,
+          ),
+          _BuildLoginActions(
               emailController: emailController,
               passwordController: passController,
               rememberController: rememberController,
-            ),
-            _BuildLoginActions(
-              emailController: emailController,
-              passwordController: passController,
-              rememberController: rememberController,
-            ),
-          ],
-        ),
+              onChangeRoute: widget.onRegister),
+        ],
       ),
     );
   }
@@ -92,7 +91,8 @@ class _BuildLogonForm extends StatelessWidget {
         spacing: 18.h,
         children: [
           TextInputField(
-                  label: S.of(context).emailEx,
+                  label: "email",
+                  hintText: S.of(context).emailEx,
                   validator: validator.validateEmpty,
                   controller: emailController,
                   icon: const Icon(Icons.email_outlined))
@@ -103,8 +103,8 @@ class _BuildLogonForm extends StatelessWidget {
                   ),
                   begin: 1.0,
                   end: 0),
-          TextInputField(
-                  label: S.of(context).yourPass,
+          PasswordInputField(
+                  label: "password",
                   controller: passwordController,
                   validator: validator.validateEmpty,
                   icon: const Icon(Icons.lock_outline))
@@ -144,12 +144,14 @@ class _BuildLogonForm extends StatelessWidget {
 }
 
 class _BuildLoginActions extends StatelessWidget {
+  final void Function()? onChangeRoute;
   final RememberController rememberController;
   final TextEditingController emailController, passwordController;
   const _BuildLoginActions({
     required this.emailController,
     required this.passwordController,
     required this.rememberController,
+    required this.onChangeRoute,
   });
 
   @override
@@ -209,7 +211,7 @@ class _BuildLoginActions extends StatelessWidget {
                   "Have no account?",
                 ).animate().slideX(duration: const Duration(seconds: 1)),
                 TextButton(
-                        onPressed: () => context.goNamed(Routes.register),
+                        onPressed: onChangeRoute,
                         child: Text(
                           "create",
                         ))

@@ -18,7 +18,8 @@ import 'package:eventra/features/authentication/presentation/widgets/auth_header
 import 'package:eventra/features/authentication/presentation/widgets/custom_button.dart';
 
 class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+  final void Function()? onLogin;
+  const SignUpScreen({super.key, required this.onLogin});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -51,27 +52,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
-        key: formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AuthenticationHeader(),
-            _BuildSignupForm(
+    return Form(
+      key: formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AuthenticationHeader(),
+          _BuildSignupForm(
+            nameController: nameController,
+            passController: passController,
+            emailController: emailController,
+            confirmController: confirmController,
+          ),
+          _BuildSignupAction(
               nameController: nameController,
               passController: passController,
               emailController: emailController,
               confirmController: confirmController,
-            ),
-            _BuildSignupAction(
-              nameController: nameController,
-              passController: passController,
-              emailController: emailController,
-              confirmController: confirmController,
-            ),
-          ],
-        ),
+              onLogin: widget.onLogin),
+        ],
       ),
     );
   }
@@ -134,6 +133,7 @@ class _BuildSignupForm extends StatelessWidget {
 }
 
 class _BuildSignupAction extends StatelessWidget {
+  final void Function()? onLogin;
   final TextEditingController nameController,
       passController,
       emailController,
@@ -142,7 +142,8 @@ class _BuildSignupAction extends StatelessWidget {
       {required this.nameController,
       required this.passController,
       required this.emailController,
-      required this.confirmController});
+      required this.confirmController,
+      required this.onLogin});
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +224,7 @@ class _BuildSignupAction extends StatelessWidget {
                       duration: const Duration(seconds: 1),
                     ),
                 TextButton(
-                        onPressed: () => context.goNamed(Routes.login),
+                        onPressed: onLogin,
                         child: Text(
                           "login",
                         ))

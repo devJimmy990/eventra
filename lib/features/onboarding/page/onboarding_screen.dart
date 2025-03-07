@@ -23,7 +23,7 @@ class OnboardingScreen extends StatelessWidget {
       showSkipButton: true,
       skip: const Text('Skip'),
       next: const Icon(Icons.arrow_forward),
-      done: const Text('Login', style: TextStyle(fontWeight: FontWeight.w600)),
+      done: const Text('Get Started', style: TextStyle(fontWeight: FontWeight.w600)),
       dotsDecorator: const DotsDecorator(
         size: Size(10.0, 10.0),
         color: Colors.grey,
