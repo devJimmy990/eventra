@@ -1,9 +1,9 @@
-import 'package:eventra/features/admin/event/extension/event_image.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
 
 class EventDetailsScreen extends StatelessWidget {
@@ -17,7 +17,7 @@ class EventDetailsScreen extends StatelessWidget {
   //   category: EventCategory.software,
   // );
 
-  final Event event;
+  final AdminEvent event;
   const EventDetailsScreen({super.key, required this.event});
 
   @override
@@ -33,7 +33,11 @@ class EventDetailsScreen extends StatelessWidget {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  event.cover.asEventImage(),
+                  event.cover == null
+                      ? Image.asset(event.cover!, fit: BoxFit.cover)
+                      : event.cover!.startsWith('/')
+                          ? Image.file(File(event.cover!), fit: BoxFit.cover)
+                          : Image.asset(event.cover!, fit: BoxFit.cover),
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -86,7 +90,8 @@ class EventDetailsScreen extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 25,
                       backgroundColor: Colors.transparent,
-                      child: Icon(color:Color(0xFF5669FD),
+                      child: Icon(
+                        color: Color(0xFF5669FD),
                         Icons.calendar_month_outlined,
                         size: 30,
                       ),
@@ -104,7 +109,8 @@ class EventDetailsScreen extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 25,
                       backgroundColor: Colors.transparent,
-                      child: Icon(color:Color(0xFF5669FD),
+                      child: Icon(
+                        color: Color(0xFF5669FD),
                         Icons.location_on,
                         size: 30,
                       ),

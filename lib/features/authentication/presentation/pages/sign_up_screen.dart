@@ -1,6 +1,6 @@
-import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:eventra/core/ui/inputs.dart';
 import 'package:eventra/generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -16,16 +16,15 @@ import 'package:eventra/features/authentication/cubit/auth_cubit.dart';
 import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/features/authentication/presentation/widgets/auth_header.dart';
 import 'package:eventra/features/authentication/presentation/widgets/custom_button.dart';
-import 'package:eventra/features/authentication/presentation/widgets/custom_text_field.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController nameController;
   late TextEditingController passController;
   late TextEditingController emailController;
@@ -52,25 +51,27 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AuthenticationHeader(),
-          _BuildSignupForm(
-            nameController: nameController,
-            passController: passController,
-            emailController: emailController,
-            confirmController: confirmController,
-          ),
-          _BuildSignupAction(
-            nameController: nameController,
-            passController: passController,
-            emailController: emailController,
-            confirmController: confirmController,
-          ),
-        ],
+    return Scaffold(
+      body: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AuthenticationHeader(),
+            _BuildSignupForm(
+              nameController: nameController,
+              passController: passController,
+              emailController: emailController,
+              confirmController: confirmController,
+            ),
+            _BuildSignupAction(
+              nameController: nameController,
+              passController: passController,
+              emailController: emailController,
+              confirmController: confirmController,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -95,38 +96,33 @@ class _BuildSignupForm extends StatelessWidget {
       child: Column(
         spacing: 18.h,
         children: [
-          CustomTextField(
-                  isPass: false,
-                  obscure: false,
-                  controller: nameController,
-                  hintText: S.of(context).fullName,
-                  validator: validator.validateName,
-                  icon: const Icon(Icons.person))
+          TextInputField(
+            label: S.of(context).fullName,
+            controller: nameController,
+            hintText: S.of(context).fullName,
+            validator: validator.validateName,
+            icon: const Icon(Icons.person),
+          )
               .animate()
               .slideX(duration: const Duration(seconds: 1), begin: 1.0, end: 0),
-          CustomTextField(
-            isPass: false,
-            obscure: false,
+          TextInputField(
+            label: S.of(context).emailEx,
             controller: emailController,
             hintText: S.of(context).emailEx,
             validator: validator.validateEmail,
             icon: const Icon(Icons.email_outlined),
           ).animate().slideX(duration: const Duration(seconds: 1)),
-          CustomTextField(
-            isPass: true,
-            obscure: true,
+          PasswordInputField(
             controller: passController,
-            hintText: S.of(context).yourPass,
+            label: S.of(context).yourPass,
             validator: validator.validatePassword,
             icon: const Icon(Icons.lock_outline),
           )
               .animate()
               .slideX(duration: const Duration(seconds: 1), begin: 1.0, end: 0),
-          CustomTextField(
-            isPass: true,
-            obscure: true,
+          PasswordInputField(
             controller: confirmController,
-            hintText: S.of(context).confirmPass,
+            label: S.of(context).confirmPass,
             icon: const Icon(Icons.lock_outline),
             validator: (value) =>
                 validator.validateConfirmPassword(value, passController.text),
@@ -178,7 +174,7 @@ class _BuildSignupAction extends StatelessWidget {
                   await context
                       .read<AuthenticationCubit>()
                       .createUserWithEmailAndPassword(
-                        User(
+                        User.register(
                           name: nameController.text,
                           email: emailController.text,
                         ),
@@ -218,58 +214,29 @@ class _BuildSignupAction extends StatelessWidget {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Already have an account? ",
+                ).animate().slideX(
+                      duration: const Duration(seconds: 1),
+                    ),
+                TextButton(
+                        onPressed: () => context.goNamed(Routes.login),
+                        child: Text(
+                          "login",
+                        ))
+                    .animate()
+                    .slideX(
+                        duration: const Duration(seconds: 1),
+                        begin: 1.0,
+                        end: 0),
+              ],
+            )
           ],
         );
       },
     );
   }
-}
-
-signup(BuildContext context) async {
-  // print("not signed in----------------------------------");
-  Lottie.asset(
-    StringsManager.loadingJson,
-  );
-  // AuthUserProvider authProvider =
-  //     Provider.of<AuthUserProvider>(context, listen: false);
-  // if (formKey.currentState?.validate() ?? false) {
-  //   print("signed in-------------------------------------");
-  //   try {
-  //     final credential =
-  //         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-  //       email: emailController.text.trim(),
-  //       password: passController.text,
-  //     );
-  //     print("fire base credentials -------------------");
-  //     var user = FirestoreHelper.addUser(
-  //         name: nameController.text,
-  //         email: emailController.text,
-  //         userId: credential.user!.uid);
-  //     authProvider.setUsers(user, credential.user);
-  //     print("${credential.user?.displayName} --------------------");
-  //     Fluttertoast.showToast(
-  //         msg: S.of(context).accCreated,
-  //         gravity: ToastGravity.BOTTOM,
-  //         backgroundColor: ColorManager.purpleColor,
-  //         textColor: Colors.white,
-  //         toastLength: Toast.LENGTH_LONG);
-  //     context.goNamed(UserRoutes.home);
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == 'weak-password') {
-  //       print("Weak password ------------------------");
-  //       return ScaffoldMessenger.of(context)
-  //           .showSnackBar(SnackBar(content: Text(S.of(context).shortPass)));
-  //     } else if (e.code == 'email-already-in-use') {
-  //       print("used email ------------------------------");
-  //       return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //         content: Text(S.of(context).usedEmail),
-  //       ));
-  //     }
-  //   } catch (e) {
-  //     print("${e.toString()} ---------------------");
-  //     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       content: Text(e.toString()),
-  //     ));
-  //   }
-  // }
 }

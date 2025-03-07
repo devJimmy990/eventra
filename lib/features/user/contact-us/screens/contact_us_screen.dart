@@ -51,9 +51,7 @@ class ContactUsScreen extends StatelessWidget {
                     onPress: () {
                       showModalBottomSheet(
                         context: context,
-                        builder: (context) => Container(
-                          child: ContactUsMailFormBottomSheet(),
-                        ),
+                        builder: (context) => ContactUsMailFormBottomSheet(),
                       );
                     },
                   )),

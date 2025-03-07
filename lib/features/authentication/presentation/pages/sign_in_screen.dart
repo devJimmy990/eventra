@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/generated/l10n.dart';
+import 'package:eventra/core/ui/inputs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:eventra/core/routes/routes.dart';
@@ -15,16 +16,15 @@ import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/features/authentication/controller/remember_controller.dart';
 import 'package:eventra/features/authentication/presentation/widgets/auth_header.dart';
 import 'package:eventra/features/authentication/presentation/widgets/custom_button.dart';
-import 'package:eventra/features/authentication/presentation/widgets/custom_text_field.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignInScreenState extends State<SignInScreen> {
   bool remember = false;
   late TextEditingController emailController;
   late TextEditingController passController;
@@ -49,23 +49,25 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AuthenticationHeader(),
-          _BuildLogonForm(
-            emailController: emailController,
-            passwordController: passController,
-            rememberController: rememberController,
-          ),
-          _BuildLoginActions(
-            emailController: emailController,
-            passwordController: passController,
-            rememberController: rememberController,
-          ),
-        ],
+    return Scaffold(
+      body: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AuthenticationHeader(),
+            _BuildLogonForm(
+              emailController: emailController,
+              passwordController: passController,
+              rememberController: rememberController,
+            ),
+            _BuildLoginActions(
+              emailController: emailController,
+              passwordController: passController,
+              rememberController: rememberController,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -89,12 +91,10 @@ class _BuildLogonForm extends StatelessWidget {
       child: Column(
         spacing: 18.h,
         children: [
-          CustomTextField(
-                  hintText: S.of(context).emailEx,
+          TextInputField(
+                  label: S.of(context).emailEx,
                   validator: validator.validateEmpty,
-                  obscure: false,
                   controller: emailController,
-                  isPass: false,
                   icon: const Icon(Icons.email_outlined))
               .animate()
               .slideX(
@@ -103,11 +103,9 @@ class _BuildLogonForm extends StatelessWidget {
                   ),
                   begin: 1.0,
                   end: 0),
-          CustomTextField(
-                  isPass: true,
-                  obscure: true,
+          TextInputField(
+                  label: S.of(context).yourPass,
                   controller: passwordController,
-                  hintText: S.of(context).yourPass,
                   validator: validator.validateEmpty,
                   icon: const Icon(Icons.lock_outline))
               .animate()
@@ -184,32 +182,15 @@ class _BuildLoginActions extends StatelessWidget {
           spacing: 10.h,
           children: [
             CustomButton(
-              onTap: () {
-                try {
-                  context.read<AuthenticationCubit>().loginWithEmailAndPassword(
-                        emailController.text,
-                        passwordController.text,
-                      );
-                } catch (e) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(e.toString()),
-                    backgroundColor: Colors.red,
-                  ));
-                }
-              },
               text: S.of(context).signIn,
+              onTap: () => context
+                  .read<AuthenticationCubit>()
+                  .loginWithEmailAndPassword(
+                      emailController.text, passwordController.text),
             ).animate().fade(duration: const Duration(seconds: 4)),
             InkWell(
-              onTap: () async {
-                try {
-                  context.read<AuthenticationCubit>().loginWithGoogle();
-                } catch (e) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(e.toString()),
-                    backgroundColor: Colors.red,
-                  ));
-                }
-              },
+              onTap: () async =>
+                  context.read<AuthenticationCubit>().loginWithGoogle(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -221,6 +202,22 @@ class _BuildLoginActions extends StatelessWidget {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Have no account?",
+                ).animate().slideX(duration: const Duration(seconds: 1)),
+                TextButton(
+                        onPressed: () => context.goNamed(Routes.register),
+                        child: Text(
+                          "create",
+                        ))
+                    .animate()
+                    .slideX(
+                        duration: const Duration(seconds: 1), begin: 1, end: 0)
+              ],
+            )
           ],
         );
       },
