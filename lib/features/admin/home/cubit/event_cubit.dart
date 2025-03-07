@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/home/data/repositories/event_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../data/data_source/event_data_source.dart';
 
@@ -17,9 +17,8 @@ class EventCubit extends Cubit<EventState> {
       (events) {
         if (events.isEmpty) {
           emit(EventEmpty());
-        }
-        else {
-          emit(Eventloaded(events: events));
+        } else {
+          emit(EventLoaded(events: events));
         }
       },
       onError: (e) {

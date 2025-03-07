@@ -1,19 +1,14 @@
-import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
-import 'package:eventra/features/admin/home/widget/admin_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/home/widget/event_card.dart';
-import 'package:eventra/features/admin/home/widget/event_bottom_sheet.dart';
+import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
+import 'package:eventra/features/admin/home/presentation/widget/event_card.dart';
+import 'package:eventra/features/admin/home/presentation/widget/admin_drawer.dart';
+import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
 
-class AdminHomeScreen extends StatefulWidget {
+class AdminHomeScreen extends StatelessWidget {
   const AdminHomeScreen({super.key});
 
-  @override
-  State<AdminHomeScreen> createState() => _AdminHomeScreenState();
-}
-
-class _AdminHomeScreenState extends State<AdminHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +44,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 style: TextStyle(fontSize: 16.sp),
               ),
             );
-          } else if (state is Eventloaded) {
+          } else if (state is EventLoaded) {
             return ListView.builder(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
               itemCount: state.events.length,
@@ -61,7 +56,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                   onDismissed: (direction) {
                     if (direction == DismissDirection.endToStart) {
                       context.read<EventCubit>().deleteEvent(event);
-                      // setState(() => state.events.removeAt(index));
                     }
                   },
                 );
@@ -74,6 +68,8 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 style: TextStyle(fontSize: 16.sp),
               ),
             );
+          } else if (state is EventInitial) {
+            return Text("safadfa");
           } else {
             return Ink.image(
               image: AssetImage(

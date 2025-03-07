@@ -6,8 +6,12 @@ import 'package:eventra/features/landing/data/data_source/user_data_source.dart'
 import 'package:eventra/features/landing/data/repositories/user_repository.dart';
 
 class UserCubit extends Cubit<UserState> {
-  UserCubit() : super(UserInitial());
   User? _user;
+
+  UserCubit() : super(UserInitial()) {
+    loadUser();
+  }
+
   void loadUser() async {
     emit(UserLoading());
     try {

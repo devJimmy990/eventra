@@ -8,7 +8,9 @@ class SettingsCubit extends Cubit<SettingsState> {
       : super(SettingsState(
           theme: AppTheme.light,
           locale: "en",
-        ));
+        )) {
+    loadSettings();
+  }
 
   void _loadTheme() {
     final theme = SharedPreference.getString(key: "theme");

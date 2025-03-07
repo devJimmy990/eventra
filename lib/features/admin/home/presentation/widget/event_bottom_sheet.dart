@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/event/model/base_event.dart';
-import 'package:eventra/features/admin/home/widget/event_bottom_date.dart';
-import 'package:eventra/features/admin/home/widget/event_image_picker.dart';
-import 'package:eventra/features/admin/home/widget/event_bottom_general.dart';
-import 'package:eventra/features/admin/home/widget/event_bottom_location.dart';
+import 'package:eventra/features/admin/home/presentation/widget/event_bottom_date.dart';
+import 'package:eventra/features/admin/home/presentation/widget/event_image_picker.dart';
+import 'package:eventra/features/admin/home/presentation/widget/event_bottom_general.dart';
+import 'package:eventra/features/admin/home/presentation/widget/event_bottom_location.dart';
 import 'package:eventra/features/admin/home/controller/event_date_controller.dart';
 import 'package:eventra/features/admin/home/controller/event_category_controller.dart';
 

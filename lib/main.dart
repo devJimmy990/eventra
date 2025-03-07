@@ -32,11 +32,11 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider<SettingsCubit>(
-              create: (context) => SettingsCubit()..loadSettings(),
-            ),
             BlocProvider<UserCubit>(
-              create: (context) => UserCubit()..loadUser(),
+              create: (context) => UserCubit(),
+            ),
+            BlocProvider<SettingsCubit>(
+              create: (context) => SettingsCubit(),
             ),
             BlocProvider<AuthenticationCubit>(
               create: (context) => AuthenticationCubit(),

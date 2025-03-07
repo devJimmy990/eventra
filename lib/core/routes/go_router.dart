@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
-import 'package:eventra/features/admin/home/screens/home_screen.dart';
+import 'package:eventra/features/admin/home/presentation/screens/home_screen.dart';
 import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:eventra/features/landing/presentation/landing_screen.dart';
 import 'package:eventra/features/settings/presentation/settings_screen.dart';

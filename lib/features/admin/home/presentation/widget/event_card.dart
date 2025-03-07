@@ -6,9 +6,9 @@ import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/event/extension/string.dart';
-import 'package:eventra/features/admin/home/widget/event_bottom_sheet.dart';
+import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
 
-import '../cubit/event_cubit.dart';
+import '../../cubit/event_cubit.dart';
 
 class EventCard extends StatelessWidget {
   final AdminEvent event;

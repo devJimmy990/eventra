@@ -10,9 +10,9 @@ class EventLoading extends EventState {
   EventLoading();
 }
 
-class Eventloaded extends EventState {
+class EventLoaded extends EventState {
   final List<AdminEvent> events;
-  Eventloaded({required this.events});
+  EventLoaded({required this.events});
 }
 
 class EventError extends EventState {
