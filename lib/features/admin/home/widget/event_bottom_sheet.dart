@@ -1,19 +1,19 @@
 import 'dart:io';
-
-import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/admin/home/widget/event_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/core/constants/strings_manager.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/event/model/base_event.dart';
 import 'package:eventra/features/admin/home/widget/event_bottom_date.dart';
+import 'package:eventra/features/admin/home/widget/event_image_picker.dart';
 import 'package:eventra/features/admin/home/widget/event_bottom_general.dart';
 import 'package:eventra/features/admin/home/widget/event_bottom_location.dart';
 import 'package:eventra/features/admin/home/controller/event_date_controller.dart';
 import 'package:eventra/features/admin/home/controller/event_category_controller.dart';
 
 class EventBottomSheet extends StatefulWidget {
-  final Event? event;
-  final Function(Event) onSave;
+  final AdminEvent? event;
+  final Function(AdminEvent) onSave;
   const EventBottomSheet({
     super.key,
     this.event,
@@ -102,7 +102,7 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
             spacing: 10.h,
             mainAxisSize: MainAxisSize.min,
             children: [
-              EventImagePicker(onImagePicked: (image){
+              EventImagePicker(onImagePicked: (image) {
                 _pickImage = image;
               }),
               EventBottomGeneral(
@@ -122,7 +122,7 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    widget.onSave(Event(
+                    widget.onSave(AdminEvent(
                       adminID: "123456789",
                       title: _titleController.text,
                       schedule: _dateController.value,

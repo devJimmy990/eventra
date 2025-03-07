@@ -1,17 +1,17 @@
-import 'package:eventra/features/admin/event/extension/event_image.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:eventra/features/admin/home/widget/event_bottom_sheet.dart';
 
 import '../cubit/event_cubit.dart';
 
 class EventCard extends StatelessWidget {
-  final Event event;
+  final AdminEvent event;
   final void Function(DismissDirection)? onDismissed;
 
   const EventCard({super.key, required this.event, required this.onDismissed});
@@ -65,7 +65,7 @@ class EventCard extends StatelessWidget {
 }
 
 class _BuildEventCard extends StatelessWidget {
-  final Event event;
+  final AdminEvent event;
 
   const _BuildEventCard(this.event);
 
@@ -85,9 +85,7 @@ class _BuildEventCard extends StatelessWidget {
                 child: EventBottomSheet(
                   event: event,
                   onSave: (updatedEvent) {
-                    context
-                        .read<EventCubit>()
-                        .updateEvent(updatedEvent);
+                    context.read<EventCubit>().updateEvent(updatedEvent);
                   },
                 ),
               ),
@@ -95,7 +93,11 @@ class _BuildEventCard extends StatelessWidget {
             onTap: () =>
                 context.pushNamed(AdminRoutes.eventDetails, extra: event),
             leading: SizedBox(
-              child: event.cover.asEventImage(),
+              child: event.cover == null
+                  ? Image.asset(event.cover!, fit: BoxFit.cover)
+                  : event.cover!.startsWith('/')
+                      ? Image.file(File(event.cover!), fit: BoxFit.cover)
+                      : Image.asset(event.cover!, fit: BoxFit.cover),
             ),
             title: Padding(
               padding: EdgeInsets.only(bottom: 10.h),

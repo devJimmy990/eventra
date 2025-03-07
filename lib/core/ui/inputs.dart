@@ -1,36 +1,33 @@
 import 'package:flutter/material.dart';
 
 class TextInputField extends StatelessWidget {
+  final Icon? icon;
   final String label;
-  final IconData? icon;
+  final int? maxLines;
+  final String? hintText;
+  final bool? email, phone, enabled;
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  final bool? email;
-  final bool? phone;
-  final int? maxLines;
-  final String? hintText; // New hint text parameter
-final bool? enabled;
   const TextInputField({
     super.key,
-    required this.label,
-    required this.controller,
     this.icon,
     this.email,
     this.phone,
     this.maxLines,
     this.validator,
     this.hintText,
-    this.enabled = true, 
+    this.enabled = true,
+    required this.label,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       maxLines: maxLines,
       validator: validator,
       controller: controller,
-      enabled: enabled,
-      
       textAlignVertical: maxLines == null || maxLines == 1
           ? TextAlignVertical.center
           : TextAlignVertical.top,
@@ -40,27 +37,32 @@ final bool? enabled;
               ? TextInputType.phone
               : TextInputType.multiline,
       decoration: InputDecoration(
+        filled: true,
+        prefixIcon: icon,
         labelText: label,
         hintText: hintText,
-        alignLabelWithHint: maxLines != null &&
-            maxLines! > 1, // Ensures hint starts from the top
-        border: const OutlineInputBorder(),
+        fillColor: Colors.white,
+        alignLabelWithHint: maxLines != null && maxLines! > 1,
         labelStyle: const TextStyle(color: Colors.black),
-        prefixIcon: icon == null ? null : Icon(icon, color: Colors.black),
+        border: _buildInputBorder(),
+        enabledBorder: _buildInputBorder(),
+        focusedBorder: _buildInputBorder(),
       ),
     );
   }
 }
 
 class PasswordInputField extends StatefulWidget {
+  final Icon? icon;
   final String label;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   const PasswordInputField({
     super.key,
+    this.icon,
+    this.validator,
     required this.label,
     required this.controller,
-    this.validator,
   });
 
   @override
@@ -72,19 +74,24 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.controller,
-      validator: widget.validator,
-      keyboardType: TextInputType.visiblePassword,
       obscureText: obscureText,
+      validator: widget.validator,
+      controller: widget.controller,
       textInputAction: TextInputAction.done,
+      keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
+        filled: true,
         labelText: widget.label,
-        labelStyle: const TextStyle(color: Colors.black),
+        fillColor: Colors.white,
         prefixIcon: Icon(Icons.lock),
+        border: _buildInputBorder(),
+        enabledBorder: _buildInputBorder(),
+        focusedBorder: _buildInputBorder(),
+        labelStyle: const TextStyle(color: Colors.black),
         suffixIcon: IconButton(
           icon: Icon(
-            obscureText ? Icons.visibility : Icons.visibility_off,
             color: Colors.black,
+            obscureText ? Icons.visibility : Icons.visibility_off,
           ),
           onPressed: () => setState(() => obscureText = !obscureText),
         ),
@@ -92,3 +99,8 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
     );
   }
 }
+
+InputBorder _buildInputBorder() => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(20),
+      borderSide: const BorderSide(color: Colors.transparent),
+    );

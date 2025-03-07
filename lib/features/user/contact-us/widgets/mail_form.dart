@@ -60,7 +60,7 @@ class _ContactUsMailFormBottomSheetState
                     children: [
                       Expanded(
                         child: TextInputField(
-                          icon: Icons.person,
+                          icon: Icon(Icons.person),
                           label: "First Name",
                           controller: fNameController,
                           validator: validator.validateName,
@@ -68,7 +68,7 @@ class _ContactUsMailFormBottomSheetState
                       ),
                       Expanded(
                         child: TextInputField(
-                          icon: Icons.person,
+                          icon: Icon(Icons.person),
                           label: "Last Name",
                           controller: lNameController,
                           validator: validator.validateName,
@@ -79,14 +79,14 @@ class _ContactUsMailFormBottomSheetState
                   TextInputField(
                     email: true,
                     label: "Email",
-                    icon: Icons.email,
+                    icon: Icon(Icons.email),
                     controller: emailController,
                     validator: validator.validateEmail,
                   ),
                   TextInputField(
                     phone: true,
                     label: "Phone Number",
-                    icon: Icons.phone_android,
+                    icon: Icon(Icons.phone_android),
                     controller: phoneController,
                     validator: validator.validatePhone,
                   ),
