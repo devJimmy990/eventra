@@ -1,5 +1,6 @@
 import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
@@ -13,6 +14,8 @@ import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart'
 import 'package:eventra/features/admin/event/presentation/screens/event_details_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/events_request_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_attendees_list_screen.dart';
+
+import '../../features/admin/home/cubit/event_cubit.dart';
 
 String? _handleRedirect(BuildContext context, GoRouterState state) {
   final bool onboardingComplete =
@@ -32,8 +35,8 @@ String? _handleRedirect(BuildContext context, GoRouterState state) {
 }
 
 final router = GoRouter(
-  initialLocation: "/landing",
-  redirect: _handleRedirect,
+  initialLocation: "/admin/home",
+  // redirect: _handleRedirect,
   routes: [
     // General Routes ================================================
     GoRoute(
@@ -76,7 +79,9 @@ final router = GoRouter(
     GoRoute(
       name: AdminRoutes.home,
       path: "/admin/home",
-      builder: (context, state) => AdminHomeScreen(),
+builder: (context, state) => BlocProvider<EventCubit>(
+create: (context) => EventCubit(),
+child: AdminHomeScreen(),)
     ),
     GoRoute(
       name: AdminRoutes.eventRequests,
