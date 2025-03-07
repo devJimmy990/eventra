@@ -1,5 +1,6 @@
 class Routes {
-  static const String auth = "auth";
+  static const String login = "auth-login";
+  static const String register = "auth-register";
   static const String landing = "landing";
   static const String settings = "settings";
   static const String onboarding = "onboarding";
