@@ -13,7 +13,7 @@ class OnboardingScreen extends StatelessWidget {
     final List<PageViewModel> pages = onboardingModel;
     void finishOnboarding() {
       SharedPreference.setBool(key: 'onboarding_complete', value: true);
-      context.goNamed(Routes.login);
+      context.goNamed(Routes.auth);
     }
 
     return IntroductionScreen(

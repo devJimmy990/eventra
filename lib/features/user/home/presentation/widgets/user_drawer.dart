@@ -35,7 +35,7 @@ class _BuildUserDrawer extends StatelessWidget {
                 backgroundColor: Colors.red,
                 toastLength: Toast.LENGTH_SHORT,
               );
-            context.goNamed(Routes.login);
+            context.goNamed(Routes.auth);
           }
         },
         child: Column(
@@ -87,7 +87,7 @@ class _BuildEmptyDrawer extends StatelessWidget {
           ListTile(
             title: Text("login"),
             leading: Icon(Icons.logout),
-            onTap: () => context.push(Routes.login),
+            onTap: () => context.push(Routes.auth),
           ),
         ],
       ),

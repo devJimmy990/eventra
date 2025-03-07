@@ -15,7 +15,7 @@ class AdminDrawer extends StatelessWidget {
       child: BlocListener<AuthenticationCubit, AuthenticationState>(
         listener: (context, state) {
           if (state is UnAuthenticated) {
-            context.goNamed(Routes.login);
+            context.goNamed(Routes.auth);
           }
         },
         child: Column(

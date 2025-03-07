@@ -26,9 +26,8 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  bool remember = false;
-  late TextEditingController emailController;
   late TextEditingController passController;
+  late TextEditingController emailController;
   late RememberController rememberController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -117,7 +116,7 @@ class _BuildLogonForm extends StatelessWidget {
           ListTile(
             horizontalTitleGap: 1.w,
             contentPadding: EdgeInsets.all(0),
-            leading: Checkbox(
+            leading: Switch(
               value: rememberController.value,
               onChanged: (val) => rememberController.value = val,
             ),
