@@ -1,14 +1,14 @@
 import 'package:eventra/core/firebase/firebase.dart';
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
 
 class EventDataSource {
   // firebase contain firestore used here  *singleton*
   final Firebase firebase = Firebase();
 
 // add event to firestore
-  Future<void> addEvent(Event event) async {
+  Future<void> addEvent(AdminEvent event) async {
     try {
-      await firebase.store.instance
+      await firebase.store
           .collection('events')
           .doc(event.id)
           .set(event.toJson());
@@ -18,13 +18,10 @@ class EventDataSource {
   }
 
   // get event from firestore
-  Stream<List<Event>> getEvents() {
+  Stream<List<AdminEvent>> getEvents() {
     try {
-      return firebase.store.instance
-          .collection('events')
-          .snapshots()
-          .map((snapshot) {
-        return snapshot.docs.map((doc) => Event.fromJson(doc.data())).toList();
+      return firebase.store.collection('events').snapshots().map((snapshot) {
+        return snapshot.docs.map((doc) => AdminEvent.fromJson(doc.data())).toList();
       });
     } catch (e) {
       rethrow;
@@ -32,9 +29,9 @@ class EventDataSource {
   }
 
 // update event on firestore
-  Future<void> updateEvent(Event event) async {
+  Future<void> updateEvent(AdminEvent event) async {
     try {
-      await firebase.store.instance
+      await firebase.store
           .collection('events')
           .doc(event.id)
           .update(event.toJson());
@@ -44,9 +41,9 @@ class EventDataSource {
   }
 
 // delete event from firestore
-  Future<void> deleteEvent(Event event) async {
+  Future<void> deleteEvent(AdminEvent event) async {
     try {
-      await firebase.store.instance.collection('events').doc(event.id).delete();
+      await firebase.store.collection('events').doc(event.id).delete();
     } catch (e) {
       rethrow;
     }

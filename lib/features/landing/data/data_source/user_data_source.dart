@@ -5,11 +5,12 @@ class UserDataSource {
 
   Future<Map<String, dynamic>> getUserData(String uid) async {
     try {
-      return await firebase.store.instance
-          .collection("users")
-          .doc(uid)
-          .get()
-          .then((value) => value.data() ?? {});
+      return {};
+      // await firebase.store
+      //     .collection("users")
+      //     .doc(uid)
+      //     .get()
+      //     .then((value) => value.data() ?? {});
     } catch (e) {
       throw Exception('FirebaseStore: getUserData - Error: $e');
     }

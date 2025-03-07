@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/event/model/event.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/home/data/data_source/event_data_source.dart';
 
 class EventRepository {
@@ -6,19 +6,19 @@ class EventRepository {
 
   EventRepository(this._dataSource);
 
-  Future<void> addEvent(Event event) async {
+  Future<void> addEvent(AdminEvent event) async {
     await _dataSource.addEvent(event);
   }
 
-  Stream<List<Event>> getEvents() {
+  Stream<List<AdminEvent>> getEvents() {
     return _dataSource.getEvents();
   }
 
-  Future<void> updateEvent(Event event) async {
+  Future<void> updateEvent(AdminEvent event) async {
     await _dataSource.updateEvent(event);
   }
 
-  Future<void> deleteEvent(Event event) async {
+  Future<void> deleteEvent(AdminEvent event) async {
     await _dataSource.deleteEvent(event);
   }
 }
