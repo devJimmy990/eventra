@@ -1,13 +1,10 @@
+import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
 import 'package:eventra/features/admin/home/widget/admin_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/event/model/event.dart';
 import 'package:eventra/features/admin/home/widget/event_card.dart';
 import 'package:eventra/features/admin/home/widget/event_bottom_sheet.dart';
-/**
- * 
- home screen {List<Admin-Events>, floating{BottomSheet}} {CRUD => Swipe to delete}
- * */
 
 class AdminHomeScreen extends StatefulWidget {
   const AdminHomeScreen({super.key});
@@ -17,8 +14,6 @@ class AdminHomeScreen extends StatefulWidget {
 }
 
 class _AdminHomeScreenState extends State<AdminHomeScreen> {
-  final List<Event> _events = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,34 +29,68 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
         ),
       ),
       drawer: AdminDrawer(),
-      body: _events.isEmpty
-          ? Center(
+      body: BlocConsumer<EventCubit, EventState>(
+        listener: (context, state) {
+          if (state is EventError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is EventLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is EventEmpty) {
+            return Center(
               child: Text(
                 'No events added yet.',
                 style: TextStyle(fontSize: 16.sp),
               ),
-            )
-          : ListView.builder(
+            );
+          } else if (state is Eventloaded) {
+            return ListView.builder(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-              itemCount: _events.length,
+              itemCount: state.events.length,
               itemBuilder: (context, index) {
-                final event = _events[index];
+                final event = state.events[index];
                 // to swipe left and right
                 return EventCard(
-                    event: event,
-                    onDismissed: (direction) {
-                      if (direction == DismissDirection.startToEnd) {
-                        setState(() => _events.removeAt(index));
-                      }
-                    });
+                  event: event,
+                  onDismissed: (direction) {
+                    if (direction == DismissDirection.startToEnd) {
+                      context.read<EventCubit>().deleteEvent(event);
+                      // setState(() => state.events.removeAt(index));
+                    }
+                  },
+                );
               },
-            ),
+            );
+          } else if (state is EventError) {
+            return Center(
+              child: Text(
+                state.message,
+                style: TextStyle(fontSize: 16.sp),
+              ),
+            );
+          } else {
+            return Ink.image(
+              image: AssetImage(
+                  'assets/images/on_boarding_images/onboarding4.gif'),
+            );
+          }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
           context: context,
           isScrollControlled: true,
-          builder: (context) => EventBottomSheet(
-            onSave: (event) => setState(() => _events.add(event)),
+          builder: (bottomCtx) => BlocProvider.value(
+            value: context.read<EventCubit>(),
+            child: EventBottomSheet(
+              onSave: (event) => context.read<EventCubit>().addEvent(event),
+            ),
           ),
         ),
         child: Icon(Icons.add, size: 25.sp),

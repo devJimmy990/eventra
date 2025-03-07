@@ -38,10 +38,12 @@ class Event {
       cover: json['cover'],
       price: json['price'],
       adminID: json['adminID'],
-      category: json['category'],
+      category: _categoryFromString(json['category']),
       schedule: EventSchedule.fromJson(json['schedule']),
       location: EventLocation.fromJson(json['location']),
-      attendees: json['attendees'].map((txt) => txt).toList(),
+      attendees: json['attendees'] != null
+          ? (json['attendees'] as List<dynamic>).map((e) => e as String).toList()
+          : [],
     );
   }
   Map<String, dynamic> toJson() {
@@ -57,7 +59,17 @@ class Event {
       'category': category.toString(),
       'attendees': attendees.map((txt) => txt).toList(),
     };
+
   }
+  static EventCategory _categoryFromString(String categoryString) {
+    switch (categoryString) {
+      case 'EventCategory.software':
+        return EventCategory.software;
+      case 'EventCategory.hardware':
+        return EventCategory.hardware;
+            default:
+        throw Exception("Unknown category: $categoryString");
+    }}
 
   @override
   String toString() {
@@ -114,4 +126,7 @@ class EventLocation {
   String toString() {
     return 'name: $name, address: $address';
   }
+
+
+
 }

@@ -7,7 +7,7 @@ import 'package:eventra/features/landing/data/repositories/user_repository.dart'
 
 class UserCubit extends Cubit<UserState> {
   UserCubit() : super(UserInitial());
-
+final userRepository = UserRepository(UserDataSource());
   void loadUser() async {
     emit(UserLoading());
     try {
@@ -16,7 +16,7 @@ class UserCubit extends Cubit<UserState> {
         emit(UserNotAuthenticated());
         return;
       }
-      User user = await UserRepository(UserDataSource()).getUserData(uid);
+      User user = await userRepository.getUserData(uid);
       emit(UserLoaded(user));
     } catch (e) {
       emit(UserError(e.toString()));
