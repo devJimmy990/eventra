@@ -13,11 +13,13 @@ import '../cubit/event_cubit.dart';
 class EventCard extends StatelessWidget {
   final Event event;
   final void Function(DismissDirection)? onDismissed;
+
   const EventCard({super.key, required this.event, required this.onDismissed});
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(direction: DismissDirection.endToStart,
+    return Dismissible(
+        direction: DismissDirection.endToStart,
         key: Key(event.id ?? event.title),
         background: Container(
           color: Colors.red,
@@ -64,60 +66,73 @@ class EventCard extends StatelessWidget {
 
 class _BuildEventCard extends StatelessWidget {
   final Event event;
+
   const _BuildEventCard(this.event);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EventCubit, EventState>(
-  builder: (context, state) {
-    return Card(
-      elevation: 10,
-      margin: EdgeInsets.symmetric(vertical: 5.h),
-      child: ListTile(
-        onLongPress: () => showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          builder: (context) =>
-              EventBottomSheet(event: event, onSave: (event) => {}),
-        ),
-        onTap: () => context.pushNamed(AdminRoutes.eventDetails, extra: event),
-        leading: SizedBox(
-            child: event.cover.asEventImage(),),
-        title: Padding(
-          padding: EdgeInsets.only(bottom: 10.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                event.title,
-                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.green,
+      builder: (context, state) {
+        return Card(
+          elevation: 10,
+          margin: EdgeInsets.symmetric(vertical: 5.h),
+          child: ListTile(
+            onLongPress: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (bottomCtx) => BlocProvider.value(
+                value: context.read<EventCubit>(),
+                child: EventBottomSheet(
+                  event: event,
+                  onSave: (updatedEvent) {
+                    context
+                        .read<EventCubit>()
+                        .updateEvent(updatedEvent);
+                  },
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
-                child: Text(
-                  event.category.toString().split(".")[1],
+              ),
+            ),
+            onTap: () =>
+                context.pushNamed(AdminRoutes.eventDetails, extra: event),
+            leading: SizedBox(
+              child: event.cover.asEventImage(),
+            ),
+            title: Padding(
+              padding: EdgeInsets.only(bottom: 10.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    event.title,
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.green,
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: Text(
+                      event.category.toString().split(".")[1],
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  event.schedule.start.encodeLongTime(event.schedule.end),
                   style: TextStyle(fontSize: 14.sp),
                 ),
-              )
-            ],
-          ),
-        ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              event.schedule.start.encodeLongTime(event.schedule.end),
-              style: TextStyle(fontSize: 14.sp),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
-  },
-);
   }
 }
