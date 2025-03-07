@@ -59,7 +59,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 return EventCard(
                   event: event,
                   onDismissed: (direction) {
-                    if (direction == DismissDirection.startToEnd) {
+                    if (direction == DismissDirection.endToStart) {
                       context.read<EventCubit>().deleteEvent(event);
                       // setState(() => state.events.removeAt(index));
                     }

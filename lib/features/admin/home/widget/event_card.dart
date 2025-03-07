@@ -1,11 +1,14 @@
 import 'package:eventra/features/admin/event/extension/event_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/event/model/event.dart';
 import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:eventra/features/admin/home/widget/event_bottom_sheet.dart';
+
+import '../cubit/event_cubit.dart';
 
 class EventCard extends StatelessWidget {
   final Event event;
@@ -14,7 +17,7 @@ class EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
+    return Dismissible(direction: DismissDirection.endToStart,
         key: Key(event.id ?? event.title),
         background: Container(
           color: Colors.red,
@@ -65,6 +68,8 @@ class _BuildEventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<EventCubit, EventState>(
+  builder: (context, state) {
     return Card(
       elevation: 10,
       margin: EdgeInsets.symmetric(vertical: 5.h),
@@ -112,5 +117,7 @@ class _BuildEventCard extends StatelessWidget {
         ),
       ),
     );
+  },
+);
   }
 }
