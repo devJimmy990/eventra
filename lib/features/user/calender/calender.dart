@@ -5,10 +5,10 @@ import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
 
 class UserCalendarPage extends StatefulWidget {
-  const UserCalendarPage({Key? key}) : super(key: key);
+  const UserCalendarPage({super.key});
 
   @override
-  _UserCalendarPageState createState() => _UserCalendarPageState();
+  State<UserCalendarPage> createState() => _UserCalendarPageState();
 }
 
 class _UserCalendarPageState extends State<UserCalendarPage> {
