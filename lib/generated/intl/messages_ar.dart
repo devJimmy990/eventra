@@ -22,43 +22,37 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "SignInWithGoogle": MessageLookupByLibrary.simpleMessage(
-      "تسجيل الدخول بحساب جوجل",
-    ),
-    "accCreated": MessageLookupByLibrary.simpleMessage("تم إنشاء الحساب بنجاح"),
-    "appName": MessageLookupByLibrary.simpleMessage("إيفينترا"),
-    "confirmPass": MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
-    "emailEx": MessageLookupByLibrary.simpleMessage("abc@email.com"),
-    "empty": MessageLookupByLibrary.simpleMessage(
-      "هذا الحقل لا يمكن أن يكون فارغاً",
-    ),
-    "forgetPass": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
-    "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
-    "hasAcc": MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
-    "invalidEmail": MessageLookupByLibrary.simpleMessage(
-      "يرجى إدخال بريد إلكتروني صالح",
-    ),
-    "noAcc": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
-    "noUser": MessageLookupByLibrary.simpleMessage(
-      "لا يوجد مستخدم لهذا البريد الإلكتروني.",
-    ),
-    "or": MessageLookupByLibrary.simpleMessage("أو"),
-    "passNotMatch": MessageLookupByLibrary.simpleMessage(
-      "كلمات المرور غير متطابقة",
-    ),
-    "rememberPass": MessageLookupByLibrary.simpleMessage("تذكرني"),
-    "shortPass": MessageLookupByLibrary.simpleMessage(
-      "يرجى إدخال 6 أحرف على الأقل",
-    ),
-    "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-    "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
-    "usedEmail": MessageLookupByLibrary.simpleMessage(
-      "الحساب موجود بالفعل لهذا البريد الإلكتروني.",
-    ),
-    "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك"),
-    "wrongPass": MessageLookupByLibrary.simpleMessage(
-      "كلمة المرور غير صحيحة لهذا المستخدم.",
-    ),
-    "yourPass": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
-  };
+        "SignInWithGoogle":
+            MessageLookupByLibrary.simpleMessage("تسجيل الدخول بحساب جوجل"),
+        "accCreated":
+            MessageLookupByLibrary.simpleMessage("تم إنشاء الحساب بنجاح"),
+        "appName": MessageLookupByLibrary.simpleMessage("إيفينترا"),
+        "confirmPass":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "emailEx": MessageLookupByLibrary.simpleMessage("abc@email.com"),
+        "empty": MessageLookupByLibrary.simpleMessage(
+            "هذا الحقل لا يمكن أن يكون فارغاً"),
+        "forgetPass": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "hasAcc": MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "يرجى إدخال بريد إلكتروني صالح"),
+        "noAcc": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "noUser": MessageLookupByLibrary.simpleMessage(
+            "لا يوجد مستخدم لهذا البريد الإلكتروني."),
+        "or": MessageLookupByLibrary.simpleMessage("أو"),
+        "passNotMatch":
+            MessageLookupByLibrary.simpleMessage("كلمات المرور غير متطابقة"),
+        "rememberPass": MessageLookupByLibrary.simpleMessage("تذكرني"),
+        "shortPass":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال 6 أحرف على الأقل"),
+        "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "usedEmail": MessageLookupByLibrary.simpleMessage(
+            "الحساب موجود بالفعل لهذا البريد الإلكتروني."),
+        "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك"),
+        "wrongPass": MessageLookupByLibrary.simpleMessage(
+            "كلمة المرور غير صحيحة لهذا المستخدم."),
+        "yourPass": MessageLookupByLibrary.simpleMessage("كلمة المرور")
+      };
 }
