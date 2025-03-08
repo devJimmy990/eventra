@@ -27,11 +27,7 @@ class AdminEvent extends BaseEvent {
       admin: json['admin'],
       schedule: EventSchedule.fromJson(json['schedule']),
       location: EventLocation.fromJson(json['location']),
-      attendees: json['attendees'] != null
-          ? (json['attendees'] as List<Map<String, dynamic>>)
-              .map((e) => User.fromJson(e))
-              .toList()
-          : [],
+      attendees: [],
       category: EventCategory.values.firstWhere(
         (e) => e.toString().split('.').last == json['category'],
         orElse: () => EventCategory.software,

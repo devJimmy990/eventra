@@ -34,9 +34,9 @@ class EventSchedule {
   
   factory EventSchedule.fromJson(Map<String, dynamic> json) {
     return EventSchedule(
-      end: DateTime.now(),
-      date: DateTime.now(),
-      start: DateTime.now(),
+      end: DateTime.parse(json["end"]),
+      date: DateTime.parse(json["date"]),
+      start: DateTime.parse(json["start"]),
     );
   }
 
