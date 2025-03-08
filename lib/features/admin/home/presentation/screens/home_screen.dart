@@ -23,6 +23,10 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabIndexChange);
+    // Load all events initially.
+    context.read<EventCubit>().getEvents();
+    // Default to upcoming events.
+    context.read<EventCubit>().getUpcomingEvents();
   }
 
   @override
@@ -35,7 +39,11 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
   // Function to handle tab index changes
   void _handleTabIndexChange() {
     if (_tabController.indexIsChanging) {
-      context.read<EventCubit>().filterEvents();
+      if (_tabController.index == 0) {
+        context.read<EventCubit>().getUpcomingEvents();
+      } else {
+        context.read<EventCubit>().getPastEvents();
+      }
     }
   }
 

@@ -154,13 +154,12 @@ class _BuildEventCard extends StatelessWidget {
                         event.encodeLongDateTime(),
                         style: TextStyle(fontSize: 14.sp),
                       ),
-                      // SizedBox(height: 5.h),
+                       SizedBox(height: 5.h),
                       // Event location
                       Text(
                         event.location.address,
                         style: TextStyle(fontSize: 14.sp),
                       ),
-                      // You can add extra details here, such as location or event date
                       // You can add extra details here, such as location or event date
                     ],
                   )

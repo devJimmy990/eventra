@@ -1,12 +1,10 @@
 import 'dart:io';
-
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/admin/event/extension/event_status.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/home/data/repositories/event_repository.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../data/data_source/event_data_source.dart';
 
 part 'event_state.dart';
@@ -15,7 +13,9 @@ class EventCubit extends Cubit<EventState> {
   EventCubit() : super(EventInitial()) {
     getEvents();
   }
+
   List<AdminEvent> _events = [];
+
   void getEvents() async {
     emit(EventLoading());
     try {
@@ -25,6 +25,25 @@ class EventCubit extends Cubit<EventState> {
       //     _events.where((event) => event.isUpcoming).toList();
       // emit(EventLoaded(filteredEvents));
       emit(_events.isEmpty ? EventEmpty() : EventLoaded(_events));
+    } catch (e) {
+      emit(EventError(message: e.toString()));
+    }
+  }
+
+  void getUpcomingEvents() {
+    try {
+      List<AdminEvent> upcoming =
+          _events.where((event) => event.isUpcoming).toList();
+      emit(upcoming.isEmpty ? EventEmpty() : EventLoaded(upcoming));
+    } catch (e) {
+      emit(EventError(message: e.toString()));
+    }
+  }
+
+  void getPastEvents() {
+    try {
+      List<AdminEvent> past = _events.where((event) => event.isPast).toList();
+      emit(past.isEmpty ? EventEmpty() : EventLoaded(past));
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
@@ -52,7 +71,10 @@ class EventCubit extends Cubit<EventState> {
       ];
 
       _events.add(event);
-      emit(EventLoaded(_events));
+      List<AdminEvent> upcoming = _events.where((e) => e.isUpcoming).toList();
+      emit(upcoming.isEmpty
+          ? EventEmpty()
+          : EventLoaded(upcoming)); //todo done by chatGPT :D
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
@@ -73,7 +95,7 @@ class EventCubit extends Cubit<EventState> {
     emit(EventLoading());
     try {
       await EventRepository(EventDataSource()).deleteEvent(event);
-      getEvents();
+      //how to handel
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
@@ -89,13 +111,15 @@ class EventCubit extends Cubit<EventState> {
     }
   }
 
-  void filterEvents() {
-    try {
-      List<AdminEvent> filteredEvents =
-          _events.where((event) => event.isUpcoming).toList();
-      emit(EventLoaded(filteredEvents));
-    } catch (e) {
-      emit(EventError(message: e.toString()));
-    }
-  }
+// void filterEvents() {
+//   debugPrint("TESESt");
+//   try {
+//     List<AdminEvent> filteredEvents =
+//         _events.where((event) => event.isUpcoming).toList();
+//     debugPrint(filteredEvents.length.toString()); //testing
+//     emit(EventLoaded(filteredEvents));
+//   } catch (e) {
+//     emit(EventError(message: e.toString()));
+//   }
+// }
 }
