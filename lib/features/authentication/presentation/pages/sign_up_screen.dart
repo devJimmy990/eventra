@@ -52,25 +52,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AuthenticationHeader(),
-          _BuildSignupForm(
-            nameController: nameController,
-            passController: passController,
-            emailController: emailController,
-            confirmController: confirmController,
-          ),
-          _BuildSignupAction(
+    return SingleChildScrollView(
+      child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AuthenticationHeader(),
+            _BuildSignupForm(
               nameController: nameController,
               passController: passController,
               emailController: emailController,
               confirmController: confirmController,
-              onLogin: widget.onLogin),
-        ],
+            ),
+            _BuildSignupAction(
+                nameController: nameController,
+                passController: passController,
+                emailController: emailController,
+                confirmController: confirmController,
+                onLogin: widget.onLogin),
+          ],
+        ),
       ),
     );
   }

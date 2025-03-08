@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/event/extension/date_time.dart';
 import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:flutter/material.dart';
@@ -9,16 +9,6 @@ import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
 
 class EventDetailsScreen extends StatelessWidget {
-  // final Event event = Event(
-  //   adminID: "adminID",
-  //   schedule: EventSchedule(
-  //     start: DateTime.parse("2025-03-05 15:00:34.000").encodeTime(),
-  //     end: DateTime.parse("2025-03-05 17:00:34.000").encodeTime(),
-  //     date: DateTime.parse("2025-03-05 19:00:34.000").encodeDate(),
-  //   ),
-  //   category: EventCategory.software,
-  // );
-
   final AdminEvent event;
   const EventDetailsScreen({super.key, required this.event});
 
@@ -30,16 +20,16 @@ class EventDetailsScreen extends StatelessWidget {
           SliverAppBar(
             expandedHeight: MediaQuery.of(context).size.height * 0.3,
             pinned: true,
+            iconTheme: IconThemeData(color: Colors.white),
             flexibleSpace: FlexibleSpaceBar(
               title: Text("Event Details"),
               background: Stack(
                 fit: StackFit.expand,
                 children: [
                   event.cover == null
-                      ? Image.asset(event.cover!, fit: BoxFit.cover)
-                      : event.cover!.startsWith('/')
-                          ? Image.file(File(event.cover!), fit: BoxFit.cover)
-                          : Image.asset(event.cover!, fit: BoxFit.cover),
+                      ? Image.asset(StringsManager.eventImage,
+                          fit: BoxFit.cover)
+                      : Image.network(event.cover!, fit: BoxFit.cover),
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -56,18 +46,14 @@ class EventDetailsScreen extends StatelessWidget {
               ),
             ),
             actions: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: IconButton(
-                  icon: Icon(
-                    Icons.qr_code_scanner,
-                    size: 38,
-                    color: Colors.black,
-                  ),
-                  onPressed: () async {
-                    // Implement QR code scanning
-                  },
+              IconButton(
+                icon: Icon(
+                  Icons.qr_code_scanner,
+                  size: 38,
                 ),
+                onPressed: () async {
+                  // Implement QR code scanning
+                },
               ),
             ],
           ),
@@ -100,7 +86,7 @@ class EventDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   title: Text(event.schedule.date.encodeDate()),
-                  subtitle: Text(event.encodeLongTime()),
+                  subtitle: Text(event.encodeLongDateTime()),
                 ),
                 ListTile(
                   onTap: () => ExternalLauncher.launchLocation(
@@ -169,57 +155,105 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                if (event.attendees.isEmpty)
+                  Expanded(child: Center(child: Text("no attendees present")))
               ],
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (_, inx) => inx == 24
-                    ? CircleAvatar(
-                        radius: 32,
-                        backgroundColor: Colors.grey,
-                        child: CircleAvatar(
-                          radius: 30,
-                          child: Text(
-                            "+${event.attendees.length - 24}",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.italic,
+          if (event.attendees.isNotEmpty)
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              sliver: SliverGrid(
+                delegate: SliverChildBuilderDelegate(
+                  (_, inx) => inx == 24
+                      ? CircleAvatar(
+                          radius: 32,
+                          backgroundColor: Colors.grey,
+                          child: CircleAvatar(
+                            radius: 30,
+                            child: Text(
+                              "+${event.attendees.length - 24}",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    : event.attendees[inx].avatar != null
-                        ? CircleAvatar(
-                            radius: 32,
-                            backgroundColor: Colors.grey,
-                            child: CircleAvatar(
-                              radius: 30,
-                              child:
-                                  Image.network(event.attendees[inx].avatar!),
+                        )
+                      : event.attendees[inx].avatar != null
+                          ? CircleAvatar(
+                              radius: 32,
+                              backgroundColor: Colors.grey.shade300,
+                              child: CircleAvatar(
+                                radius: 30,
+                                backgroundColor: Colors.white,
+                                child: ClipOval(
+                                  child: event.attendees[inx].avatar != null &&
+                                          event
+                                              .attendees[inx].avatar!.isNotEmpty
+                                      ? Image.network(
+                                          event.attendees[inx].avatar!,
+                                          width: 60,
+                                          height: 60,
+                                          fit: BoxFit.cover,
+                                          loadingBuilder: (context, child,
+                                              loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            }
+                                            return Center(
+                                              child: CircularProgressIndicator(
+                                                value: loadingProgress
+                                                            .expectedTotalBytes !=
+                                                        null
+                                                    ? loadingProgress
+                                                            .cumulativeBytesLoaded /
+                                                        (loadingProgress
+                                                                .expectedTotalBytes ??
+                                                            1)
+                                                    : null,
+                                                strokeWidth: 2,
+                                              ),
+                                            );
+                                          },
+                                          errorBuilder:
+                                              (context, error, stackTrace) =>
+                                                  Icon(
+                                            Icons.person,
+                                            size: 40,
+                                            color: Colors.grey.shade600,
+                                          ),
+                                        )
+                                      : Icon(
+                                          Icons
+                                              .person, // Default icon for missing avatar
+                                          size: 40,
+                                          color: Colors.grey.shade600,
+                                        ),
+                                ),
+                              ),
+                            )
+                          : CircleAvatar(
+                              radius: 32,
+                              backgroundColor: Colors.grey,
+                              child: CircleAvatar(
+                                radius: 30,
+                                child:
+                                    Text(event.attendees[inx].name.nameAbb()),
+                              ),
                             ),
-                          )
-                        : CircleAvatar(
-                            radius: 32,
-                            backgroundColor: Colors.grey,
-                            child: CircleAvatar(
-                              radius: 30,
-                              child: Text(event.attendees[inx].name.nameAbb()),
-                            ),
-                          ),
-                childCount: event.attendees.length > 25 ? 25 : 10,
-              ),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 5,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
+                  childCount:
+                      event.attendees.length > 25 ? 25 : event.attendees.length,
+                ),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 5,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

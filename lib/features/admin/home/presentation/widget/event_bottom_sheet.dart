@@ -1,15 +1,18 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
 import 'package:eventra/features/admin/event/model/base_event.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/home/controller/event_date_controller.dart';
+import 'package:eventra/features/admin/home/controller/event_category_controller.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_bottom_date.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_image_picker.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_bottom_general.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_bottom_location.dart';
-import 'package:eventra/features/admin/home/controller/event_date_controller.dart';
-import 'package:eventra/features/admin/home/controller/event_category_controller.dart';
 
 class EventBottomSheet extends StatefulWidget {
   final AdminEvent? event;
@@ -93,55 +96,133 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-      child: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            spacing: 10.h,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              EventImagePicker(onImagePicked: (image) {
-                _pickImage = image;
-              }),
-              EventBottomGeneral(
-                titleController: _titleController,
-                priceController: _priceController,
-                categoryController: _categoryController,
-                descriptionController: _descriptionController,
-              ),
-              EventBottomDate(
-                controller: _dateController,
-              ),
-              EventBottomLocation(
-                urlController: _locationUrlController,
-                nameController: _locationNameController,
-                addressController: _locationAddressController,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    widget.onSave(AdminEvent(
-                      adminID: "123456789",
-                      title: _titleController.text,
-                      schedule: _dateController.value,
-                      desc: _descriptionController.text,
-                      price: int.tryParse(_priceController.text) ?? 0,
-                      id: widget.event?.id ?? DateTime.now().toString(),
-                      category: EventCategory.values.firstWhere((element) =>
-                          element.name == _categoryController.value?.name),
-                      cover: _pickImage != null
-                          ? _pickImage!.path
-                          : StringsManager.eventImage,
-                    ));
-                    Navigator.pop(context);
-                  }
-                },
-                child:
-                    Text(widget.event != null ? 'Update Event' : 'Add Event'),
-              ),
-            ],
+    return BlocListener<EventCubit, EventState>(
+      listener: (context, state) {
+        if (state is ImageUploading) {
+          Fluttertoast.showToast(
+            textColor: Colors.white,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.blue,
+            toastLength: Toast.LENGTH_LONG,
+            msg: "upload event cover",
+          );
+        } else if (state is ImageUploaded) {
+          /**
+           * in case of add new real event, uncomment this lines to working with bottom logic of upload event cover image
+           * after adding dummy events data please comment this again
+           * 
+           * final String uid = SharedPreference.getString(key: "uid")!;
+              context.read<EventCubit>().addEvent(
+                AdminEvent(
+                  admin: uid,
+                  cover: state.url,
+                  title: _titleController.text,
+                  schedule: _dateController.value,
+                  desc: _descriptionController.text,
+                  category: _categoryController.value!,
+                  price: int.tryParse(_priceController.text) ?? 0,
+                ),
+              );
+           */
+          Fluttertoast.showToast(
+            textColor: Colors.white,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.blue,
+            toastLength: Toast.LENGTH_LONG,
+            msg: "create event",
+          );
+        } else if (state is EventLoaded) {
+          Fluttertoast.showToast(
+            textColor: Colors.white,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.green,
+            toastLength: Toast.LENGTH_LONG,
+            msg: "event created successfully",
+          );
+          Navigator.pop(context);
+        } else if (state is EventError) {
+          Fluttertoast.showToast(
+            textColor: Colors.white,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.red,
+            toastLength: Toast.LENGTH_LONG,
+            msg: state.message,
+          );
+        } else {}
+      },
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              spacing: 10.h,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                EventImagePicker(onImagePicked: (image) {
+                  _pickImage = image;
+                }),
+                EventBottomGeneral(
+                  titleController: _titleController,
+                  priceController: _priceController,
+                  categoryController: _categoryController,
+                  descriptionController: _descriptionController,
+                ),
+                EventBottomDate(
+                  controller: _dateController,
+                ),
+                EventBottomLocation(
+                  urlController: _locationUrlController,
+                  nameController: _locationNameController,
+                  addressController: _locationAddressController,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // context
+                      //     .read<EventCubit>()
+                      //     .uploadImage(File(_pickImage!.path));
+
+                      /** this  comment to reduce uploading file to storage 
+                       * uncomment it when create real dummy data
+                       * re-comment after creating the data 
+                       * please, note that in check comments in  listener in the same page at line 101
+                        final String uid =
+                            SharedPreference.getString(key: "uid")!;
+                        context.read<EventCubit>().addEvent(
+                              AdminEvent(
+                                admin: uid,
+                                title: _titleController.text,
+                                schedule: _dateController.value,
+                                desc: _descriptionController.text,
+                                category: _categoryController.value!,
+                                price: int.tryParse(_priceController.text) ?? 0,
+                                cover:
+                                    "https://firebasestorage.googleapis.com/v0/b/eventra-1eb59.firebasestorage.app/o/events%2F1741408725868.jpg?alt=media&token=1b9ad231-b257-4fed-a14d-d90b7c52ec42",
+                              ),
+                            );
+                      **/
+                      final String uid =
+                          SharedPreference.getString(key: "uid")!;
+                      context.read<EventCubit>().addEvent(
+                            AdminEvent(
+                              admin: uid,
+                              title: _titleController.text,
+                              schedule: _dateController.value,
+                              desc: _descriptionController.text,
+                              category: _categoryController.value!,
+                              price: int.tryParse(_priceController.text) ?? 0,
+                              cover:
+                                  "https://firebasestorage.googleapis.com/v0/b/eventra-1eb59.firebasestorage.app/o/events%2F1741408725868.jpg?alt=media&token=1b9ad231-b257-4fed-a14d-d90b7c52ec42",
+                            ),
+                          );
+                    }
+                  },
+                  child:
+                      Text(widget.event != null ? 'Update Event' : 'Add Event'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

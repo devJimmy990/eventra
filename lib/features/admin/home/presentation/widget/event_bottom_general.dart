@@ -61,7 +61,10 @@ class EventBottomGeneral extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: TextInputField(
-                      label: 'Price', controller: priceController),
+                    phone: true,
+                    label: 'Price',
+                    controller: priceController,
+                  ),
                 )
               ],
             ),

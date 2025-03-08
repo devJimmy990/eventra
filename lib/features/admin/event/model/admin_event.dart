@@ -2,8 +2,8 @@ import 'package:eventra/features/admin/event/model/base_event.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 
 class AdminEvent extends BaseEvent {
-  final List<User> attendees;
-  final String adminID;
+  List<User> attendees;
+  String admin;
   AdminEvent({
     super.id,
     super.cover,
@@ -11,7 +11,7 @@ class AdminEvent extends BaseEvent {
     super.price = 0,
     required super.desc,
     required super.title,
-    required this.adminID,
+    required this.admin,
     required super.schedule,
     required super.category,
     this.attendees = const [],
@@ -24,25 +24,23 @@ class AdminEvent extends BaseEvent {
       title: json['title'],
       cover: json['cover'],
       price: json['price'],
-      adminID: json['adminID'],
-      category: _categoryFromString(json['category']),
+      admin: json['admin'],
       schedule: EventSchedule.fromJson(json['schedule']),
       location: EventLocation.fromJson(json['location']),
-      attendees: json['attendees'] != null
-          ? (json['attendees'] as List<dynamic>)
-              .map((e) => User.fromJson(e))
-              .toList()
-          : [],
+      attendees: [],
+      category: EventCategory.values.firstWhere(
+        (e) => e.toString().split('.').last == json['category'],
+        orElse: () => EventCategory.software,
+      ),
     );
   }
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
       'desc': desc,
       'title': title,
       'cover': cover,
       'price': price,
-      'adminID': adminID,
+      'admin': admin,
       "location": location.toJson(),
       'schedule': schedule.toJson(),
       'category': category.toString(),
@@ -50,16 +48,16 @@ class AdminEvent extends BaseEvent {
     };
   }
 
-  static EventCategory _categoryFromString(String categoryString) {
-    switch (categoryString) {
-      case 'EventCategory.software':
-        return EventCategory.software;
-      case 'EventCategory.hardware':
-        return EventCategory.hardware;
-      default:
-        throw Exception("Unknown category: $categoryString");
-    }
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! AdminEvent) return false;
+
+    return id == other.id;
   }
+
+  @override
+  int get hashCode => id.hashCode;
 
   @override
   String toString() {
