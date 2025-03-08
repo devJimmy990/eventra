@@ -1,21 +1,21 @@
-import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
-import 'package:eventra/features/admin/home/presentation/screens/home_screen.dart';
 import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:eventra/features/landing/presentation/landing_screen.dart';
 import 'package:eventra/features/settings/presentation/settings_screen.dart';
 import 'package:eventra/features/user/home/presentation/pages/home_screen.dart';
 import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart';
+import 'package:eventra/features/admin/home/presentation/screens/home_screen.dart';
+import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_details_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/events_request_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_attendees_list_screen.dart';
 
-import '../../features/admin/home/cubit/event_cubit.dart';
+import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
 
 String? _handleRedirect(BuildContext context, GoRouterState state) {
   final bool onboardingComplete =
@@ -35,24 +35,24 @@ String? _handleRedirect(BuildContext context, GoRouterState state) {
 }
 
 final router = GoRouter(
+  redirect: _handleRedirect,
   initialLocation: "/admin/home",
-  // redirect: _handleRedirect,
   routes: [
     // General Routes ================================================
     GoRoute(
-      name: Routes.auth,
       path: "/auth",
+      name: Routes.auth,
       builder: (context, state) => AuthenticationScreen(),
     ),
 
     GoRoute(
-      name: Routes.landing,
       path: "/landing",
+      name: Routes.landing,
       builder: (context, state) => LandingScreen(),
     ),
     GoRoute(
-      name: Routes.onboarding,
       path: "/onboarding",
+      name: Routes.onboarding,
       builder: (context, state) => const OnboardingScreen(),
     ),
     GoRoute(
@@ -64,41 +64,42 @@ final router = GoRouter(
 
     // User Routes ===================================================
     GoRoute(
-      name: UserRoutes.contact,
       path: "/user/contact",
+      name: UserRoutes.contact,
       builder: (context, state) => ContactUsScreen(),
     ),
     GoRoute(
-      name: UserRoutes.home,
       path: "/user/home",
+      name: UserRoutes.home,
       builder: (context, state) => UserHomeScreen(),
     ),
     //================================================================
 
     // Admin Routes ==================================================
     GoRoute(
-      name: AdminRoutes.home,
       path: "/admin/home",
-builder: (context, state) => BlocProvider<EventCubit>(
-create: (context) => EventCubit(),
-child: AdminHomeScreen(),)
+      name: AdminRoutes.home,
+      builder: (context, state) => BlocProvider<EventCubit>(
+        create: (context) => EventCubit(),
+        child: AdminHomeScreen(),
+      ),
     ),
     GoRoute(
-      name: AdminRoutes.eventRequests,
       path: "/admin/requests",
+      name: AdminRoutes.eventRequests,
       builder: (context, state) => EventsRequestScreen(),
     ),
     GoRoute(
-      name: AdminRoutes.eventDetails,
       path: "/admin/event",
+      name: AdminRoutes.eventDetails,
       builder: (context, state) {
         final AdminEvent event = state.extra as AdminEvent;
         return EventDetailsScreen(event: event);
       },
     ),
     GoRoute(
-      name: AdminRoutes.eventAttendees,
       path: "/admin/event/attendees",
+      name: AdminRoutes.eventAttendees,
       builder: (context, state) {
         final List<String> attendees = state.extra as List<String>;
         return EventAttendeesListScreen(attendees);

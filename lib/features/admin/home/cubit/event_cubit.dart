@@ -9,7 +9,9 @@ part 'event_state.dart';
 class EventCubit extends Cubit<EventState> {
   final eventRepository = EventRepository(EventDataSource());
 
-  EventCubit() : super(EventInitial());
+  EventCubit() : super(EventInitial()) {
+    getEvents();
+  }
 
   void getEvents() {
     emit(EventLoading());

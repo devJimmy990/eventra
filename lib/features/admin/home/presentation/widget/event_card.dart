@@ -19,48 +19,49 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-        direction: DismissDirection.endToStart,
-        key: Key(event.id ?? event.title),
-        background: Container(
-          color: Colors.red,
-          alignment: Alignment.centerRight,
-          padding: EdgeInsets.only(right: 20.w),
-          child: Icon(Icons.delete, color: Colors.white, size: 30.sp),
-        ),
-        confirmDismiss: (direction) async {
-          return await showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: Center(
-                  child: Text(
-                'Confirm Delete',
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-              )),
-              content: Text(
-                'Are you sure you want to delete this event?',
-                style: TextStyle(fontSize: 14.sp),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(color: Colors.green, fontSize: 14.sp),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: Text(
-                    'Delete',
-                    style: TextStyle(color: Colors.red, fontSize: 14.sp),
-                  ),
-                ),
-              ],
+      direction: DismissDirection.endToStart,
+      key: Key(event.id ?? event.title),
+      background: Container(
+        color: Colors.red,
+        alignment: Alignment.centerRight,
+        padding: EdgeInsets.only(right: 20.w),
+        child: Icon(Icons.delete, color: Colors.white, size: 30.sp),
+      ),
+      confirmDismiss: (direction) async {
+        return await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Center(
+                child: Text(
+              'Confirm Delete',
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+            )),
+            content: Text(
+              'Are you sure you want to delete this event?',
+              style: TextStyle(fontSize: 14.sp),
             ),
-          );
-        },
-        onDismissed: onDismissed,
-        child: _BuildEventCard(event));
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(color: Colors.green, fontSize: 14.sp),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Text(
+                  'Delete',
+                  style: TextStyle(color: Colors.red, fontSize: 14.sp),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+      onDismissed: onDismissed,
+      child: _BuildEventCard(event),
+    );
   }
 }
 

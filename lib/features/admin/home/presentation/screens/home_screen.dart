@@ -50,7 +50,6 @@ class AdminHomeScreen extends StatelessWidget {
               itemCount: state.events.length,
               itemBuilder: (context, index) {
                 final event = state.events[index];
-                // to swipe left and right
                 return EventCard(
                   event: event,
                   onDismissed: (direction) {
@@ -68,8 +67,6 @@ class AdminHomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 16.sp),
               ),
             );
-          } else if (state is EventInitial) {
-            return Text("safadfa");
           } else {
             return Ink.image(
               image: AssetImage(
