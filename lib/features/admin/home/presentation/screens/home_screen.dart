@@ -88,7 +88,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
               ),
             ),
           ),
-      Expanded(
+      Expanded(flex: 1,
         child: BlocConsumer<EventCubit, EventState>(
           listener: (context, state) {
             if (state is EventError) {
@@ -116,7 +116,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                   crossAxisCount: 1, // Adjust number of columns as needed
                   crossAxisSpacing: 10.w,
                   mainAxisSpacing: 10.h,
-                  childAspectRatio: 0.75, // Adjust based on your card content
+                  childAspectRatio: 1.5, // Adjust based on your card content
                 ),
                 itemCount: state.events.length,
                 itemBuilder: (context, index) {
