@@ -45,8 +45,14 @@ class AdminHomeScreen extends StatelessWidget {
               ),
             );
           } else if (state is EventLoaded) {
-            return ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+            return GridView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2.h),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // Adjust number of columns as needed
+                crossAxisSpacing: 5.w,
+                mainAxisSpacing: 10.h,
+                childAspectRatio: 1.5/2, // Adjust based on your card content
+              ),
               itemCount: state.events.length,
               itemBuilder: (context, index) {
                 final event = state.events[index];

@@ -75,9 +75,12 @@ class _BuildEventCard extends StatelessWidget {
     return BlocBuilder<EventCubit, EventState>(
       builder: (context, state) {
         return Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           elevation: 10,
-          margin: EdgeInsets.symmetric(vertical: 5.h),
-          child: ListTile(
+          margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
             onLongPress: () => showModalBottomSheet(
               context: context,
               isScrollControlled: true,
@@ -93,45 +96,78 @@ class _BuildEventCard extends StatelessWidget {
             ),
             onTap: () =>
                 context.pushNamed(AdminRoutes.eventDetails, extra: event),
-            leading: SizedBox(
-              child: event.cover == null
-                  ? Image.asset(event.cover!, fit: BoxFit.cover)
-                  : event.cover!.startsWith('/')
-                      ? Image.file(File(event.cover!), fit: BoxFit.cover)
-                      : Image.asset(event.cover!, fit: BoxFit.cover),
-            ),
-            title: Padding(
-              padding: EdgeInsets.only(bottom: 10.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Padding(
+              padding: EdgeInsets.all(10.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    event.title,
-                    style:
-                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 75.h,
+                    child: Hero(
+                      tag: event.id ?? event.title,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(3),
+                        child: event.cover == null || event.cover!.isEmpty
+                            ? Image.asset(event.cover!, fit: BoxFit.cover)
+                            : event.cover!.startsWith('/')
+                                ? Image.file(File(event.cover!),
+                                    fit: BoxFit.cover)
+                                : Image.asset(event.cover!, fit: BoxFit.cover),
+                      ),
+                    ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.green,
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: Text(
-                      event.category.toString().split(".")[1],
-                      style: TextStyle(fontSize: 14.sp),
-                    ),
+                  SizedBox(height: 10.h),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Title and category row
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              event.title,
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.green,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 5.w, vertical: 2.h),
+                            child: Text(
+                              event.category.toString().split(".")[1],
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5.h),
+                      // Event schedule
+                      Text(
+                        event.schedule.start.encodeLongTime(event.schedule.end),
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
+                      SizedBox(height: 5.h),
+                      // Event location
+                      Text(
+                        event.location.name,
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
+                      // You can add extra details here, such as location or event date
+                    ],
                   )
                 ],
               ),
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  event.schedule.start.encodeLongTime(event.schedule.end),
-                  style: TextStyle(fontSize: 14.sp),
-                ),
-              ],
             ),
           ),
         );
