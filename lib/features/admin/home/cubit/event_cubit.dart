@@ -95,7 +95,7 @@ class EventCubit extends Cubit<EventState> {
     emit(EventLoading());
     try {
       await EventRepository(EventDataSource()).deleteEvent(event);
-      //how to handel
+
     } catch (e) {
       emit(EventError(message: e.toString()));
     }

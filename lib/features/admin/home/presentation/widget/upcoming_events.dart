@@ -54,6 +54,7 @@ class UpcomingEvents extends StatelessWidget {
                 // to swipe left and right
                 return EventCard(
                   event: event,
+                  isEditable: true,
                   onDismissed: (direction) {
                     if (direction == DismissDirection.endToStart) {
                       context.read<EventCubit>().deleteEvent(event);
