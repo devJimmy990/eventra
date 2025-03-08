@@ -26,19 +26,27 @@ class UpcomingEvents extends StatelessWidget {
             );
           } else if (state is EventEmpty) {
             return Center(
-              child: Text(
-                'No events added yet.',
-                style: TextStyle(fontSize: 16.sp),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                      'assets/images/noUpcomingEvents.png'), //todo: editing the image
+                  SizedBox(height: 5.h),
+                  Text(
+                    'Please add an event',
+                    style: TextStyle(fontSize: 16.sp),
+                  ),
+                ],
               ),
             );
           } else if (state is EventLoaded) {
             return GridView.builder(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1, // Adjust number of columns as needed
+                crossAxisCount: 1,
                 crossAxisSpacing: 10.w,
                 mainAxisSpacing: 10.h,
-                childAspectRatio: 1.5, // Adjust based on your card content
+                childAspectRatio: 1.5,
               ),
               itemCount: state.events.length,
               itemBuilder: (context, index) {
@@ -62,7 +70,7 @@ class UpcomingEvents extends StatelessWidget {
               ),
             );
           } else if (state is EventInitial) {
-            return Text("safadfa");
+            return Text("safadfa"); //todo: @jimmy is it test or we should add data here
           } else {
             return Ink.image(
               image: AssetImage(
