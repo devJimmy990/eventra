@@ -41,11 +41,8 @@ class PreviousEvents extends StatelessWidget {
                 final event = state.events[index];
                 return EventCard(
                   event: event,
-                  onDismissed: (direction) {
-                    if (direction == DismissDirection.endToStart) {
-                      context.read<EventCubit>().deleteEvent(event);
-                    }
-                  },
+                  onDismissed: null,
+                  isEditable: false,
                 );
               },
             );
