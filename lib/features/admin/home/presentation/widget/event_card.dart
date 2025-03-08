@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:eventra/features/admin/event/extension/date_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -155,15 +154,16 @@ class _BuildEventCard extends StatelessWidget {
                       SizedBox(height: 5.h),
                       // Event schedule
                       // Text(
-                      //   //Todo Jimmy where is the date start end to view?
+                      //   event.schedule.start.encodeLongTime(event.schedule.end),
                       //   style: TextStyle(fontSize: 14.sp),
                       // ),
                       SizedBox(height: 5.h),
                       // Event location
-                      Text(
-                        event.location.name,
-                        style: TextStyle(fontSize: 14.sp),
-                      ),
+                      // Text(
+                      //   event.location.address,
+                      //   style: TextStyle(fontSize: 14.sp),
+                      // ),
+                      // You can add extra details here, such as location or event date
                       // You can add extra details here, such as location or event date
                     ],
                   )

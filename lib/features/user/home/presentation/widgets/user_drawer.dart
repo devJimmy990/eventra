@@ -56,6 +56,14 @@ class _BuildUserDrawer extends StatelessWidget {
               },
             ),
             ListTile(
+              title: Text("Settings"),
+              leading: Icon(Icons.support_agent_outlined),
+              onTap: () {
+                Navigator.pop(context);
+                context.pushNamed(UserRoutes.contact);
+              },
+            ),
+            ListTile(
               title: Text("Logout"),
               leading: Icon(Icons.logout),
               onTap: () => context.read<AuthenticationCubit>().logout(),
