@@ -1,11 +1,11 @@
-import 'dart:io';
+import 'package:eventra/core/constants/strings_manager.dart';
+import 'package:eventra/features/admin/event/extension/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
-import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
 
 import '../../cubit/event_cubit.dart';
@@ -108,12 +108,9 @@ class _BuildEventCard extends StatelessWidget {
                       tag: event.id ?? event.title,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(3),
-                        child: event.cover == null || event.cover!.isEmpty
-                            ? Image.asset(event.cover!, fit: BoxFit.cover)
-                            : event.cover!.startsWith('/')
-                                ? Image.file(File(event.cover!),
-                                    fit: BoxFit.cover)
-                                : Image.asset(event.cover!, fit: BoxFit.cover),
+                        child: event.cover == null 
+                            ? Image.asset(StringsManager.eventImage, fit: BoxFit.cover)
+                            :Image.network(event.cover!, fit: BoxFit.cover),
                       ),
                     ),
                   ),
@@ -153,16 +150,16 @@ class _BuildEventCard extends StatelessWidget {
                       ),
                       SizedBox(height: 5.h),
                       // Event schedule
-                      // Text(
-                      //   event.schedule.start.encodeLongTime(event.schedule.end),
-                      //   style: TextStyle(fontSize: 14.sp),
-                      // ),
-                      SizedBox(height: 5.h),
+                      Text(
+                        event.encodeLongDateTime(),
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
+                      // SizedBox(height: 5.h),
                       // Event location
-                      // Text(
-                      //   event.location.address,
-                      //   style: TextStyle(fontSize: 14.sp),
-                      // ),
+                      Text(
+                        event.location.address,
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
                       // You can add extra details here, such as location or event date
                       // You can add extra details here, such as location or event date
                     ],

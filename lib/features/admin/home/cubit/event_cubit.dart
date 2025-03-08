@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:eventra/core/helper/shared_preference.dart';
+import 'package:eventra/features/admin/event/extension/event_status.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/home/data/repositories/event_repository.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
@@ -20,7 +21,9 @@ class EventCubit extends Cubit<EventState> {
     try {
       final String uid = SharedPreference.getString(key: "uid")!;
       _events = await EventRepository(EventDataSource()).getEvents(uid);
-      print("length: ${_events.length}");
+      // List<AdminEvent> filteredEvents =
+      //     _events.where((event) => event.isUpcoming).toList();
+      // emit(EventLoaded(filteredEvents));
       emit(_events.isEmpty ? EventEmpty() : EventLoaded(_events));
     } catch (e) {
       emit(EventError(message: e.toString()));
@@ -81,6 +84,16 @@ class EventCubit extends Cubit<EventState> {
     try {
       String url = await EventRepository(EventDataSource()).uploadImage(image);
       emit(ImageUploaded(url));
+    } catch (e) {
+      emit(EventError(message: e.toString()));
+    }
+  }
+
+  void filterEvents() {
+    try {
+      List<AdminEvent> filteredEvents =
+          _events.where((event) => event.isUpcoming).toList();
+      emit(EventLoaded(filteredEvents));
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
