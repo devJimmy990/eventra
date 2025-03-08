@@ -1,3 +1,4 @@
+import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,7 @@ String? _handleRedirect(BuildContext context, GoRouterState state) {
 
 final router = GoRouter(
   redirect: _handleRedirect,
-  initialLocation: "/admin/home",
+  initialLocation: "/landing",
   routes: [
     // General Routes ================================================
     GoRoute(
@@ -77,13 +78,15 @@ final router = GoRouter(
 
     // Admin Routes ==================================================
     GoRoute(
-      path: "/admin/home",
-      name: AdminRoutes.home,
-      builder: (context, state) => BlocProvider<EventCubit>(
-        create: (context) => EventCubit(),
-        child: AdminHomeScreen(),
-      ),
-    ),
+        path: "/admin/home",
+        name: AdminRoutes.home,
+        builder: (context, state) {
+          print("Build Event Cubit Builder");
+          return BlocProvider<EventCubit>(
+            create: (context) => EventCubit(),
+            child: AdminHomeScreen(),
+          );
+        }),
     GoRoute(
       path: "/admin/requests",
       name: AdminRoutes.eventRequests,
@@ -101,7 +104,7 @@ final router = GoRouter(
       path: "/admin/event/attendees",
       name: AdminRoutes.eventAttendees,
       builder: (context, state) {
-        final List<String> attendees = state.extra as List<String>;
+        final List<User> attendees = state.extra as List<User>;
         return EventAttendeesListScreen(attendees);
       },
     ),

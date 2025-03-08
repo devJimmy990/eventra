@@ -49,23 +49,25 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AuthenticationHeader(),
-          _BuildLogonForm(
-            emailController: emailController,
-            passwordController: passController,
-            rememberController: rememberController,
-          ),
-          _BuildLoginActions(
+    return SingleChildScrollView(
+      child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AuthenticationHeader(),
+            _BuildLogonForm(
               emailController: emailController,
               passwordController: passController,
               rememberController: rememberController,
-              onChangeRoute: widget.onRegister),
-        ],
+            ),
+            _BuildLoginActions(
+                emailController: emailController,
+                passwordController: passController,
+                rememberController: rememberController,
+                onChangeRoute: widget.onRegister),
+          ],
+        ),
       ),
     );
   }

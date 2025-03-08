@@ -1,7 +1,9 @@
+import 'package:eventra/features/admin/event/extension/string.dart';
+import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:flutter/material.dart';
 
 class EventAttendeesListScreen extends StatelessWidget {
-  final List<String> attendees;
+  final List<User> attendees;
   const EventAttendeesListScreen(this.attendees, {super.key});
 
   @override
@@ -13,12 +15,12 @@ class EventAttendeesListScreen extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 5,
         ),
-        itemBuilder: (context, index) => CircleAvatar(
+        itemBuilder: (context, inx) => CircleAvatar(
           radius: 32,
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.grey,
           child: CircleAvatar(
             radius: 30,
-            child: Text("JI"),
+            child: Text(attendees[inx].name.nameAbb()),
           ),
         ),
       ),

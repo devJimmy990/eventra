@@ -1,11 +1,11 @@
 enum EventCategory { software, hardware }
 
 abstract class BaseEvent {
-  final int price;
-  final String? id, cover;
-  final String title, desc;
-  final EventSchedule schedule;
-  final EventCategory category;
+  int price;
+  String? id, cover;
+  String title, desc;
+  EventSchedule schedule;
+  EventCategory category;
   final EventLocation _location;
 
   BaseEvent({
@@ -28,22 +28,23 @@ abstract class BaseEvent {
 }
 
 class EventSchedule {
-  final DateTime start, end, date;
+  DateTime start, end, date;
 
   EventSchedule({required this.start, required this.end, required this.date});
+  
   factory EventSchedule.fromJson(Map<String, dynamic> json) {
     return EventSchedule(
-      end: json['end'],
-      date: json['date'],
-      start: json['start'],
+      end: DateTime.now(),
+      date: DateTime.now(),
+      start: DateTime.now(),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'end': end,
-      'date': date,
-      'start': start,
+      'end': end.toIso8601String(),
+      'date': date.toIso8601String(),
+      'start': start.toIso8601String(),
     };
   }
 
@@ -54,7 +55,7 @@ class EventSchedule {
 }
 
 class EventLocation {
-  final String name, address, url;
+  String name, address, url;
   EventLocation({required this.name, required this.address, required this.url});
 
   factory EventLocation.fromJson(Map<String, dynamic> json) {

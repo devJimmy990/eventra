@@ -29,7 +29,6 @@ class BookedEvent extends BaseEvent {
   }
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
       'desc': desc,
       'title': title,
       'cover': cover,

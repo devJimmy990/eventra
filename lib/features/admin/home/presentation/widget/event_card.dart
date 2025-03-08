@@ -1,15 +1,14 @@
-import 'dart:io';
 import 'package:eventra/features/admin/event/extension/date_time.dart';
+import 'package:eventra/features/admin/event/extension/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:eventra/core/constants/strings_manager.dart';
+import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
-import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
-
-import '../../cubit/event_cubit.dart';
 
 class EventCard extends StatelessWidget {
   final AdminEvent event;
@@ -97,78 +96,65 @@ class _BuildEventCard extends StatelessWidget {
             ),
             onTap: () =>
                 context.pushNamed(AdminRoutes.eventDetails, extra: event),
-            child: Padding(
-              padding: EdgeInsets.all(10.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 75.h,
-                    child: Hero(
-                      tag: event.id ?? event.title,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(3),
-                        child: event.cover == null || event.cover!.isEmpty
-                            ? Image.asset(event.cover!, fit: BoxFit.cover)
-                            : event.cover!.startsWith('/')
-                                ? Image.file(File(event.cover!),
-                                    fit: BoxFit.cover)
-                                : Image.asset(event.cover!, fit: BoxFit.cover),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: Stack(
                     children: [
-                      // Title and category row
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              event.title,
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Colors.green,
-                            ),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 5.w, vertical: 2.h),
-                            child: Text(
-                              event.category.toString().split(".")[1],
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(3),
+                        child: event.cover == null
+                            ? Image.asset(StringsManager.eventImage,
+                                fit: BoxFit.cover)
+                            : Image.network(event.cover!, fit: BoxFit.cover),
                       ),
-                      SizedBox(height: 5.h),
-                      // Event schedule
+                      Container(
+                        margin:
+                            EdgeInsetsDirectional.only(top: 5.h, start: 5.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.green.withAlpha(150),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 5.w, vertical: 2.h),
+                        child: Text(
+                          event.category.toString().split(".")[1],
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.symmetric(
+                      vertical: 5.h, horizontal: 10.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        event.title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(event.schedule.date.encodeDate()), // Event schedule
+                      Text(event.encodeLongTime()) // Event schedule
                       // Text(
                       //   //Todo Jimmy where is the date start end to view?
                       //   style: TextStyle(fontSize: 14.sp),
                       // ),
-                      SizedBox(height: 5.h),
-                      // Event location
-                      Text(
-                        event.location.name,
-                        style: TextStyle(fontSize: 14.sp),
-                      ),
-                      // You can add extra details here, such as location or event date
                     ],
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         );
