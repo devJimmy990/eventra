@@ -7,19 +7,17 @@ class EventDateController extends ChangeNotifier {
   EventDateController(EventSchedule? event)
       : _value = event ??
             EventSchedule(
-              date: DateTime.now().toIso8601String(),
-              start: DateTime.now().toIso8601String(),
-              end: DateTime.now()
-                  .add(const Duration(hours: 1))
-                  .toIso8601String(),
+              date: DateTime.now(),
+              start: DateTime.now(),
+              end: DateTime.now().add(const Duration(hours: 1)),
             );
 
   set update(List<DateTime>? newValue) {
     if (newValue != null && newValue.length == 2) {
       _value = EventSchedule(
-        date: newValue[0].toIso8601String(),
-        start: newValue[0].toIso8601String(),
-        end: newValue[1].toIso8601String(),
+        date: newValue[0],
+        start: newValue[0],
+        end: newValue[1],
       );
       notifyListeners();
     }

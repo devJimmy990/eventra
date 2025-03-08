@@ -1,7 +1,8 @@
 import 'package:eventra/features/admin/event/model/base_event.dart';
+import 'package:eventra/features/landing/data/model/user.dart';
 
 class AdminEvent extends BaseEvent {
-  final List<String> attendees;
+  final List<User> attendees;
   final String adminID;
   AdminEvent({
     super.id,
@@ -28,7 +29,9 @@ class AdminEvent extends BaseEvent {
       schedule: EventSchedule.fromJson(json['schedule']),
       location: EventLocation.fromJson(json['location']),
       attendees: json['attendees'] != null
-          ? (json['attendees'] as List<dynamic>).map((e) => e as String).toList()
+          ? (json['attendees'] as List<dynamic>)
+              .map((e) => User.fromJson(e))
+              .toList()
           : [],
     );
   }
@@ -45,17 +48,18 @@ class AdminEvent extends BaseEvent {
       'category': category.toString(),
       'attendees': attendees.map((txt) => txt).toList(),
     };
-
   }
+
   static EventCategory _categoryFromString(String categoryString) {
     switch (categoryString) {
       case 'EventCategory.software':
         return EventCategory.software;
       case 'EventCategory.hardware':
         return EventCategory.hardware;
-            default:
+      default:
         throw Exception("Unknown category: $categoryString");
-    }}
+    }
+  }
 
   @override
   String toString() {

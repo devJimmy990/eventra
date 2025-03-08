@@ -6,7 +6,7 @@ abstract class BaseEvent {
   final String title, desc;
   final EventSchedule schedule;
   final EventCategory category;
-  final EventLocation location;
+  final EventLocation _location;
 
   BaseEvent({
     this.id,
@@ -17,16 +17,18 @@ abstract class BaseEvent {
     required this.category,
     required this.schedule,
     EventLocation? location,
-  }) : location = location ??
+  }) : _location = location ??
             EventLocation(
               name: "U.S. Embassy Cairo",
               address: "5 Tawfik Diab Street, Garden City",
               url: "https://maps.app.goo.gl/XFgU1GQnb54WtviN9",
             );
+
+  EventLocation get location => _location;
 }
 
 class EventSchedule {
-  final String start, end, date;
+  final DateTime start, end, date;
 
   EventSchedule({required this.start, required this.end, required this.date});
   factory EventSchedule.fromJson(Map<String, dynamic> json) {

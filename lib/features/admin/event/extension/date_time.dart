@@ -11,10 +11,4 @@ extension DateTimeExtension on DateTime {
     String formattedTime = formatter.format(this);
     return formattedTime;
   }
-
-  String encodeLongTime(DateTime end) {
-    final DateFormat formatter = DateFormat('EEEE h:mm a');
-    String formattedDateTime = formatter.format(this);
-    return "$formattedDateTime - ${end.encodeTime()}";
-  }
 }
