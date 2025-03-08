@@ -164,7 +164,6 @@ class _BuildEventCard extends StatelessWidget {
                         event.location.name,
                         style: TextStyle(fontSize: 14.sp),
                       ),
-                      // You can add extra details here, such as location or event date
                     ],
                   )
                 ],
