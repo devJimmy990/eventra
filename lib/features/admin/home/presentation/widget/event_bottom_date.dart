@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:eventra/core/ui/inputs.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
-import 'package:eventra/features/admin/event/extension/string.dart';
+import 'package:eventra/features/admin/event/extension/date_time.dart';
 import 'package:eventra/features/admin/home/controller/event_date_controller.dart';
 
 class EventBottomDate extends StatefulWidget {
@@ -42,9 +42,9 @@ class _EventBottomDateState extends State<EventBottomDate> {
   Future<void> showDateDialog() async {
     final List<DateTime>? dateTime = await showOmniDateTimeRangePicker(
       context: context,
-      startFirstDate: DateTime.now(),
-      startInitialDate: DateTime.parse(widget.controller.value.date),
-      endInitialDate: DateTime.parse(widget.controller.value.end),
+      endInitialDate: widget.controller.value.end,
+      startFirstDate: widget.controller.value.date,
+      startInitialDate: widget.controller.value.start,
     );
 
     if (dateTime != null && dateTime.length == 2) {

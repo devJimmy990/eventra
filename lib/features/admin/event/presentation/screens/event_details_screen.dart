@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:eventra/features/admin/event/extension/date_time.dart';
+import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
@@ -97,7 +99,7 @@ class EventDetailsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  title: Text(event.encodeDate()),
+                  title: Text(event.schedule.date.encodeDate()),
                   subtitle: Text(event.encodeLongTime()),
                 ),
                 ListTile(
@@ -191,14 +193,24 @@ class EventDetailsScreen extends StatelessWidget {
                           ),
                         ),
                       )
-                    : CircleAvatar(
-                        radius: 32,
-                        backgroundColor: Colors.grey,
-                        child: CircleAvatar(
-                          radius: 30,
-                          child: Text("JI"),
-                        ),
-                      ),
+                    : event.attendees[inx].avatar != null
+                        ? CircleAvatar(
+                            radius: 32,
+                            backgroundColor: Colors.grey,
+                            child: CircleAvatar(
+                              radius: 30,
+                              child:
+                                  Image.network(event.attendees[inx].avatar!),
+                            ),
+                          )
+                        : CircleAvatar(
+                            radius: 32,
+                            backgroundColor: Colors.grey,
+                            child: CircleAvatar(
+                              radius: 30,
+                              child: Text(event.attendees[inx].name.nameAbb()),
+                            ),
+                          ),
                 childCount: event.attendees.length > 25 ? 25 : 10,
               ),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
