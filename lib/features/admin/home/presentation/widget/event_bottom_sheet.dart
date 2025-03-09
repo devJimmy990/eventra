@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:eventra/features/admin/home/cubit/event_state.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -202,20 +203,33 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                               ),
                             );
                       **/
+                      print(widget.event);
                       final String uid =
                           SharedPreference.getString(key: "uid")!;
-                      context.read<EventCubit>().addEvent(
-                            AdminEvent(
-                              admin: uid,
-                              title: _titleController.text,
-                              schedule: _dateController.value,
-                              desc: _descriptionController.text,
-                              category: _categoryController.value!,
-                              price: int.tryParse(_priceController.text) ?? 0,
-                              cover:
-                                  "https://firebasestorage.googleapis.com/v0/b/eventra-1eb59.firebasestorage.app/o/events%2F1741408725868.jpg?alt=media&token=1b9ad231-b257-4fed-a14d-d90b7c52ec42",
-                            ),
-                          );
+                      widget.event == null
+                          ? context.read<EventCubit>().addEvent(
+                                AdminEvent(
+                                  admin: uid,
+                                  title: _titleController.text,
+                                  schedule: _dateController.value,
+                                  desc: _descriptionController.text,
+                                  category: _categoryController.value!,
+                                  price:
+                                      int.tryParse(_priceController.text) ?? 0,
+                                  cover:
+                                      "https://firebasestorage.googleapis.com/v0/b/eventra-1eb59.firebasestorage.app/o/events%2F1741408725868.jpg?alt=media&token=1b9ad231-b257-4fed-a14d-d90b7c52ec42",
+                                ),
+                              )
+                          : context.read<EventCubit>().updateEvent(
+                                AdminEvent(
+                                  admin: uid,
+                                  id: widget.event!.id,
+                                  title: _titleController.text,
+                                  schedule: _dateController.value,
+                                  desc: _descriptionController.text,
+                                  category: _categoryController.value!,
+                                ),
+                              );
                     }
                   },
                   child:

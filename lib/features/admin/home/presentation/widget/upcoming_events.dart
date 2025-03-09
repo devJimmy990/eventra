@@ -1,9 +1,11 @@
+import 'package:eventra/features/admin/home/cubit/event_state.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_card.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class UpcomingEvents extends StatelessWidget {
   const UpcomingEvents({super.key});
@@ -13,9 +15,21 @@ class UpcomingEvents extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<EventCubit, EventState>(
         listener: (context, state) {
-          if (state is EventError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
+          if (state is EventDeleted) {
+            Fluttertoast.showToast(
+              textColor: Colors.white,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: Colors.red,
+              toastLength: Toast.LENGTH_LONG,
+              msg: "event deleted successfully",
+            );
+          } else if (state is EventError) {
+            Fluttertoast.showToast(
+              textColor: Colors.white,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: Colors.red,
+              toastLength: Toast.LENGTH_LONG,
+              msg: state.message,
             );
           }
         },
@@ -30,7 +44,7 @@ class UpcomingEvents extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                      'assets/images/noUpcomingEvents.png'), //todo: editing the image
+                      'assets/images/no_upcoming_events.png'), //todo: editing the image
                   SizedBox(height: 5.h),
                   Text(
                     'Please add an event',

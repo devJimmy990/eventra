@@ -156,7 +156,7 @@ class EventDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 if (event.attendees.isEmpty)
-                  Expanded(child: Center(child: Text("no attendees present")))
+                  Center(child: Text("no attendees present"))
               ],
             ),
           ),

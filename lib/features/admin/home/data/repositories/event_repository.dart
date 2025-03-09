@@ -21,7 +21,6 @@ class EventRepository {
       List<Map<String, dynamic>> list = await _dataSource.getEvents(uid);
       List<AdminEvent> admins =
           list.map((event) => AdminEvent.fromJson(event)).toList();
-      print(admins.length);
       return admins;
     } catch (e) {
       rethrow;
@@ -29,11 +28,19 @@ class EventRepository {
   }
 
   Future<void> updateEvent(AdminEvent event) async {
-    await _dataSource.updateEvent(event);
+    try {
+      await _dataSource.updateEvent(event);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<void> deleteEvent(AdminEvent event) async {
-    await _dataSource.deleteEvent(event);
+    try {
+      await _dataSource.deleteEvent(event);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<String> uploadImage(File image) async {

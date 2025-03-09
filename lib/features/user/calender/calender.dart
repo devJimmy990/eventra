@@ -1,3 +1,4 @@
+import 'package:eventra/features/admin/home/cubit/event_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -33,7 +34,8 @@ class _UserCalendarPageState extends State<UserCalendarPage> {
         0, // capacity (if available, otherwise 0)
         event.schedule.start,
         event.schedule.end,
-        Colors.blue, // Choose a color (you can use event.category to decide color)
+        Colors
+            .blue, // Choose a color (you can use event.category to decide color)
         false, // isAllDay: adjust if needed
         null, // startTimeZone
         null, // endTimeZone
@@ -115,18 +117,18 @@ class _MeetingDataSource extends CalendarDataSource {
 /// Custom meeting object which holds the event details to be rendered on the calendar.
 class _Meeting {
   _Meeting(
-      this.eventName,
-      this.organizer,
-      this.contactID,
-      this.capacity,
-      this.from,
-      this.to,
-      this.background,
-      this.isAllDay,
-      this.startTimeZone,
-      this.endTimeZone,
-      this.recurrenceRule,
-      );
+    this.eventName,
+    this.organizer,
+    this.contactID,
+    this.capacity,
+    this.from,
+    this.to,
+    this.background,
+    this.isAllDay,
+    this.startTimeZone,
+    this.endTimeZone,
+    this.recurrenceRule,
+  );
 
   String eventName;
   String? organizer;

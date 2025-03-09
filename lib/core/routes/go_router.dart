@@ -103,7 +103,6 @@ final router = GoRouter(
         path: "/admin/home",
         name: AdminRoutes.home,
         builder: (context, state) {
-          print("Build Event Cubit Builder");
           return BlocProvider<EventCubit>(
             create: (context) => EventCubit(),
             child: AdminHomeScreen(),
