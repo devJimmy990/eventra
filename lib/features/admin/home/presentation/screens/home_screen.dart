@@ -24,9 +24,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabIndexChange);
     // Load all events initially.
-    context.read<EventCubit>().getEvents();
-    // Default to upcoming events.
-    context.read<EventCubit>().getUpcomingEvents();
+    context.read<EventCubit>().getEvents(EventFilter.all);
   }
 
   @override
@@ -40,9 +38,9 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
   void _handleTabIndexChange() {
     if (_tabController.indexIsChanging) {
       if (_tabController.index == 0) {
-        context.read<EventCubit>().getUpcomingEvents();
+        context.read<EventCubit>().getEvents(EventFilter.upcoming);
       } else {
-        context.read<EventCubit>().getPastEvents();
+        context.read<EventCubit>().getEvents(EventFilter.past);
       }
     }
   }
@@ -52,8 +50,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-          onTap: () {
-          },
+          onTap: () {},
           child: CircleAvatar(
             radius: 15.r,
             backgroundColor: Colors.amber,

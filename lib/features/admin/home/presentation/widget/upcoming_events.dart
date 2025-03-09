@@ -51,6 +51,7 @@ class UpcomingEvents extends StatelessWidget {
               itemCount: state.events.length,
               itemBuilder: (context, index) {
                 final event = state.events[index];
+
                 // to swipe left and right
                 return EventCard(
                   event: event,
@@ -71,7 +72,8 @@ class UpcomingEvents extends StatelessWidget {
               ),
             );
           } else if (state is EventInitial) {
-            return Text("safadfa"); //todo: @jimmy is it test or we should add data here
+            return Text(
+                "safadfa"); //todo: @jimmy is it test or we should add data here
           } else {
             return Ink.image(
               image: AssetImage(

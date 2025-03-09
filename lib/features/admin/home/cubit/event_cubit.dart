@@ -9,45 +9,56 @@ import '../data/data_source/event_data_source.dart';
 
 part 'event_state.dart';
 
+enum EventFilter { all, upcoming, past }
+
 class EventCubit extends Cubit<EventState> {
   EventCubit() : super(EventInitial()) {
-    getEvents();
+    getEvents(EventFilter.all);
   }
 
   List<AdminEvent> _events = [];
 
-  void getEvents() async {
+  void getEvents(EventFilter filter) async {
     emit(EventLoading());
     try {
       final String uid = SharedPreference.getString(key: "uid")!;
       _events = await EventRepository(EventDataSource()).getEvents(uid);
+      List<AdminEvent> filtered;
+      if (filter == EventFilter.upcoming) {
+        filtered = _events.where((event) => event.isUpcoming).toList();
+      } else if (filter == EventFilter.past) {
+        filtered = _events.where((event) => event.isPast).toList();
+      } else {
+        filtered = _events;
+      }
+
       // List<AdminEvent> filteredEvents =
       //     _events.where((event) => event.isUpcoming).toList();
       // emit(EventLoaded(filteredEvents));
-      emit(_events.isEmpty ? EventEmpty() : EventLoaded(_events));
+      emit(_events.isEmpty ? EventEmpty() : EventLoaded(filtered));
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
   }
-
-  void getUpcomingEvents() {
-    try {
-      List<AdminEvent> upcoming =
-          _events.where((event) => event.isUpcoming).toList();
-      emit(upcoming.isEmpty ? EventEmpty() : EventLoaded(upcoming));
-    } catch (e) {
-      emit(EventError(message: e.toString()));
-    }
-  }
-
-  void getPastEvents() {
-    try {
-      List<AdminEvent> past = _events.where((event) => event.isPast).toList();
-      emit(past.isEmpty ? EventEmpty() : EventLoaded(past));
-    } catch (e) {
-      emit(EventError(message: e.toString()));
-    }
-  }
+  //
+  // void getUpcomingEvents() {
+  //   try {
+  //     List<AdminEvent> upcoming =
+  //         _events.where((event) => event.isUpcoming).toList();
+  //     emit(upcoming.isEmpty ? EventEmpty() : EventLoaded(upcoming));
+  //   } catch (e) {
+  //     emit(EventError(message: e.toString()));
+  //   }
+  // }
+  //
+  // void getPastEvents() {
+  //   try {
+  //     List<AdminEvent> past = _events.where((event) => event.isPast).toList();
+  //     emit(past.isEmpty ? EventEmpty() : EventLoaded(past));
+  //   } catch (e) {
+  //     emit(EventError(message: e.toString()));
+  //   }
+  // }
 
   Future<void> addEvent(AdminEvent event) async {
     emit(EventLoading());
@@ -95,7 +106,6 @@ class EventCubit extends Cubit<EventState> {
     emit(EventLoading());
     try {
       await EventRepository(EventDataSource()).deleteEvent(event);
-
     } catch (e) {
       emit(EventError(message: e.toString()));
     }

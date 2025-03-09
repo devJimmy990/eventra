@@ -7,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 class EventDataSource {
   // firebase contain firestore used here  *singleton*
   final Firebase firebase = Firebase();
+
   Future<String> uploadImage(File image) async {
     try {
       String fileName = "${DateTime.now().millisecondsSinceEpoch}.jpg";
@@ -82,9 +83,22 @@ class EventDataSource {
 // delete event from firestore
   Future<void> deleteEvent(AdminEvent event) async {
     try {
-      await firebase.store.collection('events').doc(event.id).delete();
+      await firebase.store
+          .collection('events')
+          .doc(event.admin)
+          .collection("events")
+          .doc(event.id)
+          .delete();
     } catch (e) {
       rethrow;
     }
   }
 }
+//   Future<void> deleteEvent(AdminEvent event) async {
+//     try {
+//       await firebase.store.collection('events').doc(event.id).delete();
+//     } catch (e) {
+//       rethrow;
+//     }
+//   }
+// }
