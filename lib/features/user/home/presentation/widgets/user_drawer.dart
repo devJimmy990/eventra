@@ -46,6 +46,22 @@ class _BuildUserDrawer extends StatelessWidget {
               accountName: Text(user.name),
               accountEmail: Text(user.email),
             ),
+            ListTile(
+              title: Text("Bookmarks"),
+              leading: Icon(Icons.bookmark),
+              onTap: () {
+                Navigator.pop(context);
+                context.pushNamed(UserRoutes.contact);
+              },
+            ),
+            ListTile(
+              title: Text("Profile"),
+              leading: Icon(Icons.person),
+              onTap: () {
+                Navigator.pop(context);
+                context.pushNamed(UserRoutes.contact);
+              },
+            ),
             Spacer(),
             ListTile(
               title: Text("Contact us"),
