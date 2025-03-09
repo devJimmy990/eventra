@@ -15,4 +15,12 @@ class UserRepository {
       rethrow;
     }
   }
+
+  Future<void> updateUserData(String uid, Map<String, dynamic> updatedData) async {
+    try {
+      await _dataSource.updateUserData(uid, updatedData);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

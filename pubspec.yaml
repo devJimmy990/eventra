@@ -29,6 +29,7 @@ dependencies:
   flutter_native_splash: ^2.4.3
   omni_datetime_picker: ^2.1.0
   image_picker: ^1.1.2
+  path_provider: ^2.1.5
 
   
   #UI

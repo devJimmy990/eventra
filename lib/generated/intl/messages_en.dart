@@ -22,38 +22,43 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "SignInWithGoogle":
-            MessageLookupByLibrary.simpleMessage("Sign in with Google"),
-        "accCreated": MessageLookupByLibrary.simpleMessage(
-            "Account created successfully"),
-        "appName": MessageLookupByLibrary.simpleMessage("Eventra"),
-        "confirmPass": MessageLookupByLibrary.simpleMessage("Confirm password"),
-        "emailEx": MessageLookupByLibrary.simpleMessage("abc@email.com"),
-        "empty":
-            MessageLookupByLibrary.simpleMessage("This field cannot be empty"),
-        "forgetPass": MessageLookupByLibrary.simpleMessage("Forget Password?"),
-        "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
-        "hasAcc":
-            MessageLookupByLibrary.simpleMessage("Already have an account?"),
-        "invalidEmail":
-            MessageLookupByLibrary.simpleMessage("Please enter a valid Email"),
-        "noAcc":
-            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
-        "noUser": MessageLookupByLibrary.simpleMessage(
-            "No user found for that email."),
-        "or": MessageLookupByLibrary.simpleMessage("OR"),
-        "passNotMatch":
-            MessageLookupByLibrary.simpleMessage("Passwords doesn\'t match"),
-        "rememberPass": MessageLookupByLibrary.simpleMessage("Remember me"),
-        "shortPass": MessageLookupByLibrary.simpleMessage(
-            "Please enter at least 6 characters"),
-        "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
-        "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
-        "usedEmail": MessageLookupByLibrary.simpleMessage(
-            "The account already exists for that email."),
-        "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome back"),
-        "wrongPass": MessageLookupByLibrary.simpleMessage(
-            "Wrong password provided for that user."),
-        "yourPass": MessageLookupByLibrary.simpleMessage("Your password")
-      };
+    "SignInWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Sign in with Google",
+    ),
+    "accCreated": MessageLookupByLibrary.simpleMessage(
+      "Account created successfully",
+    ),
+    "appName": MessageLookupByLibrary.simpleMessage("Eventra"),
+    "confirmPass": MessageLookupByLibrary.simpleMessage("Confirm password"),
+    "emailEx": MessageLookupByLibrary.simpleMessage("abc@email.com"),
+    "empty": MessageLookupByLibrary.simpleMessage("This field cannot be empty"),
+    "forgetPass": MessageLookupByLibrary.simpleMessage("Forget Password?"),
+    "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
+    "hasAcc": MessageLookupByLibrary.simpleMessage("Already have an account?"),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid Email",
+    ),
+    "noAcc": MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+    "noUser": MessageLookupByLibrary.simpleMessage(
+      "No user found for that email.",
+    ),
+    "or": MessageLookupByLibrary.simpleMessage("OR"),
+    "passNotMatch": MessageLookupByLibrary.simpleMessage(
+      "Passwords doesn\'t match",
+    ),
+    "rememberPass": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "shortPass": MessageLookupByLibrary.simpleMessage(
+      "Please enter at least 6 characters",
+    ),
+    "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
+    "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "usedEmail": MessageLookupByLibrary.simpleMessage(
+      "The account already exists for that email.",
+    ),
+    "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome back"),
+    "wrongPass": MessageLookupByLibrary.simpleMessage(
+      "Wrong password provided for that user.",
+    ),
+    "yourPass": MessageLookupByLibrary.simpleMessage("Your password"),
+  };
 }
