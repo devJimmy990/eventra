@@ -1,4 +1,5 @@
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
+import 'package:eventra/features/user/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class UserHomeScreen extends StatefulWidget {
@@ -56,9 +57,11 @@ const pages = [
   Center(
       child: Text("Map",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-  Center(
-      child: Text("Profile",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+  // Center(
+  //     child: Text("Profile",
+  //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+  
+  MyProfilePage(),
 ];
 /**
  * Browse upcoming Events from today to end of the year {sorted by date}

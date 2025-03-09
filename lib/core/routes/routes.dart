@@ -8,6 +8,8 @@ class Routes {
 class UserRoutes {
   static const String home = "user-home";
   static const String contact = "user-contact";
+  static const String profile = "user-profile";
+   static const String editProfile = "user-profile-edit";
 }
 
 class AdminRoutes {

@@ -14,4 +14,12 @@ class UserDataSource {
       throw Exception('FirebaseStore: getUserData - Error: $e');
     }
   }
+  
+   Future<void> updateUserData(String uid, Map<String, dynamic> updatedData) async {
+    try {
+      await firebase.store.collection("users").doc(uid).update(updatedData);
+    } catch (e) {
+      throw Exception('FirebaseStore: updateUserData - Error: $e');
+    }
+  }
 }
