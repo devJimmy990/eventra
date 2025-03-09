@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:eventra/features/admin/home/cubit/event_state.dart';
+import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -204,12 +205,11 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                               ),
                             );
                       **/
-                      final String uid =
-                          SharedPreference.getString(key: "uid")!;
+                      final admin = context.read<UserCubit>().user!;
                       widget.event == null
                           ? context.read<EventCubit>().addEvent(
                                 AdminEvent(
-                                  admin: uid,
+                                  admin: admin,
                                   title: _titleController.text,
                                   schedule: _dateController.value,
                                   desc: _descriptionController.text,
@@ -230,7 +230,7 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                               )
                           : context.read<EventCubit>().updateEvent(
                                 AdminEvent(
-                                  admin: uid,
+                                  admin: admin,
                                   id: widget.event!.id,
                                   title: _titleController.text,
                                   schedule: _dateController.value,
