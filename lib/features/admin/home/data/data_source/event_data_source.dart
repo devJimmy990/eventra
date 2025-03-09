@@ -71,7 +71,8 @@ class EventDataSource {
 // update event on firestore
   Future<void> updateEvent(AdminEvent event) async {
     try {
-      await firebase.store
+      await firebase.store.collection('events')
+          .doc(event.id)
           .collection('events')
           .doc(event.id)
           .update(event.toJson());
@@ -83,10 +84,10 @@ class EventDataSource {
 // delete event from firestore
   Future<void> deleteEvent(AdminEvent event) async {
     try {
-      await firebase.store
+      await firebase.store.collection('events')
+          .doc(event.id)
           .collection('events')
-          .doc(event.admin)
-          .collection("events")
+           //todo check jimmy
           .doc(event.id)
           .delete();
     } catch (e) {

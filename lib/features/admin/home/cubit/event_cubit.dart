@@ -4,6 +4,7 @@ import 'package:eventra/features/admin/event/extension/event_status.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/home/data/repositories/event_repository.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/data_source/event_data_source.dart';
 
@@ -35,7 +36,7 @@ class EventCubit extends Cubit<EventState> {
       // List<AdminEvent> filteredEvents =
       //     _events.where((event) => event.isUpcoming).toList();
       // emit(EventLoaded(filteredEvents));
-      emit(_events.isEmpty ? EventEmpty() : EventLoaded(filtered));
+      emit(filtered.isEmpty ? EventEmpty() : EventLoaded(filtered));
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
@@ -102,11 +103,27 @@ class EventCubit extends Cubit<EventState> {
     }
   }
 
+  // Future<void> deleteEvent(AdminEvent event) async {
+  //   emit(EventLoading());
+  //   try {
+  //     await EventRepository(EventDataSource()).deleteEvent(event);
+  //   } catch (e) {
+  //     emit(EventError(message: e.toString()));
+  //   }
+  // }
   Future<void> deleteEvent(AdminEvent event) async {
     emit(EventLoading());
     try {
       await EventRepository(EventDataSource()).deleteEvent(event);
+      _events.removeWhere((e) => e.id
+          == event.id);
+      // Reapply current filter
+      debugPrint(
+        'events ${_events.length}'
+      );
+      emit(_events.isEmpty ? EventEmpty() : EventLoaded(_events));
     } catch (e) {
+      debugPrint('problem ${e.toString()}');
       emit(EventError(message: e.toString()));
     }
   }
