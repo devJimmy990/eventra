@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please enter a valid Email",
     ),
     "noAcc": MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+
     "noUser": MessageLookupByLibrary.simpleMessage(
       "No user found for that email.",
     ),
@@ -47,11 +48,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Passwords doesn\'t match",
     ),
     "rememberPass": MessageLookupByLibrary.simpleMessage("Remember me"),
+
     "shortPass": MessageLookupByLibrary.simpleMessage(
       "Please enter at least 6 characters",
     ),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+
     "usedEmail": MessageLookupByLibrary.simpleMessage(
       "The account already exists for that email.",
     ),

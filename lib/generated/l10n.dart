@@ -239,6 +239,31 @@ class S {
       args: [],
     );
   }
+
+  /// `Upcoming Events`
+  String get upComingEvents {
+    return Intl.message(
+      'Upcoming Events',
+      name: 'upComingEvents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See More..`
+  String get seeMore {
+    return Intl.message('See More..', name: 'seeMore', desc: '', args: []);
+  }
+
+  /// `No Upcoming Events`
+  String get noUpcomingEvents {
+    return Intl.message(
+      'No Upcoming Events',
+      name: 'noUpcomingEvents',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

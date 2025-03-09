@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "يرجى إدخال بريد إلكتروني صالح",
     ),
     "noAcc": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+
     "noUser": MessageLookupByLibrary.simpleMessage(
       "لا يوجد مستخدم لهذا البريد الإلكتروني.",
     ),
@@ -47,11 +48,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمات المرور غير متطابقة",
     ),
     "rememberPass": MessageLookupByLibrary.simpleMessage("تذكرني"),
+
     "shortPass": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال 6 أحرف على الأقل",
     ),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+
     "usedEmail": MessageLookupByLibrary.simpleMessage(
       "الحساب موجود بالفعل لهذا البريد الإلكتروني.",
     ),

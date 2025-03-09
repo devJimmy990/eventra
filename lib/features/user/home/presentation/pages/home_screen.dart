@@ -1,3 +1,4 @@
+import 'package:eventra/features/user/home/presentation/pages/explore_view.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
 import 'package:eventra/features/user/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       drawer: UserDrawer(),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -47,21 +47,14 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   }
 }
 
-const pages = [
-  Center(
-      child: Text("Explore",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-  Center(
+var pages = [
+  ExploreView(),
+  const Center(
       child: Text("Events",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-  Center(
+  const Center(
       child: Text("Map",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-  // Center(
-  //     child: Text("Profile",
-  //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-  
-  MyProfilePage(),
 ];
 /**
  * Browse upcoming Events from today to end of the year {sorted by date}
