@@ -22,5 +22,6 @@
   "noUser": "No user found for that email.",
   "SignInWithGoogle": "Sign in with Google",
   "upComingEvents": "Upcoming Events",
-  "seeMore": "See More.."
+  "seeMore": "See More..",
+  "noUpcomingEvents": "No Upcoming Events"
 }

@@ -39,6 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "يرجى إدخال بريد إلكتروني صالح",
     ),
     "noAcc": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "noUpcomingEvents": MessageLookupByLibrary.simpleMessage(
+      "لا توجد أحداث قادمة",
+    ),
     "noUser": MessageLookupByLibrary.simpleMessage(
       "لا يوجد مستخدم لهذا البريد الإلكتروني.",
     ),

@@ -254,6 +254,16 @@ class S {
   String get seeMore {
     return Intl.message('See More..', name: 'seeMore', desc: '', args: []);
   }
+
+  /// `No Upcoming Events`
+  String get noUpcomingEvents {
+    return Intl.message(
+      'No Upcoming Events',
+      name: 'noUpcomingEvents',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

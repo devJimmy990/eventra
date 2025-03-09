@@ -1,10 +1,12 @@
+import 'package:eventra/features/admin/event/model/base_event.dart';
 import 'package:eventra/features/user/home/presentation/widgets/event_card.dart';
 import 'package:eventra/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UpComingWidget extends StatelessWidget {
-  const UpComingWidget({super.key});
+  UpComingWidget({super.key, required this.events});
+  List<BaseEvent> events;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,7 @@ class UpComingWidget extends StatelessWidget {
                     ],
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent
-                    ),
+                    color: Colors.blueAccent),
               ),
               TextButton(
                   onPressed: () {},
@@ -40,9 +41,9 @@ class UpComingWidget extends StatelessWidget {
             height: 250.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 3,
+              itemCount: events.length,
               itemBuilder: (context, index) => EventCard(
-                event: null,
+                event: events[index],
               ),
             ),
           ),

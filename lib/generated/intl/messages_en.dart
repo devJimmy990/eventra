@@ -39,6 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please enter a valid Email",
     ),
     "noAcc": MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+    "noUpcomingEvents": MessageLookupByLibrary.simpleMessage(
+      "No Upcoming Events",
+    ),
     "noUser": MessageLookupByLibrary.simpleMessage(
       "No user found for that email.",
     ),
