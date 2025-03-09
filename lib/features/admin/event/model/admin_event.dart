@@ -3,7 +3,7 @@ import 'package:eventra/features/landing/data/model/user.dart';
 
 class AdminEvent extends BaseEvent {
   List<User> attendees;
-  String admin;
+  User admin;
   AdminEvent({
     super.id,
     super.cover,
@@ -24,7 +24,7 @@ class AdminEvent extends BaseEvent {
       title: json['title'],
       cover: json['cover'],
       price: json['price'],
-      admin: json['admin'],
+      admin: User.fromJson(json['admin']),
       schedule: EventSchedule.fromJson(json['schedule']),
       location: json['location'] != null
           ? EventLocation.fromJson(json['location'] as Map<String, dynamic>)
@@ -43,7 +43,7 @@ class AdminEvent extends BaseEvent {
       'title': title,
       'cover': cover,
       'price': price,
-      'admin': admin,
+      'admin': admin.toJson(),
       "location": location.toJson(),
       'schedule': schedule.toJson(),
       'category': category.toString(),
