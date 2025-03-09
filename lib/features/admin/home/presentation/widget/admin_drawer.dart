@@ -1,3 +1,5 @@
+import 'package:eventra/features/landing/cubit/user_cubit.dart';
+import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +13,7 @@ class AdminDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User admin = context.read<UserCubit>().user!;
     return Drawer(
       child: BlocListener<AuthenticationCubit, AuthenticationState>(
         listener: (context, state) {
@@ -21,22 +24,29 @@ class AdminDrawer extends StatelessWidget {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage(
-                  StringsManager.eventImage,
-                ),
+              currentAccountPicture: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: admin.avatar?.isNotEmpty ?? false
+                    ? Image.network(
+                        admin.avatar!,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.asset(
+                        StringsManager.eventImage,
+                        fit: BoxFit.cover,
+                      ),
               ),
-              accountName: Text("Ahmed Admin"),
-              accountEmail: Text("A.Roshdy@gmail.com"),
+              accountName: Text(admin.name),
+              accountEmail: Text(admin.email),
             ),
-            ListTile(
-              title: Text("Requests"),
-              leading: Icon(Icons.notifications),
-              onTap: () {
-                Navigator.pop(context);
-                context.pushNamed(AdminRoutes.eventRequests);
-              },
-            ),
+            // ListTile(
+            //   title: Text("Requests"),
+            //   leading: Icon(Icons.notifications),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //     context.pushNamed(AdminRoutes.eventRequests);
+            //   },
+            // ),
             Spacer(),
             ListTile(
               title: Text("Settings"),

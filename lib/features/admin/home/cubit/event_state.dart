@@ -1,4 +1,4 @@
-part of 'event_cubit.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
 
 sealed class EventState {}
 
@@ -29,4 +29,9 @@ class ImageUploading extends EventState {}
 class ImageUploaded extends EventState {
   final String url;
   ImageUploaded(this.url);
+}
+
+class EventDeleted extends EventState {
+  final List<AdminEvent> events;
+  EventDeleted(this.events);
 }

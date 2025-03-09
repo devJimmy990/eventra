@@ -29,12 +29,12 @@ class _BuildUserDrawer extends StatelessWidget {
         listener: (context, state) {
           if (state is UnAuthenticated) {
             Fluttertoast.showToast(
-                msg: "logged out",
-                textColor: Colors.white,
-                gravity: ToastGravity.BOTTOM,
-                backgroundColor: Colors.red,
-                toastLength: Toast.LENGTH_SHORT,
-              );
+              msg: "logged out",
+              textColor: Colors.white,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: Colors.red,
+              toastLength: Toast.LENGTH_SHORT,
+            );
             context.goNamed(Routes.auth);
           }
         },
@@ -48,19 +48,19 @@ class _BuildUserDrawer extends StatelessWidget {
             ),
             Spacer(),
             ListTile(
+              title: Text("Contact us"),
+              leading: Icon(Icons.support_agent_outlined),
+              onTap: () {
+                Navigator.pop(context);
+                context.pushNamed(UserRoutes.contact);
+              },
+            ),
+            ListTile(
               title: Text("Settings"),
               leading: Icon(Icons.settings),
               onTap: () {
                 Navigator.pop(context);
                 context.pushNamed(Routes.settings);
-              },
-            ),
-            ListTile(
-              title: Text("Settings"),
-              leading: Icon(Icons.support_agent_outlined),
-              onTap: () {
-                Navigator.pop(context);
-                context.pushNamed(UserRoutes.contact);
               },
             ),
             ListTile(

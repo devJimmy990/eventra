@@ -1,15 +1,17 @@
-import 'package:eventra/features/landing/data/model/person.dart';
 import 'package:eventra/features/admin/event/model/booked_event.dart';
 
-class User extends Person {
+class User {
   List<BookedEvent>? _events;
+  String? id, avatar, phone;
+  final String name, email, role;
+
   User._({
-    super.id,
-    super.phone,
-    super.avatar,
-    required super.name,
-    super.role = "user",
-    required super.email,
+    this.id,
+    this.phone,
+    this.avatar,
+    required this.name,
+    this.role = "user",
+    required this.email,
     List<BookedEvent>? events,
   }) : _events = events ?? [];
 
@@ -44,8 +46,8 @@ class User extends Person {
       id: json['id'] ?? "",
       name: json['name'] ?? "",
       email: json['email'] ?? "",
-      phone: json['phone'] ?? "",
-      avatar: json['avatar'] ?? "",
+      phone: json['phone'],
+      avatar: json['avatar'],
       role: json['role'] ?? "user",
       events: json['events']?.map((event) => event)?.toList(),
     );
@@ -56,8 +58,8 @@ class User extends Person {
       'name': name,
       'role': role,
       'email': email,
-      'phone': phone ?? "",
-      'avatar': avatar ?? "",
+      'phone': phone,
+      'avatar': avatar,
     };
   }
 
