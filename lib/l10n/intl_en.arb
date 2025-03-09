@@ -20,5 +20,7 @@
   "shortPass": "Please enter at least 6 characters",
   "usedEmail": "The account already exists for that email.",
   "noUser": "No user found for that email.",
-  "SignInWithGoogle": "Sign in with Google"
+  "SignInWithGoogle": "Sign in with Google",
+  "upComingEvents": "Upcoming Events",
+  "seeMore": "See More.."
 }
