@@ -1,6 +1,5 @@
 import 'package:eventra/features/user/home/presentation/pages/explore_view.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
-import 'package:eventra/features/user/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class UserHomeScreen extends StatefulWidget {
@@ -31,15 +30,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.event, size: 28),
-            label: 'Events',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map, size: 28),
-            label: 'Map',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person, size: 28),
-            label: 'Profile',
+            label: 'Calendar',
           ),
         ],
       ),
@@ -50,10 +41,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 var pages = [
   ExploreView(),
   const Center(
-      child: Text("Events",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-  const Center(
-      child: Text("Map",
+      child: Text("Calendar",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
 ];
 /**
