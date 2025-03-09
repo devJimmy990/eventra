@@ -1,11 +1,9 @@
-import 'package:eventra/features/admin/home/presentation/widget/admin_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/home/cubit/event_state.dart';
 import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
+import 'package:eventra/features/admin/home/presentation/widget/admin_drawer.dart';
 import 'package:eventra/features/admin/home/presentation/widget/previous_events.dart';
 import 'package:eventra/features/admin/home/presentation/widget/upcoming_events.dart';
 

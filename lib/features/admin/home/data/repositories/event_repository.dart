@@ -8,9 +8,9 @@ class EventRepository {
 
   EventRepository(this._dataSource);
 
-  Future<String> addEvent(AdminEvent event) async {
+  Future<AdminEvent> addEvent(AdminEvent event) async {
     try {
-      return await _dataSource.addEvent(event);
+      return AdminEvent.fromJson(await _dataSource.addEvent(event));
     } catch (e) {
       rethrow;
     }

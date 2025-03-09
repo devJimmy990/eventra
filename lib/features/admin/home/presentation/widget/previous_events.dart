@@ -23,9 +23,13 @@ class PreviousEvents extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is EventEmpty) {
             return Center(
-              child: Text(
-                'No past events.',
-                style: TextStyle(fontSize: 16.sp),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                      'assets/images/no_previous_events.png'), //todo: editing the image
+                  SizedBox(height: 5.h),
+                ],
               ),
             );
           } else if (state is EventLoaded) {

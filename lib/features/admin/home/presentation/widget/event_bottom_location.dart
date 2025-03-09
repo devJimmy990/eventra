@@ -59,8 +59,14 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
                 spacing: 10.h,
                 children: [
                   TextInputField(
-                    controller: widget.nameController,
                     label: "Area Name",
+                    controller: widget.nameController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "required";
+                      }
+                      return null;
+                    },
                   ),
                   TextInputField(
                     label: "Address",

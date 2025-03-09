@@ -26,15 +26,13 @@ class EventDataSource {
   }
 
 // add event to firestore
-  Future<String> addEvent(AdminEvent event) async {
+  Future<Map<String, dynamic>> addEvent(AdminEvent event) async {
     try {
-      var docRef = firebase.store
-          .collection('events')
-          .doc(event.admin)
-          .collection("events")
-          .doc();
-      await docRef.set(event.toJson());
-      return docRef.id;
+      var docRef = firebase.store.collection('events').doc();
+      Map<String, dynamic> eventData = event.toJson();
+      eventData['id'] = docRef.id;
+      await docRef.set(eventData);
+      return eventData;
     } catch (e) {
       rethrow;
     }
@@ -43,7 +41,7 @@ class EventDataSource {
   Future<void> createEventRequest(AdminEvent event) async {
     try {
       await firebase.store
-          .collection('events')
+          .collection('requests')
           .doc(event.id)
           .collection("events")
           .add(event.toJson());
@@ -55,12 +53,7 @@ class EventDataSource {
   // get event from firestore
   Future<List<Map<String, dynamic>>> getEvents(String uid) async {
     try {
-      return await firebase.store
-          .collection('events')
-          .doc(uid)
-          .collection("events")
-          .get()
-          .then((value) {
+      return await firebase.store.collection('events').get().then((value) {
         return value.docs.map((doc) => doc.data()).toList();
       });
     } catch (e) {
@@ -71,10 +64,7 @@ class EventDataSource {
 // update event on firestore
   Future<void> updateEvent(AdminEvent event) async {
     try {
-      print(event);
       await firebase.store
-          .collection('events')
-          .doc(event.admin)
           .collection('events')
           .doc(event.id)
           .update(event.toJson());
@@ -86,22 +76,9 @@ class EventDataSource {
 // delete event from firestore
   Future<void> deleteEvent(AdminEvent event) async {
     try {
-      await firebase.store
-          .collection('events')
-          .doc(event.admin)
-          .collection('events')
-          .doc(event.id)
-          .delete();
+      await firebase.store.collection('events').doc(event.id).delete();
     } catch (e) {
       rethrow;
     }
   }
 }
-//   Future<void> deleteEvent(AdminEvent event) async {
-//     try {
-//       await firebase.store.collection('events').doc(event.id).delete();
-//     } catch (e) {
-//       rethrow;
-//     }
-//   }
-// }

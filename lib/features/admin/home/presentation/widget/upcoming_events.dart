@@ -1,11 +1,11 @@
-import 'package:eventra/features/admin/home/cubit/event_state.dart';
-import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
+import 'package:eventra/features/admin/home/cubit/event_state.dart';
 import 'package:eventra/features/admin/home/presentation/widget/event_card.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
 
 class UpcomingEvents extends StatelessWidget {
   const UpcomingEvents({super.key});
@@ -85,9 +85,6 @@ class UpcomingEvents extends StatelessWidget {
                 style: TextStyle(fontSize: 16.sp),
               ),
             );
-          } else if (state is EventInitial) {
-            return Text(
-                "safadfa"); //todo: @jimmy is it test or we should add data here
           } else {
             return Ink.image(
               image: AssetImage(
@@ -112,3 +109,4 @@ class UpcomingEvents extends StatelessWidget {
     );
   }
 }
+

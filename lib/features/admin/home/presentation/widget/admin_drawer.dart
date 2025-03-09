@@ -26,7 +26,7 @@ class AdminDrawer extends StatelessWidget {
             UserAccountsDrawerHeader(
               currentAccountPicture: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: admin.avatar?.isEmpty ?? false
+                child: admin.avatar?.isNotEmpty ?? false
                     ? Image.network(
                         admin.avatar!,
                         fit: BoxFit.cover,

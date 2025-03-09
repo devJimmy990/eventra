@@ -46,24 +46,27 @@ class MyApp extends StatelessWidget {
               create: (context) => ProfileCubit(UserDataSource()),
             ),
           ],
-          child: Builder(builder: (context) {
-            return BlocBuilder<SettingsCubit, SettingsState>(
+          child: Builder(
+            builder: (context) {
+              return BlocBuilder<SettingsCubit, SettingsState>(
                 builder: (context, state) {
-              return MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: [
-                  S.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: S.delegate.supportedLocales,
-                theme: state.theme,
-                locale: Locale(state.locale),
-                routerConfig: router,
+                  return MaterialApp.router(
+                    debugShowCheckedModeBanner: false,
+                    localizationsDelegates: [
+                      S.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: S.delegate.supportedLocales,
+                    locale: Locale(state.locale),
+                    routerConfig: router,
+                    theme: state.theme,
+                  );
+                },
               );
-            });
-          }),
+            },
+          ),
         );
       },
     );

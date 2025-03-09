@@ -138,7 +138,8 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
             gravity: ToastGravity.BOTTOM,
             backgroundColor: Colors.green,
             toastLength: Toast.LENGTH_LONG,
-            msg: "event created successfully",
+            msg:
+                "event ${widget.event != null ? "updated" : "created"} successfully",
           );
           Navigator.pop(context);
         } else if (state is EventError) {
@@ -203,7 +204,6 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                               ),
                             );
                       **/
-                      print(widget.event);
                       final String uid =
                           SharedPreference.getString(key: "uid")!;
                       widget.event == null
@@ -214,6 +214,14 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                                   schedule: _dateController.value,
                                   desc: _descriptionController.text,
                                   category: _categoryController.value!,
+                                  location: _locationNameController.text.isEmpty
+                                      ? null
+                                      : EventLocation(
+                                          name: _locationNameController.text,
+                                          address:
+                                              _locationAddressController.text,
+                                          url: _locationUrlController.text,
+                                        ),
                                   price:
                                       int.tryParse(_priceController.text) ?? 0,
                                   cover:
