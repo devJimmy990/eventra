@@ -1,3 +1,4 @@
+import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
@@ -41,8 +42,12 @@ class _BuildUserDrawer extends StatelessWidget {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(user.avatar ?? "")),
+              currentAccountPicture:  CircleAvatar(
+                  radius: 50,
+                  backgroundImage:
+                      user.avatar != null ? NetworkImage(user.avatar!) : null,
+                  child: user.avatar == null ? Text(user.name.nameAbb()) : null,
+                ),
               accountName: Text(user.name),
               accountEmail: Text(user.email),
             ),
@@ -58,7 +63,6 @@ class _BuildUserDrawer extends StatelessWidget {
               title: Text("Profile"),
               leading: Icon(Icons.person),
               onTap: () {
-                Navigator.pop(context);
                 context.pushNamed(UserRoutes.profile);
               },
             ),
