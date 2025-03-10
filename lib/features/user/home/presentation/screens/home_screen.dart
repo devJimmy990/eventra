@@ -1,5 +1,5 @@
 import 'package:eventra/features/user/calender/calender.dart';
-import 'package:eventra/features/user/home/presentation/pages/explore_view.dart';
+import 'package:eventra/features/user/home/presentation/screens/explore_view.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -43,8 +43,3 @@ var pages = [
   ExploreView(),
   EventCalendarPage(),
 ];
-/**
- * Browse upcoming Events from today to end of the year {sorted by date}
- * Bookmarked, open event details
- *
- */
