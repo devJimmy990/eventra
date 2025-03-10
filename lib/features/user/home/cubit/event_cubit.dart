@@ -6,8 +6,10 @@ import 'package:eventra/features/user/home/data/model/request_event.dart';
 import 'package:eventra/features/user/home/data/data_source/user_event_data_source.dart';
 import 'package:eventra/features/user/home/data/repositories/user_event_repository.dart';
 
-class EventCubit extends Cubit<EventState> {
-  EventCubit() : super(EventInitial());
+class UserEventCubit extends Cubit<UserEventState> {
+  UserEventCubit() : super(EventInitial()) {
+    getEvents();
+  }
   List<UserEvent> list = [];
   Future<void> getEvents() async {
     emit(EventLoading());
