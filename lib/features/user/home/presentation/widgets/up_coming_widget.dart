@@ -1,51 +1,52 @@
-import 'package:eventra/features/admin/event/model/base_event.dart';
-import 'package:eventra/features/user/home/presentation/widgets/event_card.dart';
-import 'package:eventra/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:eventra/features/admin/event/model/base_event.dart';
+import 'package:eventra/features/user/home/presentation/widgets/event_card.dart';
 
-class UpComingWidget extends StatelessWidget {
-  UpComingWidget({super.key, required this.events});
-  List<BaseEvent> events;
+class UpComingWidget extends StatefulWidget {
+  final List<BaseEvent> events;
 
+  const UpComingWidget({super.key, required this.events});
+
+  @override
+  State<UpComingWidget> createState() => _UpComingWidgetState();
+}
+
+class _UpComingWidgetState extends State<UpComingWidget> {
+  bool isList = true;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: REdgeInsets.all(10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                S.of(context).upComingEvents,
-                style: TextStyle(
-                    shadows: [
-                      Shadow(
-                        blurRadius: 4.r,
-                      ),
-                    ],
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent),
-              ),
-              TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    S.of(context).seeMore,
-                    style: TextStyle(fontSize: 20, color: Colors.grey),
-                  ))
-            ],
+          ListTile(
+            shape: RoundedRectangleBorder(),
           ),
-          SizedBox(
-            height: 250.h,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: events.length,
-              itemBuilder: (context, index) => EventCard(
-                event: events[index],
-              ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: IconButton(
+              onPressed: () => setState(() => isList = !isList),
+              icon: Icon(isList ? Icons.grid_view : Icons.list),
             ),
+          ),
+          Expanded(
+            child: isList
+                ? ListView.builder(
+                    itemCount: widget.events.length,
+                    itemBuilder: (context, index) =>
+                        EventCard(event: widget.events[index]),
+                  )
+                : GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: widget.events.length,
+                    itemBuilder: (context, index) =>
+                        EventCard(event: widget.events[index]),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                    ),
+                  ),
           ),
         ],
       ),
