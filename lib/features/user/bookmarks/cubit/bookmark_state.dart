@@ -6,6 +6,8 @@ class BookmarkInitial extends BookmarkState {}
 
 class BookmarkLoading extends BookmarkState {}
 
+class BookmarkEmpty extends BookmarkState {}
+
 class BookmarkLoaded extends BookmarkState {
   final List<UserEvent> events;
   BookmarkLoaded(this.events);
