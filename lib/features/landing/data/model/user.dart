@@ -43,13 +43,12 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User._(
-      id: json['id'] ?? "",
-      name: json['name'] ?? "",
-      email: json['email'] ?? "",
+      id: json['id'],
+      role: json['role'],
+      name: json['name'],
+      email: json['email'],
       phone: json['phone'],
       avatar: json['avatar'],
-      role: json['role'] ?? "user",
-      events: json['events']?.map((event) => event)?.toList(),
     );
   }
 
