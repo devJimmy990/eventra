@@ -11,6 +11,7 @@ class UserRoutes {
   static const String profile = "user-profile";
   static const String bookmark = "user-bookmark";
   static const String editProfile = "user-profile-edit";
+  static const String calendar = "user-calendar";
 }
 
 class AdminRoutes {
