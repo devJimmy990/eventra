@@ -51,7 +51,7 @@ class _BuildUserDrawer extends StatelessWidget {
               leading: Icon(Icons.bookmark),
               onTap: () {
                 Navigator.pop(context);
-                context.pushNamed(UserRoutes.contact);
+                context.pushNamed(UserRoutes.bookmark);
               },
             ),
             ListTile(
@@ -59,7 +59,7 @@ class _BuildUserDrawer extends StatelessWidget {
               leading: Icon(Icons.person),
               onTap: () {
                 Navigator.pop(context);
-                context.pushNamed(UserRoutes.contact);
+                context.pushNamed(UserRoutes.profile);
               },
             ),
             Spacer(),

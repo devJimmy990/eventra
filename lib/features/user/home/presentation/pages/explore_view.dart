@@ -1,6 +1,6 @@
 import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/user/home/cubit/event/event_cubit.dart';
-import 'package:eventra/features/user/home/cubit/event/event_state.dart';
+import 'package:eventra/features/user/home/cubit/event_cubit.dart';
+import 'package:eventra/features/user/home/cubit/event_state.dart';
 import 'package:eventra/features/user/home/presentation/widgets/categories_widget.dart';
 import 'package:eventra/features/user/home/presentation/widgets/up_coming_widget.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
