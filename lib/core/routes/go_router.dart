@@ -1,4 +1,4 @@
-import 'package:eventra/features/user/calender/calender.dart';
+import 'package:eventra/features/user/home/cubit/event_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +11,7 @@ import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:eventra/features/user/bookmarks/cubit/bookmark_cubit.dart';
 import 'package:eventra/features/landing/presentation/landing_screen.dart';
 import 'package:eventra/features/settings/presentation/settings_screen.dart';
-import 'package:eventra/features/user/home/presentation/pages/home_screen.dart';
+import 'package:eventra/features/user/home/presentation/screens/home_screen.dart';
 import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart';
 import 'package:eventra/features/admin/home/presentation/screens/home_screen.dart';
 import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
@@ -75,7 +75,10 @@ final router = GoRouter(
     GoRoute(
       path: "/user/home",
       name: UserRoutes.home,
-      builder: (context, state) => UserHomeScreen(),
+      builder: (context, state) => BlocProvider<UserEventCubit>(
+        create: (context) => UserEventCubit(),
+        child: UserHomeScreen(),
+      ),
     ),
     GoRoute(
         path: "/user/bookmark",
