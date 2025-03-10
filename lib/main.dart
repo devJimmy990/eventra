@@ -6,13 +6,11 @@ import 'package:eventra/core/firebase/firebase_options.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:eventra/features/settings/cubit/settings_cubit.dart';
 import 'package:eventra/features/settings/cubit/settings_state.dart';
-import 'package:eventra/features/user/profile/cubit/profile_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:eventra/features/authentication/cubit/auth_cubit.dart';
-import 'package:eventra/features/landing/data/data_source/user_data_source.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,9 +39,6 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider<AuthenticationCubit>(
               create: (context) => AuthenticationCubit(),
-            ),
-            BlocProvider(
-              create: (context) => ProfileCubit(UserDataSource()),
             ),
           ],
           child: Builder(

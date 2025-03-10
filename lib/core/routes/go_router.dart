@@ -14,13 +14,11 @@ import 'package:eventra/features/user/home/presentation/pages/home_screen.dart';
 import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart';
 import 'package:eventra/features/admin/home/presentation/screens/home_screen.dart';
 import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
-import 'package:eventra/features/user/profile/presentation/screens/edit_profile.dart';
 import 'package:eventra/features/user/profile/presentation/screens/profile_screen.dart';
 import 'package:eventra/features/user/bookmarks/presentation/screens/bookmark_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_details_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/events_request_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_attendees_list_screen.dart';
-
 
 String? _handleRedirect(BuildContext context, GoRouterState state) {
   final bool onboardingComplete =
@@ -89,21 +87,7 @@ final router = GoRouter(
         path: "/user/profile",
         name: UserRoutes.profile,
         builder: (context, state) => MyProfilePage()),
-    GoRoute(
-      path: "/user/profile/edit",
-      name: UserRoutes.editProfile,
-      builder: (context, state) {
-        // Extract the arguments passed to the route
-        final Map<String, dynamic> args = state.extra as Map<String, dynamic>;
-        return EditProfilePage(
-          currentName: args['currentName'],
-          currentAvatarPath: args['currentAvatarPath'],
-          currentAboutMe: args['currentAboutMe'],
-          currentPhone: args['currentPhone'],
-          currentEmail: args['currentEmail'],
-        );
-      },
-    ),
+
     //================================================================
 
     // Admin Routes ==================================================
