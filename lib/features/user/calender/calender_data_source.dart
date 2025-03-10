@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:eventra/features/user/home/data/model/booked_event.dart'; // UserEvent
@@ -31,13 +29,17 @@ class UserEventCalendarDataSource extends CalendarDataSource {
   @override
   Color getColor(int index) {
 
-    final random = Random();
-    return Color.fromARGB(
-      255,
-      random.nextInt(256),
-      random.nextInt(256),
-      random.nextInt(256),
-    );
+    final List<Color> colorPalette = [
+      Colors.blue,
+      Colors.green,
+      Colors.orange,
+      Colors.purple,
+      Colors.red,
+      Colors.teal,
+    ];
+
+    // Assign a color based on the index (cyclic)
+    return colorPalette[index % colorPalette.length];
   }
 
 
