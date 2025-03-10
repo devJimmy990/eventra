@@ -11,4 +11,10 @@ extension DateTimeExtension on DateTime {
     String formattedTime = formatter.format(this);
     return formattedTime;
   }
+
+  String encodeMonth() {
+    final DateFormat formatter = DateFormat('MMMM');
+    String formattedTime = formatter.format(this);
+    return formattedTime;
+  }
 }
