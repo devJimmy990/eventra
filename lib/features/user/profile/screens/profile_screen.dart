@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:eventra/features/user/profile/widgets/profile_about_tab.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class MyProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final User user = context.read<UserCubit>().user!;
-    print("avatar: ${user.avatar?.length ?? user.avatar}");
+    final Localization strings = Localization(context);
     return DefaultTabController(
       initialIndex: 0,
       length: 2,
@@ -42,7 +43,7 @@ class MyProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 TabBar(tabs: [
-                  Tab(text: 'About'),
+                  Tab(text: strings.googleSignIn),
                   Tab(text: 'Events'),
                 ]),
                 Expanded(
