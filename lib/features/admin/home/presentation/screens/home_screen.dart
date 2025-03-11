@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,11 +46,13 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    final Localization strings = Localization(context);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Welcome Admin',
+          strings.welcomeAdmin,
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.bold,
@@ -59,8 +62,8 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
         bottom: TabBar(
           controller: _tabController,
           tabs: [
-            Tab(text: "Upcoming"),
-            Tab(text: "Previous"),
+            Tab(text: strings.upcoming),
+            Tab(text: strings.previous),
           ],
         ),
       ),

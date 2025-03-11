@@ -1,4 +1,5 @@
 import 'package:eventra/core/constants/strings_manager.dart';
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/admin/event/extension/date_time.dart';
 import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ class AdminEventDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Localization strings = Localization(context);
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -22,7 +25,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
             pinned: true,
             iconTheme: IconThemeData(color: Colors.white),
             flexibleSpace: FlexibleSpaceBar(
-              title: Text("Event Details"),
+              title: Text(strings.eventDetails),
               background: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -111,7 +114,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    "About Event",
+                    strings.aboutEvent,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -132,7 +135,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Attendees",
+                        strings.attendees,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -145,7 +148,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                                   extra: event.attendees,
                                 ),
                             child: Text(
-                              "see all",
+                              strings.seeAll,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -156,7 +159,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 if (event.attendees.isEmpty)
-                  Center(child: Text("no attendees present"))
+                  Center(child: Text(strings.noAttendeesPresent))
               ],
             ),
           ),

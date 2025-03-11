@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -11,8 +12,9 @@ class UpcomingEvents extends StatelessWidget {
   const UpcomingEvents({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) {    final Localization strings = Localization(context);
+
+  return Scaffold(
       body: BlocConsumer<EventCubit, EventState>(
         listener: (context, state) {
           if (state is EventDeleted) {
@@ -21,7 +23,7 @@ class UpcomingEvents extends StatelessWidget {
               gravity: ToastGravity.BOTTOM,
               backgroundColor: Colors.red,
               toastLength: Toast.LENGTH_LONG,
-              msg: "event deleted successfully",
+              msg: strings.eventDeletedSuccessfully,
             );
           } else if (state is EventError) {
             Fluttertoast.showToast(

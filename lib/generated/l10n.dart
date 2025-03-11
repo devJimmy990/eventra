@@ -264,6 +264,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Events`
+  String get events {
+    return Intl.message('Events', name: 'events', desc: '', args: []);
+  }
+
+  /// `Welcome Admin`
+  String get welcomeAdmin {
+    return Intl.message(
+      'Welcome Admin',
+      name: 'welcomeAdmin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upcoming`
+  String get upcoming {
+    return Intl.message('Upcoming', name: 'upcoming', desc: '', args: []);
+  }
+
+  /// `Previous`
+  String get previous {
+    return Intl.message('Previous', name: 'previous', desc: '', args: []);
+  }
+
+  /// `Event Details`
+  String get eventDetails {
+    return Intl.message(
+      'Event Details',
+      name: 'eventDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Event`
+  String get aboutEvent {
+    return Intl.message('About Event', name: 'aboutEvent', desc: '', args: []);
+  }
+
+  /// `Attendees`
+  String get attendees {
+    return Intl.message('Attendees', name: 'attendees', desc: '', args: []);
+  }
+
+  /// `see all`
+  String get seeAll {
+    return Intl.message('see all', name: 'seeAll', desc: '', args: []);
+  }
+
+  /// `no attendees present`
+  String get noAttendeesPresent {
+    return Intl.message(
+      'no attendees present',
+      name: 'noAttendeesPresent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Events Request`
+  String get eventsRequest {
+    return Intl.message(
+      'Events Request',
+      name: 'eventsRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `data`
+  String get data {
+    return Intl.message('data', name: 'data', desc: '', args: []);
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
+
+  /// `create event`
+  String get createEvent {
+    return Intl.message(
+      'create event',
+      name: 'createEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No data available`
+  String get noDataAvailable {
+    return Intl.message(
+      'No data available',
+      name: 'noDataAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `event deleted successfully`
+  String get eventDeletedSuccessfully {
+    return Intl.message(
+      'event deleted successfully',
+      name: 'eventDeletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don/'t have An Account?`
+  String get dontHaveAnAccount {
+    return Intl.message(
+      'Don/\'t have An Account?',
+      name: 'dontHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message('Create', name: 'create', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -44,7 +44,7 @@ class MyProfilePage extends StatelessWidget {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 TabBar(tabs: [
                   Tab(text: strings.googleSignIn),
-                  Tab(text: 'Events'),
+                  Tab(text: strings.events),
                 ]),
                 Expanded(
                   child: TabBarView(

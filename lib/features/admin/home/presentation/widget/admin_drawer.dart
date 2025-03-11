@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,9 @@ class AdminDrawer extends StatelessWidget {
   const AdminDrawer({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final User admin = context.read<UserCubit>().user!;
+  Widget build(BuildContext context) {    final Localization strings = Localization(context);
+
+  final User admin = context.read<UserCubit>().user!;
     return Drawer(
       child: BlocListener<AuthenticationCubit, AuthenticationState>(
         listener: (context, state) {
@@ -49,7 +51,7 @@ class AdminDrawer extends StatelessWidget {
             // ),
             Spacer(),
             ListTile(
-              title: Text("Settings"),
+              title: Text(strings.settings),
               leading: Icon(Icons.settings),
               onTap: () {
                 Navigator.pop(context);
@@ -57,7 +59,7 @@ class AdminDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text("Logout"),
+              title: Text(strings.logout),
               leading: Icon(Icons.logout),
               onTap: () => context.read<AuthenticationCubit>().logout(),
             ),

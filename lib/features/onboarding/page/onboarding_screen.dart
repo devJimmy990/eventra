@@ -16,20 +16,32 @@ class OnboardingScreen extends StatelessWidget {
       context.goNamed(Routes.auth);
     }
 
-    return IntroductionScreen(
-      pages: pages,
-      onDone: finishOnboarding,
-      onSkip: finishOnboarding,
-      showSkipButton: true,
-      skip: const Text('Skip'),
-      next: const Icon(Icons.arrow_forward),
-      done: const Text('Get Started', style: TextStyle(fontWeight: FontWeight.w600)),
-      dotsDecorator: const DotsDecorator(
-        size: Size(10.0, 10.0),
-        color: Colors.grey,
-        activeSize: Size(10.0, 10.0),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image:
+                AssetImage("assets/images/on_boarding_images/bkonboarding.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: IntroductionScreen(
+          pages: pages,
+          onDone: finishOnboarding,
+          onSkip: finishOnboarding,
+          showSkipButton: true,
+          skip: const Text('Skip'),
+          next: const Icon(Icons.arrow_forward, color: Colors.white,),
+          done: const Text('Get Started',
+              style: TextStyle(fontWeight: FontWeight.w600)),
+          dotsDecorator: const DotsDecorator(
+            size: Size(10.0, 10.0),
+            color: Colors.grey,
+            activeSize: Size(10.0, 10.0),
+          ),
+          globalBackgroundColor: Colors.transparent,
+        ),
       ),
-      globalBackgroundColor: Colors.white,
     );
   }
 }
