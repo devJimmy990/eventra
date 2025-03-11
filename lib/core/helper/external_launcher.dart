@@ -21,7 +21,7 @@ Phone: $phone
 
 Message:
 $message
-        ''')}");
+''')}");
 
     await _launchUrl(uri);
   }
