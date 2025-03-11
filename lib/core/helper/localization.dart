@@ -19,6 +19,7 @@ class Localization {
   get eventsRequest => S.of(_context).eventsRequest;
   get logout => S.of(_context).logout;
   get settings => S.of(_context).settings;
+  get english => S.of(_context).english;
   get createEvent => S.of(_context).createEvent;
   get noDataAvailable => S.of(_context).noDataAvailable;
   get eventDeletedSuccessfully => S.of(_context).eventDeletedSuccessfully;

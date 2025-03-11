@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailEx": MessageLookupByLibrary.simpleMessage("Example@email.com"),
     "emailUs": MessageLookupByLibrary.simpleMessage("Email us"),
     "empty": MessageLookupByLibrary.simpleMessage("This field cannot be empty"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "eventCalendar": MessageLookupByLibrary.simpleMessage("Event Calendar"),
     "eventDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Event Deleted Successfully",

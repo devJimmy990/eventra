@@ -75,5 +75,6 @@
   "areaName": "اسم المنطقة",
   "required": "مطلوب",
   "address": "العنوان",
-  "googleMapUrl": "رابط خرائط جوجل"
+  "googleMapUrl": "رابط خرائط جوجل",
+  "english": "العربية"
 }

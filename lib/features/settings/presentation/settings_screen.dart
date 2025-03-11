@@ -29,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.browse_gallery_outlined),
             title:
-                Text(SettingsCubit().state.locale == "ar" ? "العربية" : "English"),
+                Text(SettingsCubit().state.locale == "ar" ? "العربية" : strings.english),
             trailing: InkWell(
               onTap: () {
                 context.read<SettingsCubit>().toggleLanguage();

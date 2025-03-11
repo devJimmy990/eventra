@@ -75,5 +75,6 @@
   "areaName": "Area Name",
   "required": "Required",
   "address": "Address",
-  "googleMapUrl": "Google Map URL"
+  "googleMapUrl": "Google Map URL",
+  "english": "English"
 }

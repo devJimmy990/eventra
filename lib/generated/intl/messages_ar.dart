@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "empty": MessageLookupByLibrary.simpleMessage(
       "هذا الحقل لا يمكن أن يكون فارغاً",
     ),
+    "english": MessageLookupByLibrary.simpleMessage("العربية"),
     "eventCalendar": MessageLookupByLibrary.simpleMessage("تقويم الأحداث"),
     "eventDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم حذف الحدث بنجاح",
