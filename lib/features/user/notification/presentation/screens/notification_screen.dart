@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -5,9 +6,11 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Localization strings = Localization(context);
+
     return Scaffold(
       body: Center(
-        child: Text("Notification Screen"),
+        child: Text(strings.notificationScreen),
       ),
     );
   }

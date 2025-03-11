@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/ui/inputs.dart';
@@ -148,7 +149,7 @@ class _BuildSignupAction extends StatelessWidget {
       required this.onLogin});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { final strings = Localization(context);
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if (state is UserCreated) {
@@ -221,14 +222,14 @@ class _BuildSignupAction extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Already have an account? ",
+                  strings.alreadyHaveAnAccount,
                 ).animate().slideX(
                       duration: const Duration(seconds: 1),
                     ),
                 TextButton(
                         onPressed: onLogin,
                         child: Text(
-                          "login",
+                         strings.login,
                         ))
                     .animate()
                     .slideX(

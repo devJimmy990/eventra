@@ -26,12 +26,27 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sign in with Google",
     ),
     "aboutEvent": MessageLookupByLibrary.simpleMessage("About Event"),
+    "accAddress": MessageLookupByLibrary.simpleMessage("ACC Address:"),
+    "accAddressDetails": MessageLookupByLibrary.simpleMessage(
+      "U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.",
+    ),
     "accCreated": MessageLookupByLibrary.simpleMessage(
       "Account created successfully",
     ),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "alreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
     "appName": MessageLookupByLibrary.simpleMessage("Eventra"),
+    "areaName": MessageLookupByLibrary.simpleMessage("Area Name"),
     "attendees": MessageLookupByLibrary.simpleMessage("Attendees"),
+    "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
+    "bookmark": MessageLookupByLibrary.simpleMessage("Bookmark"),
+    "buyTicket": MessageLookupByLibrary.simpleMessage("Buy Ticket"),
+    "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
+    "callUs": MessageLookupByLibrary.simpleMessage("Call us"),
     "confirmPass": MessageLookupByLibrary.simpleMessage("Confirm password"),
+    "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
     "create": MessageLookupByLibrary.simpleMessage("Create"),
     "createEvent": MessageLookupByLibrary.simpleMessage("create event"),
     "data": MessageLookupByLibrary.simpleMessage("data"),
@@ -39,19 +54,42 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don/\'t have An Account?",
     ),
     "emailEx": MessageLookupByLibrary.simpleMessage("abc@email.com"),
+    "emailUs": MessageLookupByLibrary.simpleMessage("Email us"),
     "empty": MessageLookupByLibrary.simpleMessage("This field cannot be empty"),
+    "eventCalendar": MessageLookupByLibrary.simpleMessage("Event Calendar"),
     "eventDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "event deleted successfully",
     ),
     "eventDetails": MessageLookupByLibrary.simpleMessage("Event Details"),
+    "eventWillBeHeldInEmbassy": MessageLookupByLibrary.simpleMessage(
+      "Event will be held in embassy",
+    ),
+    "eventWillBeHeldInOther": MessageLookupByLibrary.simpleMessage(
+      "event will be held in other",
+    ),
     "events": MessageLookupByLibrary.simpleMessage("Events"),
     "eventsRequest": MessageLookupByLibrary.simpleMessage("Events Request"),
+    "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+    "favoriteEvents": MessageLookupByLibrary.simpleMessage("Favorite Events"),
     "forgetPass": MessageLookupByLibrary.simpleMessage("Forget Password?"),
+    "freeMembership": MessageLookupByLibrary.simpleMessage("Free Membership"),
+    "freeMembershipDetails": MessageLookupByLibrary.simpleMessage(
+      "Join us now and get a free membership for 3 months.",
+    ),
     "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
+    "furtherInquiries": MessageLookupByLibrary.simpleMessage(
+      "Further Inquiries",
+    ),
+    "furtherInquiriesDetails": MessageLookupByLibrary.simpleMessage(
+      "ACCairo@state.gov",
+    ),
+    "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "googleMapUrl": MessageLookupByLibrary.simpleMessage("Google Map URL"),
     "hasAcc": MessageLookupByLibrary.simpleMessage("Already have an account?"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid Email",
     ),
+    "login": MessageLookupByLibrary.simpleMessage("login"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "noAcc": MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
     "noAttendeesPresent": MessageLookupByLibrary.simpleMessage(
@@ -60,18 +98,33 @@ class MessageLookup extends MessageLookupByLibrary {
     "noDataAvailable": MessageLookupByLibrary.simpleMessage(
       "No data available",
     ),
+    "noEventsAvailable": MessageLookupByLibrary.simpleMessage(
+      "No events available",
+    ),
     "noUpcomingEvents": MessageLookupByLibrary.simpleMessage(
       "No Upcoming Events",
     ),
     "noUser": MessageLookupByLibrary.simpleMessage(
       "No user found for that email.",
     ),
+    "notificationScreen": MessageLookupByLibrary.simpleMessage(
+      "Notification Screen",
+    ),
+    "ok": MessageLookupByLibrary.simpleMessage("OK"),
+    "openingHours": MessageLookupByLibrary.simpleMessage("Opening Hours:"),
+    "openingHoursDetails": MessageLookupByLibrary.simpleMessage(
+      "Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays.",
+    ),
     "or": MessageLookupByLibrary.simpleMessage("OR"),
     "passNotMatch": MessageLookupByLibrary.simpleMessage(
       "Passwords doesn\'t match",
     ),
+    "pleaseAddAnEvent": MessageLookupByLibrary.simpleMessage(
+      "Please add an event",
+    ),
     "previous": MessageLookupByLibrary.simpleMessage("Previous"),
     "rememberPass": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "required": MessageLookupByLibrary.simpleMessage("required"),
     "seeAll": MessageLookupByLibrary.simpleMessage("see all"),
     "seeMore": MessageLookupByLibrary.simpleMessage("See More.."),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -80,6 +133,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "specialAnnouncements": MessageLookupByLibrary.simpleMessage(
+      "Special Announcements",
+    ),
+    "specialAnnouncementsDetails": MessageLookupByLibrary.simpleMessage(
+      "Stay tuned for our special announcements.",
+    ),
     "upComingEvents": MessageLookupByLibrary.simpleMessage("Upcoming Events"),
     "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
     "usedEmail": MessageLookupByLibrary.simpleMessage(

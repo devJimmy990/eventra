@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
@@ -10,6 +11,7 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = Localization(context);
     final List<PageViewModel> pages = onboardingModel;
     void finishOnboarding() {
       SharedPreference.setBool(key: 'onboarding_complete', value: true);
@@ -30,9 +32,9 @@ class OnboardingScreen extends StatelessWidget {
           onDone: finishOnboarding,
           onSkip: finishOnboarding,
           showSkipButton: true,
-          skip: const Text('Skip'),
+          skip:  Text(strings.skip),
           next: const Icon(Icons.arrow_forward, color: Colors.white,),
-          done: const Text('Get Started',
+          done:  Text(strings.getStarted,
               style: TextStyle(fontWeight: FontWeight.w600)),
           dotsDecorator: const DotsDecorator(
             size: Size(10.0, 10.0),

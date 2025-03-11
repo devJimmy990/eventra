@@ -1,27 +1,30 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GeneralInfoBottomSheet extends StatelessWidget {
   const GeneralInfoBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final strings = Localization(context);
+
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
         child: Column(
           spacing: 15,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildSection("ACC Address:",
-                "U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City."),
-            _buildSection("Opening Hours:",
-                "Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays."),
-            _buildSection("Free Membership",
-                "Join us now and get a free membership for 3 months."),
-            _buildSection("Special Announcements",
-                "Stay tuned for our special announcements."),
-            _buildSection("Further Inquiries", "ACCairo@state.gov"),
+            _buildSection(strings.accAddress, strings.accAddressDetails),
+            _buildSection(strings.openingHours, strings.openingHoursDetails),
+            _buildSection(
+                strings.freeMembership, strings.freeMembershipDetails),
+            _buildSection(strings.specialAnnouncements,
+                strings.specialAnnouncementsDetails),
+            _buildSection(
+                strings.furtherInquiries, strings.furtherInquiriesDetails),
           ],
         ),
       ),

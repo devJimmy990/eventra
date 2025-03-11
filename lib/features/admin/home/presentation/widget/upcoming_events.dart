@@ -12,9 +12,10 @@ class UpcomingEvents extends StatelessWidget {
   const UpcomingEvents({super.key});
 
   @override
-  Widget build(BuildContext context) {    final Localization strings = Localization(context);
+  Widget build(BuildContext context) {
+    final Localization strings = Localization(context);
 
-  return Scaffold(
+    return Scaffold(
       body: BlocConsumer<EventCubit, EventState>(
         listener: (context, state) {
           if (state is EventDeleted) {
@@ -45,11 +46,11 @@ class UpcomingEvents extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                      'assets/images/no_upcoming_events.png'), //todo: editing the image
+                  Image.asset('assets/images/no_upcoming_events.png'),
+                  //todo: editing the image
                   SizedBox(height: 5.h),
                   Text(
-                    'Please add an event',
+                    strings.pleaseAddAnEvent,
                     style: TextStyle(fontSize: 16.sp),
                   ),
                 ],
@@ -111,4 +112,3 @@ class UpcomingEvents extends StatelessWidget {
     );
   }
 }
-

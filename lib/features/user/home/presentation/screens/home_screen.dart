@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/user/home/presentation/view/calender_view.dart';
 import 'package:eventra/features/user/home/presentation/view/explore_view.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
@@ -11,9 +12,11 @@ class UserHomeScreen extends StatefulWidget {
 }
 
 class _UserHomeScreenState extends State<UserHomeScreen> {
+  
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final strings = Localization(context);
     return Scaffold(
       drawer: UserDrawer(),
       body: pages[_selectedIndex],
@@ -24,14 +27,14 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
         unselectedItemColor: Colors.grey[500],
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore, size: 28),
-            label: 'Explore',
+            icon: const Icon(Icons.explore, size: 28),
+            label: strings.explore,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.event, size: 28),
-            label: 'Calendar',
+            icon: const Icon(Icons.event, size: 28),
+            label: strings.calendar,
           ),
         ],
       ),

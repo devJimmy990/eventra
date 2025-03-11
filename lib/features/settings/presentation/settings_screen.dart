@@ -1,6 +1,6 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/settings/cubit/settings_cubit.dart';
 import 'package:eventra/features/settings/cubit/settings_state.dart';
-import 'package:eventra/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +8,7 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { final strings = Localization(context);
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -37,7 +37,7 @@ class SettingsScreen extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(S.of(context).appName),
+                  Text(strings.appName),
                   Icon(Icons.change_circle_outlined),
                 ],
               ),

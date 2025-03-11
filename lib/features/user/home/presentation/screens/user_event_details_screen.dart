@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
@@ -8,18 +9,20 @@ import 'package:eventra/features/admin/event/extension/date_time.dart';
 import 'package:eventra/features/user/home/data/model/booked_event.dart';
 
 class UserEventDetailsScreen extends StatelessWidget {
+  
   final UserEvent event;
   const UserEventDetailsScreen({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
+    final strings = Localization(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Event Details"),
+        title: Text(strings.eventDetails),
         actions: [
           IconButton(
             icon: const Icon(Icons.bookmark),
-            tooltip: 'Bookmark',
+            tooltip: strings.bookmark,
             onPressed: () {},
           ),
         ],
@@ -106,11 +109,11 @@ class UserEventDetailsScreen extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   // About Event Section
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      "About Event",
-                      style: TextStyle(
+                      strings.aboutEvent,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
@@ -157,8 +160,11 @@ class UserEventDetailsScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 child: Text(
-                  event.price == 0 ? "Book Now" : "Buy Ticket \$${event.price}",
+                  event.price == 0
+                      ? "${strings.bookNow}"
+                      : "${strings.buyTicket} \$${event.price}",
                 ),
+
               ),
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/features/user/bookmarks/cubit/bookmark_cubit.dart';
@@ -9,9 +10,10 @@ class BookmarkScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = Localization(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorite Events'),
+        title: Text(strings.favoriteEvents),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -20,7 +22,7 @@ class BookmarkScreen extends StatelessWidget {
             if (state is BookmarkLoading) {
               return Center(child: CircularProgressIndicator());
             } else if (state is BookmarkEmpty) {
-              return Text("data");
+              return Text(strings.data);
             } else if (state is BookmarkError) {
               return Text("error: ${state.error}");
             } else if (state is BookmarkLoaded) {

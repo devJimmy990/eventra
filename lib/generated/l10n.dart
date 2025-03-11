@@ -394,6 +394,266 @@ class S {
   String get create {
     return Intl.message('Create', name: 'create', desc: '', args: []);
   }
+
+  /// `Notification Screen`
+  String get notificationScreen {
+    return Intl.message(
+      'Notification Screen',
+      name: 'notificationScreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event Calendar`
+  String get eventCalendar {
+    return Intl.message(
+      'Event Calendar',
+      name: 'eventCalendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No events available`
+  String get noEventsAvailable {
+    return Intl.message(
+      'No events available',
+      name: 'noEventsAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bookmark`
+  String get bookmark {
+    return Intl.message('Bookmark', name: 'bookmark', desc: '', args: []);
+  }
+
+  /// `Book Now`
+  String get bookNow {
+    return Intl.message('Book Now', name: 'bookNow', desc: '', args: []);
+  }
+
+  /// `Buy Ticket`
+  String get buyTicket {
+    return Intl.message('Buy Ticket', name: 'buyTicket', desc: '', args: []);
+  }
+
+  /// `Explore`
+  String get explore {
+    return Intl.message('Explore', name: 'explore', desc: '', args: []);
+  }
+
+  /// `Calendar`
+  String get calendar {
+    return Intl.message('Calendar', name: 'calendar', desc: '', args: []);
+  }
+
+  /// `Contact Us`
+  String get contactUs {
+    return Intl.message('Contact Us', name: 'contactUs', desc: '', args: []);
+  }
+
+  /// `Call us`
+  String get callUs {
+    return Intl.message('Call us', name: 'callUs', desc: '', args: []);
+  }
+
+  /// `Email us`
+  String get emailUs {
+    return Intl.message('Email us', name: 'emailUs', desc: '', args: []);
+  }
+
+  /// `ACC Address:`
+  String get accAddress {
+    return Intl.message('ACC Address:', name: 'accAddress', desc: '', args: []);
+  }
+
+  /// `U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.`
+  String get accAddressDetails {
+    return Intl.message(
+      'U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.',
+      name: 'accAddressDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opening Hours:`
+  String get openingHours {
+    return Intl.message(
+      'Opening Hours:',
+      name: 'openingHours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays.`
+  String get openingHoursDetails {
+    return Intl.message(
+      'Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays.',
+      name: 'openingHoursDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free Membership`
+  String get freeMembership {
+    return Intl.message(
+      'Free Membership',
+      name: 'freeMembership',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join us now and get a free membership for 3 months.`
+  String get freeMembershipDetails {
+    return Intl.message(
+      'Join us now and get a free membership for 3 months.',
+      name: 'freeMembershipDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Special Announcements`
+  String get specialAnnouncements {
+    return Intl.message(
+      'Special Announcements',
+      name: 'specialAnnouncements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stay tuned for our special announcements.`
+  String get specialAnnouncementsDetails {
+    return Intl.message(
+      'Stay tuned for our special announcements.',
+      name: 'specialAnnouncementsDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Further Inquiries`
+  String get furtherInquiries {
+    return Intl.message(
+      'Further Inquiries',
+      name: 'furtherInquiries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACCairo@state.gov`
+  String get furtherInquiriesDetails {
+    return Intl.message(
+      'ACCairo@state.gov',
+      name: 'furtherInquiriesDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite Events`
+  String get favoriteEvents {
+    return Intl.message(
+      'Favorite Events',
+      name: 'favoriteEvents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get skip {
+    return Intl.message('Skip', name: 'skip', desc: '', args: []);
+  }
+
+  /// `Get Started`
+  String get getStarted {
+    return Intl.message('Get Started', name: 'getStarted', desc: '', args: []);
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message('OK', name: 'ok', desc: '', args: []);
+  }
+
+  /// `Already have an account?`
+  String get alreadyHaveAnAccount {
+    return Intl.message(
+      'Already have an account?',
+      name: 'alreadyHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `login`
+  String get login {
+    return Intl.message('login', name: 'login', desc: '', args: []);
+  }
+
+  /// `Please add an event`
+  String get pleaseAddAnEvent {
+    return Intl.message(
+      'Please add an event',
+      name: 'pleaseAddAnEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event will be held in embassy`
+  String get eventWillBeHeldInEmbassy {
+    return Intl.message(
+      'Event will be held in embassy',
+      name: 'eventWillBeHeldInEmbassy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `event will be held in other`
+  String get eventWillBeHeldInOther {
+    return Intl.message(
+      'event will be held in other',
+      name: 'eventWillBeHeldInOther',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Area Name`
+  String get areaName {
+    return Intl.message('Area Name', name: 'areaName', desc: '', args: []);
+  }
+
+  /// `required`
+  String get required {
+    return Intl.message('required', name: 'required', desc: '', args: []);
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message('Address', name: 'address', desc: '', args: []);
+  }
+
+  /// `Google Map URL`
+  String get googleMapUrl {
+    return Intl.message(
+      'Google Map URL',
+      name: 'googleMapUrl',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

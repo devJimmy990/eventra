@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomDialog extends StatelessWidget {
@@ -6,7 +7,7 @@ class CustomDialog extends StatelessWidget {
   final void Function() onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { final strings = Localization(context);
     return AlertDialog(
         icon: Align(
           alignment: Alignment.centerLeft,
@@ -24,7 +25,7 @@ class CustomDialog extends StatelessWidget {
           TextButton(
             onPressed: onTap,
             child: Text(
-              "OK",
+              strings.ok,
               style: Theme.of(context).textTheme.titleSmall,
             ),
           )

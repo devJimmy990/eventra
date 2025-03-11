@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:eventra/core/ui/inputs.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { final strings = Localization(context);
     return Card(
       elevation: 12,
       shadowColor: Colors.grey,
@@ -44,8 +45,8 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
                 ),
                 Text(
                   isInEmbassy
-                      ? "event will be held in embassy"
-                      : "event will be held in other",
+                      ? strings.eventWillBeHeldInEmbassy
+                      : strings.eventWillBeHeldInOther,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -59,21 +60,21 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
                 spacing: 10.h,
                 children: [
                   TextInputField(
-                    label: "Area Name",
+                    label: strings.areaName,
                     controller: widget.nameController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "required";
+                        return strings.required;
                       }
                       return null;
                     },
                   ),
                   TextInputField(
-                    label: "Address",
+                    label: strings.address,
                     controller: widget.addressController,
                   ),
                   TextInputField(
-                    label: "Google Map URL",
+                    label: strings.googleMapUrl,
                     controller: widget.urlController,
                   ),
                 ],

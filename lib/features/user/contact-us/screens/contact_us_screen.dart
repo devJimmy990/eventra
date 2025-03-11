@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
@@ -9,8 +10,10 @@ class ContactUsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = Localization(context);
+
     return Scaffold(
-      appBar: AppBar(title: Text("Contact Us")),
+      appBar: AppBar(title: Text(strings.contactUs)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
@@ -41,13 +44,13 @@ class ContactUsScreen extends StatelessWidget {
                   Expanded(
                       child: _BuildMasterContactCard(
                     icon: Icons.call,
-                    text: "Call us",
+                    text: strings.callUs,
                     onPress: () => ExternalLauncher.launchCaller(),
                   )),
                   Expanded(
                       child: _BuildMasterContactCard(
                     icon: Icons.mail,
-                    text: "Email us",
+                    text: strings.emailUs,
                     onPress: () {
                       showModalBottomSheet(
                         context: context,

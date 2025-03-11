@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
 import 'package:eventra/features/user/home/cubit/event_cubit.dart';
@@ -15,8 +16,10 @@ class EventCalendarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Localization strings = Localization(context);
+
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Event Calendar"))),
+      appBar: AppBar(title: Center(child: Text(strings.eventCalendar))),
       body: BlocBuilder<UserEventCubit, UserEventState>(
         builder: (context, state) {
           if (state is EventLoading) {
@@ -56,7 +59,7 @@ class EventCalendarView extends StatelessWidget {
               },
             );
           }
-          return const Center(child: Text("No events available"));
+          return  Center(child: Text(strings.noEventsAvailable));
         },
       ),
     );
