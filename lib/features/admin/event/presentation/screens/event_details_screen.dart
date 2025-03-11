@@ -8,9 +8,9 @@ import 'package:eventra/core/helper/external_launcher.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
 
-class EventDetailsScreen extends StatelessWidget {
+class AdminEventDetailsScreen extends StatelessWidget {
   final AdminEvent event;
-  const EventDetailsScreen({super.key, required this.event});
+  const AdminEventDetailsScreen({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {

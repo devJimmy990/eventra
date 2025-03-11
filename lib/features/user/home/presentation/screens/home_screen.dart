@@ -1,5 +1,5 @@
-import 'package:eventra/features/user/calender/calender.dart';
-import 'package:eventra/features/user/home/presentation/screens/explore_view.dart';
+import 'package:eventra/features/user/home/presentation/view/calender_view.dart';
+import 'package:eventra/features/user/home/presentation/view/explore_view.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +40,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 }
 
 var pages = [
-  ExploreView(),
-  EventCalendarPage(),
+  EventExploreView(),
+  EventCalendarView(),
 ];
