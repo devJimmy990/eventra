@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
@@ -121,6 +123,27 @@ class UserEventDetailsScreen extends StatelessWidget {
                       textAlign: TextAlign.justify,
                     ),
                   ),
+                  QrImageView(
+                    data: event.toString(),
+                    version: QrVersions.auto,
+                    size: 320,
+                    gapless: false,
+                    embeddedImage:
+                        AssetImage('assets/images/my_embedded_image.png'),
+                    embeddedImageStyle: QrEmbeddedImageStyle(
+                      size: Size(80, 80),
+                    ),
+                  ),
+                  QrImageView(
+                    data: json.encode(event),
+                    version: QrVersions.auto,
+                    size: 200.0,
+                    backgroundColor: Colors.white,
+                    eyeStyle: QrEyeStyle(
+                      eyeShape: QrEyeShape.square,
+                      color: Colors.black,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -132,9 +155,7 @@ class UserEventDetailsScreen extends StatelessWidget {
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  // Add booking or ticket purchase functionality
-                },
+                onPressed: () {},
                 child: Text(
                   event.price == 0 ? "Book Now" : "Buy Ticket \$${event.price}",
                 ),
