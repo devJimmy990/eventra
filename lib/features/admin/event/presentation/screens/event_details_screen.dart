@@ -1,12 +1,14 @@
-import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/admin/event/extension/date_time.dart';
-import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
-import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
+import 'package:eventra/features/admin/event/extension/string.dart';
+import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/event/extension/date_time.dart';
 
 class AdminEventDetailsScreen extends StatelessWidget {
   final AdminEvent event;
@@ -52,7 +54,68 @@ class AdminEventDetailsScreen extends StatelessWidget {
                   size: 38,
                 ),
                 onPressed: () async {
-                  // Implement QR code scanning
+                  await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AiBarcodeScanner(
+                        onDispose: () {},
+                        hideGalleryButton: true,
+                        controller: MobileScannerController(
+                          detectionSpeed: DetectionSpeed.noDuplicates,
+                        ),
+                        onDetect: (BarcodeCapture capture) {
+                          final String? result =
+                              capture.barcodes.first.rawValue;
+                          if (result != null) {
+                            Navigator.pop(context);
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Center(
+                                    child: Text(
+                                  'Event QR Code',
+                                  style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                                content: Text(result),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(false),
+                                    child: Text(
+                                      'Cancel',
+                                      style: TextStyle(
+                                          color: Colors.green, fontSize: 14.sp),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(true),
+                                    child: Text(
+                                      'Delete',
+                                      style: TextStyle(
+                                          color: Colors.red, fontSize: 14.sp),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        },
+                        validator: (value) {
+                          if (value.barcodes.isEmpty) {
+                            return false;
+                          }
+                          if (!(value.barcodes.first.rawValue
+                                  ?.contains('flutter.dev') ??
+                              false)) {
+                            return false;
+                          }
+                          return true;
+                        },
+                      ),
+                    ),
+                  );
                 },
               ),
             ],
