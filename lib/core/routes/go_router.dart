@@ -1,4 +1,7 @@
 import 'package:eventra/features/user/home/cubit/event_cubit.dart';
+import 'package:eventra/features/user/home/data/model/booked_event.dart';
+import 'package:eventra/features/user/home/presentation/screens/home_screen.dart';
+import 'package:eventra/features/user/home/presentation/screens/user_event_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,11 +14,10 @@ import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:eventra/features/user/bookmarks/cubit/bookmark_cubit.dart';
 import 'package:eventra/features/landing/presentation/landing_screen.dart';
 import 'package:eventra/features/settings/presentation/settings_screen.dart';
-import 'package:eventra/features/user/home/presentation/screens/home_screen.dart';
 import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart';
 import 'package:eventra/features/admin/home/presentation/screens/home_screen.dart';
 import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
-import 'package:eventra/features/user/profile/presentation/screens/profile_screen.dart';
+import 'package:eventra/features/user/profile/screens/profile_screen.dart';
 import 'package:eventra/features/user/bookmarks/presentation/screens/bookmark_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_details_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/events_request_screen.dart';
@@ -88,10 +90,18 @@ final router = GoRouter(
               child: BookmarkScreen(),
             )),
     GoRoute(
-        path: "/user/profile",
-        name: UserRoutes.profile,
-        builder: (context, state) => MyProfilePage()),
-
+      path: "/user/profile",
+      name: UserRoutes.profile,
+      builder: (context, state) => MyProfilePage(),
+    ),
+    GoRoute(
+      path: "/user/event",
+      name: UserRoutes.event,
+      builder: (context, state) {
+        final UserEvent event = state.extra as UserEvent;
+        return UserEventDetailsScreen(event: event);
+      },
+    ),
     //================================================================
 
     // Admin Routes ==================================================
@@ -114,7 +124,7 @@ final router = GoRouter(
       name: AdminRoutes.eventDetails,
       builder: (context, state) {
         final AdminEvent event = state.extra as AdminEvent;
-        return EventDetailsScreen(event: event);
+        return AdminEventDetailsScreen(event: event);
       },
     ),
     GoRoute(

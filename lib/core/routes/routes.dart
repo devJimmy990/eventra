@@ -7,11 +7,12 @@ class Routes {
 
 class UserRoutes {
   static const String home = "user-home";
+  static const String event = "user-event";
   static const String contact = "user-contact";
   static const String profile = "user-profile";
   static const String bookmark = "user-bookmark";
-  static const String editProfile = "user-profile-edit";
   static const String calendar = "user-calendar";
+  static const String editProfile = "user-profile-edit";
 }
 
 class AdminRoutes {
