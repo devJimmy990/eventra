@@ -75,9 +75,14 @@ class S {
     return Intl.message('Full name', name: 'fullName', desc: '', args: []);
   }
 
-  /// `abc@email.com`
+  /// `Example@email.com`
   String get emailEx {
-    return Intl.message('abc@email.com', name: 'emailEx', desc: '', args: []);
+    return Intl.message(
+      'Example@email.com',
+      name: 'emailEx',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Your password`
@@ -310,15 +315,15 @@ class S {
     return Intl.message('Attendees', name: 'attendees', desc: '', args: []);
   }
 
-  /// `see all`
+  /// `See all`
   String get seeAll {
-    return Intl.message('see all', name: 'seeAll', desc: '', args: []);
+    return Intl.message('See all', name: 'seeAll', desc: '', args: []);
   }
 
-  /// `no attendees present`
+  /// `No attendees present`
   String get noAttendeesPresent {
     return Intl.message(
-      'no attendees present',
+      'No attendees present',
       name: 'noAttendeesPresent',
       desc: '',
       args: [],
@@ -335,9 +340,9 @@ class S {
     );
   }
 
-  /// `data`
+  /// `Data`
   String get data {
-    return Intl.message('data', name: 'data', desc: '', args: []);
+    return Intl.message('Data', name: 'data', desc: '', args: []);
   }
 
   /// `Logout`
@@ -350,10 +355,10 @@ class S {
     return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
 
-  /// `create event`
+  /// `Create Event`
   String get createEvent {
     return Intl.message(
-      'create event',
+      'Create Event',
       name: 'createEvent',
       desc: '',
       args: [],
@@ -370,20 +375,20 @@ class S {
     );
   }
 
-  /// `event deleted successfully`
+  /// `Event Deleted Successfully`
   String get eventDeletedSuccessfully {
     return Intl.message(
-      'event deleted successfully',
+      'Event Deleted Successfully',
       name: 'eventDeletedSuccessfully',
       desc: '',
       args: [],
     );
   }
 
-  /// `Don/'t have An Account?`
+  /// `Don't have An Account?`
   String get dontHaveAnAccount {
     return Intl.message(
-      'Don/\'t have An Account?',
+      'Don\'t have An Account?',
       name: 'dontHaveAnAccount',
       desc: '',
       args: [],
@@ -560,10 +565,10 @@ class S {
     );
   }
 
-  /// `Favorite Events`
+  /// `Bookmark Events`
   String get favoriteEvents {
     return Intl.message(
-      'Favorite Events',
+      'Bookmark Events',
       name: 'favoriteEvents',
       desc: '',
       args: [],
@@ -595,9 +600,9 @@ class S {
     );
   }
 
-  /// `login`
+  /// `Login`
   String get login {
-    return Intl.message('login', name: 'login', desc: '', args: []);
+    return Intl.message('Login', name: 'login', desc: '', args: []);
   }
 
   /// `Please add an event`
@@ -620,10 +625,10 @@ class S {
     );
   }
 
-  /// `event will be held in other`
+  /// `Event will be held in other`
   String get eventWillBeHeldInOther {
     return Intl.message(
-      'event will be held in other',
+      'Event will be held in other',
       name: 'eventWillBeHeldInOther',
       desc: '',
       args: [],
@@ -635,9 +640,9 @@ class S {
     return Intl.message('Area Name', name: 'areaName', desc: '', args: []);
   }
 
-  /// `required`
+  /// `Required`
   String get required {
-    return Intl.message('required', name: 'required', desc: '', args: []);
+    return Intl.message('Required', name: 'required', desc: '', args: []);
   }
 
   /// `Address`

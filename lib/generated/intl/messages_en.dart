@@ -48,29 +48,29 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmPass": MessageLookupByLibrary.simpleMessage("Confirm password"),
     "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
     "create": MessageLookupByLibrary.simpleMessage("Create"),
-    "createEvent": MessageLookupByLibrary.simpleMessage("create event"),
-    "data": MessageLookupByLibrary.simpleMessage("data"),
+    "createEvent": MessageLookupByLibrary.simpleMessage("Create Event"),
+    "data": MessageLookupByLibrary.simpleMessage("Data"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
-      "Don/\'t have An Account?",
+      "Don\'t have An Account?",
     ),
-    "emailEx": MessageLookupByLibrary.simpleMessage("abc@email.com"),
+    "emailEx": MessageLookupByLibrary.simpleMessage("Example@email.com"),
     "emailUs": MessageLookupByLibrary.simpleMessage("Email us"),
     "empty": MessageLookupByLibrary.simpleMessage("This field cannot be empty"),
     "eventCalendar": MessageLookupByLibrary.simpleMessage("Event Calendar"),
     "eventDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
-      "event deleted successfully",
+      "Event Deleted Successfully",
     ),
     "eventDetails": MessageLookupByLibrary.simpleMessage("Event Details"),
     "eventWillBeHeldInEmbassy": MessageLookupByLibrary.simpleMessage(
       "Event will be held in embassy",
     ),
     "eventWillBeHeldInOther": MessageLookupByLibrary.simpleMessage(
-      "event will be held in other",
+      "Event will be held in other",
     ),
     "events": MessageLookupByLibrary.simpleMessage("Events"),
     "eventsRequest": MessageLookupByLibrary.simpleMessage("Events Request"),
     "explore": MessageLookupByLibrary.simpleMessage("Explore"),
-    "favoriteEvents": MessageLookupByLibrary.simpleMessage("Favorite Events"),
+    "favoriteEvents": MessageLookupByLibrary.simpleMessage("Bookmark Events"),
     "forgetPass": MessageLookupByLibrary.simpleMessage("Forget Password?"),
     "freeMembership": MessageLookupByLibrary.simpleMessage("Free Membership"),
     "freeMembershipDetails": MessageLookupByLibrary.simpleMessage(
@@ -89,11 +89,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid Email",
     ),
-    "login": MessageLookupByLibrary.simpleMessage("login"),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "noAcc": MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
     "noAttendeesPresent": MessageLookupByLibrary.simpleMessage(
-      "no attendees present",
+      "No attendees present",
     ),
     "noDataAvailable": MessageLookupByLibrary.simpleMessage(
       "No data available",
@@ -124,8 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "previous": MessageLookupByLibrary.simpleMessage("Previous"),
     "rememberPass": MessageLookupByLibrary.simpleMessage("Remember me"),
-    "required": MessageLookupByLibrary.simpleMessage("required"),
-    "seeAll": MessageLookupByLibrary.simpleMessage("see all"),
+    "required": MessageLookupByLibrary.simpleMessage("Required"),
+    "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
     "seeMore": MessageLookupByLibrary.simpleMessage("See More.."),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "shortPass": MessageLookupByLibrary.simpleMessage(
