@@ -1,8 +1,8 @@
 class Routes {
-  static const String auth = "auth";
-  static const String landing = "landing";
-  static const String settings = "settings";
-  static const String onboarding = "onboarding";
+  static const String auth = "app-auth";
+  static const String landing = "app-landing";
+  static const String settings = "app-settings";
+  static const String onboarding = "app-onboarding";
 }
 
 class UserRoutes {
