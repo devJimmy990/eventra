@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
-import 'package:eventra/features/admin/event/model/base_event.dart';
+import 'package:eventra/features/admin/data/model/base_event.dart';
 import 'package:eventra/features/admin/controller/event_category_controller.dart';
 
 class ProfileAboutTab extends StatefulWidget {

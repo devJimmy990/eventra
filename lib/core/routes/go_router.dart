@@ -1,15 +1,12 @@
-import 'package:eventra/features/user/bookmarks/cubit/bookmark_cubit.dart';
-import 'package:eventra/features/user/home/cubit/event/event_cubit.dart';
-import 'package:eventra/features/user/home/data/model/booked_event.dart';
+import 'package:eventra/features/user/event/data/models/booked_event.dart';
 import 'package:eventra/features/user/home/presentation/screens/home_screen.dart';
-import 'package:eventra/features/user/home/presentation/screens/user_event_details_screen.dart';
+import 'package:eventra/features/user/event/presentation/user_event_details_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
-import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/data/model/admin_event.dart';
 import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:eventra/features/landing/presentation/landing_screen.dart';
 import 'package:eventra/features/settings/presentation/settings_screen.dart';
@@ -18,9 +15,9 @@ import 'package:eventra/features/admin/presentation/screens/home_screen.dart';
 import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
 import 'package:eventra/features/user/profile/screens/profile_screen.dart';
 import 'package:eventra/features/user/bookmarks/presentation/screens/bookmark_screen.dart';
-import 'package:eventra/features/admin/event/presentation/screens/event_details_screen.dart';
+import 'package:eventra/features/admin/presentation/screens/event_details_screen.dart';
 import 'package:eventra/features/admin/presentation/views/events_requests_view.dart';
-import 'package:eventra/features/admin/event/presentation/screens/event_attendees_list_screen.dart';
+import 'package:eventra/features/admin/presentation/screens/event_attendees_list_screen.dart';
 
 String? _handleRedirect(BuildContext context, GoRouterState state) {
   final bool onboardingComplete =
@@ -100,13 +97,7 @@ final router = GoRouter(
         GoRoute(
           path: "user",
           name: UserRoutes.home,
-          builder: (context, state) => MultiBlocProvider(
-            providers: [
-              BlocProvider(create: (context) => UserEventCubit()),
-              BlocProvider(create: (context) => BookmarkCubit()),
-            ],
-            child: UserHomeScreen(),
-          ),
+          builder: (context, state) => UserHomeScreen(),
           routes: [
             GoRoute(
               path: "contact",
@@ -124,13 +115,12 @@ final router = GoRouter(
               builder: (context, state) => MyProfilePage(),
             ),
             GoRoute(
-              path: "event",
-              name: UserRoutes.event,
-              builder: (context, state) {
-                final UserEvent event = state.extra as UserEvent;
-                return UserEventDetailsScreen(event: event);
-              },
-            ),
+                path: "event",
+                name: UserRoutes.event,
+                builder: (context, state) {
+                  final UserEvent event = state.extra as UserEvent;
+                  return UserEventDetailsScreen(event: event);
+                }),
           ],
         ),
       ],

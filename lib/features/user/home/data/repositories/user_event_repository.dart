@@ -1,5 +1,4 @@
-import 'package:eventra/features/user/home/data/model/booked_event.dart';
-import 'package:eventra/features/user/home/data/model/request_event.dart';
+import 'package:eventra/features/user/event/data/models/booked_event.dart';
 import 'package:eventra/features/user/home/data/data_source/user_event_data_source.dart';
 
 class UserEventRepository {
@@ -11,26 +10,6 @@ class UserEventRepository {
     try {
       List<Map<String, dynamic>> list = await _dataSource.getEvents();
       return list.map((e) => UserEvent.fromJson(e)).toList();
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  bookEvent(RequestEvent event) async {
-    try {
-      Map<String, dynamic> data = await _dataSource.bookEvent(event.toJson());
-      return RequestEvent.fromJson(data);
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<RequestEvent?> ifUserHasRequestWithEvent(
-      {required String userId, required String eventId}) async {
-    try {
-      Map<String, dynamic>? data = await _dataSource.ifUserHasRequestWithEvent(
-          uid: userId, eid: eventId);
-      return data == null ? null : RequestEvent.fromJson(data);
     } catch (e) {
       rethrow;
     }

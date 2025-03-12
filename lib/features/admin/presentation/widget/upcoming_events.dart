@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/cubit/event_cubit.dart';
-import 'package:eventra/features/admin/cubit/event_state.dart';
+import 'package:eventra/features/admin/cubit/event/event_cubit.dart';
+import 'package:eventra/features/admin/cubit/event/event_state.dart';
 import 'package:eventra/features/admin/presentation/widget/event_card.dart';
 import 'package:eventra/features/admin/presentation/widget/event_bottom_sheet.dart';
 
@@ -100,11 +100,8 @@ class UpcomingEvents extends StatelessWidget {
         onPressed: () => showModalBottomSheet(
           context: context,
           isScrollControlled: true,
-          builder: (bottomCtx) => BlocProvider.value(
-            value: context.read<AdminEventCubit>(),
-            child: EventBottomSheet(
-              onSave: (event) => context.read<AdminEventCubit>().addEvent(event),
-            ),
+          builder: (bottomCtx) => EventBottomSheet(
+            onSave: (event) => context.read<AdminEventCubit>().addEvent(event),
           ),
         ),
         child: Icon(Icons.add, size: 25.sp),

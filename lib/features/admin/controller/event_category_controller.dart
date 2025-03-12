@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:eventra/features/admin/event/model/base_event.dart';
+import 'package:eventra/features/admin/data/model/base_event.dart';
 
 class EventCategoryController extends ChangeNotifier {
   EventCategory? _value;

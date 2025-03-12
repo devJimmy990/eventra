@@ -9,7 +9,6 @@ class UserRepository {
   Future<User> getUserData(String uid) async {
     try {
       Map<String, dynamic> res = await _dataSource.getUserData(uid);
-      res.addAll({"id": uid});
       return User.fromJson(res);
     } catch (e) {
       rethrow;

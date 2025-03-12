@@ -13,6 +13,7 @@ class AuthenticationDataSource {
         email: email,
         password: password,
       );
+      print(user.user!.uid);
       return user.user!.uid;
     } catch (e) {
       rethrow;
@@ -66,7 +67,7 @@ class AuthenticationDataSource {
 
   Future<bool> setUserData(User user) async {
     try {
-      await firebase.store.collection("users").doc(user.id).set(user.toJson());
+      firebase.store.collection("users").doc(user.id).set(user.toJson());
       return true;
     } catch (e) {
       rethrow;

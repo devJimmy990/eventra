@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:eventra/core/ui/inputs.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
-import 'package:eventra/features/admin/event/extension/date_time.dart';
+import 'package:eventra/features/admin/extension/date_time.dart';
 import 'package:eventra/features/admin/controller/event_date_controller.dart';
 
 class EventBottomDate extends StatefulWidget {

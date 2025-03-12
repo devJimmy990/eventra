@@ -1,5 +1,8 @@
 import 'package:eventra/core/helper/localization.dart';
+import 'package:eventra/features/admin/cubit/requests/request_cubit.dart';
+import 'package:eventra/features/admin/cubit/requests/request_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdminEventsRequestsView extends StatelessWidget {
   const AdminEventsRequestsView({super.key});
@@ -8,9 +11,27 @@ class AdminEventsRequestsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final Localization strings = Localization(context);
 
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (_, inx) => Text(strings.data),
+    return BlocProvider(
+      create: (context) => AdminEventRequestCubit(),
+      child: Scaffold(
+        appBar: AppBar(),
+        body: BlocConsumer<AdminEventRequestCubit, AdminEventRequestState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            if (state is EventRequestLoading) {
+              return Center(child: CircularProgressIndicator());
+            } else if (state is EventRequestsLoaded) {
+              return ListView.builder(
+                itemCount: state.requests.length,
+                itemBuilder: (_, inx) => Text(strings.data),
+              );
+            } else if (state is EventRequestEmpty) {
+              return Center(child: Text("No Requests"));
+            }
+            return SizedBox();
+          },
+        ),
+      ),
     );
   }
 }

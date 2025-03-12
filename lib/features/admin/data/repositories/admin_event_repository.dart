@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/data/model/admin_event.dart';
 import 'package:eventra/features/admin/data/data_source/admin_event_data_source.dart';
 
 class AdminEventRepository {

@@ -1,11 +1,11 @@
 import 'dart:io';
+import 'package:eventra/features/admin/data/data_source/admin_event_data_source.dart';
+import 'package:eventra/features/admin/data/repositories/admin_event_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/data_source/event_data_source.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
-import 'package:eventra/features/admin/cubit/event_state.dart';
-import 'package:eventra/features/admin/event/model/admin_event.dart';
-import 'package:eventra/features/admin/event/extension/event_status.dart';
-import 'package:eventra/features/admin/data/repositories/event_repository.dart';
+import 'package:eventra/features/admin/cubit/event/event_state.dart';
+import 'package:eventra/features/admin/data/model/admin_event.dart';
+import 'package:eventra/features/admin/extension/event_status.dart';
 
 enum EventFilter { upcoming, past }
 
@@ -22,7 +22,7 @@ class AdminEventCubit extends Cubit<AdminEventState> {
     try {
       final String uid = SharedPreference.getString(key: "uid")!;
       List<AdminEvent> events =
-          await EventRepository(EventDataSource()).getEvents(uid);
+          await AdminEventRepository(AdminEventDataSource()).getEvents(uid);
       _handleEventDate(events);
       emit(_upcomingEvents.isEmpty
           ? EventEmpty()
@@ -35,7 +35,8 @@ class AdminEventCubit extends Cubit<AdminEventState> {
   Future<void> addEvent(AdminEvent event) async {
     emit(EventLoading());
     try {
-      event = await EventRepository(EventDataSource()).addEvent(event);
+      event =
+          await AdminEventRepository(AdminEventDataSource()).addEvent(event);
       _upcomingEvents.add(event);
       emit(EventLoaded(_upcomingEvents));
     } catch (e) {
@@ -46,7 +47,7 @@ class AdminEventCubit extends Cubit<AdminEventState> {
   Future<void> updateEvent(AdminEvent event) async {
     emit(EventLoading());
     try {
-      await EventRepository(EventDataSource()).updateEvent(event);
+      await AdminEventRepository(AdminEventDataSource()).updateEvent(event);
       int index = _upcomingEvents.indexWhere((e) => e == event);
       _upcomingEvents[index] = event;
       emit(EventLoaded(_upcomingEvents));
@@ -57,7 +58,7 @@ class AdminEventCubit extends Cubit<AdminEventState> {
 
   Future<void> deleteEvent(AdminEvent event) async {
     try {
-      await EventRepository(EventDataSource()).deleteEvent(event);
+      await AdminEventRepository(AdminEventDataSource()).deleteEvent(event);
       _upcomingEvents.removeWhere((e) => e == event);
       emit(_upcomingEvents.isEmpty
           ? EventEmpty()
@@ -70,7 +71,8 @@ class AdminEventCubit extends Cubit<AdminEventState> {
   Future<void> uploadImage(File image) async {
     emit(ImageUploading());
     try {
-      String url = await EventRepository(EventDataSource()).uploadImage(image);
+      String url =
+          await AdminEventRepository(AdminEventDataSource()).uploadImage(image);
       emit(ImageUploaded(url));
     } catch (e) {
       emit(EventError(message: e.toString()));

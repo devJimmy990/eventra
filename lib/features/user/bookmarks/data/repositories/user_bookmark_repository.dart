@@ -1,5 +1,5 @@
 import 'package:eventra/features/user/bookmarks/data/data_source/user_bookmark_data_source.dart';
-import 'package:eventra/features/user/home/data/model/booked_event.dart';
+import 'package:eventra/features/user/event/data/models/booked_event.dart';
 
 class UserBookmarkRepository {
   final UserBookmarkDataSource _dataSource;

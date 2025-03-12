@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/event/model/booked_event.dart';
+import 'package:eventra/features/admin/data/model/booked_event.dart';
 
 class User {
   List<BookedEvent>? _events;
@@ -54,6 +54,7 @@ class User {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'name': name,
       'role': role,
       'email': email,

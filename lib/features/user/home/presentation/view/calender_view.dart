@@ -1,15 +1,15 @@
 import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/core/routes/routes.dart';
-import 'package:eventra/features/admin/event/extension/event.dart';
-import 'package:eventra/features/user/home/cubit/event/event_cubit.dart';
-import 'package:eventra/features/user/home/cubit/event/event_state.dart';
+import 'package:eventra/features/admin/extension/event.dart';
+import 'package:eventra/features/user/home/cubit/event_cubit.dart';
+import 'package:eventra/features/user/home/cubit/event_state.dart';
 import 'package:eventra/features/user/home/controller/calender_data_source.dart';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:eventra/features/user/home/data/model/booked_event.dart';
+import 'package:eventra/features/user/event/data/models/booked_event.dart';
 
 class EventCalendarView extends StatelessWidget {
   const EventCalendarView({super.key});

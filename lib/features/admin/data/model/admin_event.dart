@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/event/model/base_event.dart';
+import 'package:eventra/features/admin/data/model/base_event.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 
 class AdminEvent extends BaseEvent {

@@ -1,14 +1,17 @@
+import 'dart:convert';
+
 import 'package:eventra/core/helper/localization.dart';
-import 'package:eventra/features/user/home/cubit/event/event_state.dart';
-import 'package:eventra/features/user/home/cubit/request/request_cubit.dart';
-import 'package:eventra/features/user/home/cubit/request/request_state.dart';
+import 'package:eventra/features/user/event/cubit/request_cubit.dart';
+import 'package:eventra/features/user/event/cubit/request_state.dart';
+import 'package:eventra/features/user/home/data/model/request_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/admin/event/extension/event.dart';
-import 'package:eventra/features/admin/event/extension/date_time.dart';
-import 'package:eventra/features/user/home/data/model/booked_event.dart';
+import 'package:eventra/features/admin/extension/event.dart';
+import 'package:eventra/features/admin/extension/date_time.dart';
+import 'package:eventra/features/user/event/data/models/booked_event.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class UserEventDetailsScreen extends StatelessWidget {
   final UserEvent event;
@@ -140,32 +143,6 @@ class UserEventDetailsScreen extends StatelessWidget {
                         event.desc,
                         textAlign: TextAlign.justify,
                       ),
-                      // const SizedBox(height: 16),
-                      // First QR Code
-                      // QrImageView(
-                      //   data: event.toString(),
-                      //   version: QrVersions.auto,
-                      //   size: 320,
-                      //   gapless: false,
-                      //   embeddedImage: const AssetImage(
-                      //       'assets/images/my_embedded_image.png'),
-                      //   embeddedImageStyle: QrEmbeddedImageStyle(
-                      //     size: const Size(80, 80),
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 16),
-                      // // Second QR Code
-                      // QrImageView(
-                      //   data: json.encode(event),
-                      //   version: QrVersions.auto,
-                      //   size: 200.0,
-                      //   backgroundColor: Colors.white,
-                      //   eyeStyle: const QrEyeStyle(
-                      //     eyeShape: QrEyeShape.square,
-                      //     color: Colors.black,
-                      //   ),
-                      // ),
-                      const SizedBox(height: 32),
                     ],
                   ),
                 ),
@@ -180,10 +157,6 @@ class UserEventDetailsScreen extends StatelessWidget {
             builder: (context, state) {
               if (state is EventRequestLoading) {
                 return Center(child: CircularProgressIndicator());
-              } else if (state is EventRequestLoaded) {
-                return Text("data");
-              } else if (state is EventLoaded) {
-                return Text("EventLoaded");
               } else if (state is EventRequestEmpty) {
                 return ElevatedButton(
                   onPressed: () {
@@ -196,11 +169,50 @@ class UserEventDetailsScreen extends StatelessWidget {
                   ),
                 );
               } else if (state is EventRequestError) {
-                return Text(state.error);
-              } else if (state is EventRequestInitial) {
-                return Text("initial");
+                return Center(
+                    child:
+                        Text(state.error, style: TextStyle(color: Colors.red)));
+              } else if (state is EventRequestLoaded) {
+                final RequestEvent request = state.request;
+                return request.status == EventStatus.waiting
+                    ? Text(
+                        "Request is in Waiting State",
+                        textAlign: TextAlign.center,
+                      )
+                    : request.status == EventStatus.rejected
+                        ? Text(
+                            "Request is Rejected",
+                            textAlign: TextAlign.center,
+                          )
+                        : ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  content: SizedBox(
+                                    width: 300,
+                                    height: 300,
+                                    child: QrImageView(
+                                      data: json.encode(request),
+                                      version: QrVersions.auto,
+                                      size: 300,
+                                      backgroundColor: Colors.transparent,
+                                      eyeStyle: const QrEyeStyle(
+                                        eyeShape: QrEyeShape.square,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Text("Show QR Code"),
+                          );
               }
-              return Text(state.toString());
+              return SizedBox.shrink();
             },
           ),
         ),

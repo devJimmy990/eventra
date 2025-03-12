@@ -1,5 +1,5 @@
-import 'package:eventra/features/admin/event/extension/date_time.dart';
-import 'package:eventra/features/user/home/data/model/booked_event.dart';
+import 'package:eventra/features/admin/extension/date_time.dart';
+import 'package:eventra/features/user/event/data/models/booked_event.dart';
 import 'package:flutter/material.dart';
 
 class BookmarkEventCard extends StatefulWidget {

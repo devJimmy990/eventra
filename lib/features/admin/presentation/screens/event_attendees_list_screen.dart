@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/event/extension/string.dart';
+import 'package:eventra/features/admin/extension/string.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:flutter/material.dart';
 

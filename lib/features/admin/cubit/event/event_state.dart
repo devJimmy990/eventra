@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/data/model/admin_event.dart';
 
 sealed class AdminEventState {}
 

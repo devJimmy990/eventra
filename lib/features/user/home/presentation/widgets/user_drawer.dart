@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/event/extension/string.dart';
+import 'package:eventra/features/admin/extension/string.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';

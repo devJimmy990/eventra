@@ -1,5 +1,5 @@
 import 'package:eventra/core/helper/localization.dart';
-import 'package:eventra/features/user/home/cubit/event/event_cubit.dart';
+import 'package:eventra/features/user/home/cubit/event_cubit.dart';
 import 'package:eventra/features/user/home/presentation/view/calender_view.dart';
 import 'package:eventra/features/user/home/presentation/view/explore_view.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
@@ -47,12 +47,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 
 var pages = [
 
-  BlocProvider(
-    create: (context) => UserEventCubit(),
-    child: EventExploreView(),
-  ),
-  BlocProvider(
-    create: (context) => UserEventCubit(),
-    child: EventCalendarView(),
-  ),
+  EventExploreView(),
+  EventCalendarView(),
 ];

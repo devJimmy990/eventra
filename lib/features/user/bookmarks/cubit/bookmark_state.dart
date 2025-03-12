@@ -1,4 +1,4 @@
-import 'package:eventra/features/user/home/data/model/booked_event.dart';
+import 'package:eventra/features/user/event/data/models/booked_event.dart';
 
 sealed class BookmarkState {}
 

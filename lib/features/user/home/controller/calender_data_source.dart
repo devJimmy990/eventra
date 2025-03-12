@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:eventra/features/user/home/data/model/booked_event.dart'; // UserEvent
+import 'package:eventra/features/user/event/data/models/booked_event.dart'; // UserEvent
 
 class UserEventCalendarDataSource extends CalendarDataSource {
   UserEventCalendarDataSource(List<UserEvent> userEvents) {

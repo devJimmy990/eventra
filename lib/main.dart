@@ -1,3 +1,6 @@
+import 'package:eventra/features/admin/cubit/event/event_cubit.dart';
+import 'package:eventra/features/user/bookmarks/cubit/bookmark_cubit.dart';
+import 'package:eventra/features/user/home/cubit/event_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:eventra/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,15 +34,12 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider<UserCubit>(
-              create: (context) => UserCubit(),
-            ),
-            BlocProvider<SettingsCubit>(
-              create: (context) => SettingsCubit(),
-            ),
-            BlocProvider<AuthenticationCubit>(
-              create: (context) => AuthenticationCubit(),
-            ),
+            BlocProvider<UserCubit>(create: (context) => UserCubit()),
+            BlocProvider<SettingsCubit>(create: (context) => SettingsCubit()),
+            BlocProvider(create: (context) => BookmarkCubit()),
+            BlocProvider(create: (context) => UserEventCubit()),
+            BlocProvider(create: (context) => AdminEventCubit()),
+            BlocProvider<AuthenticationCubit>(create: (context) => AuthenticationCubit()),
           ],
           child: Builder(
             builder: (context) {

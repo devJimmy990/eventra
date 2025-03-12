@@ -1,5 +1,5 @@
 import 'package:eventra/core/helper/localization.dart';
-import 'package:eventra/features/admin/event/extension/string.dart';
+import 'package:eventra/features/admin/extension/string.dart';
 import 'package:eventra/features/user/profile/widgets/profile_about_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:eventra/core/firebase/firebase.dart';
-import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/data/model/admin_event.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class AdminEventDataSource {
@@ -53,7 +53,11 @@ class AdminEventDataSource {
   // get event from firestore
   Future<List<Map<String, dynamic>>> getEvents(String uid) async {
     try {
-      return await firebase.store.collection('events').get().then((value) {
+      return await firebase.store
+          .collection('events')
+          .where("admin.id", isEqualTo: uid)
+          .get()
+          .then((value) {
         return value.docs.map((doc) => doc.data()).toList();
       });
     } catch (e) {

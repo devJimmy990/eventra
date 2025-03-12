@@ -1,16 +1,16 @@
 import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/admin/event/extension/date_time.dart';
-import 'package:eventra/features/admin/event/extension/event.dart';
-import 'package:eventra/features/admin/cubit/event_state.dart';
+import 'package:eventra/features/admin/extension/date_time.dart';
+import 'package:eventra/features/admin/extension/event.dart';
+import 'package:eventra/features/admin/cubit/event/event_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/event/model/admin_event.dart';
+import 'package:eventra/features/admin/data/model/admin_event.dart';
 import 'package:eventra/features/admin/presentation/widget/event_bottom_sheet.dart';
 
-import '../../cubit/event_cubit.dart';
+import '../../cubit/event/event_cubit.dart';
 
 class EventCard extends StatelessWidget {
   final AdminEvent event;
@@ -95,20 +95,14 @@ class _BuildEventCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             onLongPress: isEditable
                 ? () => showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (bottomCtx) => BlocProvider.value(
-                        value: context.read<AdminEventCubit>(),
-                        child: EventBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (bottomCtx) => EventBottomSheet(
                           event: event,
-                          onSave: (updatedEvent) {
-                            context
-                                .read<AdminEventCubit>()
-                                .updateEvent(updatedEvent);
-                          },
-                        ),
-                      ),
-                    )
+                          onSave: (updatedEvent) => context
+                              .read<AdminEventCubit>()
+                              .updateEvent(updatedEvent),
+                        ))
                 : null,
             onTap: () =>
                 context.pushNamed(AdminRoutes.eventDetails, extra: event),
