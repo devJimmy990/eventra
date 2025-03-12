@@ -88,4 +88,4 @@ Eventra is a modern events management application designed to help users discove
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/eventra.git
+  https://github.com/devJimmy990/eventra.git
