@@ -1,20 +1,20 @@
 import 'dart:io';
 import 'package:eventra/core/helper/localization.dart';
-import 'package:eventra/features/admin/home/cubit/event_state.dart';
+import 'package:eventra/features/admin/cubit/event_state.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
+import 'package:eventra/features/admin/cubit/event_cubit.dart';
 import 'package:eventra/features/admin/event/model/base_event.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
-import 'package:eventra/features/admin/home/controller/event_date_controller.dart';
-import 'package:eventra/features/admin/home/controller/event_category_controller.dart';
-import 'package:eventra/features/admin/home/presentation/widget/event_bottom_date.dart';
-import 'package:eventra/features/admin/home/presentation/widget/event_image_picker.dart';
-import 'package:eventra/features/admin/home/presentation/widget/event_bottom_general.dart';
-import 'package:eventra/features/admin/home/presentation/widget/event_bottom_location.dart';
+import 'package:eventra/features/admin/controller/event_date_controller.dart';
+import 'package:eventra/features/admin/controller/event_category_controller.dart';
+import 'package:eventra/features/admin/presentation/widget/event_bottom_date.dart';
+import 'package:eventra/features/admin/presentation/widget/event_image_picker.dart';
+import 'package:eventra/features/admin/presentation/widget/event_bottom_general.dart';
+import 'package:eventra/features/admin/presentation/widget/event_bottom_location.dart';
 
 class EventBottomSheet extends StatefulWidget {
   final AdminEvent? event;

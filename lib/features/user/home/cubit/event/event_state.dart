@@ -17,5 +17,3 @@ class EventError extends UserEventState {
 }
 
 class EventEmpty extends UserEventState {}
-
-class EventBooked extends UserEventState {}

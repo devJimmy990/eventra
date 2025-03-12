@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:eventra/features/admin/event/model/base_event.dart';
-import 'package:eventra/features/admin/home/controller/event_category_controller.dart';
+import 'package:eventra/features/admin/controller/event_category_controller.dart';
 
 class ProfileAboutTab extends StatefulWidget {
   const ProfileAboutTab({super.key});

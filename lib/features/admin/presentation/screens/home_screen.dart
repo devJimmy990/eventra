@@ -1,9 +1,9 @@
-import 'package:eventra/features/admin/home/presentation/widget/admin_drawer.dart';
+import 'package:eventra/features/admin/presentation/widget/admin_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:eventra/core/helper/localization.dart';
-import 'package:eventra/features/admin/home/presentation/views/explore_view.dart';
-import 'package:eventra/features/admin/home/presentation/views/profile_view.dart';
-import 'package:eventra/features/admin/home/presentation/views/events_requests_view.dart';
+import 'package:eventra/features/admin/presentation/views/explore_view.dart';
+import 'package:eventra/features/admin/presentation/views/profile_view.dart';
+import 'package:eventra/features/admin/presentation/views/events_requests_view.dart';
 
 class AdminHomeScreen extends StatefulWidget {
   const AdminHomeScreen({super.key});

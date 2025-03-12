@@ -24,12 +24,20 @@ class UserEventDataSource {
       rethrow;
     }
   }
-}
 
-/**
- * eventID
- * userID
- * status
- * price
- * 
- */
+  Future<Map<String, dynamic>?> ifUserHasRequestWithEvent(
+      {required String uid, required String eid}) async {
+    try {
+      final querySnapshot = await firebase.store
+          .collection('requests')
+          .where('userId', isEqualTo: uid)
+          .where('eventId', isEqualTo: eid)
+          .limit(1)
+          .get();
+      if (querySnapshot.docs.isNotEmpty) return null;
+      return querySnapshot.docs.first.data();
+    } catch (e) {
+      rethrow;
+    }
+  }
+}

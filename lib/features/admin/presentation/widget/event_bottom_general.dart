@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:eventra/core/ui/inputs.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/event/model/base_event.dart';
-import 'package:eventra/features/admin/home/controller/event_category_controller.dart';
+import 'package:eventra/features/admin/controller/event_category_controller.dart';
 
 class EventBottomGeneral extends StatelessWidget {
   final EventCategoryController categoryController;

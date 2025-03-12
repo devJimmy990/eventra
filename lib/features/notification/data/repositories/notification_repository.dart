@@ -1,5 +1,5 @@
-import 'package:eventra/features/user/notification/data/data_source/notification_data_source.dart';
-import 'package:eventra/features/user/notification/data/model/notification.dart';
+import 'package:eventra/features/notification/data/data_source/notification_data_source.dart';
+import 'package:eventra/features/notification/data/model/notification.dart';
 
 class NotificationRepository {
   final NotificationDataSource _dataSource;

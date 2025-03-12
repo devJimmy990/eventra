@@ -1,8 +1,8 @@
 import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
-import 'package:eventra/features/user/home/cubit/event_cubit.dart';
-import 'package:eventra/features/user/home/cubit/event_state.dart';
+import 'package:eventra/features/user/home/cubit/event/event_cubit.dart';
+import 'package:eventra/features/user/home/cubit/event/event_state.dart';
 import 'package:eventra/features/user/home/controller/calender_data_source.dart';
 
 import 'package:flutter/material.dart';

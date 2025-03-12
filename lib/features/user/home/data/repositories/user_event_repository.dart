@@ -24,4 +24,15 @@ class UserEventRepository {
       rethrow;
     }
   }
+
+  Future<RequestEvent?> ifUserHasRequestWithEvent(
+      {required String userId, required String eventId}) async {
+    try {
+      Map<String, dynamic>? data = await _dataSource.ifUserHasRequestWithEvent(
+          uid: userId, eid: eventId);
+      return data == null ? null : RequestEvent.fromJson(data);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/data_source/event_data_source.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
-import 'package:eventra/features/admin/home/cubit/event_state.dart';
+import 'package:eventra/features/admin/cubit/event_state.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 import 'package:eventra/features/admin/event/extension/event_status.dart';
-import 'package:eventra/features/admin/home/data/repositories/event_repository.dart';
+import 'package:eventra/features/admin/data/repositories/event_repository.dart';
 
 enum EventFilter { upcoming, past }
 

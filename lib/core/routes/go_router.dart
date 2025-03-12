@@ -1,5 +1,5 @@
 import 'package:eventra/features/user/bookmarks/cubit/bookmark_cubit.dart';
-import 'package:eventra/features/user/home/cubit/event_cubit.dart';
+import 'package:eventra/features/user/home/cubit/event/event_cubit.dart';
 import 'package:eventra/features/user/home/data/model/booked_event.dart';
 import 'package:eventra/features/user/home/presentation/screens/home_screen.dart';
 import 'package:eventra/features/user/home/presentation/screens/user_event_details_screen.dart';
@@ -14,12 +14,12 @@ import 'package:eventra/features/onboarding/page/onboarding_screen.dart';
 import 'package:eventra/features/landing/presentation/landing_screen.dart';
 import 'package:eventra/features/settings/presentation/settings_screen.dart';
 import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart';
-import 'package:eventra/features/admin/home/presentation/screens/home_screen.dart';
+import 'package:eventra/features/admin/presentation/screens/home_screen.dart';
 import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
 import 'package:eventra/features/user/profile/screens/profile_screen.dart';
 import 'package:eventra/features/user/bookmarks/presentation/screens/bookmark_screen.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_details_screen.dart';
-import 'package:eventra/features/admin/home/presentation/views/events_requests_view.dart';
+import 'package:eventra/features/admin/presentation/views/events_requests_view.dart';
 import 'package:eventra/features/admin/event/presentation/screens/event_attendees_list_screen.dart';
 
 String? _handleRedirect(BuildContext context, GoRouterState state) {
@@ -100,14 +100,13 @@ final router = GoRouter(
         GoRoute(
           path: "user",
           name: UserRoutes.home,
-          builder: (context, state) =>
-              MultiBlocProvider(
-                providers: [
-                  BlocProvider(create: (context) => UserEventCubit()),
-                  BlocProvider(create: (context) => BookmarkCubit()),
-                ],
-                child: UserHomeScreen(),
-              ),
+          builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => UserEventCubit()),
+              BlocProvider(create: (context) => BookmarkCubit()),
+            ],
+            child: UserHomeScreen(),
+          ),
           routes: [
             GoRoute(
               path: "contact",
@@ -129,10 +128,7 @@ final router = GoRouter(
               name: UserRoutes.event,
               builder: (context, state) {
                 final UserEvent event = state.extra as UserEvent;
-                return BlocProvider(
-                  create: (context) => UserEventCubit(),
-                  child: UserEventDetailsScreen(event: event),
-                );
+                return UserEventDetailsScreen(event: event);
               },
             ),
           ],

@@ -1,14 +1,14 @@
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/event/extension/date_time.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
-import 'package:eventra/features/admin/home/cubit/event_state.dart';
+import 'package:eventra/features/admin/cubit/event_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/event/model/admin_event.dart';
-import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
+import 'package:eventra/features/admin/presentation/widget/event_bottom_sheet.dart';
 
 import '../../cubit/event_cubit.dart';
 

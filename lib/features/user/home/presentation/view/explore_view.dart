@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
-import 'package:eventra/features/user/home/cubit/event_cubit.dart';
-import 'package:eventra/features/user/home/cubit/event_state.dart';
+import 'package:eventra/features/user/home/cubit/event/event_cubit.dart';
+import 'package:eventra/features/user/home/cubit/event/event_state.dart';
 import 'package:eventra/features/user/home/presentation/widgets/event_card.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
 

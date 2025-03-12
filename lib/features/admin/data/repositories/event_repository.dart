@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:eventra/features/admin/event/model/admin_event.dart';
-import 'package:eventra/features/admin/home/data/data_source/admin_event_data_source.dart';
+import 'package:eventra/features/admin/data/data_source/event_data_source.dart';
 
-class AdminEventRepository {
-  final AdminEventDataSource _dataSource;
+class EventRepository {
+  final EventDataSource _dataSource;
 
-  AdminEventRepository(this._dataSource);
+  EventRepository(this._dataSource);
 
   Future<AdminEvent> addEvent(AdminEvent event) async {
     try {

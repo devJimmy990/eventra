@@ -1,7 +1,7 @@
-import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
-import 'package:eventra/features/admin/home/cubit/event_state.dart';
-import 'package:eventra/features/admin/home/presentation/widget/previous_events.dart';
-import 'package:eventra/features/admin/home/presentation/widget/upcoming_events.dart';
+import 'package:eventra/features/admin/cubit/event_cubit.dart';
+import 'package:eventra/features/admin/cubit/event_state.dart';
+import 'package:eventra/features/admin/presentation/widget/previous_events.dart';
+import 'package:eventra/features/admin/presentation/widget/upcoming_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

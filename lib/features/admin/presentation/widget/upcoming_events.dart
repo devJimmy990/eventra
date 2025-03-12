@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
-import 'package:eventra/features/admin/home/cubit/event_state.dart';
-import 'package:eventra/features/admin/home/presentation/widget/event_card.dart';
-import 'package:eventra/features/admin/home/presentation/widget/event_bottom_sheet.dart';
+import 'package:eventra/features/admin/cubit/event_cubit.dart';
+import 'package:eventra/features/admin/cubit/event_state.dart';
+import 'package:eventra/features/admin/presentation/widget/event_card.dart';
+import 'package:eventra/features/admin/presentation/widget/event_bottom_sheet.dart';
 
 class UpcomingEvents extends StatelessWidget {
   const UpcomingEvents({super.key});

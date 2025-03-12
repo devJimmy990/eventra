@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/home/presentation/screens/home_screen.dart';
+import 'package:eventra/features/admin/presentation/screens/home_screen.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:eventra/features/landing/cubit/user_state.dart';
 import 'package:eventra/features/user/home/presentation/screens/home_screen.dart';

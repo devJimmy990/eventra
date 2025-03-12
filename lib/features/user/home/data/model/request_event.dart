@@ -21,7 +21,7 @@ class RequestEvent {
       id: json['id'],
       userId: json['userId'],
       eventId: json['eventId'],
-      event: EventStatus.values.firstWhere((e) => e.index == json['status']),
+      event: EventStatus.values[json['status']],
     );
   }
 
