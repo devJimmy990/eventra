@@ -100,13 +100,14 @@ final router = GoRouter(
         GoRoute(
           path: "user",
           name: UserRoutes.home,
-          builder: (context, state) => MultiBlocProvider(
-            providers: [
-              BlocProvider(create: (context) => UserEventCubit()),
-              BlocProvider(create: (context) => BookmarkCubit()),
-            ],
-            child: UserHomeScreen(),
-          ),
+          builder: (context, state) =>
+              MultiBlocProvider(
+                providers: [
+                  BlocProvider(create: (context) => UserEventCubit()),
+                  BlocProvider(create: (context) => BookmarkCubit()),
+                ],
+                child: UserHomeScreen(),
+              ),
           routes: [
             GoRoute(
               path: "contact",
@@ -128,7 +129,10 @@ final router = GoRouter(
               name: UserRoutes.event,
               builder: (context, state) {
                 final UserEvent event = state.extra as UserEvent;
-                return UserEventDetailsScreen(event: event);
+                return BlocProvider(
+                  create: (context) => UserEventCubit(),
+                  child: UserEventDetailsScreen(event: event),
+                );
               },
             ),
           ],

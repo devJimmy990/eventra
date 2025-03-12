@@ -1,8 +1,10 @@
 import 'package:eventra/core/helper/localization.dart';
+import 'package:eventra/features/user/home/cubit/event_cubit.dart';
 import 'package:eventra/features/user/home/presentation/view/calender_view.dart';
 import 'package:eventra/features/user/home/presentation/view/explore_view.dart';
 import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({super.key});
@@ -12,8 +14,9 @@ class UserHomeScreen extends StatefulWidget {
 }
 
 class _UserHomeScreenState extends State<UserHomeScreen> {
-  
+
   int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final strings = Localization(context);
@@ -43,6 +46,13 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 }
 
 var pages = [
-  EventExploreView(),
-  EventCalendarView(),
+
+  BlocProvider(
+    create: (context) => UserEventCubit(),
+    child: EventExploreView(),
+  ),
+  BlocProvider(
+    create: (context) => UserEventCubit(),
+    child: EventCalendarView(),
+  ),
 ];
