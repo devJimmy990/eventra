@@ -1,12 +1,7 @@
-import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/admin/event/extension/date_time.dart';
-import 'package:eventra/features/admin/event/extension/string.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
-import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/event/extension/event.dart';
 import 'package:eventra/features/admin/event/extension/string.dart';
@@ -32,9 +27,14 @@ class AdminEventDetailsScreen extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   event.cover == null
-                      ? Image.asset(StringsManager.eventImage,
-                          fit: BoxFit.cover)
-                      : Image.network(event.cover!, fit: BoxFit.cover),
+                      ? Image.asset(
+                          StringsManager.eventImage,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.network(
+                          event.cover!,
+                          fit: BoxFit.cover,
+                        ),
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -57,7 +57,6 @@ class AdminEventDetailsScreen extends StatelessWidget {
                   size: 38,
                 ),
                 onPressed: () async {
-                  // Implement QR code scanning
                 },
               ),
             ],

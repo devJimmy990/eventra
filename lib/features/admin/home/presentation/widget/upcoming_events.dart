@@ -16,7 +16,7 @@ class UpcomingEvents extends StatelessWidget {
     final Localization strings = Localization(context);
 
     return Scaffold(
-      body: BlocConsumer<EventCubit, EventState>(
+      body: BlocConsumer<AdminEventCubit, AdminEventState>(
         listener: (context, state) {
           if (state is EventDeleted) {
             Fluttertoast.showToast(
@@ -75,7 +75,7 @@ class UpcomingEvents extends StatelessWidget {
                   isEditable: true,
                   onDismissed: (direction) {
                     if (direction == DismissDirection.endToStart) {
-                      context.read<EventCubit>().deleteEvent(event);
+                      context.read<AdminEventCubit>().deleteEvent(event);
                     }
                   },
                 );
@@ -101,9 +101,9 @@ class UpcomingEvents extends StatelessWidget {
           context: context,
           isScrollControlled: true,
           builder: (bottomCtx) => BlocProvider.value(
-            value: context.read<EventCubit>(),
+            value: context.read<AdminEventCubit>(),
             child: EventBottomSheet(
-              onSave: (event) => context.read<EventCubit>().addEvent(event),
+              onSave: (event) => context.read<AdminEventCubit>().addEvent(event),
             ),
           ),
         ),

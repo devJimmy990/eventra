@@ -14,7 +14,7 @@ class PreviousEvents extends StatelessWidget {
     final Localization strings = Localization(context);
 
     return Scaffold(
-      body: BlocConsumer<EventCubit, EventState>(
+      body: BlocConsumer<AdminEventCubit, AdminEventState>(
         listener: (context, state) {
           if (state is EventError) {
             ScaffoldMessenger.of(context)

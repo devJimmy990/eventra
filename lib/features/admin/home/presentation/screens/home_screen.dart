@@ -1,12 +1,9 @@
-import 'package:eventra/core/helper/localization.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:eventra/features/admin/home/cubit/event_state.dart';
-import 'package:eventra/features/admin/home/cubit/event_cubit.dart';
 import 'package:eventra/features/admin/home/presentation/widget/admin_drawer.dart';
-import 'package:eventra/features/admin/home/presentation/widget/previous_events.dart';
-import 'package:eventra/features/admin/home/presentation/widget/upcoming_events.dart';
+import 'package:flutter/material.dart';
+import 'package:eventra/core/helper/localization.dart';
+import 'package:eventra/features/admin/home/presentation/views/explore_view.dart';
+import 'package:eventra/features/admin/home/presentation/views/profile_view.dart';
+import 'package:eventra/features/admin/home/presentation/views/events_requests_view.dart';
 
 class AdminHomeScreen extends StatefulWidget {
   const AdminHomeScreen({super.key});
@@ -15,70 +12,52 @@ class AdminHomeScreen extends StatefulWidget {
   State<AdminHomeScreen> createState() => _AdminHomeScreenState();
 }
 
-class _AdminHomeScreenState extends State<AdminHomeScreen>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+class _AdminHomeScreenState extends State<AdminHomeScreen> {
+  int _index = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-    _tabController.addListener(_handleTabIndexChange);
-  }
-
-  @override
-  void dispose() {
-    _tabController.removeListener(_handleTabIndexChange);
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  void _handleTabIndexChange() {
-    if (_tabController.indexIsChanging) {
-      final eventCubit = context.read<EventCubit>();
-      if (_tabController.index == 0) {
-        eventCubit.filterEvents(EventFilter.upcoming);
-      } else {
-        eventCubit.filterEvents(EventFilter.past);
-      }
-    }
-  }
+  final List<Widget> _pages = <Widget>[
+    AdminExploreView(),
+    AdminEventsRequestsView(),
+    AdminProfileView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     final Localization strings = Localization(context);
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          strings.welcomeAdmin,
-          style: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.italic,
-          ),
-        ),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: [
-            Tab(text: strings.upcoming),
-            Tab(text: strings.previous),
-          ],
-        ),
-      ),
+      appBar: AppBar(),
       drawer: AdminDrawer(),
-      body: BlocBuilder<EventCubit, EventState>(
-        builder: (context, state) {
-          return TabBarView(
-            controller: _tabController,
-            physics: NeverScrollableScrollPhysics(),
-            children: [
-              UpcomingEvents(),
-              PreviousEvents(),
-            ],
-          );
-        },
+      body: _pages[_index],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _index,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey[500],
+        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
+        onTap: (index) => setState(() => _index = index),
+        items: [
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.explore, size: 28),
+            label: strings.explore,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.notifications, size: 28),
+            label: "requests",
+          ),
+          BottomNavigationBarItem(
+            icon: const CircleAvatar(
+              radius: 14,
+              backgroundColor: Colors.black,
+              child: Icon(
+                Icons.person,
+                color: Colors.white,
+                size: 20,
+              ),
+            ),
+            label: "profile",
+          ),
+        ],
       ),
     );
   }

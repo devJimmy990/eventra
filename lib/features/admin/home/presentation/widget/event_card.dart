@@ -84,7 +84,7 @@ class _BuildEventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventCubit, EventState>(
+    return BlocBuilder<AdminEventCubit, AdminEventState>(
       builder: (context, state) {
         return Card(
           shape:
@@ -98,12 +98,12 @@ class _BuildEventCard extends StatelessWidget {
                       context: context,
                       isScrollControlled: true,
                       builder: (bottomCtx) => BlocProvider.value(
-                        value: context.read<EventCubit>(),
+                        value: context.read<AdminEventCubit>(),
                         child: EventBottomSheet(
                           event: event,
                           onSave: (updatedEvent) {
                             context
-                                .read<EventCubit>()
+                                .read<AdminEventCubit>()
                                 .updateEvent(updatedEvent);
                           },
                         ),

@@ -103,7 +103,7 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
   Widget build(BuildContext context) {
     final Localization strings = Localization(context);
 
-    return BlocListener<EventCubit, EventState>(
+    return BlocListener<AdminEventCubit, AdminEventState>(
       listener: (context, state) {
         if (state is ImageUploading) {
           Fluttertoast.showToast(
@@ -212,7 +212,7 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                        **/
                       final admin = context.read<UserCubit>().user!;
                       widget.event == null
-                          ? context.read<EventCubit>().addEvent(
+                          ? context.read<AdminEventCubit>().addEvent(
                                 AdminEvent(
                                   admin: admin,
                                   title: _titleController.text,
@@ -233,7 +233,7 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                                       "https://firebasestorage.googleapis.com/v0/b/eventra-1eb59.firebasestorage.app/o/events%2F1741408725868.jpg?alt=media&token=1b9ad231-b257-4fed-a14d-d90b7c52ec42",
                                 ),
                               )
-                          : context.read<EventCubit>().updateEvent(
+                          : context.read<AdminEventCubit>().updateEvent(
                                 AdminEvent(
                                   admin: admin,
                                   id: widget.event!.id,
