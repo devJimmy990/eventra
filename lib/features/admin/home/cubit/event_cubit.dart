@@ -9,8 +9,8 @@ import 'package:eventra/features/admin/home/data/repositories/event_repository.d
 
 enum EventFilter { upcoming, past }
 
-class EventCubit extends Cubit<EventState> {
-  EventCubit() : super(EventInitial()) {
+class AdminEventCubit extends Cubit<AdminEventState> {
+  AdminEventCubit() : super(EventInitial()) {
     getEvents();
   }
 

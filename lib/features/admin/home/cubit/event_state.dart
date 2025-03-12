@@ -1,37 +1,37 @@
 import 'package:eventra/features/admin/event/model/admin_event.dart';
 
-sealed class EventState {}
+sealed class AdminEventState {}
 
-class EventInitial extends EventState {
+class EventInitial extends AdminEventState {
   EventInitial();
 }
 
-class EventLoading extends EventState {
+class EventLoading extends AdminEventState {
   EventLoading();
 }
 
-class EventAdded extends EventState {}
+class EventAdded extends AdminEventState {}
 
-class EventLoaded extends EventState {
+class EventLoaded extends AdminEventState {
   final List<AdminEvent> events;
   EventLoaded(this.events);
 }
 
-class EventError extends EventState {
+class EventError extends AdminEventState {
   final String message;
   EventError({required this.message});
 }
 
-class EventEmpty extends EventState {}
+class EventEmpty extends AdminEventState {}
 
-class ImageUploading extends EventState {}
+class ImageUploading extends AdminEventState {}
 
-class ImageUploaded extends EventState {
+class ImageUploaded extends AdminEventState {
   final String url;
   ImageUploaded(this.url);
 }
 
-class EventDeleted extends EventState {
+class EventDeleted extends AdminEventState {
   final List<AdminEvent> events;
   EventDeleted(this.events);
 }

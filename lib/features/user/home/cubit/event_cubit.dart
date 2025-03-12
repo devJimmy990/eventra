@@ -26,7 +26,7 @@ class UserEventCubit extends Cubit<UserEventState> {
     try {
       final String uid = SharedPreference.getString(key: "uid")!;
       await UserEventRepository(UserEventDataSource()).bookEvent(
-        RequestEvent(price: event.price, userId: uid, eventId: event.id!),
+        RequestEvent(userId: uid, eventId: event.id!),
       );
       emit(state);
     } catch (e) {
