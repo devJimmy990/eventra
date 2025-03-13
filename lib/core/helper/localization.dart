@@ -37,6 +37,7 @@ class Localization {
 
 //-------------------- Auth --------------------------------------------
   get authInputEmail => S.of(_context).auth_input_email;
+  get authInputPhone => S.of(_context).auth_input_phone;
   get authInputPassword => S.of(_context).auth_input_password;
   get authInputFullName => S.of(_context).auth_input_full_name;
   get authInputConfirmPassword => S.of(_context).auth_input_confirm_password;

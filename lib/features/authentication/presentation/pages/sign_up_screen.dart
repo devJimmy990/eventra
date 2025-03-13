@@ -27,6 +27,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController nameController;
   late TextEditingController passController;
+  late TextEditingController phoneController;
   late TextEditingController emailController;
   late TextEditingController confirmController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -35,6 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void initState() {
     nameController = TextEditingController();
     passController = TextEditingController();
+    phoneController = TextEditingController();
     emailController = TextEditingController();
     confirmController = TextEditingController();
     super.initState();
@@ -44,6 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void dispose() {
     nameController.dispose();
     passController.dispose();
+    phoneController.dispose();
     emailController.dispose();
     confirmController.dispose();
     super.dispose();
@@ -61,6 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             _BuildSignupForm(
               nameController: nameController,
               passController: passController,
+              phoneController: phoneController,
               emailController: emailController,
               confirmController: confirmController,
             ),
@@ -68,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 nameController: nameController,
                 passController: passController,
                 emailController: emailController,
-                confirmController: confirmController),
+                phoneController: phoneController),
           ],
         ),
       ),
@@ -80,10 +84,12 @@ class _BuildSignupForm extends StatelessWidget {
   final TextEditingController nameController,
       passController,
       emailController,
+      phoneController,
       confirmController;
   const _BuildSignupForm(
       {required this.nameController,
       required this.passController,
+      required this.phoneController,
       required this.emailController,
       required this.confirmController});
 
@@ -104,11 +110,20 @@ class _BuildSignupForm extends StatelessWidget {
             icon: const Icon(Icons.person),
           ),
           TextInputField(
+            email: true,
             label: strings.authInputEmail,
             controller: emailController,
             hint: "abc@example.com",
             validator: validator.validateEmail,
             icon: const Icon(Icons.email_outlined),
+          ),
+          TextInputField(
+            phone: true,
+            hint: "01289223643",
+            controller: phoneController,
+            label: strings.authInputPhone,
+            validator: validator.validatePhone,
+            icon: const Icon(Icons.phone_android),
           ),
           PasswordInputField(
             hint: "123456789",
@@ -135,12 +150,12 @@ class _BuildSignupAction extends StatelessWidget {
   final TextEditingController nameController,
       passController,
       emailController,
-      confirmController;
+      phoneController;
   const _BuildSignupAction(
       {required this.nameController,
       required this.passController,
       required this.emailController,
-      required this.confirmController});
+      required this.phoneController});
 
   @override
   Widget build(BuildContext context) {
@@ -176,6 +191,7 @@ class _BuildSignupAction extends StatelessWidget {
                         User.register(
                           name: nameController.text,
                           email: emailController.text,
+                          phone: phoneController.text,
                         ),
                         passController.text,
                       );

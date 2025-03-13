@@ -18,20 +18,17 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(
-      _current != null,
-      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
-    );
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -44,10 +41,8 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(
-      instance != null,
-      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
-    );
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -59,27 +54,52 @@ class S {
 
   /// `Eventra`
   String get appName {
-    return Intl.message('Eventra', name: 'appName', desc: '', args: []);
+    return Intl.message(
+      'Eventra',
+      name: 'appName',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Switch`
   String get theme_switch {
-    return Intl.message('Switch', name: 'theme_switch', desc: '', args: []);
+    return Intl.message(
+      'Switch',
+      name: 'theme_switch',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Dark`
   String get theme_dark {
-    return Intl.message('Dark', name: 'theme_dark', desc: '', args: []);
+    return Intl.message(
+      'Dark',
+      name: 'theme_dark',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Light`
   String get theme_light {
-    return Intl.message('Light', name: 'theme_light', desc: '', args: []);
+    return Intl.message(
+      'Light',
+      name: 'theme_light',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Arabic`
   String get language_arabic {
-    return Intl.message('Arabic', name: 'language_arabic', desc: '', args: []);
+    return Intl.message(
+      'Arabic',
+      name: 'language_arabic',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `English`
@@ -222,7 +242,22 @@ class S {
 
   /// `email`
   String get auth_input_email {
-    return Intl.message('email', name: 'auth_input_email', desc: '', args: []);
+    return Intl.message(
+      'email',
+      name: 'auth_input_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `phone number`
+  String get auth_input_phone {
+    return Intl.message(
+      'phone number',
+      name: 'auth_input_phone',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `password`
@@ -277,7 +312,12 @@ class S {
 
   /// `Logout`
   String get auth_btn_logout {
-    return Intl.message('Logout', name: 'auth_btn_logout', desc: '', args: []);
+    return Intl.message(
+      'Logout',
+      name: 'auth_btn_logout',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Forget Password?`
@@ -498,7 +538,12 @@ class S {
 
   /// `See More..`
   String get seeMore {
-    return Intl.message('See More..', name: 'seeMore', desc: '', args: []);
+    return Intl.message(
+      'See More..',
+      name: 'seeMore',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `No Upcoming Events`
@@ -513,7 +558,12 @@ class S {
 
   /// `Events`
   String get events {
-    return Intl.message('Events', name: 'events', desc: '', args: []);
+    return Intl.message(
+      'Events',
+      name: 'events',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Welcome Admin`
@@ -528,12 +578,22 @@ class S {
 
   /// `Upcoming`
   String get upcoming {
-    return Intl.message('Upcoming', name: 'upcoming', desc: '', args: []);
+    return Intl.message(
+      'Upcoming',
+      name: 'upcoming',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Previous`
   String get previous {
-    return Intl.message('Previous', name: 'previous', desc: '', args: []);
+    return Intl.message(
+      'Previous',
+      name: 'previous',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Event Details`
@@ -548,17 +608,32 @@ class S {
 
   /// `About Event`
   String get aboutEvent {
-    return Intl.message('About Event', name: 'aboutEvent', desc: '', args: []);
+    return Intl.message(
+      'About Event',
+      name: 'aboutEvent',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Attendees`
   String get attendees {
-    return Intl.message('Attendees', name: 'attendees', desc: '', args: []);
+    return Intl.message(
+      'Attendees',
+      name: 'attendees',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `See all`
   String get seeAll {
-    return Intl.message('See all', name: 'seeAll', desc: '', args: []);
+    return Intl.message(
+      'See all',
+      name: 'seeAll',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `No attendees present`
@@ -583,12 +658,22 @@ class S {
 
   /// `Data`
   String get data {
-    return Intl.message('Data', name: 'data', desc: '', args: []);
+    return Intl.message(
+      'Data',
+      name: 'data',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Settings`
   String get settings {
-    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Create Event`
@@ -633,7 +718,12 @@ class S {
 
   /// `Create`
   String get create {
-    return Intl.message('Create', name: 'create', desc: '', args: []);
+    return Intl.message(
+      'Create',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Notification Screen`
@@ -668,47 +758,92 @@ class S {
 
   /// `Bookmark`
   String get bookmark {
-    return Intl.message('Bookmark', name: 'bookmark', desc: '', args: []);
+    return Intl.message(
+      'Bookmark',
+      name: 'bookmark',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Book Now`
   String get bookNow {
-    return Intl.message('Book Now', name: 'bookNow', desc: '', args: []);
+    return Intl.message(
+      'Book Now',
+      name: 'bookNow',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Buy Ticket`
   String get buyTicket {
-    return Intl.message('Buy Ticket', name: 'buyTicket', desc: '', args: []);
+    return Intl.message(
+      'Buy Ticket',
+      name: 'buyTicket',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Explore`
   String get explore {
-    return Intl.message('Explore', name: 'explore', desc: '', args: []);
+    return Intl.message(
+      'Explore',
+      name: 'explore',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Calendar`
   String get calendar {
-    return Intl.message('Calendar', name: 'calendar', desc: '', args: []);
+    return Intl.message(
+      'Calendar',
+      name: 'calendar',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Contact Us`
   String get contactUs {
-    return Intl.message('Contact Us', name: 'contactUs', desc: '', args: []);
+    return Intl.message(
+      'Contact Us',
+      name: 'contactUs',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Call us`
   String get callUs {
-    return Intl.message('Call us', name: 'callUs', desc: '', args: []);
+    return Intl.message(
+      'Call us',
+      name: 'callUs',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Email us`
   String get emailUs {
-    return Intl.message('Email us', name: 'emailUs', desc: '', args: []);
+    return Intl.message(
+      'Email us',
+      name: 'emailUs',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `ACC Address:`
   String get accAddress {
-    return Intl.message('ACC Address:', name: 'accAddress', desc: '', args: []);
+    return Intl.message(
+      'ACC Address:',
+      name: 'accAddress',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.`
@@ -813,17 +948,32 @@ class S {
 
   /// `Skip`
   String get skip {
-    return Intl.message('Skip', name: 'skip', desc: '', args: []);
+    return Intl.message(
+      'Skip',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Get Started`
   String get getStarted {
-    return Intl.message('Get Started', name: 'getStarted', desc: '', args: []);
+    return Intl.message(
+      'Get Started',
+      name: 'getStarted',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `OK`
   String get ok {
-    return Intl.message('OK', name: 'ok', desc: '', args: []);
+    return Intl.message(
+      'OK',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Already have an account?`
@@ -838,7 +988,12 @@ class S {
 
   /// `Login`
   String get login {
-    return Intl.message('Login', name: 'login', desc: '', args: []);
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Please add an event`
@@ -873,17 +1028,32 @@ class S {
 
   /// `Area Name`
   String get areaName {
-    return Intl.message('Area Name', name: 'areaName', desc: '', args: []);
+    return Intl.message(
+      'Area Name',
+      name: 'areaName',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Required`
   String get required {
-    return Intl.message('Required', name: 'required', desc: '', args: []);
+    return Intl.message(
+      'Required',
+      name: 'required',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Address`
   String get address {
-    return Intl.message('Address', name: 'address', desc: '', args: []);
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Google Map URL`
@@ -898,7 +1068,12 @@ class S {
 
   /// `English`
   String get english {
-    return Intl.message('English', name: 'english', desc: '', args: []);
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
   }
 }
 

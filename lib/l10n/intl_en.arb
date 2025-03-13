@@ -23,6 +23,7 @@
   "_========  End Validator ========================================================": "",
   "_======== Auth ========================================================": "",
   "auth_input_email": "email",
+  "auth_input_phone": "phone number",
   "auth_input_password": "password",
   "auth_input_full_name": "full name",
   "auth_input_confirm_password": "confirm password",

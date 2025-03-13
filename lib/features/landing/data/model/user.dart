@@ -2,15 +2,15 @@ import 'package:eventra/features/admin/data/model/booked_event.dart';
 
 class User {
   List<BookedEvent>? _events;
-  String? id, avatar, phone;
-  final String name, email, role;
+  String? id, avatar;
+  final String name, phone, email, role;
 
   User._({
     this.id,
-    this.phone,
     this.avatar,
     required this.name,
     this.role = "user",
+    required this.phone,
     required this.email,
     List<BookedEvent>? events,
   }) : _events = events ?? [];
@@ -18,19 +18,21 @@ class User {
   factory User.register({
     required String name,
     required String email,
+    required String phone,
   }) =>
       User._(
         name: name,
         email: email,
+        phone: phone,
         role: "user",
       );
 
   factory User.event({
-    String? phone,
     String? avatar,
     required String id,
     required String name,
     required String email,
+    required String phone,
   }) =>
       User._(
         id: id,
@@ -47,7 +49,7 @@ class User {
       role: json['role'],
       name: json['name'],
       email: json['email'],
-      phone: json['phone'],
+      phone: json['phone']??"",
       avatar: json['avatar'],
     );
   }
