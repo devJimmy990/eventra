@@ -117,7 +117,8 @@ class _UserHomeScreenState extends State<UserHomeScreen>
                   _animationController.reverse();
                 }
                 setState(() {
-                  isSideBarOpen = !isSideBarOpen;
+                  // isSideBarOpen = !isSideBarOpen;
+                  // _animationController.reverse();
                 });
               },
               riveOnInit: (artboard) {

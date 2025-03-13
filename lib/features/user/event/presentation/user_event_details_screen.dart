@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/user/event/cubit/request_cubit.dart';
 import 'package:eventra/features/user/event/cubit/request_state.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/extension/event.dart';
-import 'package:eventra/features/admin/extension/date_time.dart';
 import 'package:eventra/features/user/event/data/models/booked_event.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
