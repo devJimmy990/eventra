@@ -30,16 +30,13 @@ class _UserHomeScreenState extends State<UserHomeScreen>
   late SMIBool isMenuOpenInput;
 
   @override
-  @override
   void initState() {
     _pageController = PageController();
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 200))
-      ..addListener(
-            () {
-          setState(() {});
-        },
-      );
+        vsync: this, duration: const Duration(milliseconds: 30))
+      ..addListener(() {
+        setState(() {});
+      });
     scalAnimation = Tween<double>(begin: 1, end: 0.8).animate(CurvedAnimation(
         parent: _animationController, curve: Curves.fastOutSlowIn));
     animation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
@@ -47,22 +44,26 @@ class _UserHomeScreenState extends State<UserHomeScreen>
     super.initState();
   }
 
-
   @override
   void dispose() {
     _pageController.dispose();
     _animationController.dispose();
-
     super.dispose();
   }
 
-  void updateSelectedBtmNav(Menu menu, int index) {
-    if (selectedButtonNav != menu) {
-      setState(() {
-        selectedButtonNav = menu;
-        selectedIndex = index;
-        _pageController.jumpToPage(index);
-      });
+  void toggleSidebar() {
+    setState(() {
+      isSideBarOpen = !isSideBarOpen;
+    });
+
+    if (isMenuOpenInput != null) {
+      isMenuOpenInput.value = !isSideBarOpen;  // Reverse the state
+    } // Reverse the state
+
+    if (isSideBarOpen) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
     }
   }
 
@@ -75,15 +76,24 @@ class _UserHomeScreenState extends State<UserHomeScreen>
       backgroundColor: ColorManager.whiteColor,
       body: Stack(
         children: [
-          // Sidebar that slides in/out
+          if (isSideBarOpen)
+            GestureDetector(
+              onTap: toggleSidebar,
+              child: Container(
+                color: Colors.black.withOpacity(0.5),
+                width: double.infinity,
+                height: double.infinity,
+              ),
+            ),
+
           AnimatedPositioned(
-            width: 288,
+            width: MediaQuery.of(context).size.width * 0.8,
             height: MediaQuery.of(context).size.height,
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.fastOutSlowIn,
-            left: isSideBarOpen ? 0 : -288,
+            left: isSideBarOpen ? 0 : -MediaQuery.of(context).size.width * 0.8,
             top: 0,
-            child: const SideBar(), // Replace with your actual SideBar widget
+            child: const SideBar(),
           ),
           Transform(
             alignment: Alignment.center,
@@ -98,82 +108,23 @@ class _UserHomeScreenState extends State<UserHomeScreen>
               ),
             ),
           ),
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.fastOutSlowIn,
+          Positioned(
             left: isSideBarOpen ? 220 : 0,
             top: 16,
             child: MenuBtn(
-              press: () {
-                // Toggle the menu open state and animate the controller
-                isMenuOpenInput.value = !isMenuOpenInput.value;
-                if (_animationController.value == 0) {
-                  _animationController.forward();
-                } else {
-                  _animationController.reverse();
-                }
-                setState(() {
-                  // isSideBarOpen = !isSideBarOpen;
-                  // _animationController.reverse();
-                });
-              },
+              press: toggleSidebar,
               riveOnInit: (artboard) {
                 final controller = StateMachineController.fromArtboard(
                     artboard, "State Machine");
                 artboard.addController(controller!);
                 isMenuOpenInput =
                 controller.findInput<bool>("isOpen") as SMIBool;
-                isMenuOpenInput.value = true;
+                isMenuOpenInput.value = !isSideBarOpen;
               },
             ),
           ),
         ],
       ),
-      // bottomNavigationBar: Transform.translate(
-      //   offset: Offset(0, 100 * animation.value),
-      //   child: SafeArea(
-      //     child: Container(
-      //       width: 3.w,
-      //       height: 70.h,
-      //       padding: const EdgeInsets.all(12),
-      //       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-      //       decoration: BoxDecoration(
-      //         color: ColorManager.backgroundColor2.withOpacity(0.8),
-      //         borderRadius: const BorderRadius.all(Radius.circular(24)),
-      //         boxShadow: [
-      //           BoxShadow(
-      //             color: ColorManager.backgroundColor2.withOpacity(0.3),
-      //             offset: const Offset(0, 20),
-      //             blurRadius: 20,
-      //           ),
-      //         ],
-      //       ),
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [
-      //           ...List.generate(
-      //             bottomNavItems.length,
-      //                 (index) {
-      //               Menu navBar = bottomNavItems[index];
-      //               return BtmNavItem(
-      //                 navBar: navBar,
-      //                 press: () {
-      //                   RiveUtils.chnageSMIBoolState(navBar.rive.status!);
-      //                   updateSelectedBtmNav(navBar, index);
-      //                 },
-      //                 riveOnInit: (artboard) {
-      //                   navBar.rive.status = RiveUtils.getRiveInput(artboard,
-      //                       stateMachineName: navBar.rive.stateMachineName);
-      //                 },
-      //                 selectedNav: selectedButtonNav,
-      //               );
-      //             },
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

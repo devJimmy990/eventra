@@ -22,30 +22,75 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "SignInWithGoogle": MessageLookupByLibrary.simpleMessage(
-      "Sign in with Google",
-    ),
     "aboutEvent": MessageLookupByLibrary.simpleMessage("About Event"),
     "accAddress": MessageLookupByLibrary.simpleMessage("ACC Address:"),
     "accAddressDetails": MessageLookupByLibrary.simpleMessage(
       "U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.",
     ),
-    "accCreated": MessageLookupByLibrary.simpleMessage(
-      "Account created successfully",
-    ),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "admin_app_bar_title": MessageLookupByLibrary.simpleMessage(
+      "Welcome Admin",
+    ),
+    "admin_explore_tab_previous": MessageLookupByLibrary.simpleMessage(
+      "Previous",
+    ),
+    "admin_explore_tab_up_coming": MessageLookupByLibrary.simpleMessage(
+      "Upcoming",
+    ),
+    "admin_profile_avatar_change": MessageLookupByLibrary.simpleMessage(
+      "change avatar",
+    ),
+    "admin_profile_avatar_upload": MessageLookupByLibrary.simpleMessage(
+      "upload avatar",
+    ),
+    "admin_profile_info": MessageLookupByLibrary.simpleMessage(
+      "Personal Information",
+    ),
+    "admin_profile_info_email": MessageLookupByLibrary.simpleMessage("Email:"),
+    "admin_profile_info_name": MessageLookupByLibrary.simpleMessage("Name:"),
+    "admin_profile_info_phone": MessageLookupByLibrary.simpleMessage("Phone:"),
+    "admin_profile_info_phone_empty": MessageLookupByLibrary.simpleMessage(
+      "Empty Phone Number",
+    ),
+    "admin_profile_settings": MessageLookupByLibrary.simpleMessage(
+      "Account Settings",
+    ),
+    "admin_profile_settings_language": MessageLookupByLibrary.simpleMessage(""),
+    "admin_profile_settings_theme": MessageLookupByLibrary.simpleMessage(""),
     "alreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
     "appName": MessageLookupByLibrary.simpleMessage("Eventra"),
     "areaName": MessageLookupByLibrary.simpleMessage("Area Name"),
     "attendees": MessageLookupByLibrary.simpleMessage("Attendees"),
+    "auth_btn_forget_password": MessageLookupByLibrary.simpleMessage(
+      "Forget Password?",
+    ),
+    "auth_btn_logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "auth_btn_sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
+    "auth_btn_sign_in_google": MessageLookupByLibrary.simpleMessage(
+      "Sign in With Google",
+    ),
+    "auth_btn_sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "auth_input_confirm_password": MessageLookupByLibrary.simpleMessage(
+      "confirm password",
+    ),
+    "auth_input_email": MessageLookupByLibrary.simpleMessage("email"),
+    "auth_input_full_name": MessageLookupByLibrary.simpleMessage("full name"),
+    "auth_input_password": MessageLookupByLibrary.simpleMessage("password"),
+    "auth_remember_msg": MessageLookupByLibrary.simpleMessage(
+      "need to login every time open the app",
+    ),
+    "auth_tab_sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
+    "auth_tab_sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "auth_toggle_remember_me": MessageLookupByLibrary.simpleMessage(
+      "Remember Me",
+    ),
     "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
     "bookmark": MessageLookupByLibrary.simpleMessage("Bookmark"),
     "buyTicket": MessageLookupByLibrary.simpleMessage("Buy Ticket"),
     "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
     "callUs": MessageLookupByLibrary.simpleMessage("Call us"),
-    "confirmPass": MessageLookupByLibrary.simpleMessage("Confirm password"),
     "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
     "create": MessageLookupByLibrary.simpleMessage("Create"),
     "createEvent": MessageLookupByLibrary.simpleMessage("Create Event"),
@@ -53,9 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have An Account?",
     ),
-    "emailEx": MessageLookupByLibrary.simpleMessage("Example@email.com"),
     "emailUs": MessageLookupByLibrary.simpleMessage("Email us"),
-    "empty": MessageLookupByLibrary.simpleMessage("This field cannot be empty"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "eventCalendar": MessageLookupByLibrary.simpleMessage("Event Calendar"),
     "eventDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -72,12 +115,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "eventsRequest": MessageLookupByLibrary.simpleMessage("Events Request"),
     "explore": MessageLookupByLibrary.simpleMessage("Explore"),
     "favoriteEvents": MessageLookupByLibrary.simpleMessage("Bookmark Events"),
-    "forgetPass": MessageLookupByLibrary.simpleMessage("Forget Password?"),
     "freeMembership": MessageLookupByLibrary.simpleMessage("Free Membership"),
     "freeMembershipDetails": MessageLookupByLibrary.simpleMessage(
       "Join us now and get a free membership for 3 months.",
     ),
-    "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
     "furtherInquiries": MessageLookupByLibrary.simpleMessage(
       "Further Inquiries",
     ),
@@ -86,13 +127,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "googleMapUrl": MessageLookupByLibrary.simpleMessage("Google Map URL"),
-    "hasAcc": MessageLookupByLibrary.simpleMessage("Already have an account?"),
-    "invalidEmail": MessageLookupByLibrary.simpleMessage(
-      "Please enter a valid Email",
+    "language_arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "language_english": MessageLookupByLibrary.simpleMessage("English"),
+    "language_switch": MessageLookupByLibrary.simpleMessage(
+      "تغيير للغة العربية",
     ),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
-    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-    "noAcc": MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
     "noAttendeesPresent": MessageLookupByLibrary.simpleMessage(
       "No attendees present",
     ),
@@ -105,9 +145,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "noUpcomingEvents": MessageLookupByLibrary.simpleMessage(
       "No Upcoming Events",
     ),
-    "noUser": MessageLookupByLibrary.simpleMessage(
-      "No user found for that email.",
-    ),
     "notificationScreen": MessageLookupByLibrary.simpleMessage(
       "Notification Screen",
     ),
@@ -116,24 +153,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "openingHoursDetails": MessageLookupByLibrary.simpleMessage(
       "Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays.",
     ),
-    "or": MessageLookupByLibrary.simpleMessage("OR"),
-    "passNotMatch": MessageLookupByLibrary.simpleMessage(
-      "Passwords doesn\'t match",
-    ),
     "pleaseAddAnEvent": MessageLookupByLibrary.simpleMessage(
       "Please add an event",
     ),
     "previous": MessageLookupByLibrary.simpleMessage("Previous"),
-    "rememberPass": MessageLookupByLibrary.simpleMessage("Remember me"),
     "required": MessageLookupByLibrary.simpleMessage("Required"),
     "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
     "seeMore": MessageLookupByLibrary.simpleMessage("See More.."),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-    "shortPass": MessageLookupByLibrary.simpleMessage(
-      "Please enter at least 6 characters",
-    ),
-    "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
-    "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "specialAnnouncements": MessageLookupByLibrary.simpleMessage(
       "Special Announcements",
@@ -141,16 +168,42 @@ class MessageLookup extends MessageLookupByLibrary {
     "specialAnnouncementsDetails": MessageLookupByLibrary.simpleMessage(
       "Stay tuned for our special announcements.",
     ),
+    "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
+    "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+    "theme_switch": MessageLookupByLibrary.simpleMessage("Switch"),
     "upComingEvents": MessageLookupByLibrary.simpleMessage("Upcoming Events"),
     "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
-    "usedEmail": MessageLookupByLibrary.simpleMessage(
-      "The account already exists for that email.",
+    "validator_empty": MessageLookupByLibrary.simpleMessage("required"),
+    "validator_firebase_invalid_credentials":
+        MessageLookupByLibrary.simpleMessage("invalid email or password"),
+    "validator_firebase_used_email": MessageLookupByLibrary.simpleMessage(
+      "The account already exists for that email",
+    ),
+    "validator_firebase_weak_password": MessageLookupByLibrary.simpleMessage(
+      "password is too weak",
+    ),
+    "validator_invalid_email": MessageLookupByLibrary.simpleMessage(
+      "invalid email format e.g. abc@email.com",
+    ),
+    "validator_invalid_phone": MessageLookupByLibrary.simpleMessage(
+      "invalid phone number format e.g. 0128223643",
+    ),
+    "validator_long_name": MessageLookupByLibrary.simpleMessage(
+      "Name must be less than 25 characters",
+    ),
+    "validator_password_not_match": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match",
+    ),
+    "validator_short_message": MessageLookupByLibrary.simpleMessage(
+      "Name is too short",
+    ),
+    "validator_short_name": MessageLookupByLibrary.simpleMessage(
+      "Name is too short",
+    ),
+    "validator_short_password": MessageLookupByLibrary.simpleMessage(
+      "Password must be more than 6 characters",
     ),
     "welcomeAdmin": MessageLookupByLibrary.simpleMessage("Welcome Admin"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome back"),
-    "wrongPass": MessageLookupByLibrary.simpleMessage(
-      "Wrong password provided for that user.",
-    ),
-    "yourPass": MessageLookupByLibrary.simpleMessage("Your password"),
   };
 }

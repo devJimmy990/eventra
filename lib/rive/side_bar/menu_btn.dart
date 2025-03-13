@@ -11,7 +11,9 @@ class MenuBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: GestureDetector(
-        onTap: press,
+        onTap: () {
+          press(); // Call the toggleSidebar function
+        },
         child: Container(
           margin: const EdgeInsets.only(left: 12),
           height: 40,
@@ -29,7 +31,18 @@ class MenuBtn extends StatelessWidget {
           ),
           child: RiveAnimation.asset(
             "assets/RiveAssets/menu_button.riv",
-            onInit: riveOnInit,
+            onInit: (artboard) {
+              final controller = StateMachineController.fromArtboard(
+                  artboard, "State Machine");
+              artboard.addController(controller!);
+              final isMenuOpenInput = controller.findInput<bool>("isOpen") as SMIBool;
+
+
+              // Reverse the logic: Default to open (X icon) when sidebar is closed
+              isMenuOpenInput.value = false; // Show X when sidebar is closed
+
+              riveOnInit(artboard); // Pass the artboard back to parent
+            },
           ),
         ),
       ),
