@@ -8,8 +8,6 @@ import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:eventra/features/user/home/cubit/event_cubit.dart';
 import 'package:eventra/features/user/home/cubit/event_state.dart';
 import 'package:eventra/features/user/home/presentation/widgets/event_card.dart';
-import 'package:eventra/features/user/home/presentation/widgets/user_drawer.dart';
-
 class EventExploreView extends StatelessWidget {
   const EventExploreView({super.key});
 
@@ -20,7 +18,7 @@ class EventExploreView extends StatelessWidget {
       length: 2,
       initialIndex: 0,
       child: Scaffold(
-        drawer: UserDrawer(),
+
         appBar: AppBar(
           backgroundColor: Color(0xFF4A43EC),
           iconTheme: IconThemeData(color: Colors.white, size: 30),

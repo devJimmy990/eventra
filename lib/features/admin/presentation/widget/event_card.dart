@@ -117,7 +117,7 @@ class _BuildEventCard extends StatelessWidget {
                     child: Hero(
                       tag: event.id ?? event.title,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(3),
+                        borderRadius: BorderRadius.zero,
                         child: event.cover == null
                             ? Image.asset(StringsManager.eventImage,
                                 fit: BoxFit.cover)

@@ -9,4 +9,7 @@ class ColorManager {
   static const Color blackColor = Colors.black;
   static const Color greyColor = Colors.grey;
   static const Color whiteColor = Colors.white;
+
+  //test rive
+  static const Color backgroundColor2 = Color(0xFF17203A);
 }

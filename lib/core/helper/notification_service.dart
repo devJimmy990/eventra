@@ -29,6 +29,8 @@ class NotificationService {
     // Get FCM token
     final token = await _messaging.getToken();
     print('FCM Token: $token');
+    FirebaseMessaging.instance.subscribeToTopic("events").then((val) { print("subscribed");});
+    print('FCM Token: $token');
   }
 
   Future<void> _requestPermission() async {
