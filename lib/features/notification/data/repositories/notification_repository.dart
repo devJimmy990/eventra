@@ -25,4 +25,13 @@ class NotificationRepository {
       rethrow;
     }
   }
+
+  subscribeToTopic({required String topic}) async {
+    try {
+      return await _dataSource.subscribeToTopic(topic);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
 }

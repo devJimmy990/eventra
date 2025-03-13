@@ -1,11 +1,11 @@
 import 'package:eventra/core/firebase/firebase.dart';
 
 class NotificationDataSource {
-  final Firebase firebase = Firebase();
+  final Firebase _firebase = Firebase();
 
   Future<List<Map<String, dynamic>>> getNotifications(String uid) async {
     try {
-      return await firebase.store
+      return await _firebase.store
           .collection("users")
           .doc(uid)
           .collection("notifications")
@@ -19,7 +19,7 @@ class NotificationDataSource {
   Future<Map<String, dynamic>> addNotification(
       Map<String, dynamic> data, String uid) async {
     try {
-      final docId = firebase.store
+      final docId = _firebase.store
           .collection("users")
           .doc(uid)
           .collection("notifications")
@@ -27,6 +27,14 @@ class NotificationDataSource {
       data.addAll({"id": docId.id});
       docId.set(data);
       return data;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  subscribeToTopic(String topic) async {
+    try {
+      await _firebase.messaging.subscribeToTopic(topic);
     } catch (e) {
       rethrow;
     }
