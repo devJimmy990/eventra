@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/admin/cubit/requests/request_cubit.dart';
 import 'package:eventra/features/admin/cubit/requests/request_state.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AdminEventsRequestsView extends StatelessWidget {
-  const AdminEventsRequestsView({super.key});
+class AdminEventsRequestsScreen extends StatelessWidget {
+  const AdminEventsRequestsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

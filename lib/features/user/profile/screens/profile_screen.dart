@@ -1,5 +1,5 @@
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:eventra/core/helper/localization.dart';
-import 'package:eventra/features/admin/extension/string.dart';
 import 'package:eventra/features/user/profile/widgets/profile_about_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +30,7 @@ class MyProfilePage extends StatelessWidget {
                   radius: 50,
                   backgroundImage:
                       user.avatar != null ? NetworkImage(user.avatar!) : null,
-                  child: user.avatar == null ? Text(user.name.nameAbb()) : null,
+                  child: user.avatar == null ? Text(user.name.abbreviate()) : null,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                 Text(
@@ -43,7 +43,7 @@ class MyProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 TabBar(tabs: [
-                  Tab(text: strings.googleSignIn),
+                  Tab(text: "about"),
                   Tab(text: strings.events),
                 ]),
                 Expanded(

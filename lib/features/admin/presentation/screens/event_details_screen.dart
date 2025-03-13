@@ -1,12 +1,11 @@
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/helper/external_launcher.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/extension/event.dart';
-import 'package:eventra/features/admin/extension/string.dart';
 import 'package:eventra/features/admin/data/model/admin_event.dart';
-import 'package:eventra/features/admin/extension/date_time.dart';
 
 class AdminEventDetailsScreen extends StatelessWidget {
   final AdminEvent event;
@@ -245,7 +244,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                               child: CircleAvatar(
                                 radius: 30,
                                 child:
-                                    Text(event.attendees[inx].name.nameAbb()),
+                                    Text(event.attendees[inx].name.abbreviate()),
                               ),
                             ),
                   childCount:

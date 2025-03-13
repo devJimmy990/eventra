@@ -1,6 +1,6 @@
-import 'package:eventra/features/admin/extension/string.dart';
-import 'package:eventra/features/landing/data/model/user.dart';
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:eventra/features/landing/data/model/user.dart';
 
 class EventAttendeesListScreen extends StatelessWidget {
   final List<User> attendees;
@@ -20,7 +20,7 @@ class EventAttendeesListScreen extends StatelessWidget {
           backgroundColor: Colors.grey,
           child: CircleAvatar(
             radius: 30,
-            child: Text(attendees[inx].name.nameAbb()),
+            child: Text(attendees[inx].name.abbreviate()),
           ),
         ),
       ),

@@ -4,7 +4,7 @@ class TextInputField extends StatelessWidget {
   final Icon? icon;
   final String label;
   final int? maxLines;
-  final String? hintText;
+  final String? hint;
   final bool? email, phone, enabled;
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -15,7 +15,7 @@ class TextInputField extends StatelessWidget {
     this.phone,
     this.maxLines,
     this.validator,
-    this.hintText,
+    this.hint,
     this.enabled = true,
     required this.label,
     required this.controller,
@@ -40,7 +40,7 @@ class TextInputField extends StatelessWidget {
         filled: true,
         prefixIcon: icon,
         labelText: label,
-        hintText: hintText,
+        hintText: hint,
         fillColor: Colors.white,
         alignLabelWithHint: maxLines != null && maxLines! > 1,
         labelStyle: const TextStyle(color: Colors.black),
@@ -55,11 +55,14 @@ class TextInputField extends StatelessWidget {
 class PasswordInputField extends StatefulWidget {
   final Icon? icon;
   final String label;
+  final String? hint;
+
   final TextEditingController controller;
   final String? Function(String?)? validator;
   const PasswordInputField({
     super.key,
     this.icon,
+    this.hint,
     this.validator,
     required this.label,
     required this.controller,
@@ -81,6 +84,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
         filled: true,
+        hintText: widget.hint,
         labelText: widget.label,
         fillColor: Colors.white,
         prefixIcon: Icon(Icons.lock),

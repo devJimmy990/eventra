@@ -1,16 +1,15 @@
-import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/admin/extension/date_time.dart';
-import 'package:eventra/features/admin/extension/event.dart';
-import 'package:eventra/features/admin/cubit/event/event_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/routes/routes.dart';
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:eventra/core/constants/strings_manager.dart';
+import 'package:eventra/features/admin/extension/event.dart';
 import 'package:eventra/features/admin/data/model/admin_event.dart';
-import 'package:eventra/features/admin/presentation/widget/event_bottom_sheet.dart';
-
-import '../../cubit/event/event_cubit.dart';
+import 'package:eventra/features/admin/cubit/event/event_cubit.dart';
+import 'package:eventra/features/admin/cubit/event/event_state.dart';
+import 'package:eventra/features/admin/presentation/view/event_data/event_bottom_sheet.dart';
 
 class EventCard extends StatelessWidget {
   final AdminEvent event;

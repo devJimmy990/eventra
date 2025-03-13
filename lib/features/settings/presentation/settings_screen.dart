@@ -37,7 +37,7 @@ class SettingsScreen extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(strings.appName),
+                  Text("strings.appName"),
                   Icon(Icons.change_circle_outlined),
                 ],
               ),

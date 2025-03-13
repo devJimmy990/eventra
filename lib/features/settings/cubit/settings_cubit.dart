@@ -25,12 +25,20 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void toggleTheme() {
+    SharedPreference.setString(
+      key: "theme",
+      value: state.theme == AppTheme.dark ? "light" : "dark",
+    );
     emit(state.copyWith(
       theme: state.theme == AppTheme.dark ? AppTheme.light : AppTheme.dark,
     ));
   }
 
   void toggleLanguage() {
+    SharedPreference.setString(
+      key: "locale",
+      value: state.locale == "en" ? "ar" : "en",
+    );
     emit(state.copyWith(
       locale: state.locale == "en" ? "ar" : "en",
     ));

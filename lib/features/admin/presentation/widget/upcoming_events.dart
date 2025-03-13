@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/cubit/event/event_cubit.dart';
 import 'package:eventra/features/admin/cubit/event/event_state.dart';
 import 'package:eventra/features/admin/presentation/widget/event_card.dart';
-import 'package:eventra/features/admin/presentation/widget/event_bottom_sheet.dart';
+import 'package:eventra/features/admin/presentation/view/event_data/event_bottom_sheet.dart';
 
 class UpcomingEvents extends StatelessWidget {
   const UpcomingEvents({super.key});

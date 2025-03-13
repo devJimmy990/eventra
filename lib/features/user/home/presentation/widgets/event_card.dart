@@ -1,10 +1,10 @@
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/admin/data/model/base_event.dart';
-import 'package:eventra/features/admin/extension/date_time.dart';
 
 class EventCard extends StatelessWidget {
   final BaseEvent event;

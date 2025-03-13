@@ -8,20 +8,21 @@ class AuthenticationHeader extends StatelessWidget {
   const AuthenticationHeader({super.key});
 
   @override
-  Widget build(BuildContext context) { final strings = Localization(context);
+  Widget build(BuildContext context) {
+    final Localization strings = Localization(context);
     return Column(
       children: [
         SizedBox(
           height: 100.h,
           child: Image.asset(StringsManager.appImage)
               .animate()
-              .fade(duration: const Duration(seconds: 4)),
+              .fade(duration: const Duration(seconds: 2)),
         ),
         Center(
           child: Text(
-            strings.appName,
+            strings.generalAppName,
             style: Theme.of(context).textTheme.titleLarge,
-          ).animate().fade(duration: const Duration(seconds: 4)),
+          ).animate().fade(duration: const Duration(seconds: 2)),
         ),
       ],
     );

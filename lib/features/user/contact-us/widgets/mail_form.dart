@@ -95,7 +95,7 @@ class _ContactUsMailFormBottomSheetState
                     phone: true,
                     label: "Message",
                     controller: messageController,
-                    hintText: "Type your message here",
+                    hint: "Type your message here",
                     validator: validator.validateMessage,
                   ),
                 ],

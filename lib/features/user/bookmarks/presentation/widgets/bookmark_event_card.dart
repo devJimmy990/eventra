@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/extension/date_time.dart';
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:eventra/features/user/event/data/models/booked_event.dart';
 import 'package:flutter/material.dart';
 

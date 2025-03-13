@@ -1,22 +1,22 @@
-import 'package:eventra/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:eventra/core/helper/localization.dart';
 
 class FirebaseValidator {
-  final BuildContext _context;
-  FirebaseValidator(BuildContext context) : _context = context;
+  final Localization _strings;
+  FirebaseValidator(BuildContext context) : _strings = Localization(context);
   String login(String msg) {
     if (msg.contains("firebase_auth/invalid-email") ||
         msg.contains("firebase_auth/invalid-credential")) {
-      return "invalid email or password";
+      return _strings.validatorFirebaseInvalidCredentials;
     }
     return msg;
   }
 
   String register(String msg) {
     if (msg.contains("firebase_auth/email-already-in-use")) {
-      return S.of(_context).usedEmail;
+      return _strings.validatorFirebaseUsedEmail;
     } else if (msg.contains("weak-password")) {
-      return "password is too weak";
+      return _strings.validatorFirebaseWeakPassword;
     }
     return msg;
   }

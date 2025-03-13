@@ -1,6 +1,6 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/features/authentication/data/data_source/auth_data_source.dart';
 import 'package:eventra/features/authentication/data/repositories/auth_repository.dart';
@@ -16,7 +16,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  void loginWithEmailAndPassword(String email, String password) async {
+  void loginWithEmailAndPassword(
+      String email, String password, bool remember) async {
     emit(AuthenticationLoading());
     try {
       String? uid = await AuthenticationRepository(AuthenticationDataSource())
@@ -25,6 +26,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(AuthenticationError("Invalid email or password"));
         return;
       }
+      if (remember) SharedPreference.setBool(key: "remember", value: remember);
       SharedPreference.setString(key: "uid", value: uid);
       emit(Authenticated(uid));
     } catch (e) {
@@ -73,7 +75,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(AuthenticationError("Error creating user"));
         return;
       }
-      SharedPreference.setString(key: "uid", value: model.id!);
       emit(UserCreated(model));
     } catch (e) {
       emit(AuthenticationError(e.toString()));

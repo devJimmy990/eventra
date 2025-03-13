@@ -20,6 +20,7 @@ class UserCubit extends Cubit<UserState> {
         emit(UserNotAuthenticated());
         return;
       }
+      print("Found: $uid");
       _user = await UserRepository(UserDataSource()).getUserData(uid);
       emit(UserLoaded(_user!));
     } catch (e) {

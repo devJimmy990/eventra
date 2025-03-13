@@ -1,4 +1,4 @@
-import 'package:eventra/features/admin/extension/string.dart';
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
@@ -46,7 +46,7 @@ class _BuildUserDrawer extends StatelessWidget {
                   radius: 50,
                   backgroundImage:
                       user.avatar != null ? NetworkImage(user.avatar!) : null,
-                  child: user.avatar == null ? Text(user.name.nameAbb()) : null,
+                  child: user.avatar == null ? Text(user.name.abbreviate()) : null,
                 ),
               accountName: Text(user.name),
               accountEmail: Text(user.email),

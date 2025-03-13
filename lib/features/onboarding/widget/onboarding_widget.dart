@@ -5,14 +5,12 @@ import 'package:introduction_screen/introduction_screen.dart';
 PageViewModel onBoarding({
   required String title,
   required String body,
-  required String imagePath,
-  double imageHeight = 300,
-  double paddingTop = 100,
 }) {
   return PageViewModel(
     titleWidget: const SizedBox(),
-    bodyWidget: Column(
-      mainAxisAlignment: MainAxisAlignment.end,
+    bodyWidget: const SizedBox(),
+    footer: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
@@ -40,40 +38,24 @@ PageViewModel onBoarding({
         ),
       ],
     ),
-    image: Padding(
-      padding: EdgeInsets.only(top: paddingTop.h),
-      child: Center(
-        child: Image.asset(
-          imagePath,
-          height: imageHeight.h,
-        ),
-      ),
-    ),
   );
 }
+
 final List<PageViewModel> onboardingModel = [
   onBoarding(
     title: 'Welcome',
     body: 'Discover the app that makes your life easier',
-    imagePath: 'assets/images/on_boarding_images/onboarding1.gif',
-
   ),
   onBoarding(
     title: 'Feature Highlight',
     body: 'Explore our exciting features',
-    imagePath: 'assets/images/on_boarding_images/onboardingC.gif',
-
   ),
   onBoarding(
     title: 'Stay Connected',
     body: 'Stay connected with friends and family',
-    imagePath: 'assets/images/on_boarding_images/onboarding1.gif',
-
   ),
   onBoarding(
     title: 'Get Started',
     body: 'Let’s get you started!',
-    imagePath: 'assets/images/on_boarding_images/onboarding1.gif',
-
   ),
 ];
