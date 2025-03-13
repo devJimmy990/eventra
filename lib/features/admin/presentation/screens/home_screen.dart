@@ -1,6 +1,9 @@
+import 'package:eventra/core/constants/extensions.dart';
 import 'package:eventra/features/admin/presentation/view/event_request/event_request_view.dart';
+import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:eventra/core/helper/localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/admin/presentation/screens/profile_screen.dart';
 import 'package:eventra/features/admin/presentation/screens/events_explore_screen.dart';
@@ -11,7 +14,7 @@ class AdminHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Localization strings = Localization(context);
-
+    final admin = context.read<UserCubit>().user!;
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -20,8 +23,16 @@ class AdminHomeScreen extends StatelessWidget {
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (_) => AdminProfileScreen())),
             child: CircleAvatar(
-              radius: 20,
-              child: Text("AD"),
+              radius: 50.r,
+              backgroundImage:
+                  admin.avatar != null ? NetworkImage(admin.avatar!) : null,
+              child: admin.avatar == null
+                  ? Text(
+                      admin.name.abbreviate(),
+                      style: TextStyle(
+                          fontSize: 22.sp, fontWeight: FontWeight.bold),
+                    )
+                  : null,
             ),
           ),
         ),

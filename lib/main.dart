@@ -1,3 +1,4 @@
+import 'package:eventra/features/admin/cubit/requests/request_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (context) => BookmarkCubit()),
             BlocProvider(create: (context) => UserEventCubit()),
             BlocProvider(create: (context) => AdminEventCubit()),
+            BlocProvider(create: (context) => AdminEventRequestCubit()),
             BlocProvider(create: (context) => NotificationCubit()),
             BlocProvider<AuthenticationCubit>(
                 create: (context) => AuthenticationCubit()),

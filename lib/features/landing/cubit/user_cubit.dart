@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
@@ -20,7 +22,6 @@ class UserCubit extends Cubit<UserState> {
         emit(UserNotAuthenticated());
         return;
       }
-      print("Found: $uid");
       _user = await UserRepository(UserDataSource()).getUserData(uid);
       emit(UserLoaded(_user!));
     } catch (e) {
@@ -33,4 +34,25 @@ class UserCubit extends Cubit<UserState> {
   }
 
   User? get user => _user;
+
+  Future<void> uploadImage(File pickedImage) async {
+    try {
+      final String url =
+          await UserRepository(UserDataSource()).uploadImage(pickedImage);
+      emit(UserImageUploaded(url));
+    } catch (e) {
+      emit(UserError(e.toString()));
+    }
+  }
+
+  Future<void> updateUserProfile({required Map<String, String> data}) async {
+    try {
+      await UserRepository(UserDataSource())
+          .updateUserProfile(uid: user!.id, data: data);
+      user!.avatar = data["avatar"];
+      emit(UserUpdated());
+    } catch (e) {
+      emit(UserError(e.toString()));
+    }
+  }
 }
