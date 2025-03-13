@@ -1,6 +1,6 @@
-import 'package:eventra/features/admin/extension/date_time.dart';
-import 'package:eventra/features/admin/data/model/base_event.dart';
 import 'package:intl/intl.dart';
+import 'package:eventra/core/constants/extensions.dart';
+import 'package:eventra/features/admin/data/model/base_event.dart';
 
 extension AdminEventExtension on BaseEvent {
   String encodeLongDateTime() {
