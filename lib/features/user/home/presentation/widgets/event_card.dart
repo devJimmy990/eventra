@@ -1,14 +1,20 @@
 import 'package:eventra/core/constants/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
-import 'package:eventra/features/admin/data/model/base_event.dart';
+import 'package:eventra/features/user/event/data/models/booked_event.dart';
+import 'package:eventra/features/user/bookmarks/cubit/bookmark_cubit.dart';
+import 'package:eventra/features/user/bookmarks/cubit/bookmark_state.dart';
 
 class EventCard extends StatelessWidget {
-  final BaseEvent event;
-  const EventCard({super.key, required this.event});
+  final UserEvent event;
+  final bool isBookmarkScreen;
+
+  const EventCard(
+      {super.key, required this.event, required this.isBookmarkScreen});
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +53,12 @@ class EventCard extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color:  Colors.white.withOpacity(0.6),
-                            borderRadius: BorderRadius.all(Radius.circular(12.r)),
+                            color: Colors.white.withOpacity(0.6),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.r)),
                           ),
                           padding: EdgeInsets.all(8.0),
                           child: Column(
-                            spacing: 0,
                             children: [
                               Text(
                                 event.schedule.date.day.toString(),
@@ -79,12 +85,39 @@ class EventCard extends StatelessWidget {
                             ],
                           ),
                         ),
-                        CircleAvatar(
-                          child: Icon(
-                            Icons.bookmark_border_outlined,
-                            size: 24,
+                        if (!isBookmarkScreen)
+                          BlocBuilder<BookmarkCubit, BookmarkState>(
+                            builder: (context, state) {
+                              bool isBookmarked = false;
+                              if (state is BookmarkLoaded) {
+                                isBookmarked = state.events.any((e) {
+                                  return e.id == event.id;
+                                });
+                              }
+
+                              return IconButton(
+                                icon: AnimatedSwitcher(
+                                  duration: Duration(milliseconds: 300),
+                                  child: Icon(
+                                    isBookmarked
+                                        ? Icons.bookmark
+                                        : Icons.bookmark_border,
+                                    key: ValueKey(isBookmarked),
+                                    color:
+                                        isBookmarked ? Colors.red : Colors.grey,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  final cubit = context.read<BookmarkCubit>();
+                                  if (isBookmarked) {
+                                    cubit.removeBookmarkEvent(event);
+                                  } else {
+                                    cubit.addBookmarkEvent(event);
+                                  }
+                                },
+                              );
+                            },
                           ),
-                        ),
                       ],
                     ),
                   ),
@@ -95,22 +128,20 @@ class EventCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(event.title,
-                        style: TextStyle(shadows: [
-                          Shadow(
-                            blurRadius: 3.r,
-                          ),
-                        ], fontWeight: FontWeight.bold, fontSize: 20.sp)),
+                    Text(
+                      event.title,
+                      style: TextStyle(
+                        shadows: [Shadow(blurRadius: 3.r)],
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
+                      ),
+                    ),
                     SizedBox(height: 5.h),
                     Text(
                       event.location.address,
                       style: TextStyle(
                         color: Colors.grey,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 3.r,
-                          ),
-                        ],
+                        shadows: [Shadow(blurRadius: 3.r)],
                       ),
                     ),
                   ],

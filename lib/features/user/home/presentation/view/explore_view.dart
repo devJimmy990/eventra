@@ -115,8 +115,9 @@ class _EventExploreViewState extends State<EventExploreView> {
                       itemCount: events.length,
                       padding: EdgeInsets.symmetric(horizontal: 10.w),
                       itemBuilder: (context, index) =>
-                          EventCard(event: events[index]),
-                    );
+                    EventCard(event: events[index], isBookmarkScreen: false),
+
+                  );
                   }
                   return Container();
                 },

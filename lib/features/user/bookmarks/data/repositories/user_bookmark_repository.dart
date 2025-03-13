@@ -25,4 +25,12 @@ class UserBookmarkRepository {
       rethrow;
     }
   }
+  Future<void> removeBookmarkEvent(String eventId, String uid) async {
+    try {
+      await _dataSource.removeBookmarkEvent(eventId, uid);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
 }
