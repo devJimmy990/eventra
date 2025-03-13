@@ -1,4 +1,6 @@
+import 'package:eventra/core/helper/notification_service.dart';
 import 'package:eventra/features/admin/cubit/event/event_cubit.dart';
+import 'package:eventra/features/notification/cubit/notification_cubit.dart';
 import 'package:eventra/features/user/bookmarks/cubit/bookmark_cubit.dart';
 import 'package:eventra/features/user/home/cubit/event_cubit.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await SharedPreference.initialize();
+  await NotificationService.instance.initialize();
+
   runApp(const MyApp());
 }
 
@@ -39,7 +43,9 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (context) => BookmarkCubit()),
             BlocProvider(create: (context) => UserEventCubit()),
             BlocProvider(create: (context) => AdminEventCubit()),
-            BlocProvider<AuthenticationCubit>(create: (context) => AuthenticationCubit()),
+            BlocProvider(create: (context) => NotificationCubit()),
+            BlocProvider<AuthenticationCubit>(
+                create: (context) => AuthenticationCubit()),
           ],
           child: Builder(
             builder: (context) {
