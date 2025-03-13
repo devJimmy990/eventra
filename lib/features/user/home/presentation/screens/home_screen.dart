@@ -87,9 +87,10 @@ class _UserHomeScreenState extends State<UserHomeScreen>
             curve: Curves.fastOutSlowIn,
             left: isSideBarOpen ? 0 : -288,
             top: 0,
-            child: const SideBar(), // Replace with your actual SideBar widget
+            child:  SideBar(closeSideBar: () { setState(() {
+              isSideBarOpen = false;
+            }); },), // Replace with your actual SideBar widget
           ),
-          // Main content (PageView) animated with a 3D transform effect
           Transform(
             alignment: Alignment.center,
             transform: Matrix4.identity()
@@ -99,22 +100,7 @@ class _UserHomeScreenState extends State<UserHomeScreen>
               offset: Offset(animation.value * 265, 0),
               child: Transform.scale(
                 scale: scalAnimation.value,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(24)),
-                  child: PageView(
-                    controller: _pageController,
-                    onPageChanged: (index) {
-                      setState(() {
-                        selectedIndex = index;
-                        selectedButtonNav = bottomNavItems[index];
-                      });
-                    },
-                    children: const [
-                      EventExploreView(),
-                      EventCalendarView(),
-                    ],
-                  ),
-                ),
+                child: EventExploreView(),
               ),
             ),
           ),
@@ -148,51 +134,51 @@ class _UserHomeScreenState extends State<UserHomeScreen>
           ),
         ],
       ),
-      bottomNavigationBar: Transform.translate(
-        offset: Offset(0, 100 * animation.value),
-        child: SafeArea(
-          child: Container(
-            width: 3.w,
-            height: 70.h,
-            padding: const EdgeInsets.all(12),
-            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-            decoration: BoxDecoration(
-              color: ColorManager.backgroundColor2.withOpacity(0.8),
-              borderRadius: const BorderRadius.all(Radius.circular(24)),
-              boxShadow: [
-                BoxShadow(
-                  color: ColorManager.backgroundColor2.withOpacity(0.3),
-                  offset: const Offset(0, 20),
-                  blurRadius: 20,
-                ),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ...List.generate(
-                  bottomNavItems.length,
-                      (index) {
-                    Menu navBar = bottomNavItems[index];
-                    return BtmNavItem(
-                      navBar: navBar,
-                      press: () {
-                        RiveUtils.chnageSMIBoolState(navBar.rive.status!);
-                        updateSelectedBtmNav(navBar, index);
-                      },
-                      riveOnInit: (artboard) {
-                        navBar.rive.status = RiveUtils.getRiveInput(artboard,
-                            stateMachineName: navBar.rive.stateMachineName);
-                      },
-                      selectedNav: selectedButtonNav,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      // bottomNavigationBar: Transform.translate(
+      //   offset: Offset(0, 100 * animation.value),
+      //   child: SafeArea(
+      //     child: Container(
+      //       width: 3.w,
+      //       height: 70.h,
+      //       padding: const EdgeInsets.all(12),
+      //       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+      //       decoration: BoxDecoration(
+      //         color: ColorManager.backgroundColor2.withOpacity(0.8),
+      //         borderRadius: const BorderRadius.all(Radius.circular(24)),
+      //         boxShadow: [
+      //           BoxShadow(
+      //             color: ColorManager.backgroundColor2.withOpacity(0.3),
+      //             offset: const Offset(0, 20),
+      //             blurRadius: 20,
+      //           ),
+      //         ],
+      //       ),
+      //       child: Row(
+      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //         children: [
+      //           ...List.generate(
+      //             bottomNavItems.length,
+      //                 (index) {
+      //               Menu navBar = bottomNavItems[index];
+      //               return BtmNavItem(
+      //                 navBar: navBar,
+      //                 press: () {
+      //                   RiveUtils.chnageSMIBoolState(navBar.rive.status!);
+      //                   updateSelectedBtmNav(navBar, index);
+      //                 },
+      //                 riveOnInit: (artboard) {
+      //                   navBar.rive.status = RiveUtils.getRiveInput(artboard,
+      //                       stateMachineName: navBar.rive.stateMachineName);
+      //                 },
+      //                 selectedNav: selectedButtonNav,
+      //               );
+      //             },
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

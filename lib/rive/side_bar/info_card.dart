@@ -16,7 +16,7 @@ class InfoCard extends StatelessWidget {
     final User user = context.read<UserCubit>().user!;
     return ListTile(
       leading: CircleAvatar(
-        radius: 50,
+        radius: 30,
         backgroundImage:
             user.avatar != null ? NetworkImage(user.avatar!) : null,
         child: user.avatar == null ? Text(user.name.nameAbb()) : null,
@@ -24,7 +24,7 @@ class InfoCard extends StatelessWidget {
       title: Text(
         user.name,
         style: TextStyle(
-          fontSize: 24,
+          fontSize: 16,
           fontWeight: FontWeight.bold,
         ),
       ),

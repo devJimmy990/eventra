@@ -19,6 +19,8 @@ import 'package:eventra/features/admin/presentation/screens/event_details_screen
 import 'package:eventra/features/admin/presentation/views/events_requests_view.dart';
 import 'package:eventra/features/admin/presentation/screens/event_attendees_list_screen.dart';
 
+import '../../features/user/home/presentation/view/calender_view.dart';
+
 String? _handleRedirect(BuildContext context, GoRouterState state) {
   final bool onboardingComplete =
       SharedPreference.getBool(key: "onboarding_complete") ?? false;
@@ -113,6 +115,11 @@ final router = GoRouter(
               path: "profile",
               name: UserRoutes.profile,
               builder: (context, state) => MyProfilePage(),
+            ),
+            GoRoute(
+              path: "calendar",
+              name: UserRoutes.calendar,
+              builder: (context, state) => EventCalendarView(),
             ),
             GoRoute(
                 path: "event",
