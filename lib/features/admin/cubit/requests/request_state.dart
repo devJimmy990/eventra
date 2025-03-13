@@ -16,3 +16,9 @@ class EventRequestError extends AdminEventRequestState {
   final String error;
   EventRequestError(this.error);
 }
+
+class RequestEventApproved extends AdminEventRequestState {}
+
+class RequestEventRejected extends AdminEventRequestState {}
+
+class RequestEventAccepted extends AdminEventRequestState {}

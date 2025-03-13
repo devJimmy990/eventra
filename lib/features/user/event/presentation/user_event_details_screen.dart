@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:eventra/core/constants/extensions.dart';
 import 'package:eventra/core/helper/localization.dart';
+import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:eventra/features/user/event/cubit/request_cubit.dart';
 import 'package:eventra/features/user/event/cubit/request_state.dart';
 import 'package:eventra/features/user/home/data/model/request_event.dart';
@@ -160,7 +161,10 @@ class UserEventDetailsScreen extends StatelessWidget {
               } else if (state is EventRequestEmpty) {
                 return ElevatedButton(
                   onPressed: () {
-                    context.read<UserEventRequestCubit>().bookEvent(event);
+                    context.read<UserEventRequestCubit>().bookEvent(
+                          event,
+                          context.read<UserCubit>().user!,
+                        );
                   },
                   child: Text(
                     event.price == 0
@@ -174,12 +178,12 @@ class UserEventDetailsScreen extends StatelessWidget {
                         Text(state.error, style: TextStyle(color: Colors.red)));
               } else if (state is EventRequestLoaded) {
                 final RequestEvent request = state.request;
-                return request.status == EventStatus.waiting
+                return request.status == RequestStatus.waiting
                     ? Text(
                         "Request is in Waiting State",
                         textAlign: TextAlign.center,
                       )
-                    : request.status == EventStatus.rejected
+                    : request.status == RequestStatus.rejected
                         ? Text(
                             "Request is Rejected",
                             textAlign: TextAlign.center,

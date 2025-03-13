@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
+import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:eventra/features/user/event/cubit/request_state.dart';
 import 'package:eventra/features/user/home/data/model/request_event.dart';
 import 'package:eventra/features/user/event/data/models/booked_event.dart';
@@ -13,12 +14,16 @@ class UserEventRequestCubit extends Cubit<UserEventRequestState> {
   }
   List<UserEvent> list = [];
 
-  Future<void> bookEvent(UserEvent event) async {
+  Future<void> bookEvent(UserEvent event, User user) async {
     emit(EventRequestLoading());
     try {
-      final String uid = SharedPreference.getString(key: "uid")!;
       await UserEventRequestRepository(UserEventRequestDataSource()).bookEvent(
-        RequestEvent(userId: uid, eventId: event.id!, adminId: event.admin.id!),
+        RequestEvent(
+          user: user,
+          eventId: event.id!,
+          eventName: event.title,
+          admin: event.admin.id!,
+        ),
       );
       emit(EventRequestCreated());
     } catch (e) {

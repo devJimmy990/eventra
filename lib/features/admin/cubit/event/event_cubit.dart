@@ -104,6 +104,4 @@ class AdminEventCubit extends Cubit<AdminEventState> {
     }
   }
 
-  List<AdminEvent> get upcomingEvents => _upcomingEvents;
-  List<AdminEvent> get previousEvents => _previousEvents;
 }
