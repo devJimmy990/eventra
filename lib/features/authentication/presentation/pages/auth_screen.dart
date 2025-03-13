@@ -1,56 +1,81 @@
-import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
+import 'package:eventra/core/helper/localization.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/features/authentication/presentation/pages/sign_in_screen.dart';
 import 'package:eventra/features/authentication/presentation/pages/sign_up_screen.dart';
 
 class AuthenticationScreen extends StatefulWidget {
-
-const AuthenticationScreen({super.key});
+  const AuthenticationScreen({super.key});
 
   @override
   State<AuthenticationScreen> createState() => _AuthenticationScreenState();
 }
 
-class _AuthenticationScreenState extends State<AuthenticationScreen>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabController;
-
+class _AuthenticationScreenState extends State<AuthenticationScreen> {
   @override
-  void initState() {
+  initState() {
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: SystemUiOverlay.values,
+    );
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: _CustomTabBar(),
+          backgroundColor: Colors.transparent,
+        ),
+        body: const TabBarView(
           children: [
-            TabBar(
-              controller: _tabController,
-              tabs: [
-                Tab(text: strings.signIn),
-                Tab(text: strings.signUp),
-              ],
-            ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  SignInScreen(onRegister: () => _tabController.animateTo(1)),
-                  SignUpScreen(onLogin: () => _tabController.animateTo(0)),
-                ],
-              ),
-            ),
+            SignInScreen(),
+            SignUpScreen(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CustomTabBar extends StatelessWidget {
+  const _CustomTabBar();
+
+  @override
+  Widget build(BuildContext context) {
+    final Localization strings = Localization(context);
+    return SizedBox(
+      width: 0.8.sw,
+      child: Container(
+        height: 50.h,
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadius.circular(30.r),
+        ),
+        child: TabBar(
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicator: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 4,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          labelStyle: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
+          unselectedLabelStyle: TextStyle(fontSize: 14.sp),
+          dividerColor: Colors.transparent,
+          tabs: [strings.authTabSignIn, strings.authTabSignUp]
+              .map((label) => Tab(text: label))
+              .toList(),
         ),
       ),
     );

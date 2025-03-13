@@ -1,14 +1,13 @@
-import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/ui/inputs.dart';
-import 'package:eventra/generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/core/validator/input.dart';
 import 'package:eventra/core/validator/firebase.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
@@ -19,8 +18,7 @@ import 'package:eventra/features/authentication/presentation/widgets/auth_header
 import 'package:eventra/features/authentication/presentation/widgets/custom_button.dart';
 
 class SignUpScreen extends StatefulWidget {
-  final void Function()? onLogin;
-  const SignUpScreen({super.key, required this.onLogin});
+  const SignUpScreen({super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -70,8 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 nameController: nameController,
                 passController: passController,
                 emailController: emailController,
-                confirmController: confirmController,
-                onLogin: widget.onLogin),
+                confirmController: confirmController),
           ],
         ),
       ),
@@ -93,42 +90,41 @@ class _BuildSignupForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final InputValidator validator = InputValidator(context);
+    final Localization strings = Localization(context);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
       child: Column(
         spacing: 18.h,
         children: [
           TextInputField(
-            label: S.of(context).fullName,
+            label: strings.authInputFullName,
             controller: nameController,
-            hintText: S.of(context).fullName,
+            hint: strings.authInputFullName,
             validator: validator.validateName,
             icon: const Icon(Icons.person),
-          )
-              .animate()
-              .slideX(duration: const Duration(seconds: 1), begin: 1.0, end: 0),
+          ),
           TextInputField(
-            label: S.of(context).emailEx,
+            label: strings.authInputEmail,
             controller: emailController,
-            hintText: S.of(context).emailEx,
+            hint: "abc@example.com",
             validator: validator.validateEmail,
             icon: const Icon(Icons.email_outlined),
-          ).animate().slideX(duration: const Duration(seconds: 1)),
+          ),
           PasswordInputField(
+            hint: "123456789",
             controller: passController,
-            label: S.of(context).yourPass,
+            label: strings.authInputPassword,
             validator: validator.validatePassword,
             icon: const Icon(Icons.lock_outline),
-          )
-              .animate()
-              .slideX(duration: const Duration(seconds: 1), begin: 1.0, end: 0),
+          ),
           PasswordInputField(
+            hint: "123456789",
             controller: confirmController,
-            label: S.of(context).confirmPass,
+            label: strings.authInputConfirmPassword,
             icon: const Icon(Icons.lock_outline),
             validator: (value) =>
                 validator.validateConfirmPassword(value, passController.text),
-          ).animate().slideX(duration: const Duration(seconds: 1)),
+          ),
         ],
       ),
     );
@@ -136,7 +132,6 @@ class _BuildSignupForm extends StatelessWidget {
 }
 
 class _BuildSignupAction extends StatelessWidget {
-  final void Function()? onLogin;
   final TextEditingController nameController,
       passController,
       emailController,
@@ -145,16 +140,16 @@ class _BuildSignupAction extends StatelessWidget {
       {required this.nameController,
       required this.passController,
       required this.emailController,
-      required this.confirmController,
-      required this.onLogin});
+      required this.confirmController});
 
   @override
-  Widget build(BuildContext context) { final strings = Localization(context);
+  Widget build(BuildContext context) {
+    final strings = Localization(context);
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if (state is UserCreated) {
           context.read<UserCubit>().setUser(state.user);
-          context.goNamed(UserRoutes.home);
+          context.goNamed(Routes.auth);
         } else if (state is AuthenticationError) {
           Fluttertoast.showToast(
             textColor: Colors.white,
@@ -194,7 +189,7 @@ class _BuildSignupAction extends StatelessWidget {
                   );
                 }
               },
-              text: S.of(context).signUp,
+              text: strings.authBtnSignUp,
             ).animate().fade(duration: const Duration(seconds: 4)),
             InkWell(
               onTap: () async {
@@ -213,31 +208,11 @@ class _BuildSignupAction extends StatelessWidget {
                   Image.asset(StringsManager.googleImage),
                   Padding(
                     padding: REdgeInsets.only(left: 10),
-                    child: Text(S.of(context).SignInWithGoogle),
+                    child: Text(strings.authBtnSignInWithGoogle),
                   )
                 ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  strings.alreadyHaveAnAccount,
-                ).animate().slideX(
-                      duration: const Duration(seconds: 1),
-                    ),
-                TextButton(
-                        onPressed: onLogin,
-                        child: Text(
-                         strings.login,
-                        ))
-                    .animate()
-                    .slideX(
-                        duration: const Duration(seconds: 1),
-                        begin: 1.0,
-                        end: 0),
-              ],
-            )
           ],
         );
       },
