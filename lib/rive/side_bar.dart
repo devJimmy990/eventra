@@ -8,9 +8,7 @@ import 'side_bar/info_card.dart';
 import 'side_menu.dart';
 
 class SideBar extends StatefulWidget {
-  final VoidCallback  closeSideBar;
-
-  const SideBar({super.key, required this.closeSideBar});
+  const SideBar({super.key});
 
   @override
   State<SideBar> createState() => _SideBarState();
@@ -73,8 +71,6 @@ class _SideBarState extends State<SideBar> {
                   menu: menu,
                   selectedMenu: selectedSideMenu,
                   press: () {
-                    widget.closeSideBar();
-
                     context.pushNamed(menu.routeName);
                     RiveUtils.chnageSMIBoolState(menu.rive.status!);
                     setState(() {
@@ -88,12 +84,9 @@ class _SideBarState extends State<SideBar> {
                 )),
             const Spacer(),
             Padding(
-              padding: const EdgeInsets.only(left: 24, bottom: 32),
+              padding: const EdgeInsets.only(left: 52, bottom: 42),
               child: ListTile(
                 onTap: () {
-                  widget.closeSideBar();
-                  // Insert your logout logic here.
-                  // For demonstration, we navigate to the login screen.
                   context.goNamed(Routes.auth);
                 },
                 leading: const Icon(Icons.logout, color: Colors.white),

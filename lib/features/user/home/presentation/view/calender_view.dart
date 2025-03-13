@@ -31,6 +31,7 @@ class EventCalendarView extends StatelessWidget {
             return SfCalendar(
               dataSource: dataSource,
               view: CalendarView.month,
+              initialSelectedDate: DateTime.now(),
               monthViewSettings: const MonthViewSettings(
                 showAgenda: true,
               ),

@@ -40,12 +40,12 @@ List<Menu> sidebarMenus = [
         stateMachineName: "STAR_Interactivity"),
   ),
   Menu(
-    title: "Contact us",
-    routeName: UserRoutes.contact,
+    title: "Profile",
+    routeName: UserRoutes.profile,
     rive: RiveModel(
         src: "assets/RiveAssets/icons.riv",
-        artboard: "CHAT",
-        stateMachineName: "CHAT_Interactivity"),
+        artboard: "USER",
+        stateMachineName: "USER_Interactivity"),
   ),
 ];
 List<Menu> sidebarMenus2 = [

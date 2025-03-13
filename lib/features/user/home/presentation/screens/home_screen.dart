@@ -1,11 +1,15 @@
 import 'dart:math';
 import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/helper/localization.dart';
+import 'package:eventra/features/user/home/presentation/view/calender_view.dart';
 import 'package:eventra/features/user/home/presentation/view/explore_view.dart';
+import 'package:eventra/rive/btm_nav_item.dart';
 import 'package:eventra/rive/menu.dart';
+import 'package:eventra/rive/rive_utils.dart';
 import 'package:eventra/rive/side_bar.dart';
 import 'package:eventra/rive/side_bar/menu_btn.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rive/rive.dart';
 
 class UserHomeScreen extends StatefulWidget {
@@ -83,9 +87,7 @@ class _UserHomeScreenState extends State<UserHomeScreen>
             curve: Curves.fastOutSlowIn,
             left: isSideBarOpen ? 0 : -288,
             top: 0,
-            child:  SideBar(closeSideBar: () { setState(() {
-              isSideBarOpen = false;
-            }); },), // Replace with your actual SideBar widget
+            child: const SideBar(), // Replace with your actual SideBar widget
           ),
           Transform(
             alignment: Alignment.center,
