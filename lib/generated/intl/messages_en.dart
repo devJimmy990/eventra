@@ -78,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "auth_input_email": MessageLookupByLibrary.simpleMessage("email"),
     "auth_input_full_name": MessageLookupByLibrary.simpleMessage("full name"),
     "auth_input_password": MessageLookupByLibrary.simpleMessage("password"),
+    "auth_input_phone": MessageLookupByLibrary.simpleMessage("phone number"),
     "auth_remember_msg": MessageLookupByLibrary.simpleMessage(
       "need to login every time open the app",
     ),
