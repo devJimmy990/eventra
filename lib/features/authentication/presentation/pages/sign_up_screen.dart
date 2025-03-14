@@ -68,11 +68,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
               emailController: emailController,
               confirmController: confirmController,
             ),
-            _BuildSignupAction(
-                nameController: nameController,
-                passController: passController,
-                emailController: emailController,
-                phoneController: phoneController),
+            _BuildSignupAction(() async {
+              if (formKey.currentState!.validate()) {
+                await context
+                    .read<AuthenticationCubit>()
+                    .createUserWithEmailAndPassword(
+                      User.register(
+                        name: nameController.text,
+                        email: emailController.text,
+                        phone: phoneController.text,
+                      ),
+                      passController.text,
+                    );
+              }
+            }),
           ],
         ),
       ),
@@ -147,15 +156,8 @@ class _BuildSignupForm extends StatelessWidget {
 }
 
 class _BuildSignupAction extends StatelessWidget {
-  final TextEditingController nameController,
-      passController,
-      emailController,
-      phoneController;
-  const _BuildSignupAction(
-      {required this.nameController,
-      required this.passController,
-      required this.emailController,
-      required this.phoneController});
+  final void Function() callback;
+  const _BuildSignupAction(this.callback);
 
   @override
   Widget build(BuildContext context) {
@@ -164,7 +166,7 @@ class _BuildSignupAction extends StatelessWidget {
       listener: (context, state) {
         if (state is UserCreated) {
           context.read<UserCubit>().setUser(state.user);
-          context.goNamed(Routes.auth);
+          context.goNamed(Routes.landing);
         } else if (state is AuthenticationError) {
           Fluttertoast.showToast(
             textColor: Colors.white,
@@ -183,28 +185,7 @@ class _BuildSignupAction extends StatelessWidget {
           spacing: 10.h,
           children: [
             CustomButton(
-              onTap: () async {
-                try {
-                  await context
-                      .read<AuthenticationCubit>()
-                      .createUserWithEmailAndPassword(
-                        User.register(
-                          name: nameController.text,
-                          email: emailController.text,
-                          phone: phoneController.text,
-                        ),
-                        passController.text,
-                      );
-                } catch (e) {
-                  Fluttertoast.showToast(
-                    msg: e.toString(),
-                    textColor: Colors.white,
-                    gravity: ToastGravity.BOTTOM,
-                    backgroundColor: Colors.red,
-                    toastLength: Toast.LENGTH_LONG,
-                  );
-                }
-              },
+              onTap: callback,
               text: strings.authBtnSignUp,
             ).animate().fade(duration: const Duration(seconds: 4)),
             InkWell(

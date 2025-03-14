@@ -75,6 +75,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(AuthenticationError("Error creating user"));
         return;
       }
+      SharedPreference.setString(key: "uid", value: model.id!);
       emit(UserCreated(model));
     } catch (e) {
       emit(AuthenticationError(e.toString()));
