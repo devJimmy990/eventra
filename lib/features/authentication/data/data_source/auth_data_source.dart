@@ -56,6 +56,7 @@ class AuthenticationDataSource {
       if (response.user == null) throw Exception("error creating user");
 
       model.id = response.user!.uid;
+      model.avatar = response.user!.photoURL;
       bool isAdded = await setUserData(model);
       return isAdded ? model : null;
     } catch (e) {
@@ -67,6 +68,24 @@ class AuthenticationDataSource {
     try {
       firebase.store.collection("users").doc(user.id).set(user.toJson());
       return true;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Map<String, dynamic>?> createUserWithEmailAndPassword2(
+      String email, String password) async {
+    try {
+      var user = (await firebase.auth
+              .createUserWithEmailAndPassword(email: email, password: password))
+          .user;
+      return user == null
+          ? null
+          : {
+              "uid": user.uid,
+              "avatar": user.photoURL ?? "",
+              "phone": user.phoneNumber ?? "",
+            };
     } catch (e) {
       rethrow;
     }

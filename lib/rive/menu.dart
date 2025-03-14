@@ -49,14 +49,6 @@ List<Menu> sidebarMenus = [
   ),
 ];
 List<Menu> sidebarMenus2 = [
-    Menu(
-    title: "Settings",
-    routeName: Routes.settings, //context.pushNamed(Routes.settings)
-    rive: RiveModel(
-        src: "assets/RiveAssets/icons.riv",
-        artboard: "SETTINGS",
-        stateMachineName: "SETTINGS_Interactivity"),
-  ),
   Menu(
     title: "Contact us",
     routeName: UserRoutes.contact,

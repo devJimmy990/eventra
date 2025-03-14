@@ -55,6 +55,7 @@ class InputValidator {
     if (value == null || value.isEmpty) {
       return strings.validatorEmpty;
     } else if (value != password) {
+      print("$value --- $password");
       return strings.validatorPasswordNotMatch;
     }
     return null;

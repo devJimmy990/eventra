@@ -13,7 +13,7 @@ import 'package:eventra/features/settings/presentation/settings_screen.dart';
 import 'package:eventra/features/user/contact-us/screens/contact_us_screen.dart';
 import 'package:eventra/features/admin/presentation/screens/home_screen.dart';
 import 'package:eventra/features/authentication/presentation/pages/auth_screen.dart';
-import 'package:eventra/features/user/profile/screens/profile_screen.dart';
+import 'package:eventra/features/user/profile/profile_screen.dart';
 import 'package:eventra/features/user/bookmarks/presentation/screens/bookmark_screen.dart';
 import 'package:eventra/features/admin/presentation/screens/event_details_screen.dart';
 import 'package:eventra/features/admin/presentation/view/event_data/events_requests_screen.dart';

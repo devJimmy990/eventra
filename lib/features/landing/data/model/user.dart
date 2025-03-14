@@ -49,7 +49,7 @@ class User {
       role: json['role'],
       name: json['name'],
       email: json['email'],
-      phone: json['phone']??"",
+      phone: json['phone'],
       avatar: json['avatar'],
     );
   }

@@ -1,7 +1,10 @@
 import 'package:eventra/core/routes/routes.dart';
+import 'package:eventra/features/authentication/cubit/auth_cubit.dart';
+import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/rive/menu.dart';
 import 'package:eventra/rive/rive_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'side_bar/info_card.dart';
@@ -83,16 +86,23 @@ class _SideBarState extends State<SideBar> {
                   },
                 )),
             const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(left: 52, bottom: 42),
-              child: ListTile(
-                onTap: () {
+            BlocListener<AuthenticationCubit, AuthenticationState>(
+              listener: (context, state) {
+                if (state is UnAuthenticated) {
                   context.goNamed(Routes.auth);
-                },
-                leading: const Icon(Icons.logout, color: Colors.white),
-                title: const Text(
-                  "Logout",
-                  style: TextStyle(color: Colors.red),
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 52, bottom: 42),
+                child: ListTile(
+                  onTap: () {
+                    context.read<AuthenticationCubit>().logout();
+                  },
+                  leading: const Icon(Icons.logout, color: Colors.white),
+                  title: const Text(
+                    "Logout",
+                    style: TextStyle(color: Colors.red),
+                  ),
                 ),
               ),
             ),

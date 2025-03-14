@@ -165,8 +165,16 @@ class _BuildSignupAction extends StatelessWidget {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if (state is UserCreated) {
+          print("debug-user: user-created-listener - ${state.user}");
           context.read<UserCubit>().setUser(state.user);
           context.goNamed(Routes.landing);
+          Fluttertoast.showToast(
+            textColor: Colors.white,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.red,
+            toastLength: Toast.LENGTH_LONG,
+            msg: state.user.name,
+          );
         } else if (state is AuthenticationError) {
           Fluttertoast.showToast(
             textColor: Colors.white,

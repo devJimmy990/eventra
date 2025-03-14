@@ -28,11 +28,11 @@ class Localization {
   get validatorShortPassword => S.of(_context).validator_short_password;
   get validatorPasswordNotMatch => S.of(_context).validator_password_not_match;
 
-  get validatorFirebaseUsedEmail => S.of(_context).validator_password_not_match;
+  get validatorFirebaseUsedEmail => S.of(_context).validator_firebase_used_email;
   get validatorFirebaseWeakPassword =>
-      S.of(_context).validator_password_not_match;
+      S.of(_context).validator_firebase_weak_password;
   get validatorFirebaseInvalidCredentials =>
-      S.of(_context).validator_password_not_match;
+      S.of(_context).validator_firebase_invalid_credentials;
 //----------------------------------------------------------------------
 
 //-------------------- Auth --------------------------------------------

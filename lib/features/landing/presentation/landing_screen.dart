@@ -32,6 +32,7 @@ class LandingScreen extends StatelessWidget {
           },
           builder: (context, state) {
             if (state is UserLoaded) {
+              print("debug-user: user-loaded-builder -  ${state.user}");
               return state.user.role == "user"
                   ? UserHomeScreen()
                   : AdminHomeScreen();

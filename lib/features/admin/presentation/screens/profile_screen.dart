@@ -111,8 +111,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
             _buildSectionTitle(strings.adminProfileInfo),
             _buildInfoTile(strings.adminProfileInfoName, admin.name),
             _buildInfoTile(strings.adminProfileInfoEmail, admin.email),
-            _buildInfoTile(
-                strings.adminProfileInfoPhone, admin.phone ?? "01289223643"),
+            _buildInfoTile(strings.adminProfileInfoPhone, admin.phone),
             Divider(),
             _buildSectionTitle(strings.adminProfileSettings),
             BlocBuilder<SettingsCubit, SettingsState>(

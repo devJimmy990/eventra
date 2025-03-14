@@ -41,11 +41,10 @@ class TextInputField extends StatelessWidget {
         prefixIcon: icon,
         labelText: label,
         hintText: hint,
-        fillColor: Colors.white,
+        // fillColor: Colors.white,
         alignLabelWithHint: maxLines != null && maxLines! > 1,
-        labelStyle: const TextStyle(color: Colors.black),
         border: _buildInputBorder(),
-        enabledBorder: _buildInputBorder(),
+        enabledBorder: _buildInputEnabledBorder(),
         focusedBorder: _buildInputBorder(),
       ),
     );
@@ -107,4 +106,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
 InputBorder _buildInputBorder() => OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
       borderSide: const BorderSide(color: Colors.transparent),
+    );
+InputBorder _buildInputEnabledBorder() => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(20),
     );
