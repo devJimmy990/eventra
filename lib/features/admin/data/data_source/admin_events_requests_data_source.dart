@@ -18,7 +18,18 @@ class AdminEventsRequestsDataSource {
 
   Future<bool> onRequestApproved(RequestEvent request) async {
     try {
-      return false;
+      await _firebase.store
+          .collection("requests")
+          .doc(request.id)
+          .update({"status": 3}).then((val) async {
+        _firebase.store
+            .collection("events")
+            .doc(request.eventId)
+            .collection("attendees")
+            .doc(request.user.id);
+      });
+
+      return true;
     } catch (e) {
       rethrow;
     }
@@ -27,7 +38,6 @@ class AdminEventsRequestsDataSource {
   Future<bool> onRejectRequest(
       {required String id, required Map<String, int> data}) async {
     try {
-      print("reject-flow: data_source");
       await _firebase.store.collection("requests").doc(id).update(data);
       return true;
     } catch (e) {

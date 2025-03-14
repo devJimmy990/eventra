@@ -31,7 +31,7 @@ class UserDataSource {
     try {
       String fileName = "${DateTime.now().millisecondsSinceEpoch}.jpg";
 
-      Reference ref = firebase.storage.ref().child("events/$fileName");
+      Reference ref = firebase.storage.ref().child("users/$fileName");
 
       UploadTask uploadTask = ref.putFile(image);
 

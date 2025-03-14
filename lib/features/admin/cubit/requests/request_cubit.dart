@@ -79,9 +79,7 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
       if (data) {
         _waitingRequests.remove(request);
         _pendingRequests.add(request);
-        emit(_waitingRequests.isEmpty
-            ? EventRequestEmpty()
-            : EventRequestsLoaded(_waitingRequests));
+        emit(RequestEventApproved());
       }
     } catch (e) {
       emit(EventRequestError(e.toString()));
