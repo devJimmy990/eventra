@@ -17,7 +17,9 @@ class UserEventRequestCubit extends Cubit<UserEventRequestState> {
   Future<void> bookEvent(UserEvent event, User user) async {
     emit(EventRequestLoading());
     try {
-      await UserEventRequestRepository(UserEventRequestDataSource()).bookEvent(
+      final RequestEvent request =
+          await UserEventRequestRepository(UserEventRequestDataSource())
+              .bookEvent(
         RequestEvent(
           user: user,
           eventId: event.id!,
@@ -25,7 +27,7 @@ class UserEventRequestCubit extends Cubit<UserEventRequestState> {
           admin: event.admin.id!,
         ),
       );
-      emit(EventRequestCreated());
+      emit(EventRequestLoaded(request));
     } catch (e) {
       emit(EventRequestError(e.toString()));
     }

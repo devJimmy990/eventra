@@ -6,7 +6,7 @@ class UserEventRequestRepository {
 
   UserEventRequestRepository(this._dataSource);
 
-  bookEvent(RequestEvent event) async {
+  Future<RequestEvent> bookEvent(RequestEvent event) async {
     try {
       Map<String, dynamic> data = await _dataSource.bookEvent(event.toJson());
       return RequestEvent.fromJson(data);

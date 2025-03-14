@@ -19,5 +19,3 @@ class EventRequestError extends UserEventRequestState {
   final String error;
   EventRequestError(this.error);
 }
-
-class EventRequestCreated extends UserEventRequestState {}

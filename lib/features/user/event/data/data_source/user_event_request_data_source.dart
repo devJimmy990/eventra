@@ -19,7 +19,7 @@ class UserEventRequestDataSource {
     try {
       final querySnapshot = await _firebase.store
           .collection('requests')
-          .where('userId', isEqualTo: uid)
+          .where('user.id', isEqualTo: uid)
           .where('eventId', isEqualTo: eid)
           .limit(1)
           .get();
