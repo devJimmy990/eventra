@@ -1,3 +1,4 @@
+import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +35,24 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
             if (state is BookmarkLoading) {
               return Center(child: CircularProgressIndicator());
             } else if (state is BookmarkEmpty) {
-              return Text(strings.userBookmarkEmpty);
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      StringsManager.bookmarkEmptyImage,
+                      width: 180.w, // Adjust size as needed
+                      height: 200.h,
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      strings.userBookmarkEmpty,
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              );
             } else if (state is BookmarkError) {
               return Text("error: ${state.error}");
             } else if (state is BookmarkLoaded) {
