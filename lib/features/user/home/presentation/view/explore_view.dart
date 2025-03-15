@@ -7,6 +7,8 @@ import 'package:eventra/features/user/home/cubit/event_state.dart';
 import 'package:eventra/features/user/home/presentation/widgets/event_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../../../core/helper/localization.dart';
+
 class EventExploreView extends StatefulWidget {
   const EventExploreView({super.key});
 
@@ -15,13 +17,22 @@ class EventExploreView extends StatefulWidget {
 }
 
 class _EventExploreViewState extends State<EventExploreView> {
-  final PageController _pageController = PageController(viewportFraction: 1);
+  late Localization strings;
+
+  late PageController _pageController;
 
   final List<String> bannerImages = [
     StringsManager.bannerThree,
     StringsManager.bannerOne,
     StringsManager.bannerTwo,
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    strings = Localization(context);
+    _pageController = PageController(viewportFraction: 1);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +51,9 @@ class _EventExploreViewState extends State<EventExploreView> {
           backgroundColor: const Color(0xFF151E37),
           iconTheme: const IconThemeData(color: Colors.white, size: 30),
           centerTitle: true,
-          title: const Text(
-            "Events",
-            style: TextStyle(
+          title: Text(
+            strings.userHomeAppBar,
+            style: const TextStyle(
               shadows: [
                 Shadow(
                   offset: Offset(3, 3),
@@ -105,7 +116,7 @@ class _EventExploreViewState extends State<EventExploreView> {
                   if (state is EventLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is EventEmpty) {
-                    return Center(child: Text("No upcoming events"));
+                    return Center(child: Text(strings.userExploreUpcoming));
                   } else if (state is EventError) {
                     return Center(child: Text(state.error));
                   } else if (state is EventLoaded) {

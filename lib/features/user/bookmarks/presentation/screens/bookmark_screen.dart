@@ -7,26 +7,15 @@ import 'package:eventra/features/user/bookmarks/cubit/bookmark_state.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../home/presentation/widgets/event_card.dart';
 
-class BookmarkScreen extends StatefulWidget {
+class BookmarkScreen extends StatelessWidget {
   const BookmarkScreen({super.key});
-
-  @override
-  State<BookmarkScreen> createState() => _BookmarkScreenState();
-}
-
-class _BookmarkScreenState extends State<BookmarkScreen> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<BookmarkCubit>().getBookmarkedEvents();
-  }
 
   @override
   Widget build(BuildContext context) {
     final strings = Localization(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(strings.favoriteEvents),
+        title: Text(strings.userFavoriteEvents),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -47,7 +36,8 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                     SizedBox(height: 16),
                     Text(
                       strings.userBookmarkEmpty,
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ],

@@ -94,67 +94,88 @@ class Localization {
   get userBookmarkDeletingMsg => S.of(_context).user_bookmark_deleting_msg;
   get userBookmarkDeleted => S.of(_context).user_bookmark_deleted_msg;
   get userBookmark => S.of(_context).admin_explore_tab_previous;
-  //-------------------- User --------------------------------------------
+  get userHomeAppBar => S.of(_context).user_home_app_bar;
+  get userExploreUpcoming => S.of(_context).explore_upcoming;
+  get userEventCalendar => S.of(_context).event_calendar;
+  get userEmptyEvent => S.of(_context).no_event_available;
+  get userContactUs => S.of(_context).contact_us;
+  get userContactUsMessage => S.of(_context).contact_us_message;
+  get userCallUs => S.of(_context).user_call_us;
+  get userEmailUs => S.of(_context).user_email_us;
+  get userFacebook => S.of(_context).facebook;
+  get userFollowFacebook => S.of(_context).follow_us_on_facebook;
+  get userInstagram => S.of(_context).user_instagram;
+  get userFollowInstegram => S.of(_context).user_follow_instagram;
+  get userTwitter => S.of(_context).user_twitter;
+  get userFollowTwitter => S.of(_context).user_follow_twitter;
+  get userYoutube => S.of(_context).userYoutube;
+  get userSubscribeChannel => S.of(_context).userSubscribeChannel;
+  get userWhatsapp => S.of(_context).user_whatsapp;
+  get userWhatsAppContact => S.of(_context).user_whats_app_contact;
+  get userLocation => S.of(_context).user_location;
+  get userVisitLocation =>  S.of(_context).user_visit_location;
+  get userFavoriteEvents => S.of(_context).user_favorite_events;
+  get userBookmarkEmpty => S.of(_context).user_bookmark_empty;
+
+
+
+
+
+//-------------------- User --------------------------------------------
 
 //----------------------------------------------------------------------
   // get googleSignIn => S.of(_context).SignInWithGoogle;
-  get upcoming => S.of(_context).upcoming;
-  get previous => S.of(_context).previous;
-  get eventDetails => S.of(_context).eventDetails;
-  get aboutEvent => S.of(_context).aboutEvent;
-  get attendees => S.of(_context).attendees;
-  get seeAll => S.of(_context).seeAll;
-  get noAttendeesPresent => S.of(_context).noAttendeesPresent;
-  get eventsRequest => S.of(_context).eventsRequest;
-  get settings => S.of(_context).settings;
-  get english => S.of(_context).english;
-  get createEvent => S.of(_context).createEvent;
-  get noDataAvailable => S.of(_context).noDataAvailable;
-  get eventDeletedSuccessfully => S.of(_context).eventDeletedSuccessfully;
-  get dontHaveAnAccount => S.of(_context).dontHaveAnAccount;
-  get create => S.of(_context).create;
-  get notificationScreen => S.of(_context).notificationScreen;
-  get eventCalendar => S.of(_context).eventCalendar;
-  get noEventsAvailable => S.of(_context).noEventsAvailable;
-  get bookmark => S.of(_context).bookmark;
-  get calendar => S.of(_context).calendar;
-  get bookNow => S.of(_context).bookNow;
-  get buyTicket => S.of(_context).buyTicket;
-  get explore => S.of(_context).explore;
-  get contactUs => S.of(_context).contactUs;
-  get callUs => S.of(_context).callUs;
-  get emailUs => S.of(_context).emailUs;
-
-  // Added for GeneralInfoBottomSheet
-  get accAddress => S.of(_context).accAddress;
-  get accAddressDetails => S.of(_context).accAddressDetails;
-  get openingHours => S.of(_context).openingHours;
-  get openingHoursDetails => S.of(_context).openingHoursDetails;
-  get freeMembership => S.of(_context).freeMembership;
-  get freeMembershipDetails => S.of(_context).freeMembershipDetails;
-  get specialAnnouncements => S.of(_context).specialAnnouncements;
-  get specialAnnouncementsDetails => S.of(_context).specialAnnouncementsDetails;
-  get furtherInquiries => S.of(_context).furtherInquiries;
-  get furtherInquiriesDetails => S.of(_context).furtherInquiriesDetails;
-  // favorite (bookmarks)
-  get favoriteEvents => S.of(_context).favoriteEvents;
-  get userBookmarkEmpty => S.of(_context).user_bookmark_empty;
-  // get appName => S.of(_context).appName;
-  // onboarding screen
-  get skip => S.of(_context).skip;
-  get getStarted => S.of(_context).getStarted;
+  // get upcoming => S.of(_context).upcoming;
+  // get previous => S.of(_context).previous;
+  // get eventDetails => S.of(_context).eventDetails;
+  // get aboutEvent => S.of(_context).aboutEvent;
+  // get attendees => S.of(_context).attendees;
+  // get seeAll => S.of(_context).seeAll;
+  // get noAttendeesPresent => S.of(_context).noAttendeesPresent;
+  // get eventsRequest => S.of(_context).eventsRequest;
+  // get settings => S.of(_context).settings;
+  // get english => S.of(_context).english;
+  // get createEvent => S.of(_context).createEvent;
+  // get noDataAvailable => S.of(_context).noDataAvailable;
+  // get eventDeletedSuccessfully => S.of(_context).eventDeletedSuccessfully;
+  // get dontHaveAnAccount => S.of(_context).dontHaveAnAccount;
+  // get create => S.of(_context).create;
+  // get notificationScreen => S.of(_context).notificationScreen;
   //
-  get ok => S.of(_context).ok;
-  // signupScreen
-  get alreadyHaveAnAccount => S.of(_context).alreadyHaveAnAccount;
-  get login => S.of(_context).login;
+  // get bookmark => S.of(_context).bookmark;
+  // get calendar => S.of(_context).calendar;
+  // get bookNow => S.of(_context).bookNow;
+  // get buyTicket => S.of(_context).buyTicket;
+  // get explore => S.of(_context).explore;
   //
-  get pleaseAddAnEvent => S.of(_context).pleaseAddAnEvent;
-  // Card
-  get eventWillBeHeldInEmbassy => S.of(_context).eventWillBeHeldInEmbassy;
-  get eventWillBeHeldInOther => S.of(_context).eventWillBeHeldInOther;
-  get areaName => S.of(_context).areaName;
-  get required => S.of(_context).required;
-  get address => S.of(_context).address;
-  get googleMapUrl => S.of(_context).googleMapUrl;
+  // // Added for GeneralInfoBottomSheet
+  // get accAddress => S.of(_context).accAddress;
+  // get accAddressDetails => S.of(_context).accAddressDetails;
+  // get openingHours => S.of(_context).openingHours;
+  // get openingHoursDetails => S.of(_context).openingHoursDetails;
+  // get freeMembership => S.of(_context).freeMembership;
+  // get freeMembershipDetails => S.of(_context).freeMembershipDetails;
+  // get specialAnnouncements => S.of(_context).specialAnnouncements;
+  // get specialAnnouncementsDetails => S.of(_context).specialAnnouncementsDetails;
+  // get furtherInquiries => S.of(_context).furtherInquiries;
+  // get furtherInquiriesDetails => S.of(_context).furtherInquiriesDetails;
+  // // favorite (bookmarks)
+  // // get appName => S.of(_context).appName;
+  // // onboarding screen
+  // get skip => S.of(_context).skip;
+  // get getStarted => S.of(_context).getStarted;
+  // //
+  // get ok => S.of(_context).ok;
+  // // signupScreen
+  // get alreadyHaveAnAccount => S.of(_context).alreadyHaveAnAccount;
+  // get login => S.of(_context).login;
+  // //
+  // get pleaseAddAnEvent => S.of(_context).pleaseAddAnEvent;
+  // // Card
+  // get eventWillBeHeldInEmbassy => S.of(_context).eventWillBeHeldInEmbassy;
+  // get eventWillBeHeldInOther => S.of(_context).eventWillBeHeldInOther;
+  // get areaName => S.of(_context).areaName;
+  // get required => S.of(_context).required;
+  // get address => S.of(_context).address;
+  // get googleMapUrl => S.of(_context).googleMapUrl;
 }

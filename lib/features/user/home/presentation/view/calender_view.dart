@@ -14,12 +14,13 @@ import 'package:eventra/features/user/event/data/models/booked_event.dart';
 class EventCalendarView extends StatelessWidget {
   const EventCalendarView({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     final Localization strings = Localization(context);
 
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text(strings.eventCalendar))),
+      appBar: AppBar(title: Center(child: Text(strings.userEventCalendar))),
       body: BlocBuilder<UserEventCubit, UserEventState>(
         builder: (context, state) {
           if (state is EventLoading) {
@@ -60,7 +61,7 @@ class EventCalendarView extends StatelessWidget {
               },
             );
           }
-          return  Center(child: Text(strings.noEventsAvailable));
+          return  Center(child: Text(strings.userEmptyEvent));
         },
       ),
     );

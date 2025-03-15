@@ -22,12 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "aboutEvent": MessageLookupByLibrary.simpleMessage("About Event"),
-    "accAddress": MessageLookupByLibrary.simpleMessage("ACC Address:"),
-    "accAddressDetails": MessageLookupByLibrary.simpleMessage(
-      "U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.",
-    ),
-    "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "UserWhatsapp": MessageLookupByLibrary.simpleMessage("WhatsApp"),
     "admin_app_bar_title": MessageLookupByLibrary.simpleMessage(
       "Welcome Admin",
     ),
@@ -37,12 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "admin_explore_tab_up_coming": MessageLookupByLibrary.simpleMessage(
       "Upcoming",
     ),
-    "alreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
-      "Already have an account?",
-    ),
     "appName": MessageLookupByLibrary.simpleMessage("Eventra"),
-    "areaName": MessageLookupByLibrary.simpleMessage("Area Name"),
-    "attendees": MessageLookupByLibrary.simpleMessage("Attendees"),
     "auth_btn_forget_password": MessageLookupByLibrary.simpleMessage(
       "Forget Password?",
     ),
@@ -67,82 +57,30 @@ class MessageLookup extends MessageLookupByLibrary {
     "auth_toggle_remember_me": MessageLookupByLibrary.simpleMessage(
       "Remember Me",
     ),
-    "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
-    "bookmark": MessageLookupByLibrary.simpleMessage("Bookmark"),
-    "buyTicket": MessageLookupByLibrary.simpleMessage("Buy Ticket"),
-    "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
-    "callUs": MessageLookupByLibrary.simpleMessage("Call us"),
-    "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
-    "create": MessageLookupByLibrary.simpleMessage("Create"),
-    "createEvent": MessageLookupByLibrary.simpleMessage("Create Event"),
+    "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
+    "contact_us_message": MessageLookupByLibrary.simpleMessage(
+      "Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.",
+    ),
     "dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "dialog_confirm_delete": MessageLookupByLibrary.simpleMessage(
       "Confirm Delete",
     ),
     "dialog_delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "dialog_ok": MessageLookupByLibrary.simpleMessage("Ok"),
-    "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
-      "Don\'t have An Account?",
-    ),
-    "emailUs": MessageLookupByLibrary.simpleMessage("Email us"),
-    "english": MessageLookupByLibrary.simpleMessage("English"),
-    "eventCalendar": MessageLookupByLibrary.simpleMessage("Event Calendar"),
-    "eventDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
-      "Event Deleted Successfully",
-    ),
-    "eventDetails": MessageLookupByLibrary.simpleMessage("Event Details"),
-    "eventWillBeHeldInEmbassy": MessageLookupByLibrary.simpleMessage(
-      "Event will be held in embassy",
-    ),
-    "eventWillBeHeldInOther": MessageLookupByLibrary.simpleMessage(
-      "Event will be held in other",
-    ),
-    "events": MessageLookupByLibrary.simpleMessage("Events"),
-    "eventsRequest": MessageLookupByLibrary.simpleMessage("Events Request"),
-    "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+    "event_calendar": MessageLookupByLibrary.simpleMessage("Event Calendar"),
+    "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
     "favoriteEvents": MessageLookupByLibrary.simpleMessage("Bookmark Events"),
-    "freeMembership": MessageLookupByLibrary.simpleMessage("Free Membership"),
-    "freeMembershipDetails": MessageLookupByLibrary.simpleMessage(
-      "Join us now and get a free membership for 3 months.",
+    "follow_us_on_facebook": MessageLookupByLibrary.simpleMessage(
+      "follow us on facebook",
     ),
-    "furtherInquiries": MessageLookupByLibrary.simpleMessage(
-      "Further Inquiries",
-    ),
-    "furtherInquiriesDetails": MessageLookupByLibrary.simpleMessage(
-      "ACCairo@state.gov",
-    ),
-    "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
-    "googleMapUrl": MessageLookupByLibrary.simpleMessage("Google Map URL"),
     "language_arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "language_english": MessageLookupByLibrary.simpleMessage("English"),
     "language_switch": MessageLookupByLibrary.simpleMessage(
       "تغيير للغة العربية",
     ),
-    "login": MessageLookupByLibrary.simpleMessage("Login"),
-    "noAttendeesPresent": MessageLookupByLibrary.simpleMessage(
-      "No attendees present",
-    ),
-    "noDataAvailable": MessageLookupByLibrary.simpleMessage(
-      "No data available",
-    ),
-    "noEventsAvailable": MessageLookupByLibrary.simpleMessage(
+    "no_event_available": MessageLookupByLibrary.simpleMessage(
       "No events available",
     ),
-    "noUpcomingEvents": MessageLookupByLibrary.simpleMessage(
-      "No Upcoming Events",
-    ),
-    "notificationScreen": MessageLookupByLibrary.simpleMessage(
-      "Notification Screen",
-    ),
-    "ok": MessageLookupByLibrary.simpleMessage("OK"),
-    "openingHours": MessageLookupByLibrary.simpleMessage("Opening Hours:"),
-    "openingHoursDetails": MessageLookupByLibrary.simpleMessage(
-      "Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays.",
-    ),
-    "pleaseAddAnEvent": MessageLookupByLibrary.simpleMessage(
-      "Please add an event",
-    ),
-    "previous": MessageLookupByLibrary.simpleMessage("Previous"),
     "profile_avatar_change": MessageLookupByLibrary.simpleMessage(
       "change avatar",
     ),
@@ -173,32 +111,29 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profile_settings_language": MessageLookupByLibrary.simpleMessage(""),
     "profile_settings_theme": MessageLookupByLibrary.simpleMessage(""),
-    "required": MessageLookupByLibrary.simpleMessage("Required"),
-    "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
-    "seeMore": MessageLookupByLibrary.simpleMessage("See More.."),
-    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-    "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "snackbar_undo": MessageLookupByLibrary.simpleMessage("Undo"),
-    "specialAnnouncements": MessageLookupByLibrary.simpleMessage(
-      "Special Announcements",
-    ),
-    "specialAnnouncementsDetails": MessageLookupByLibrary.simpleMessage(
-      "Stay tuned for our special announcements.",
-    ),
     "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
     "theme_switch": MessageLookupByLibrary.simpleMessage("Switch"),
-    "upComingEvents": MessageLookupByLibrary.simpleMessage("Upcoming Events"),
-    "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
+    "userLocation": MessageLookupByLibrary.simpleMessage("Location"),
+    "userSubscribeChannel": MessageLookupByLibrary.simpleMessage(
+      "subscribe our channel",
+    ),
+    "userVisitLocation": MessageLookupByLibrary.simpleMessage(
+      "visit our location",
+    ),
+    "userWhatsAppContact": MessageLookupByLibrary.simpleMessage(
+      "contact us on whatsapp",
+    ),
+    "userYoutube": MessageLookupByLibrary.simpleMessage("YouTube"),
     "user_bookmark_deleted_msg": MessageLookupByLibrary.simpleMessage(
       "Event removed from favorites",
     ),
     "user_bookmark_deleting_msg": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to remove this Event from bookmark?",
     ),
-    "user_bookmark_empty": MessageLookupByLibrary.simpleMessage(
-      "No bookmark events available",
-    ),
+    "user_call_us": MessageLookupByLibrary.simpleMessage("Call Us"),
+    "user_email_us": MessageLookupByLibrary.simpleMessage("Email Us"),
     "user_event_details_qr": MessageLookupByLibrary.simpleMessage(
       "Show QR Code",
     ),
@@ -208,6 +143,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "user_event_details_wait": MessageLookupByLibrary.simpleMessage(
       "Request is in Waiting State",
     ),
+    "user_follow_instagram": MessageLookupByLibrary.simpleMessage(
+      "follow us on instagram",
+    ),
+    "user_follow_twitter": MessageLookupByLibrary.simpleMessage(
+      "follow us on twitter",
+    ),
+    "user_instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
+    "user_twitter": MessageLookupByLibrary.simpleMessage("Twitter"),
     "validator_empty": MessageLookupByLibrary.simpleMessage("required"),
     "validator_firebase_invalid_credentials":
         MessageLookupByLibrary.simpleMessage("invalid email or password"),
@@ -238,7 +181,5 @@ class MessageLookup extends MessageLookupByLibrary {
     "validator_short_password": MessageLookupByLibrary.simpleMessage(
       "Password must be more than 6 characters",
     ),
-    "welcomeAdmin": MessageLookupByLibrary.simpleMessage("Welcome Admin"),
-    "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome back"),
   };
 }
