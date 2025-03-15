@@ -73,7 +73,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                   gravity: ToastGravity.BOTTOM,
                   backgroundColor: Colors.green,
                   toastLength: Toast.LENGTH_LONG,
-                  msg: "User updated successfully",
+                  msg: strings.profileDataUpdated,
                 );
                 setState(() => _pickedImage = null);
               }
@@ -100,30 +100,30 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                   ),
                   SizedBox(height: 8.h),
                   Center(
-                    child: TextButton(
-                      onPressed: () {
-                        ImagePicker()
-                            .pickImage(source: ImageSource.gallery)
-                            .then((image) async {
-                          if (image != null) {
-                            setState(() {
-                              _pickedImage = File(image.path);
-                              context
-                                  .read<UserCubit>()
-                                  .uploadImage(_pickedImage!);
-                            });
-                          }
-                        });
-                      },
-                      child: Text(
-                        _pickedImage != null
-                            ? "Save Changes"
-                            : user.avatar != null
-                                ? strings.adminProfileAvatarChange
-                                : strings.adminProfileAvatarUpload,
-                        style: TextStyle(fontSize: 14.sp),
-                      ),
-                    ),
+                    child: _pickedImage != null
+                        ? Text(strings.profileAvatarSaving)
+                        : TextButton(
+                            onPressed: () {
+                              ImagePicker()
+                                  .pickImage(source: ImageSource.gallery)
+                                  .then((image) async {
+                                if (image != null) {
+                                  setState(() {
+                                    _pickedImage = File(image.path);
+                                    context
+                                        .read<UserCubit>()
+                                        .uploadImage(_pickedImage!);
+                                  });
+                                }
+                              });
+                            },
+                            child: Text(
+                              user.avatar != null
+                                  ? strings.adminProfileAvatarChange
+                                  : strings.adminProfileAvatarUpload,
+                              style: TextStyle(fontSize: 14.sp),
+                            ),
+                          ),
                   ),
                 ],
               );
@@ -137,20 +137,20 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h),
                 child: Text(
-                  strings.adminProfileInfo,
+                  strings.profileInfo,
                   style:
                       TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
               ),
               TextInputField(
-                label: "Full Name",
+                label: strings.profileInfoName,
                 controller: _nameController,
                 onChanged: (val) {
                   _checkUpdates();
                 },
               ),
               TextInputField(
-                label: "Phone Number",
+                label: strings.profileInfoPhone,
                 enabled: true,
                 controller: _phoneController,
                 onChanged: (val) {
@@ -158,7 +158,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                 },
               ),
               TextInputField(
-                label: "Email",
+                label: strings.profileInfoEmail,
                 enabled: false,
                 controller: TextEditingController(text: user.email),
               ),
@@ -187,7 +187,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                       onChanged: (value) =>
                           setState(() => interests.add(value!)),
                       decoration: InputDecoration(
-                          labelText: 'Interests',
+                          labelText: strings.profileInfoInterests,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                             borderSide:
@@ -220,7 +220,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                         });
                         setState(() => isAnyUpdate = false);
                       },
-                      child: Text("Save Changes"),
+                      child: Text(strings.profileSaveChanges),
                     ),
                   ),
                 ),

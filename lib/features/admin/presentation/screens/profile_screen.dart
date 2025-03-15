@@ -25,12 +25,18 @@ class AdminProfileScreen extends StatefulWidget {
 }
 
 class _AdminProfileScreenState extends State<AdminProfileScreen> {
+  late User admin;
   File? _pickedImage;
+  late Localization strings;
+  @override
+  void initState() {
+    super.initState();
+    strings = Localization(context);
+    admin = context.read<UserCubit>().user!;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
-    final User admin = context.read<UserCubit>().user!;
-
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -50,7 +56,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                     gravity: ToastGravity.BOTTOM,
                     backgroundColor: Colors.green,
                     toastLength: Toast.LENGTH_LONG,
-                    msg: "user updated",
+                    msg: strings.profileDataUpdated,
                   );
                   setState(() => _pickedImage = null);
                 }
@@ -78,42 +84,42 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                     ),
                     SizedBox(height: 8.h),
                     Center(
-                      child: TextButton(
-                        onPressed: () {
-                          ImagePicker()
-                              .pickImage(source: ImageSource.gallery)
-                              .then((image) async {
-                            if (image != null) {
-                              setState(() {
-                                _pickedImage = File(image.path);
-                                context
-                                    .read<UserCubit>()
-                                    .uploadImage(_pickedImage!);
-                              });
-                            }
-                          });
-                        },
-                        child: Text(
-                          _pickedImage != null
-                              ? "save changes"
-                              : admin.avatar != null
-                                  ? strings.adminProfileAvatarChange
-                                  : strings.adminProfileAvatarUpload,
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                      ),
+                      child: _pickedImage != null
+                          ? Text(strings.profileAvatarSaving)
+                          : TextButton(
+                              onPressed: () {
+                                ImagePicker()
+                                    .pickImage(source: ImageSource.gallery)
+                                    .then((image) async {
+                                  if (image != null) {
+                                    setState(() {
+                                      _pickedImage = File(image.path);
+                                      context
+                                          .read<UserCubit>()
+                                          .uploadImage(_pickedImage!);
+                                    });
+                                  }
+                                });
+                              },
+                              child: Text(
+                                admin.avatar != null
+                                    ? strings.adminProfileAvatarChange
+                                    : strings.adminProfileAvatarUpload,
+                                style: TextStyle(fontSize: 14.sp),
+                              ),
+                            ),
                     ),
                   ],
                 );
               },
             ),
             Divider(),
-            _buildSectionTitle(strings.adminProfileInfo),
-            _buildInfoTile(strings.adminProfileInfoName, admin.name),
-            _buildInfoTile(strings.adminProfileInfoEmail, admin.email),
-            _buildInfoTile(strings.adminProfileInfoPhone, admin.phone),
+            _buildSectionTitle(strings.profileInfo),
+            _buildInfoTile(strings.profileInfoName, admin.name),
+            _buildInfoTile(strings.profileInfoEmail, admin.email),
+            _buildInfoTile(strings.profileInfoPhone, admin.phone),
             Divider(),
-            _buildSectionTitle(strings.adminProfileSettings),
+            _buildSectionTitle(strings.profileSettings),
             BlocBuilder<SettingsCubit, SettingsState>(
               builder: (context, state) {
                 bool isDark = context.read<SettingsCubit>().isDarkTheme;

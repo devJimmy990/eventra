@@ -16,6 +16,12 @@ class Localization {
   get languageSwitch => S.of(_context).language_switch;
   get languageArabic => S.of(_context).language_arabic;
   get languageEnglish => S.of(_context).language_english;
+
+  get dialogCancel => S.of(_context).dialog_cancel;
+  get dialogDelete => S.of(_context).dialog_delete;
+  get dialogConfirmDelete => S.of(_context).dialog_confirm_delete;
+  get dialogOk => S.of(_context).dialog_ok;
+  get snackBarUndo => S.of(_context).snackbar_undo;
 //----------------------------------------------------------------------
 
 //-------------------- Inputs Validator --------------------------------
@@ -28,7 +34,8 @@ class Localization {
   get validatorShortPassword => S.of(_context).validator_short_password;
   get validatorPasswordNotMatch => S.of(_context).validator_password_not_match;
 
-  get validatorFirebaseUsedEmail => S.of(_context).validator_firebase_used_email;
+  get validatorFirebaseUsedEmail =>
+      S.of(_context).validator_firebase_used_email;
   get validatorFirebaseWeakPassword =>
       S.of(_context).validator_firebase_weak_password;
   get validatorFirebaseInvalidCredentials =>
@@ -55,22 +62,38 @@ class Localization {
   get authToggleRemember => S.of(_context).auth_toggle_remember_me;
 //----------------------------------------------------------------------
 
+//-------------------- Profile --------------------------------------------
+  get profileInfo => S.of(_context).profile_info;
+  get profileSettings => S.of(_context).profile_settings;
+  get profileInfoName => S.of(_context).profile_info_name;
+  get profileInfoEmail => S.of(_context).profile_info_email;
+  get profileInfoPhone => S.of(_context).profile_info_phone;
+  get profileTheme => S.of(_context).profile_settings_theme;
+  get profileDataUpdated => S.of(_context).profile_data_updated;
+  get profileLanguage => S.of(_context).profile_settings_language;
+  get profileInfoEmpty => S.of(_context).profile_info_phone_empty;
+  get profileAvatarUpload => S.of(_context).profile_avatar_upload;
+  get profileAvatarSaving => S.of(_context).profile_avatar_save;
+  get profileAvatarChanged => S.of(_context).profile_avatar_change;
+  get profileInfoInterests => S.of(_context).profile_info_interests;
+  get profileSaveChanges => S.of(_context).profile_save_changes;
+//----------------------------------------------------------------------
+
 //-------------------- Admin --------------------------------------------
   get adminHomeAppBar => S.of(_context).admin_app_bar_title;
   get adminExploreTabUpComing => S.of(_context).admin_explore_tab_up_coming;
   get adminExploreTabPrevious => S.of(_context).admin_explore_tab_previous;
-  get adminProfileAvatarChange => S.of(_context).admin_profile_avatar_change;
-  get adminProfileAvatarUpload => S.of(_context).admin_profile_avatar_upload;
+  get adminProfileAvatarChange => S.of(_context).profile_avatar_change;
+  get adminProfileAvatarUpload => S.of(_context).profile_avatar_upload;
+//----------------------------------------------------------------------
 
-  get adminProfileInfo => S.of(_context).admin_profile_info;
-  get adminProfileInfoName => S.of(_context).admin_profile_info_name;
-  get adminProfileInfoEmail => S.of(_context).admin_profile_info_email;
-  get adminProfileInfoPhone => S.of(_context).admin_profile_info_phone;
-  get adminProfileInfoEmpty => S.of(_context).admin_profile_info_phone_empty;
-  get adminProfileSettings => S.of(_context).admin_profile_settings;
-  get adminProfileTheme => S.of(_context).admin_profile_settings_theme;
-  get adminProfileLanguage => S.of(_context).admin_profile_settings_language;
-
+//-------------------- User --------------------------------------------
+  get userEventDetailsWait => S.of(_context).user_event_details_wait;
+  get userEventDetailsReject => S.of(_context).user_event_details_reject;
+  get userEventDetailsQR => S.of(_context).user_event_details_qr;
+  get userBookmarkDeletingMsg => S.of(_context).user_bookmark_deleting_msg;
+  get userBookmarkDeleted => S.of(_context).user_bookmark_deleted_msg;
+  get userBookmark => S.of(_context).admin_explore_tab_previous;
 //----------------------------------------------------------------------
   // get googleSignIn => S.of(_context).SignInWithGoogle;
   get events => S.of(_context).events;
@@ -117,7 +140,7 @@ class Localization {
   get furtherInquiriesDetails => S.of(_context).furtherInquiriesDetails;
   // favorite (bookmarks)
   get favoriteEvents => S.of(_context).favoriteEvents;
-  get data => S.of(_context).data;
+  get userBookmarkEmpty => S.of(_context).user_bookmark_empty;
   // get appName => S.of(_context).appName;
   // onboarding screen
   get skip => S.of(_context).skip;

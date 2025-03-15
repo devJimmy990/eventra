@@ -26,7 +26,7 @@ class MyProfilePage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h),
                 child: Text(
-                  strings.adminProfileSettings,
+                  strings.profileSettings,
                   style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
               ),

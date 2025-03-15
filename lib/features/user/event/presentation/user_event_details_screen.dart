@@ -180,12 +180,12 @@ class UserEventDetailsScreen extends StatelessWidget {
                 final RequestEvent request = state.request;
                 return request.status == RequestStatus.waiting
                     ? Text(
-                        "Request is in Waiting State",
+                        strings.userEventDetailsWait,
                         textAlign: TextAlign.center,
                       )
                     : request.status == RequestStatus.rejected
                         ? Text(
-                            "Request is Rejected",
+                            strings.userEventDetailsReject,
                             textAlign: TextAlign.center,
                           )
                         : ElevatedButton(
@@ -213,7 +213,7 @@ class UserEventDetailsScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                            child: Text("Show QR Code"),
+                            child: Text(strings.userEventDetailsQR),
                           );
               }
               return SizedBox.shrink();

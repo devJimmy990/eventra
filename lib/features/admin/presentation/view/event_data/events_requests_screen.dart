@@ -23,7 +23,7 @@ class AdminEventsRequestsScreen extends StatelessWidget {
             } else if (state is EventRequestsLoaded) {
               return ListView.builder(
                 itemCount: state.requests.length,
-                itemBuilder: (_, inx) => Text(strings.data),
+                itemBuilder: (_, inx) => Text("strings.data"),
               );
             } else if (state is EventRequestEmpty) {
               return Center(child: Text("No Requests"));

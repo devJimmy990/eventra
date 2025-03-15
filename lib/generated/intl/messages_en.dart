@@ -33,26 +33,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Previous"),
         "admin_explore_tab_up_coming":
             MessageLookupByLibrary.simpleMessage("Upcoming"),
-        "admin_profile_avatar_change":
-            MessageLookupByLibrary.simpleMessage("change avatar"),
-        "admin_profile_avatar_upload":
-            MessageLookupByLibrary.simpleMessage("upload avatar"),
-        "admin_profile_info":
-            MessageLookupByLibrary.simpleMessage("Personal Information"),
-        "admin_profile_info_email":
-            MessageLookupByLibrary.simpleMessage("Email:"),
-        "admin_profile_info_name":
-            MessageLookupByLibrary.simpleMessage("Name:"),
-        "admin_profile_info_phone":
-            MessageLookupByLibrary.simpleMessage("Phone:"),
-        "admin_profile_info_phone_empty":
-            MessageLookupByLibrary.simpleMessage("Empty Phone Number"),
-        "admin_profile_settings":
-            MessageLookupByLibrary.simpleMessage("Account Settings"),
-        "admin_profile_settings_language":
-            MessageLookupByLibrary.simpleMessage(""),
-        "admin_profile_settings_theme":
-            MessageLookupByLibrary.simpleMessage(""),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "appName": MessageLookupByLibrary.simpleMessage("Eventra"),
@@ -87,7 +67,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createEvent": MessageLookupByLibrary.simpleMessage("Create Event"),
-        "data": MessageLookupByLibrary.simpleMessage("Data"),
+        "dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "dialog_confirm_delete":
+            MessageLookupByLibrary.simpleMessage("Confirm Delete"),
+        "dialog_delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "dialog_ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "dontHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have An Account?"),
         "emailUs": MessageLookupByLibrary.simpleMessage("Email us"),
@@ -137,11 +121,35 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseAddAnEvent":
             MessageLookupByLibrary.simpleMessage("Please add an event"),
         "previous": MessageLookupByLibrary.simpleMessage("Previous"),
+        "profile_avatar_change":
+            MessageLookupByLibrary.simpleMessage("change avatar"),
+        "profile_avatar_save":
+            MessageLookupByLibrary.simpleMessage("avatar is uploading..."),
+        "profile_avatar_upload":
+            MessageLookupByLibrary.simpleMessage("upload avatar"),
+        "profile_data_updated":
+            MessageLookupByLibrary.simpleMessage("User updated successfully"),
+        "profile_info":
+            MessageLookupByLibrary.simpleMessage("Personal Information"),
+        "profile_info_email": MessageLookupByLibrary.simpleMessage("Email:"),
+        "profile_info_interests":
+            MessageLookupByLibrary.simpleMessage("Interests"),
+        "profile_info_name": MessageLookupByLibrary.simpleMessage("Name:"),
+        "profile_info_phone": MessageLookupByLibrary.simpleMessage("Phone:"),
+        "profile_info_phone_empty":
+            MessageLookupByLibrary.simpleMessage("Empty Phone Number"),
+        "profile_save_changes":
+            MessageLookupByLibrary.simpleMessage("Save Changes"),
+        "profile_settings":
+            MessageLookupByLibrary.simpleMessage("Account Settings"),
+        "profile_settings_language": MessageLookupByLibrary.simpleMessage(""),
+        "profile_settings_theme": MessageLookupByLibrary.simpleMessage(""),
         "required": MessageLookupByLibrary.simpleMessage("Required"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
         "seeMore": MessageLookupByLibrary.simpleMessage("See More.."),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "snackbar_undo": MessageLookupByLibrary.simpleMessage("Undo"),
         "specialAnnouncements":
             MessageLookupByLibrary.simpleMessage("Special Announcements"),
         "specialAnnouncementsDetails": MessageLookupByLibrary.simpleMessage(
@@ -152,6 +160,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "upComingEvents":
             MessageLookupByLibrary.simpleMessage("Upcoming Events"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
+        "user_bookmark_deleted_msg": MessageLookupByLibrary.simpleMessage(
+            "Event removed from favorites"),
+        "user_bookmark_deleting_msg": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to remove this Event from bookmark?"),
+        "user_bookmark_empty": MessageLookupByLibrary.simpleMessage(
+            "No bookmark events available"),
+        "user_event_details_qr":
+            MessageLookupByLibrary.simpleMessage("Show QR Code"),
+        "user_event_details_reject":
+            MessageLookupByLibrary.simpleMessage("Request is Rejected"),
+        "user_event_details_wait":
+            MessageLookupByLibrary.simpleMessage("Request is in Waiting State"),
         "validator_empty": MessageLookupByLibrary.simpleMessage("required"),
         "validator_firebase_invalid_credentials":
             MessageLookupByLibrary.simpleMessage("invalid email or password"),

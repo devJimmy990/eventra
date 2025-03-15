@@ -122,6 +122,56 @@ class S {
     );
   }
 
+  /// `Ok`
+  String get dialog_ok {
+    return Intl.message(
+      'Ok',
+      name: 'dialog_ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get dialog_cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'dialog_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get dialog_delete {
+    return Intl.message(
+      'Delete',
+      name: 'dialog_delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Delete`
+  String get dialog_confirm_delete {
+    return Intl.message(
+      'Confirm Delete',
+      name: 'dialog_confirm_delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Undo`
+  String get snackbar_undo {
+    return Intl.message(
+      'Undo',
+      name: 'snackbar_undo',
+      desc: '',
+      args: [],
+    );
+  }
+
   // skipped getter for the '_========  End General ========================================================' key
 
   // skipped getter for the '_======== Validator ========================================================' key
@@ -237,6 +287,150 @@ class S {
   }
 
   // skipped getter for the '_========  End Validator ========================================================' key
+
+  // skipped getter for the '_======== Profile ========================================================' key
+
+  /// `User updated successfully`
+  String get profile_data_updated {
+    return Intl.message(
+      'User updated successfully',
+      name: 'profile_data_updated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `avatar is uploading...`
+  String get profile_avatar_save {
+    return Intl.message(
+      'avatar is uploading...',
+      name: 'profile_avatar_save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get profile_save_changes {
+    return Intl.message(
+      'Save Changes',
+      name: 'profile_save_changes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `change avatar`
+  String get profile_avatar_change {
+    return Intl.message(
+      'change avatar',
+      name: 'profile_avatar_change',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `upload avatar`
+  String get profile_avatar_upload {
+    return Intl.message(
+      'upload avatar',
+      name: 'profile_avatar_upload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Information`
+  String get profile_info {
+    return Intl.message(
+      'Personal Information',
+      name: 'profile_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name:`
+  String get profile_info_name {
+    return Intl.message(
+      'Name:',
+      name: 'profile_info_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email:`
+  String get profile_info_email {
+    return Intl.message(
+      'Email:',
+      name: 'profile_info_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interests`
+  String get profile_info_interests {
+    return Intl.message(
+      'Interests',
+      name: 'profile_info_interests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone:`
+  String get profile_info_phone {
+    return Intl.message(
+      'Phone:',
+      name: 'profile_info_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Empty Phone Number`
+  String get profile_info_phone_empty {
+    return Intl.message(
+      'Empty Phone Number',
+      name: 'profile_info_phone_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Settings`
+  String get profile_settings {
+    return Intl.message(
+      'Account Settings',
+      name: 'profile_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get profile_settings_language {
+    return Intl.message(
+      '',
+      name: 'profile_settings_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get profile_settings_theme {
+    return Intl.message(
+      '',
+      name: 'profile_settings_theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '_========  End Profile ========================================================' key
 
   // skipped getter for the '_======== Auth ========================================================' key
 
@@ -414,107 +608,61 @@ class S {
     );
   }
 
-  /// `change avatar`
-  String get admin_profile_avatar_change {
-    return Intl.message(
-      'change avatar',
-      name: 'admin_profile_avatar_change',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `upload avatar`
-  String get admin_profile_avatar_upload {
-    return Intl.message(
-      'upload avatar',
-      name: 'admin_profile_avatar_upload',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Personal Information`
-  String get admin_profile_info {
-    return Intl.message(
-      'Personal Information',
-      name: 'admin_profile_info',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Name:`
-  String get admin_profile_info_name {
-    return Intl.message(
-      'Name:',
-      name: 'admin_profile_info_name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Email:`
-  String get admin_profile_info_email {
-    return Intl.message(
-      'Email:',
-      name: 'admin_profile_info_email',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Phone:`
-  String get admin_profile_info_phone {
-    return Intl.message(
-      'Phone:',
-      name: 'admin_profile_info_phone',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Empty Phone Number`
-  String get admin_profile_info_phone_empty {
-    return Intl.message(
-      'Empty Phone Number',
-      name: 'admin_profile_info_phone_empty',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Account Settings`
-  String get admin_profile_settings {
-    return Intl.message(
-      'Account Settings',
-      name: 'admin_profile_settings',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// ``
-  String get admin_profile_settings_language {
-    return Intl.message(
-      '',
-      name: 'admin_profile_settings_language',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// ``
-  String get admin_profile_settings_theme {
-    return Intl.message(
-      '',
-      name: 'admin_profile_settings_theme',
-      desc: '',
-      args: [],
-    );
-  }
-
   // skipped getter for the '_========  End Admin ========================================================' key
+
+  // skipped getter for the '_======== User ========================================================' key
+
+  /// `Show QR Code`
+  String get user_event_details_qr {
+    return Intl.message(
+      'Show QR Code',
+      name: 'user_event_details_qr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request is in Waiting State`
+  String get user_event_details_wait {
+    return Intl.message(
+      'Request is in Waiting State',
+      name: 'user_event_details_wait',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request is Rejected`
+  String get user_event_details_reject {
+    return Intl.message(
+      'Request is Rejected',
+      name: 'user_event_details_reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to remove this Event from bookmark?`
+  String get user_bookmark_deleting_msg {
+    return Intl.message(
+      'Are you sure you want to remove this Event from bookmark?',
+      name: 'user_bookmark_deleting_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event removed from favorites`
+  String get user_bookmark_deleted_msg {
+    return Intl.message(
+      'Event removed from favorites',
+      name: 'user_bookmark_deleted_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '_========  End User ========================================================' key
 
   /// `Welcome back`
   String get welcomeBack {
@@ -656,11 +804,11 @@ class S {
     );
   }
 
-  /// `Data`
-  String get data {
+  /// `No bookmark events available`
+  String get user_bookmark_empty {
     return Intl.message(
-      'Data',
-      name: 'data',
+      'No bookmark events available',
+      name: 'user_bookmark_empty',
       desc: '',
       args: [],
     );

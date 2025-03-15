@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:eventra/core/constants/color_manager.dart';
-import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/user/home/presentation/view/explore_view.dart';
 import 'package:eventra/rive/menu.dart';
 import 'package:eventra/rive/side_bar.dart';
@@ -56,9 +55,8 @@ class _UserHomeScreenState extends State<UserHomeScreen>
       isSideBarOpen = !isSideBarOpen;
     });
 
-    if (isMenuOpenInput != null) {
-      isMenuOpenInput.value = !isSideBarOpen;  // Reverse the state
-    } // Reverse the state
+    isMenuOpenInput.value = !isSideBarOpen;  // Reverse the state
+  // Reverse the state
 
     if (isSideBarOpen) {
       _animationController.forward();
@@ -69,7 +67,6 @@ class _UserHomeScreenState extends State<UserHomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    final strings = Localization(context);
     return Scaffold(
       extendBody: true,
       resizeToAvoidBottomInset: false,
