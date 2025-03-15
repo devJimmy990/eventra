@@ -20,7 +20,7 @@ class UserEventDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final strings = Localization(context);
+    
     return BlocProvider(
       create: (context) => UserEventRequestCubit(event.id!),
       child: Scaffold(
@@ -35,7 +35,7 @@ class UserEventDetailsScreen extends StatelessWidget {
               // Display the event cover image in the flexible space.
               flexibleSpace: FlexibleSpaceBar(
                 title: Text(
-                  strings.eventDetails,
+                  Localization.userEventDetailsAppBar,
                   style: TextStyle(color: Colors.white),
                 ),
                 background: event.cover == null
@@ -60,7 +60,7 @@ class UserEventDetailsScreen extends StatelessWidget {
                     Icons.bookmark,
                     color: Colors.white,
                   ),
-                  tooltip: strings.bookmark,
+                  tooltip: Localization.userEventDetailsBookmark,
                   onPressed: () {},
                 ),
               ],
@@ -133,7 +133,7 @@ class UserEventDetailsScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       // About Event Section
                       Text(
-                        strings.aboutEvent,
+                        Localization.userEventDetailsAbout,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -168,8 +168,8 @@ class UserEventDetailsScreen extends StatelessWidget {
                   },
                   child: Text(
                     event.price == 0
-                        ? strings.bookNow
-                        : "${strings.buyTicket} \$${event.price}",
+                        ? Localization.userEventDetailsBook
+                        : "${Localization.userEventDetailsBuy} \$${event.price}",
                   ),
                 );
               } else if (state is EventRequestError) {
@@ -180,12 +180,12 @@ class UserEventDetailsScreen extends StatelessWidget {
                 final RequestEvent request = state.request;
                 return request.status == RequestStatus.waiting
                     ? Text(
-                        strings.userEventDetailsWait,
+                        Localization.userEventDetailsWait,
                         textAlign: TextAlign.center,
                       )
                     : request.status == RequestStatus.rejected
                         ? Text(
-                            strings.userEventDetailsReject,
+                            Localization.userEventDetailsReject,
                             textAlign: TextAlign.center,
                           )
                         : ElevatedButton(
@@ -213,7 +213,7 @@ class UserEventDetailsScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                            child: Text(strings.userEventDetailsQR),
+                            child: Text(Localization.userEventDetailsQR),
                           );
               }
               return SizedBox.shrink();

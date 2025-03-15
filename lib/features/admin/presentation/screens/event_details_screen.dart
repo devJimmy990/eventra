@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
 import 'package:eventra/core/constants/extensions.dart';
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/admin/cubit/requests/request_cubit.dart';
 import 'package:eventra/features/admin/cubit/requests/request_state.dart';
 import 'package:eventra/features/user/home/data/model/request_event.dart';
@@ -22,6 +23,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: BlocListener<AdminEventRequestCubit, AdminEventRequestState>(
         listener: (context, state) {
@@ -31,7 +33,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
               gravity: ToastGravity.BOTTOM,
               backgroundColor: Colors.red,
               toastLength: Toast.LENGTH_LONG,
-              msg: "request approved",
+              msg: Localization.adminRequestApprovedMsg,
             );
           }
         },
@@ -42,7 +44,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
               pinned: true,
               iconTheme: IconThemeData(color: Colors.white),
               flexibleSpace: FlexibleSpaceBar(
-                title: Text("Event Details"),
+                title: Text(Localization.adminEventDetailsAppBar),
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
@@ -82,7 +84,6 @@ class AdminEventDetailsScreen extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => AiBarcodeScanner(
                           onDispose: () {},
-                          
                           hideGalleryButton: true,
                           controller: MobileScannerController(
                             detectionSpeed: DetectionSpeed.noDuplicates,
@@ -132,14 +133,17 @@ class AdminEventDetailsScreen extends StatelessWidget {
                                                   .abbreviate())
                                               : null,
                                         ),
-                                        _buildSectionTitle(
-                                            "Person Information"),
+                                        _buildSectionTitle(Localization
+                                            .adminEventDetailsDialogPersonalInfo),
                                         _buildInfoTile(
-                                            "Name:", request.user.name),
+                                            "${Localization.adminEventDetailsDialogName}:",
+                                            request.user.name),
                                         _buildInfoTile(
-                                            "Email:", request.user.email),
+                                            "${Localization.adminEventDetailsDialogEmail}:",
+                                            request.user.email),
                                         _buildInfoTile(
-                                            "Phone:", request.user.phone),
+                                            "${Localization.adminEventDetailsDialogPhone}:",
+                                            request.user.phone),
                                       ],
                                     ),
                                   ),
@@ -160,7 +164,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                                                 Navigator.of(context).pop(true);
                                               },
                                               child: Text(
-                                                'Approve',
+                                                Localization.approve,
                                                 style: TextStyle(
                                                     color: Colors.green,
                                                     fontSize: 14.sp),
@@ -176,7 +180,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                                               Navigator.of(context).pop(true);
                                             },
                                             child: Text(
-                                              'Reject',
+                                              Localization.reject,
                                               style: TextStyle(
                                                   color: Colors.red,
                                                   fontSize: 14.sp),
@@ -248,7 +252,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      "About Event",
+                      Localization.adminEventDetailsAbout,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -269,7 +273,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Attendees",
+                          Localization.adminEventDetailsAttendees,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -282,7 +286,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                                     extra: event.attendees,
                                   ),
                               child: Text(
-                                "see all",
+                                Localization.adminEventDetailsSeeAll,
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -293,7 +297,9 @@ class AdminEventDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   if (event.attendees.isEmpty)
-                    Center(child: Text("no attendees present"))
+                    Center(
+                        child:
+                            Text(Localization.adminEventDetailsAttendeesEmpty))
                 ],
               ),
             ),

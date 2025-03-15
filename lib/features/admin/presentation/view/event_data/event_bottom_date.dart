@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:eventra/core/ui/inputs.dart';
 import 'package:eventra/core/constants/extensions.dart';
@@ -14,6 +15,7 @@ class EventBottomDate extends StatefulWidget {
 }
 
 class _EventBottomDateState extends State<EventBottomDate> {
+  late Localization strings;
   late TextEditingController dateController;
   late TextEditingController startController;
   late TextEditingController endController;
@@ -21,6 +23,7 @@ class _EventBottomDateState extends State<EventBottomDate> {
   @override
   void initState() {
     super.initState();
+    strings = Localization();
     dateController = TextEditingController()
       ..text = widget.controller.value.date.encodeDate();
 
@@ -71,7 +74,7 @@ class _EventBottomDateState extends State<EventBottomDate> {
               onTap: () async => await showDateDialog(),
               child: TextInputField(
                 enabled: false,
-                label: "Select Date",
+                label:Localization.selectDate,
                 controller: dateController,
               ),
             ),
@@ -83,7 +86,7 @@ class _EventBottomDateState extends State<EventBottomDate> {
                     onTap: () async => await showDateDialog(),
                     child: TextInputField(
                       enabled: false,
-                      label: "From",
+                      label: Localization.from,
                       controller: startController,
                     ),
                   ),
@@ -93,7 +96,7 @@ class _EventBottomDateState extends State<EventBottomDate> {
                     onTap: () async => await showDateDialog(),
                     child: TextInputField(
                       enabled: false,
-                      label: "To",
+                      label: Localization.to,
                       controller: endController,
                     ),
                   ),

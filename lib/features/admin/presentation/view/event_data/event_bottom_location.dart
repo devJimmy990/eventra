@@ -25,7 +25,8 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
   }
 
   @override
-  Widget build(BuildContext context) { final strings = Localization(context);
+  Widget build(BuildContext context) {
+    
     return Card(
       elevation: 12,
       shadowColor: Colors.grey,
@@ -45,8 +46,8 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
                 ),
                 Text(
                   isInEmbassy
-                      ? strings.eventWillBeHeldInEmbassy
-                      : strings.eventWillBeHeldInOther,
+                      ? Localization.adminEventHeldInEmbassy
+                      : Localization.adminEventHeldOutEmbassy,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -60,22 +61,34 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
                 spacing: 10.h,
                 children: [
                   TextInputField(
-                    label: strings.areaName,
+                    label: Localization.adminEventInputArea,
                     controller: widget.nameController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return strings.required;
+                        return Localization.validatorEmpty;
                       }
                       return null;
                     },
                   ),
                   TextInputField(
-                    label: strings.address,
+                    label: Localization.adminEventInputAddress,
                     controller: widget.addressController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return Localization.validatorEmpty;
+                      }
+                      return null;
+                    },
                   ),
                   TextInputField(
-                    label: strings.googleMapUrl,
+                    label: Localization.adminEventInputMap,
                     controller: widget.urlController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return Localization.validatorEmpty;
+                      }
+                      return null;
+                    },
                   ),
                 ],
               )

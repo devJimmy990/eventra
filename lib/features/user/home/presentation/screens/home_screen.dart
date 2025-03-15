@@ -20,7 +20,7 @@ class _UserHomeScreenState extends State<UserHomeScreen>
   int selectedIndex = 0;
   late PageController _pageController;
   late AnimationController _animationController;
-  late Animation<double> scalAnimation;
+  late Animation<double> scaleAnimation;
   late Animation<double> animation;
 
   Menu selectedButtonNav = bottomNavItems.first;
@@ -36,7 +36,7 @@ class _UserHomeScreenState extends State<UserHomeScreen>
       ..addListener(() {
         setState(() {});
       });
-    scalAnimation = Tween<double>(begin: 1, end: 0.8).animate(CurvedAnimation(
+    scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(CurvedAnimation(
         parent: _animationController, curve: Curves.fastOutSlowIn));
     animation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
         parent: _animationController, curve: Curves.fastOutSlowIn));
@@ -55,8 +55,8 @@ class _UserHomeScreenState extends State<UserHomeScreen>
       isSideBarOpen = !isSideBarOpen;
     });
 
-    isMenuOpenInput.value = !isSideBarOpen;  // Reverse the state
-  // Reverse the state
+    isMenuOpenInput.value = !isSideBarOpen; // Reverse the state
+    // Reverse the state
 
     if (isSideBarOpen) {
       _animationController.forward();
@@ -76,13 +76,11 @@ class _UserHomeScreenState extends State<UserHomeScreen>
           if (isSideBarOpen)
             GestureDetector(
               onTap: toggleSidebar,
-              child: Container(
-                color: Colors.black.withOpacity(0.5),
+              child: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
               ),
             ),
-
           AnimatedPositioned(
             width: MediaQuery.of(context).size.width * 0.8,
             height: MediaQuery.of(context).size.height,
@@ -100,7 +98,7 @@ class _UserHomeScreenState extends State<UserHomeScreen>
             child: Transform.translate(
               offset: Offset(animation.value * 265, 0),
               child: Transform.scale(
-                scale: scalAnimation.value,
+                scale: scaleAnimation.value,
                 child: EventExploreView(),
               ),
             ),
@@ -115,7 +113,7 @@ class _UserHomeScreenState extends State<UserHomeScreen>
                     artboard, "State Machine");
                 artboard.addController(controller!);
                 isMenuOpenInput =
-                controller.findInput<bool>("isOpen") as SMIBool;
+                    controller.findInput<bool>("isOpen") as SMIBool;
                 isMenuOpenInput.value = !isSideBarOpen;
               },
             ),

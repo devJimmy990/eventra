@@ -13,7 +13,7 @@ class UpcomingEvents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
 
     return Scaffold(
       body: BlocConsumer<AdminEventCubit, AdminEventState>(
@@ -24,7 +24,7 @@ class UpcomingEvents extends StatelessWidget {
               gravity: ToastGravity.BOTTOM,
               backgroundColor: Colors.red,
               toastLength: Toast.LENGTH_LONG,
-              msg: strings.eventDeletedSuccessfully,
+              msg: Localization.adminEventDeletedMsg,
             );
           } else if (state is EventError) {
             Fluttertoast.showToast(
@@ -50,7 +50,7 @@ class UpcomingEvents extends StatelessWidget {
                   //todo: editing the image
                   SizedBox(height: 5.h),
                   Text(
-                    strings.pleaseAddAnEvent,
+                    Localization.adminEventAddMsg,
                     style: TextStyle(fontSize: 16.sp),
                   ),
                 ],

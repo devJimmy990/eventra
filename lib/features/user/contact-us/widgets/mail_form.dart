@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:eventra/core/ui/inputs.dart';
 import 'package:eventra/core/validator/contact.dart';
@@ -61,7 +62,7 @@ class _ContactUsMailFormBottomSheetState
                       Expanded(
                         child: TextInputField(
                           icon: Icon(Icons.person),
-                          label: "First Name",
+                          label: Localization.userContactFormNameFirst,
                           controller: fNameController,
                           validator: validator.validateName,
                         ),
@@ -69,7 +70,7 @@ class _ContactUsMailFormBottomSheetState
                       Expanded(
                         child: TextInputField(
                           icon: Icon(Icons.person),
-                          label: "Last Name",
+                          label: Localization.userContactFormNameLast,
                           controller: lNameController,
                           validator: validator.validateName,
                         ),
@@ -78,14 +79,14 @@ class _ContactUsMailFormBottomSheetState
                   ),
                   TextInputField(
                     email: true,
-                    label: "Email",
+                    label: Localization.userContactFormEmail,
                     icon: Icon(Icons.email),
                     controller: emailController,
                     validator: validator.validateEmail,
                   ),
                   TextInputField(
                     phone: true,
-                    label: "Phone Number",
+                    label: Localization.userContactFormPhone,
                     icon: Icon(Icons.phone_android),
                     controller: phoneController,
                     validator: validator.validatePhone,
@@ -93,9 +94,9 @@ class _ContactUsMailFormBottomSheetState
                   TextInputField(
                     maxLines: 4,
                     phone: true,
-                    label: "Message",
+                    label: Localization.userContactFormMessage,
                     controller: messageController,
-                    hint: "Type your message here",
+                    hint: Localization.userContactFormMessageHint,
                     validator: validator.validateMessage,
                   ),
                 ],
@@ -114,7 +115,7 @@ class _ContactUsMailFormBottomSheetState
                       );
                     }
                   },
-                  child: Text("Send"),
+                  child: Text(Localization.send),
                 ),
               ),
             ],

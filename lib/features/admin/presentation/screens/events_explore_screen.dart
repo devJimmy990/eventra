@@ -73,7 +73,7 @@ class _CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
     return SizedBox(
       width: 0.8.sw,
       child: Container(
@@ -100,7 +100,7 @@ class _CustomTabBar extends StatelessWidget {
           unselectedLabelStyle: TextStyle(fontSize: 14.sp),
           dividerColor: Colors.transparent,
           tabs:
-              [strings.adminExploreTabUpComing, strings.adminExploreTabPrevious]
+              [Localization.adminExploreTabUpComing, Localization.adminExploreTabPrevious]
                   .map((label) => Tab(
                         child: Text(
                           label,

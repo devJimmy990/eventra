@@ -20,12 +20,13 @@ class _AdminEventsRequestsBottomSheetState
     extends State<AdminEventsRequestsBottomSheet>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
+  late Localization strings;
   @override
   void initState() {
     super.initState();
     _tabController = TabController(initialIndex: 2, length: 4, vsync: this);
     _tabController.addListener(_handleTabIndexChange);
+    strings = Localization();
   }
 
   @override
@@ -88,7 +89,7 @@ class _AdminEventsRequestsBottomSheetState
                           gravity: ToastGravity.BOTTOM,
                           backgroundColor: Colors.red,
                           toastLength: Toast.LENGTH_LONG,
-                          msg: "request accepted",
+                          msg: Localization.adminRequestAcceptedMsg,
                         );
                       } else if (state is RequestEventRejected) {
                         Fluttertoast.showToast(
@@ -96,7 +97,7 @@ class _AdminEventsRequestsBottomSheetState
                           gravity: ToastGravity.BOTTOM,
                           backgroundColor: Colors.red,
                           toastLength: Toast.LENGTH_LONG,
-                          msg: "request rejected",
+                          msg: Localization.adminRequestRejectedMsg,
                         );
                       } else if (state is EventRequestError) {
                         Fluttertoast.showToast(
@@ -149,13 +150,13 @@ class _AdminEventsRequestsBottomSheetState
                                                     .read<
                                                         AdminEventRequestCubit>()
                                                     .onRejectRequest(request),
-                                                child: Text("Reject")),
+                                                child: Text(Localization.reject)),
                                             ElevatedButton(
                                                 onPressed: () => context
                                                     .read<
                                                         AdminEventRequestCubit>()
                                                     .onAcceptRequest(request),
-                                                child: Text("Accept")),
+                                                child: Text(Localization.accept)),
                                           ],
                                         )
                                       : null,
@@ -166,7 +167,7 @@ class _AdminEventsRequestsBottomSheetState
                         return Center(
                             child: InkWell(
                                 onTap: () => Navigator.pop(context),
-                                child: Text("No Requests")));
+                                child: Text(Localization.adminRequestEmpty)));
                       }
                       return SizedBox();
                     },
@@ -186,7 +187,7 @@ class _CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
     return Container(
       width: double.infinity.sw,
       height: 40.h,
@@ -213,10 +214,10 @@ class _CustomTabBar extends StatelessWidget {
         unselectedLabelStyle: TextStyle(fontSize: 14.sp),
         dividerColor: Colors.transparent,
         tabs: [
-          "Rejected",
-          "Approved",
-          "Waiting",
-          "Pending",
+          Localization.adminRequestRejected,
+          Localization.adminRequestApproved,
+          Localization.adminRequestWaiting,
+          Localization.adminRequestPending,
         ]
             .map((label) => Tab(
                   child: Text(

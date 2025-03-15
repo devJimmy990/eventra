@@ -27,14 +27,11 @@ class NotificationService {
     await _setupMessageHandlers();
 
     // Get FCM token
-    final token = await _messaging.getToken();
-    print('FCM Token: $token');
-    FirebaseMessaging.instance.subscribeToTopic("events").then((val) { print("subscribed");});
-    print('FCM Token: $token');
+    FirebaseMessaging.instance.subscribeToTopic("events").then((val) {});
   }
 
   Future<void> _requestPermission() async {
-    final settings = await _messaging.requestPermission(
+    await _messaging.requestPermission(
       alert: true,
       badge: true,
       sound: true,
@@ -43,8 +40,6 @@ class NotificationService {
       carPlay: false,
       criticalAlert: false,
     );
-
-    print('Permission status: ${settings.authorizationStatus}');
   }
 
   Future<void> setupFlutterNotifications() async {
@@ -134,7 +129,5 @@ class NotificationService {
     }
   }
 
-  void _handleBackgroundMessage(RemoteMessage message) {
-
-  }
+  void _handleBackgroundMessage(RemoteMessage message) {}
 }

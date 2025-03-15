@@ -4,59 +4,58 @@ import 'package:eventra/core/helper/localization.dart';
 
 class InputValidator {
   final Localization strings;
-  InputValidator(BuildContext context) : strings = Localization(context);
+  InputValidator(BuildContext context) : strings = Localization();
 
   String? validateEmpty(String? value) {
     if (value == null || value.isEmpty) {
-      return strings.validatorEmpty;
+      return Localization.validatorEmpty;
     }
     return null;
   }
 
   String? validateName(String? value) {
     if (value == null || value.isEmpty) {
-      return strings.validatorEmpty;
+      return Localization.validatorEmpty;
     } else if (value.length < 3) {
-      return strings.validatorShortName;
+      return Localization.validatorShortName;
     } else if (value.length > 25) {
-      return strings.validatorLongName;
+      return Localization.validatorLongName;
     }
     return null;
   }
 
   String? validatePhone(String? value) {
     if (value == null || value.isEmpty) {
-      return strings.validatorEmpty;
+      return Localization.validatorEmpty;
     } else if (!Regex.matchPhone(value)) {
-      return strings.validatorInvalidPhone;
+      return Localization.validatorInvalidPhone;
     }
     return null;
   }
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return strings.validatorEmpty;
+      return Localization.validatorEmpty;
     } else if (!Regex.matchEmail(value)) {
-      return strings.validatorInvalidEmail;
+      return Localization.validatorInvalidEmail;
     }
     return null;
   }
 
   String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return strings.validatorEmpty;
+      return Localization.validatorEmpty;
     } else if (value.length < 6) {
-      return strings.validatorShortPassword;
+      return Localization.validatorShortPassword;
     }
     return null;
   }
 
   String? validateConfirmPassword(String? value, String? password) {
     if (value == null || value.isEmpty) {
-      return strings.validatorEmpty;
+      return Localization.validatorEmpty;
     } else if (value != password) {
-      print("$value --- $password");
-      return strings.validatorPasswordNotMatch;
+      return Localization.validatorPasswordNotMatch;
     }
     return null;
   }

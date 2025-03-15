@@ -10,10 +10,10 @@ class ContactUsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final strings = Localization(context);
-
     return Scaffold(
-      appBar: AppBar(title: Text(strings.userContactUs)),
+      appBar: AppBar(
+        title: Text(Localization.userContact),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
@@ -33,7 +33,7 @@ class ContactUsScreen extends StatelessWidget {
             spacing: 10,
             children: [
               Text(
-                strings.userContactUsMessage,
+                Localization.userContactHeader,
                 textAlign: TextAlign.justify,
                 style: TextStyle(fontSize: 15),
               ),
@@ -44,13 +44,13 @@ class ContactUsScreen extends StatelessWidget {
                   Expanded(
                       child: _BuildMasterContactCard(
                     icon: Icons.call,
-                    text: strings.userCallUs,
+                    text: Localization.userContactCallUs,
                     onPress: () => ExternalLauncher.launchCaller(),
                   )),
                   Expanded(
                       child: _BuildMasterContactCard(
                     icon: Icons.mail,
-                    text: strings.userEmailUs,
+                    text: Localization.userContactEmailUs,
                     onPress: () {
                       showModalBottomSheet(
                         context: context,
@@ -62,38 +62,38 @@ class ContactUsScreen extends StatelessWidget {
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.facebook,
-                title: strings.userFacebook,
-                message: strings.userFollowFacebook,
+                title: Localization.userContactFacebook,
+                message: Localization.userContactFacebookMsg,
                 onPress: () => ExternalLauncher.launchFacebook(),
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.instagram,
-                title: strings.userInstagram,
-                message: strings.userFollowInstegram,
+                title: Localization.userContactInstagram,
+                message: Localization.userContactInstagramMsg,
                 onPress: () => ExternalLauncher.launchInstagram(),
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.twitter_x,
-                title: strings.userTwitter,
-                message: strings.userFollowTwitter,
+                title: Localization.userContactTwitter,
+                message: Localization.userContactTwitterMsg,
                 onPress: () => ExternalLauncher.launchTwitter(),
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.youtube,
-                title: strings.userYoutube,
-                message: strings.userSubscribeChannel,
+                title: Localization.userContactYoutube,
+                message: Localization.userContactYoutubeMsg,
                 onPress: () => ExternalLauncher.launchYoutube(),
               ),
               _BuildSocialContactCard(
                 icon: Bootstrap.whatsapp,
-                title:strings.userWhatsapp,
-                message: strings.userWhatsAppContact,
+                title: Localization.userContactWhats,
+                message: Localization.userContactWhatsMsg,
                 onPress: () => ExternalLauncher.launchWhatsapp(),
               ),
               _BuildSocialContactCard(
                 icon: Icons.location_on,
-                title: strings.userLocation,
-                message: strings.userVisitLocation,
+                title: Localization.userContactLocation,
+                message: Localization.userContactLocationMsg,
                 onPress: () => ExternalLauncher.launchLocation(),
               ),
             ],

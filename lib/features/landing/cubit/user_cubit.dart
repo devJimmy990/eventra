@@ -23,7 +23,6 @@ class UserCubit extends Cubit<UserState> {
         return;
       }
       _user = await UserRepository(UserDataSource()).getUserData(uid);
-      print("debug-user: cubit-$_user");
       emit(UserLoaded(_user));
     } catch (e) {
       emit(UserError(e.toString()));
@@ -31,7 +30,6 @@ class UserCubit extends Cubit<UserState> {
   }
 
   void setUser(User user) {
-    print("debug-user: suer-cubit-set-user - $user");
     emit(UserLoaded(user));
   }
 

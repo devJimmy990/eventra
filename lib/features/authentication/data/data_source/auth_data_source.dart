@@ -13,7 +13,6 @@ class AuthenticationDataSource {
         email: email,
         password: password,
       );
-      print(user.user!.uid);
       return user.user!.uid;
     } catch (e) {
       rethrow;

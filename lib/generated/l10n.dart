@@ -18,20 +18,17 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(
-      _current != null,
-      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
-    );
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -44,10 +41,8 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(
-      instance != null,
-      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
-    );
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -59,27 +54,52 @@ class S {
 
   /// `Eventra`
   String get appName {
-    return Intl.message('Eventra', name: 'appName', desc: '', args: []);
+    return Intl.message(
+      'Eventra',
+      name: 'appName',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Switch`
   String get theme_switch {
-    return Intl.message('Switch', name: 'theme_switch', desc: '', args: []);
+    return Intl.message(
+      'Switch',
+      name: 'theme_switch',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Dark`
   String get theme_dark {
-    return Intl.message('Dark', name: 'theme_dark', desc: '', args: []);
+    return Intl.message(
+      'Dark',
+      name: 'theme_dark',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Light`
   String get theme_light {
-    return Intl.message('Light', name: 'theme_light', desc: '', args: []);
+    return Intl.message(
+      'Light',
+      name: 'theme_light',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Arabic`
   String get language_arabic {
-    return Intl.message('Arabic', name: 'language_arabic', desc: '', args: []);
+    return Intl.message(
+      'Arabic',
+      name: 'language_arabic',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `English`
@@ -103,34 +123,146 @@ class S {
   }
 
   /// `Ok`
-  String get dialog_ok {
-    return Intl.message('Ok', name: 'dialog_ok', desc: '', args: []);
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get send {
+    return Intl.message(
+      'Send',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cancel`
-  String get dialog_cancel {
-    return Intl.message('Cancel', name: 'dialog_cancel', desc: '', args: []);
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Delete`
-  String get dialog_delete {
-    return Intl.message('Delete', name: 'dialog_delete', desc: '', args: []);
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Confirm Delete`
-  String get dialog_confirm_delete {
+  String get confirm_delete {
     return Intl.message(
       'Confirm Delete',
-      name: 'dialog_confirm_delete',
+      name: 'confirm_delete',
       desc: '',
       args: [],
     );
   }
 
   /// `Undo`
-  String get snackbar_undo {
-    return Intl.message('Undo', name: 'snackbar_undo', desc: '', args: []);
+  String get undo {
+    return Intl.message(
+      'Undo',
+      name: 'undo',
+      desc: '',
+      args: [],
+    );
   }
+
+  /// `Reject`
+  String get reject {
+    return Intl.message(
+      'Reject',
+      name: 'reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message(
+      'Accept',
+      name: 'accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `approve`
+  String get approve {
+    return Intl.message(
+      'approve',
+      name: 'approve',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `wait`
+  String get wait {
+    return Intl.message(
+      'wait',
+      name: 'wait',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From`
+  String get from {
+    return Intl.message(
+      'From',
+      name: 'from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To`
+  String get to {
+    return Intl.message(
+      'To',
+      name: 'to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Date`
+  String get select_date {
+    return Intl.message(
+      'Select Date',
+      name: 'select_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '' key
 
   // skipped getter for the '_========  End General ========================================================' key
 
@@ -312,7 +444,12 @@ class S {
 
   /// `Name:`
   String get profile_info_name {
-    return Intl.message('Name:', name: 'profile_info_name', desc: '', args: []);
+    return Intl.message(
+      'Name:',
+      name: 'profile_info_name',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Email:`
@@ -330,6 +467,16 @@ class S {
     return Intl.message(
       'Interests',
       name: 'profile_info_interests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Interest`
+  String get profile_info_select_interests {
+    return Intl.message(
+      'Select Interest',
+      name: 'profile_info_select_interests',
       desc: '',
       args: [],
     );
@@ -377,7 +524,12 @@ class S {
 
   /// ``
   String get profile_settings_theme {
-    return Intl.message('', name: 'profile_settings_theme', desc: '', args: []);
+    return Intl.message(
+      '',
+      name: 'profile_settings_theme',
+      desc: '',
+      args: [],
+    );
   }
 
   // skipped getter for the '_========  End Profile ========================================================' key
@@ -386,7 +538,12 @@ class S {
 
   /// `E-Mail`
   String get auth_input_email {
-    return Intl.message('E-Mail', name: 'auth_input_email', desc: '', args: []);
+    return Intl.message(
+      'E-Mail',
+      name: 'auth_input_email',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Phone Number`
@@ -451,7 +608,12 @@ class S {
 
   /// `Logout`
   String get auth_btn_logout {
-    return Intl.message('Logout', name: 'auth_btn_logout', desc: '', args: []);
+    return Intl.message(
+      'Logout',
+      name: 'auth_btn_logout',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Forget Password?`
@@ -516,6 +678,862 @@ class S {
 
   // skipped getter for the '_========  End Auth ========================================================' key
 
+  // skipped getter for the '_======== User ========================================================' key
+
+  /// `Events`
+  String get user_home_app_bar {
+    return Intl.message(
+      'Events',
+      name: 'user_home_app_bar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No upcoming events`
+  String get user_home_upcoming_empty {
+    return Intl.message(
+      'No upcoming events',
+      name: 'user_home_upcoming_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show QR Code`
+  String get user_event_details_qr {
+    return Intl.message(
+      'Show QR Code',
+      name: 'user_event_details_qr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request is in Waiting State`
+  String get user_event_details_wait {
+    return Intl.message(
+      'Request is in Waiting State',
+      name: 'user_event_details_wait',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request is Rejected`
+  String get user_event_details_reject {
+    return Intl.message(
+      'Request is Rejected',
+      name: 'user_event_details_reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No events available`
+  String get no_event_available {
+    return Intl.message(
+      'No events available',
+      name: 'no_event_available',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event Calendar`
+  String get event_calendar {
+    return Intl.message(
+      'Event Calendar',
+      name: 'event_calendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bookmark Events`
+  String get favoriteEvents {
+    return Intl.message(
+      'Bookmark Events',
+      name: 'favoriteEvents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get user_side_home {
+    return Intl.message(
+      'Home',
+      name: 'user_side_home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calendar`
+  String get user_side_calendar {
+    return Intl.message(
+      'Calendar',
+      name: 'user_side_calendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bookmark`
+  String get user_side_bookmark {
+    return Intl.message(
+      'Bookmark',
+      name: 'user_side_bookmark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get user_side_profile {
+    return Intl.message(
+      'Profile',
+      name: 'user_side_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact us`
+  String get user_side_contact {
+    return Intl.message(
+      'Contact us',
+      name: 'user_side_contact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '_========  End User ========================================================' key
+
+  // skipped getter for the '_======== User-Contact ========================================================' key
+
+  /// `First Name`
+  String get user_contact_form_name_first {
+    return Intl.message(
+      'First Name',
+      name: 'user_contact_form_name_first',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last name`
+  String get user_contact_form_name_last {
+    return Intl.message(
+      'Last name',
+      name: 'user_contact_form_name_last',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-Mail`
+  String get user_contact_form_email {
+    return Intl.message(
+      'E-Mail',
+      name: 'user_contact_form_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get user_contact_form_phone {
+    return Intl.message(
+      'Phone Number',
+      name: 'user_contact_form_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message`
+  String get user_contact_form_message {
+    return Intl.message(
+      'Message',
+      name: 'user_contact_form_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type your message here`
+  String get user_contact_form_message_hint {
+    return Intl.message(
+      'Type your message here',
+      name: 'user_contact_form_message_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us`
+  String get user_contact {
+    return Intl.message(
+      'Contact Us',
+      name: 'user_contact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call Us`
+  String get user_contact_call_us {
+    return Intl.message(
+      'Call Us',
+      name: 'user_contact_call_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Us`
+  String get user_contact_email_us {
+    return Intl.message(
+      'Email Us',
+      name: 'user_contact_email_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.`
+  String get user_contact_header {
+    return Intl.message(
+      'Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.',
+      name: 'user_contact_header',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Facebook`
+  String get user_contact_facebook {
+    return Intl.message(
+      'Facebook',
+      name: 'user_contact_facebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on facebook`
+  String get user_contact_facebook_msg {
+    return Intl.message(
+      'follow us on facebook',
+      name: 'user_contact_facebook_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instagram`
+  String get user_contact_instagram {
+    return Intl.message(
+      'Instagram',
+      name: 'user_contact_instagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on instagram`
+  String get user_contact_instagram_msg {
+    return Intl.message(
+      'follow us on instagram',
+      name: 'user_contact_instagram_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Twitter`
+  String get user_contact_twitter {
+    return Intl.message(
+      'Twitter',
+      name: 'user_contact_twitter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on twitter`
+  String get user_contact_twitter_msg {
+    return Intl.message(
+      'follow us on twitter',
+      name: 'user_contact_twitter_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `YouTube`
+  String get user_contact_youtube {
+    return Intl.message(
+      'YouTube',
+      name: 'user_contact_youtube',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `subscribe our channel`
+  String get user_contact_youtube_msg {
+    return Intl.message(
+      'subscribe our channel',
+      name: 'user_contact_youtube_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WhatsApp`
+  String get user_contact_whatsapp {
+    return Intl.message(
+      'WhatsApp',
+      name: 'user_contact_whatsapp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `contact us on whatsapp`
+  String get user_contact_whatsapp_msg {
+    return Intl.message(
+      'contact us on whatsapp',
+      name: 'user_contact_whatsapp_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get user_contact_location {
+    return Intl.message(
+      'Location',
+      name: 'user_contact_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `visit our location`
+  String get user_contact_location_msg {
+    return Intl.message(
+      'visit our location',
+      name: 'user_contact_location_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACC Address:`
+  String get user_contact_general_address {
+    return Intl.message(
+      'ACC Address:',
+      name: 'user_contact_general_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.`
+  String get user_contact_general_address_info {
+    return Intl.message(
+      'U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.',
+      name: 'user_contact_general_address_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opening Hours:`
+  String get user_contact_general_time {
+    return Intl.message(
+      'Opening Hours:',
+      name: 'user_contact_general_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays.`
+  String get user_contact_general_time_info {
+    return Intl.message(
+      'Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays.',
+      name: 'user_contact_general_time_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free Membership`
+  String get user_contact_general_membership {
+    return Intl.message(
+      'Free Membership',
+      name: 'user_contact_general_membership',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join us now and get a free membership for 3 months.`
+  String get user_contact_general_membership_info {
+    return Intl.message(
+      'Join us now and get a free membership for 3 months.',
+      name: 'user_contact_general_membership_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Special Announcements`
+  String get user_contact_general_announcement {
+    return Intl.message(
+      'Special Announcements',
+      name: 'user_contact_general_announcement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stay tuned for our special announcements.`
+  String get user_contact_general_announcement_info {
+    return Intl.message(
+      'Stay tuned for our special announcements.',
+      name: 'user_contact_general_announcement_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Further Inquiries`
+  String get user_contact_general_inquiry {
+    return Intl.message(
+      'Further Inquiries',
+      name: 'user_contact_general_inquiry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACCairo@state.gov`
+  String get user_contact_general_inquiry_info {
+    return Intl.message(
+      'ACCairo@state.gov',
+      name: 'user_contact_general_inquiry_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '_========  End User-Contact ========================================================' key
+
+  // skipped getter for the '_======== User-Event-Details ========================================================' key
+
+  /// `Event Details`
+  String get user_event_details_app_bar {
+    return Intl.message(
+      'Event Details',
+      name: 'user_event_details_app_bar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bookmark`
+  String get user_event_details_bookmark {
+    return Intl.message(
+      'Bookmark',
+      name: 'user_event_details_bookmark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Event`
+  String get user_event_details_about {
+    return Intl.message(
+      'About Event',
+      name: 'user_event_details_about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Now`
+  String get user_event_details_book_now {
+    return Intl.message(
+      'Book Now',
+      name: 'user_event_details_book_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buy Ticket`
+  String get user_event_details_buy_ticket {
+    return Intl.message(
+      'Buy Ticket',
+      name: 'user_event_details_buy_ticket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.`
+  String get user_event_details_header {
+    return Intl.message(
+      'Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.',
+      name: 'user_event_details_header',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Facebook`
+  String get user_event_details_facebook {
+    return Intl.message(
+      'Facebook',
+      name: 'user_event_details_facebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on facebook`
+  String get user_event_details_facebook_msg {
+    return Intl.message(
+      'follow us on facebook',
+      name: 'user_event_details_facebook_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instagram`
+  String get user_event_details_instagram {
+    return Intl.message(
+      'Instagram',
+      name: 'user_event_details_instagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on instagram`
+  String get user_event_details_instagram_msg {
+    return Intl.message(
+      'follow us on instagram',
+      name: 'user_event_details_instagram_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Twitter`
+  String get user_event_details_twitter {
+    return Intl.message(
+      'Twitter',
+      name: 'user_event_details_twitter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on twitter`
+  String get user_event_details_twitter_msg {
+    return Intl.message(
+      'follow us on twitter',
+      name: 'user_event_details_twitter_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `YouTube`
+  String get user_event_details_youtube {
+    return Intl.message(
+      'YouTube',
+      name: 'user_event_details_youtube',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `subscribe our channel`
+  String get user_event_details_youtube_msg {
+    return Intl.message(
+      'subscribe our channel',
+      name: 'user_event_details_youtube_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WhatsApp`
+  String get user_event_details_whatsapp {
+    return Intl.message(
+      'WhatsApp',
+      name: 'user_event_details_whatsapp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `contact us on whatsapp`
+  String get user_event_details_whatsapp_msg {
+    return Intl.message(
+      'contact us on whatsapp',
+      name: 'user_event_details_whatsapp_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get user_event_details_location {
+    return Intl.message(
+      'Location',
+      name: 'user_event_details_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `visit our location`
+  String get user_event_details_location_msg {
+    return Intl.message(
+      'visit our location',
+      name: 'user_event_details_location_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '_========  End User-Event-Details ========================================================' key
+
+  // skipped getter for the '_======== User-Bookmark ========================================================' key
+
+  /// `Are you sure you want to remove this Event from bookmark?`
+  String get user_bookmark_deleting_msg {
+    return Intl.message(
+      'Are you sure you want to remove this Event from bookmark?',
+      name: 'user_bookmark_deleting_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event removed from favorites`
+  String get user_bookmark_deleted_msg {
+    return Intl.message(
+      'Event removed from favorites',
+      name: 'user_bookmark_deleted_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No bookmark events available`
+  String get user_bookmark_empty {
+    return Intl.message(
+      'No bookmark events available',
+      name: 'user_bookmark_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event Details`
+  String get user_bookmark_app_bar {
+    return Intl.message(
+      'Event Details',
+      name: 'user_bookmark_app_bar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bookmark`
+  String get user_bookmark_bookmark {
+    return Intl.message(
+      'Bookmark',
+      name: 'user_bookmark_bookmark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Event`
+  String get user_bookmark_about {
+    return Intl.message(
+      'About Event',
+      name: 'user_bookmark_about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Now`
+  String get user_bookmark_book_now {
+    return Intl.message(
+      'Book Now',
+      name: 'user_bookmark_book_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buy Ticket`
+  String get user_bookmark_buy_ticket {
+    return Intl.message(
+      'Buy Ticket',
+      name: 'user_bookmark_buy_ticket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.`
+  String get user_bookmark_header {
+    return Intl.message(
+      'Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.',
+      name: 'user_bookmark_header',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Facebook`
+  String get user_bookmark_facebook {
+    return Intl.message(
+      'Facebook',
+      name: 'user_bookmark_facebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on facebook`
+  String get user_bookmark_facebook_msg {
+    return Intl.message(
+      'follow us on facebook',
+      name: 'user_bookmark_facebook_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instagram`
+  String get user_bookmark_instagram {
+    return Intl.message(
+      'Instagram',
+      name: 'user_bookmark_instagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on instagram`
+  String get user_bookmark_instagram_msg {
+    return Intl.message(
+      'follow us on instagram',
+      name: 'user_bookmark_instagram_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Twitter`
+  String get user_bookmark_twitter {
+    return Intl.message(
+      'Twitter',
+      name: 'user_bookmark_twitter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `follow us on twitter`
+  String get user_bookmark_twitter_msg {
+    return Intl.message(
+      'follow us on twitter',
+      name: 'user_bookmark_twitter_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `YouTube`
+  String get user_bookmark_youtube {
+    return Intl.message(
+      'YouTube',
+      name: 'user_bookmark_youtube',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `subscribe our channel`
+  String get user_bookmark_youtube_msg {
+    return Intl.message(
+      'subscribe our channel',
+      name: 'user_bookmark_youtube_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WhatsApp`
+  String get user_bookmark_whatsapp {
+    return Intl.message(
+      'WhatsApp',
+      name: 'user_bookmark_whatsapp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `contact us on whatsapp`
+  String get user_bookmark_whatsapp_msg {
+    return Intl.message(
+      'contact us on whatsapp',
+      name: 'user_bookmark_whatsapp_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get user_bookmark_location {
+    return Intl.message(
+      'Location',
+      name: 'user_bookmark_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `visit our location`
+  String get user_bookmark_location_msg {
+    return Intl.message(
+      'visit our location',
+      name: 'user_bookmark_location_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '_========  End User-Bookmark ========================================================' key
+
   // skipped getter for the '_======== Admin ========================================================' key
 
   /// `Welcome Admin`
@@ -550,209 +1568,297 @@ class S {
 
   // skipped getter for the '_========  End Admin ========================================================' key
 
-  // skipped getter for the '_======== User ========================================================' key
+  // skipped getter for the '_======== Admin-Event ========================================================' key
 
-  /// `Show QR Code`
-  String get user_event_details_qr {
+  /// `Event will be held in other`
+  String get admin_event_held_in_embassy {
     return Intl.message(
-      'Show QR Code',
-      name: 'user_event_details_qr',
+      'Event will be held in other',
+      name: 'admin_event_held_in_embassy',
       desc: '',
       args: [],
     );
   }
 
-  /// `Request is in Waiting State`
-  String get user_event_details_wait {
+  /// `Event will be held in embassy`
+  String get admin_event_held_out_embassy {
     return Intl.message(
-      'Request is in Waiting State',
-      name: 'user_event_details_wait',
+      'Event will be held in embassy',
+      name: 'admin_event_held_out_embassy',
       desc: '',
       args: [],
     );
   }
 
-  /// `Request is Rejected`
-  String get user_event_details_reject {
+  /// `Area Name`
+  String get admin_event_input_area {
     return Intl.message(
-      'Request is Rejected',
-      name: 'user_event_details_reject',
+      'Area Name',
+      name: 'admin_event_input_area',
       desc: '',
       args: [],
     );
   }
 
-  /// `Are you sure you want to remove this Event from bookmark?`
-  String get user_bookmark_deleting_msg {
+  /// `Address`
+  String get admin_event_input_address {
     return Intl.message(
-      'Are you sure you want to remove this Event from bookmark?',
-      name: 'user_bookmark_deleting_msg',
+      'Address',
+      name: 'admin_event_input_address',
       desc: '',
       args: [],
     );
   }
 
-  /// `Event removed from favorites`
-  String get user_bookmark_deleted_msg {
+  /// `Title`
+  String get admin_event_input_title {
     return Intl.message(
-      'Event removed from favorites',
-      name: 'user_bookmark_deleted_msg',
+      'Title',
+      name: 'admin_event_input_title',
       desc: '',
       args: [],
     );
   }
 
-  /// `No events available`
-  String get no_event_available {
+  /// `Description`
+  String get admin_event_input_description {
     return Intl.message(
-      'No events available',
-      name: 'no_event_available',
+      'Description',
+      name: 'admin_event_input_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Event Calendar`
-  String get event_calendar {
+  /// `Price`
+  String get admin_event_input_price {
     return Intl.message(
-      'Event Calendar',
-      name: 'event_calendar',
+      'Price',
+      name: 'admin_event_input_price',
       desc: '',
       args: [],
     );
   }
 
-  /// `Contact Us`
-  String get contact_us {
-    return Intl.message('Contact Us', name: 'contact_us', desc: '', args: []);
-  }
-
-  /// `Call Us`
-  String get user_call_us {
-    return Intl.message('Call Us', name: 'user_call_us', desc: '', args: []);
-  }
-
-  /// `Email Us`
-  String get user_email_us {
-    return Intl.message('Email Us', name: 'user_email_us', desc: '', args: []);
-  }
-
-  /// `Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.`
-  String get contact_us_message {
+  /// `Google Map URL`
+  String get admin_event_input_map {
     return Intl.message(
-      'Don’t hesitate to contact us whether you have a suggestion on our improvement, a complain to discuss or an issue to solve.',
-      name: 'contact_us_message',
+      'Google Map URL',
+      name: 'admin_event_input_map',
       desc: '',
       args: [],
     );
   }
 
-  /// `Facebook`
-  String get facebook {
-    return Intl.message('Facebook', name: 'facebook', desc: '', args: []);
-  }
-
-  /// `follow us on facebook`
-  String get follow_us_on_facebook {
+  /// `Create Event`
+  String get admin_event_create {
     return Intl.message(
-      'follow us on facebook',
-      name: 'follow_us_on_facebook',
+      'Create Event',
+      name: 'admin_event_create',
       desc: '',
       args: [],
     );
   }
 
-  /// `Instagram`
-  String get user_instagram {
+  /// `Event Deleted Successfully`
+  String get admin_event_deleted_msg {
     return Intl.message(
-      'Instagram',
-      name: 'user_instagram',
+      'Event Deleted Successfully',
+      name: 'admin_event_deleted_msg',
       desc: '',
       args: [],
     );
   }
 
-  /// `follow us on instagram`
-  String get user_follow_instagram {
+  /// `Please add an event`
+  String get admin_event_add_msg {
     return Intl.message(
-      'follow us on instagram',
-      name: 'user_follow_instagram',
+      'Please add an event',
+      name: 'admin_event_add_msg',
       desc: '',
       args: [],
     );
   }
 
-  /// `Twitter`
-  String get user_twitter {
-    return Intl.message('Twitter', name: 'user_twitter', desc: '', args: []);
-  }
+  // skipped getter for the '_========  End Admin-Event ========================================================' key
 
-  /// `follow us on twitter`
-  String get user_follow_twitter {
+  // skipped getter for the '_======== Admin-Event-Details ========================================================' key
+
+  /// `About Event`
+  String get admin_event_details_about {
     return Intl.message(
-      'follow us on twitter',
-      name: 'user_follow_twitter',
+      'About Event',
+      name: 'admin_event_details_about',
       desc: '',
       args: [],
     );
   }
 
-  /// `YouTube`
-  String get userYoutube {
-    return Intl.message('YouTube', name: 'userYoutube', desc: '', args: []);
-  }
-
-  /// `subscribe our channel`
-  String get userSubscribeChannel {
+  /// `Attendees`
+  String get admin_event_details_attendees {
     return Intl.message(
-      'subscribe our channel',
-      name: 'userSubscribeChannel',
+      'Attendees',
+      name: 'admin_event_details_attendees',
       desc: '',
       args: [],
     );
   }
 
-  /// `WhatsApp`
-  String get UserWhatsapp {
-    return Intl.message('WhatsApp', name: 'UserWhatsapp', desc: '', args: []);
-  }
-
-  /// `contact us on whatsapp`
-  String get userWhatsAppContact {
+  /// `no attendees present`
+  String get admin_event_details_attendees_empty {
     return Intl.message(
-      'contact us on whatsapp',
-      name: 'userWhatsAppContact',
+      'no attendees present',
+      name: 'admin_event_details_attendees_empty',
       desc: '',
       args: [],
     );
   }
 
-  /// `Location`
-  String get userLocation {
-    return Intl.message('Location', name: 'userLocation', desc: '', args: []);
-  }
-
-  /// `visit our location`
-  String get userVisitLocation {
+  /// `See All`
+  String get admin_event_details_see_all {
     return Intl.message(
-      'visit our location',
-      name: 'userVisitLocation',
+      'See All',
+      name: 'admin_event_details_see_all',
       desc: '',
       args: [],
     );
   }
 
-  /// `Bookmark Events`
-  String get favoriteEvents {
+  /// `Personal Information`
+  String get admin_event_details_dialog_personal_info {
     return Intl.message(
-      'Bookmark Events',
-      name: 'favoriteEvents',
+      'Personal Information',
+      name: 'admin_event_details_dialog_personal_info',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the '_========  End User ========================================================' key
+  /// `Name`
+  String get admin_event_details_dialog_name {
+    return Intl.message(
+      'Name',
+      name: 'admin_event_details_dialog_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-Mail`
+  String get admin_event_details_dialog_email {
+    return Intl.message(
+      'E-Mail',
+      name: 'admin_event_details_dialog_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get admin_event_details_dialog_phone {
+    return Intl.message(
+      'Phone Number',
+      name: 'admin_event_details_dialog_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event Details`
+  String get admin_event_details_app_bar {
+    return Intl.message(
+      'Event Details',
+      name: 'admin_event_details_app_bar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '_========  End Admin-Event-Details ========================================================' key
+
+  // skipped getter for the '_======== Admin-Request ========================================================' key
+
+  /// `Rejected`
+  String get admin_request_tab_reject {
+    return Intl.message(
+      'Rejected',
+      name: 'admin_request_tab_reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approved`
+  String get admin_request_tab_approve {
+    return Intl.message(
+      'Approved',
+      name: 'admin_request_tab_approve',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting`
+  String get admin_request_tab_waiting {
+    return Intl.message(
+      'Waiting',
+      name: 'admin_request_tab_waiting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get admin_request_tab_pending {
+    return Intl.message(
+      'Pending',
+      name: 'admin_request_tab_pending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Requests`
+  String get admin_request_empty {
+    return Intl.message(
+      'No Requests',
+      name: 'admin_request_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `request accepted`
+  String get admin_request_accept_msg {
+    return Intl.message(
+      'request accepted',
+      name: 'admin_request_accept_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `request rejected`
+  String get admin_request_reject_msg {
+    return Intl.message(
+      'request rejected',
+      name: 'admin_request_reject_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `request approved`
+  String get admin_request_approved_msg {
+    return Intl.message(
+      'request approved',
+      name: 'admin_request_approved_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the '_========  End Admin-Request ========================================================' key
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -9,7 +9,7 @@ class AuthenticationHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
     return Column(
       children: [
         SizedBox(
@@ -20,7 +20,7 @@ class AuthenticationHeader extends StatelessWidget {
         ),
         Center(
           child: Text(
-            strings.generalAppName,
+            Localization.generalAppName,
             style: Theme.of(context).textTheme.titleLarge,
           ).animate().fade(duration: const Duration(seconds: 2)),
         ),

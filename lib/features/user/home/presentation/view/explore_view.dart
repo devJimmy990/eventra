@@ -30,7 +30,7 @@ class _EventExploreViewState extends State<EventExploreView> {
   @override
   void initState() {
     super.initState();
-    strings = Localization(context);
+    strings = Localization();
     _pageController = PageController(viewportFraction: 1);
   }
 
@@ -52,7 +52,7 @@ class _EventExploreViewState extends State<EventExploreView> {
           iconTheme: const IconThemeData(color: Colors.white, size: 30),
           centerTitle: true,
           title: Text(
-            strings.userHomeAppBar,
+            Localization.userHomeAppBar,
             style: const TextStyle(
               shadows: [
                 Shadow(
@@ -116,7 +116,7 @@ class _EventExploreViewState extends State<EventExploreView> {
                   if (state is EventLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is EventEmpty) {
-                    return Center(child: Text(strings.userExploreUpcoming));
+                    return Center(child: Text(Localization.userExploreUpcomingEmpty));
                   } else if (state is EventError) {
                     return Center(child: Text(state.error));
                   } else if (state is EventLoaded) {

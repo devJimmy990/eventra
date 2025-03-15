@@ -25,7 +25,6 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
   bool isAnyUpdate = false;
   late User user;
   File? _pickedImage;
-  late Localization strings;
   final List<String> interests = [];
   late EventCategoryController categoryController;
   late TextEditingController _phoneController, _nameController;
@@ -33,7 +32,6 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
   @override
   void initState() {
     super.initState();
-    strings = Localization(context);
     user = context.read<UserCubit>().user!;
     categoryController = EventCategoryController();
     _phoneController = TextEditingController(text: user.phone);
@@ -73,7 +71,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                   gravity: ToastGravity.BOTTOM,
                   backgroundColor: Colors.green,
                   toastLength: Toast.LENGTH_LONG,
-                  msg: strings.profileDataUpdated,
+                  msg: Localization.profileDataUpdated,
                 );
                 setState(() => _pickedImage = null);
               }
@@ -101,7 +99,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                   SizedBox(height: 8.h),
                   Center(
                     child: _pickedImage != null
-                        ? Text(strings.profileAvatarSaving)
+                        ? Text(Localization.profileAvatarSaving)
                         : TextButton(
                             onPressed: () {
                               ImagePicker()
@@ -119,8 +117,8 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                             },
                             child: Text(
                               user.avatar != null
-                                  ? strings.adminProfileAvatarChange
-                                  : strings.adminProfileAvatarUpload,
+                                  ? Localization.adminProfileAvatarChange
+                                  : Localization.adminProfileAvatarUpload,
                               style: TextStyle(fontSize: 14.sp),
                             ),
                           ),
@@ -137,20 +135,20 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h),
                 child: Text(
-                  strings.profileInfo,
+                  Localization.profileInfo,
                   style:
                       TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
               ),
               TextInputField(
-                label: strings.profileInfoName,
+                label: Localization.profileInfoName,
                 controller: _nameController,
                 onChanged: (val) {
                   _checkUpdates();
                 },
               ),
               TextInputField(
-                label: strings.profileInfoPhone,
+                label: Localization.profileInfoPhone,
                 enabled: true,
                 controller: _phoneController,
                 onChanged: (val) {
@@ -158,7 +156,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                 },
               ),
               TextInputField(
-                label: strings.profileInfoEmail,
+                label: Localization.profileInfoEmail,
                 enabled: false,
                 controller: TextEditingController(text: user.email),
               ),
@@ -176,7 +174,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                       items: [
                         DropdownMenuItem(
                           value: null,
-                          child: Text("Select Interest"),
+                          child: Text(Localization.profileInfoSelectInterests),
                         ),
                         ...EventCategory.values
                             .map((category) => DropdownMenuItem(
@@ -187,7 +185,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                       onChanged: (value) =>
                           setState(() => interests.add(value!)),
                       decoration: InputDecoration(
-                          labelText: strings.profileInfoInterests,
+                          labelText: Localization.profileInfoInterests,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                             borderSide:
@@ -220,7 +218,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                         });
                         setState(() => isAnyUpdate = false);
                       },
-                      child: Text(strings.profileSaveChanges),
+                      child: Text(Localization.profileSaveChanges),
                     ),
                   ),
                 ),

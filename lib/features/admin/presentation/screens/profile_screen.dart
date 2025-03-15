@@ -31,7 +31,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
   @override
   void initState() {
     super.initState();
-    strings = Localization(context);
+    strings = Localization();
     admin = context.read<UserCubit>().user!;
   }
 
@@ -56,7 +56,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                     gravity: ToastGravity.BOTTOM,
                     backgroundColor: Colors.green,
                     toastLength: Toast.LENGTH_LONG,
-                    msg: strings.profileDataUpdated,
+                    msg: Localization.profileDataUpdated,
                   );
                   setState(() => _pickedImage = null);
                 }
@@ -85,7 +85,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                     SizedBox(height: 8.h),
                     Center(
                       child: _pickedImage != null
-                          ? Text(strings.profileAvatarSaving)
+                          ? Text(Localization.profileAvatarSaving)
                           : TextButton(
                               onPressed: () {
                                 ImagePicker()
@@ -103,8 +103,8 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                               },
                               child: Text(
                                 admin.avatar != null
-                                    ? strings.adminProfileAvatarChange
-                                    : strings.adminProfileAvatarUpload,
+                                    ? Localization.adminProfileAvatarChange
+                                    : Localization.adminProfileAvatarUpload,
                                 style: TextStyle(fontSize: 14.sp),
                               ),
                             ),
@@ -114,19 +114,19 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
               },
             ),
             Divider(),
-            _buildSectionTitle(strings.profileInfo),
-            _buildInfoTile(strings.profileInfoName, admin.name),
-            _buildInfoTile(strings.profileInfoEmail, admin.email),
-            _buildInfoTile(strings.profileInfoPhone, admin.phone),
+            _buildSectionTitle(Localization.profileInfo),
+            _buildInfoTile(Localization.profileInfoName, admin.name),
+            _buildInfoTile(Localization.profileInfoEmail, admin.email),
+            _buildInfoTile(Localization.profileInfoPhone, admin.phone),
             Divider(),
-            _buildSectionTitle(strings.profileSettings),
+            _buildSectionTitle(Localization.profileSettings),
             BlocBuilder<SettingsCubit, SettingsState>(
               builder: (context, state) {
                 bool isDark = context.read<SettingsCubit>().isDarkTheme;
                 return SwitchListTile(
                   secondary: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
                   title: Text(
-                      "${strings.themeSwitch} ${isDark ? strings.themeLight : strings.themeDark}"),
+                      "${Localization.themeSwitch} ${isDark ? Localization.themeLight : Localization.themeDark}"),
                   value: isDark,
                   onChanged: (value) =>
                       context.read<SettingsCubit>().toggleTheme(),
@@ -140,15 +140,15 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                   leading: Icon(Icons.language),
                   title: Text(
                     locale == "ar"
-                        ? strings.languageArabic
-                        : strings.languageEnglish,
+                        ? Localization.languageArabic
+                        : Localization.languageEnglish,
                   ),
                   trailing: InkWell(
                     onTap: () => context.read<SettingsCubit>().toggleLanguage(),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(strings.languageSwitch),
+                        Text(Localization.languageSwitch),
                         SizedBox(width: 5.w),
                         Icon(Icons.change_circle_outlined),
                       ],
@@ -181,7 +181,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                 elevation: 5,
               ),
               child: Text(
-                strings.authBtnSignOut,
+                Localization.authBtnSignOut,
                 style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
               ),
             ),

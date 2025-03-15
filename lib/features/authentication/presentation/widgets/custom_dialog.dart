@@ -7,7 +7,7 @@ class CustomDialog extends StatelessWidget {
   final void Function() onTap;
 
   @override
-  Widget build(BuildContext context) { final strings = Localization(context);
+  Widget build(BuildContext context) {
     return AlertDialog(
         icon: Align(
           alignment: Alignment.centerLeft,
@@ -25,7 +25,7 @@ class CustomDialog extends StatelessWidget {
           TextButton(
             onPressed: onTap,
             child: Text(
-              strings.ok,
+              Localization.ok,
               style: Theme.of(context).textTheme.titleSmall,
             ),
           )

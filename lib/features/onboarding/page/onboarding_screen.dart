@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/routes/routes.dart';
-import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:eventra/features/onboarding/widget/onboarding_widget.dart';
@@ -13,7 +12,6 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-    final strings = Localization(context);
     void finishOnboarding() {
       SharedPreference.setBool(key: 'onboarding_complete', value: true);
       context.goNamed(Routes.auth);
@@ -33,12 +31,12 @@ class OnboardingScreen extends StatelessWidget {
           onDone: finishOnboarding,
           onSkip: finishOnboarding,
           showSkipButton: true,
-          skip: Text(strings.skip),
+          skip: Text("Skip"),
           next: const Icon(
             Icons.arrow_forward,
             color: Colors.white,
           ),
-          done: Text(strings.getStarted,
+          done: Text("Get Started",
               style: TextStyle(fontWeight: FontWeight.w600)),
           dotsDecorator: const DotsDecorator(
             size: Size(10.0, 10.0),

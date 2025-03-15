@@ -11,7 +11,7 @@ class MyProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
 
     return Scaffold(
       appBar: AppBar(),
@@ -26,7 +26,7 @@ class MyProfilePage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h),
                 child: Text(
-                  strings.profileSettings,
+                  Localization.profileSettings,
                   style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -36,7 +36,7 @@ class MyProfilePage extends StatelessWidget {
                   return SwitchListTile(
                     secondary: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
                     title: Text(
-                        "${strings.themeSwitch} ${isDark ? strings.themeLight : strings.themeDark}"),
+                        "${Localization.themeSwitch} ${isDark ? Localization.themeLight : Localization.themeDark}"),
                     value: isDark,
                     onChanged: (value) =>
                         context.read<SettingsCubit>().toggleTheme(),
@@ -50,15 +50,15 @@ class MyProfilePage extends StatelessWidget {
                     leading: Icon(Icons.language),
                     title: Text(
                       locale == "ar"
-                          ? strings.languageArabic
-                          : strings.languageEnglish,
+                          ? Localization.languageArabic
+                          : Localization.languageEnglish,
                     ),
                     trailing: InkWell(
                       onTap: () => context.read<SettingsCubit>().toggleLanguage(),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(strings.languageSwitch),
+                          Text(Localization.languageSwitch),
                           SizedBox(width: 5.w),
                           Icon(Icons.change_circle_outlined),
                         ],

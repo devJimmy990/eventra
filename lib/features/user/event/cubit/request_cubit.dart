@@ -9,7 +9,6 @@ import 'package:eventra/features/user/event/data/repositories/user_event_request
 
 class UserEventRequestCubit extends Cubit<UserEventRequestState> {
   UserEventRequestCubit(String eventId) : super(EventRequestInitial()) {
-    print(eventId);
     ifUserHasRequestWithEvent(eventId);
   }
   List<UserEvent> list = [];

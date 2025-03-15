@@ -13,7 +13,7 @@ class AdminHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
     final admin = context.read<UserCubit>().user!;
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +37,7 @@ class AdminHomeScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          strings.adminHomeAppBar,
+          Localization.adminHomeAppBar,
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.w600,

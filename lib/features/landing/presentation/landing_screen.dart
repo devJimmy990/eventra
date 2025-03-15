@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +42,7 @@ class LandingScreen extends StatelessWidget {
             } else if (state is UserLoading) {
               return Center(child: CircularProgressIndicator());
             }
-            return Text("Landing Screen");
+            return Center(child: Text(Localization.error));
           },
         ),
       ),

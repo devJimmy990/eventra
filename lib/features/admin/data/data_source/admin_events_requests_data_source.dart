@@ -48,9 +48,7 @@ class AdminEventsRequestsDataSource {
   Future<bool> onAcceptRequest(
       {required String id, required Map<String, int> data}) async {
     try {
-      print("data_source: $data");
       await _firebase.store.collection("requests").doc(id).update(data);
-      print("data_source: true");
       return true;
     } catch (e) {
       rethrow;

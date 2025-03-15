@@ -12,10 +12,10 @@ class BookmarkScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final strings = Localization(context);
+    
     return Scaffold(
       appBar: AppBar(
-        title: Text(strings.userFavoriteEvents),
+        title: Text(Localization.userBookmarkAppBar),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -35,7 +35,7 @@ class BookmarkScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      strings.userBookmarkEmpty,
+                      Localization.userBookmarkEmpty,
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
@@ -44,7 +44,7 @@ class BookmarkScreen extends StatelessWidget {
                 ),
               );
             } else if (state is BookmarkError) {
-              return Text("error: ${state.error}");
+              return Text("${Localization.error}: ${state.error}");
             } else if (state is BookmarkLoaded) {
               return ListView.builder(
                 padding: const EdgeInsets.all(16.0),
@@ -67,19 +67,19 @@ class BookmarkScreen extends StatelessWidget {
                         builder: (context) => AlertDialog(
                           title: Center(
                               child: Text(
-                            strings.dialogConfirmDelete,
+                            Localization.confirmDelete,
                             style: TextStyle(
                                 fontSize: 18.sp, fontWeight: FontWeight.bold),
                           )),
                           content: Text(
-                            strings.userBookmarkDeletingMsg,
+                            Localization.userBookmarkDeletingMsg,
                             style: TextStyle(fontSize: 14.sp),
                           ),
                           actions: [
                             TextButton(
                               onPressed: () => Navigator.of(context).pop(false),
                               child: Text(
-                                strings.dialogCancel,
+                                Localization.cancel,
                                 style: TextStyle(
                                     color: Colors.green, fontSize: 14.sp),
                               ),
@@ -87,7 +87,7 @@ class BookmarkScreen extends StatelessWidget {
                             TextButton(
                               onPressed: () => Navigator.of(context).pop(true),
                               child: Text(
-                                strings.dialogDelete,
+                                Localization.delete,
                                 style: TextStyle(
                                     color: Colors.red, fontSize: 14.sp),
                               ),
@@ -100,9 +100,9 @@ class BookmarkScreen extends StatelessWidget {
                       context.read<BookmarkCubit>().removeBookmarkEvent(event);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text(strings.userBookmarkDeleted),
+                          content: Text(Localization.userBookmarkDeleted),
                           action: SnackBarAction(
-                            label: strings.snackBarUndo,
+                            label: Localization.undo,
                             onPressed: () {
                               context
                                   .read<BookmarkCubit>()

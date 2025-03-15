@@ -16,7 +16,6 @@ import 'package:eventra/features/authentication/presentation/pages/auth_screen.d
 import 'package:eventra/features/user/profile/profile_screen.dart';
 import 'package:eventra/features/user/bookmarks/presentation/screens/bookmark_screen.dart';
 import 'package:eventra/features/admin/presentation/screens/event_details_screen.dart';
-import 'package:eventra/features/admin/presentation/view/event_data/events_requests_screen.dart';
 import 'package:eventra/features/admin/presentation/screens/event_attendees_list_screen.dart';
 
 import '../../features/user/home/presentation/view/calender_view.dart';
@@ -71,11 +70,7 @@ final router = GoRouter(
           name: AdminRoutes.home,
           builder: (context, state) => AdminHomeScreen(),
           routes: [
-            GoRoute(
-              path: "requests",
-              name: AdminRoutes.eventRequests,
-              builder: (context, state) => AdminEventsRequestsScreen(),
-            ),
+           
             GoRoute(
               path: "event",
               name: AdminRoutes.eventDetails,

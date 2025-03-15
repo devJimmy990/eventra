@@ -101,7 +101,7 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
 
     return BlocListener<AdminEventCubit, AdminEventState>(
       listener: (context, state) {
@@ -136,7 +136,7 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
             gravity: ToastGravity.BOTTOM,
             backgroundColor: Colors.blue,
             toastLength: Toast.LENGTH_LONG,
-            msg: strings.createEvent,
+            msg: Localization.adminEventCreate,
           );
         } else if (state is EventLoaded) {
           Fluttertoast.showToast(

@@ -1,4 +1,3 @@
-import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +10,6 @@ class PreviousEvents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
-
     return Scaffold(
       body: BlocConsumer<AdminEventCubit, AdminEventState>(
         listener: (context, state) {
@@ -61,8 +58,6 @@ class PreviousEvents extends StatelessWidget {
                 style: TextStyle(fontSize: 16.sp),
               ),
             );
-          } else if (state is EventInitial) {
-            return Center(child: Text(strings.noDataAvailable));
           } else {
             return Ink.image(
               image: AssetImage(

@@ -7,7 +7,7 @@ class GeneralInfoBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final strings = Localization(context);
+    
 
     return SizedBox(
       width: double.infinity,
@@ -17,14 +17,15 @@ class GeneralInfoBottomSheet extends StatelessWidget {
           spacing: 15,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildSection(strings.accAddress, strings.accAddressDetails),
-            _buildSection(strings.openingHours, strings.openingHoursDetails),
             _buildSection(
-                strings.freeMembership, strings.freeMembershipDetails),
-            _buildSection(strings.specialAnnouncements,
-                strings.specialAnnouncementsDetails),
+                Localization.userContactAddress, Localization.userContactAddressInfo),
+            _buildSection(Localization.userContactTime, Localization.userContactTimeInfo),
+            _buildSection(Localization.userContactMembership,
+                Localization.userContactMembershipInfo),
+            _buildSection(Localization.userContactAnnouncements,
+                Localization.userContactAnnouncementsInfo),
             _buildSection(
-                strings.furtherInquiries, strings.furtherInquiriesDetails),
+                Localization.userContactInquiry, Localization.userContactInquiryInfo),
           ],
         ),
       ),

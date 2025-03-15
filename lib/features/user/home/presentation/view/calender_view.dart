@@ -17,16 +17,16 @@ class EventCalendarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
 
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text(strings.userEventCalendar))),
+      appBar: AppBar(title: Center(child: Text(Localization.userEventCalendar))),
       body: BlocBuilder<UserEventCubit, UserEventState>(
         builder: (context, state) {
           if (state is EventLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is EventError) {
-            return Center(child: Text("Error: ${state.error}"));
+            return Center(child: Text("${Localization.error}: ${state.error}"));
           } else if (state is EventLoaded) {
             final dataSource = UserEventCalendarDataSource(state.events);
             return SfCalendar(
@@ -61,7 +61,7 @@ class EventCalendarView extends StatelessWidget {
               },
             );
           }
-          return  Center(child: Text(strings.userEmptyEvent));
+          return  Center(child: Text(Localization.userEmptyEvent));
         },
       ),
     );

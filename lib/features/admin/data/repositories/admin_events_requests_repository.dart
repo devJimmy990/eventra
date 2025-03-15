@@ -27,7 +27,6 @@ class AdminEventsRequestsRepository {
   Future<bool> onRejectRequest(
       {required String id, required Map<String, int> data}) async {
     try {
-      print("reject-flow: repo");
 
       return _dataSource.onRejectRequest(id: id, data: data);
     } catch (e) {

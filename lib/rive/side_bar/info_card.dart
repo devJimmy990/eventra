@@ -1,10 +1,10 @@
 import 'package:eventra/core/constants/extensions.dart';
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
 import 'package:eventra/features/landing/cubit/user_state.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class InfoCard extends StatelessWidget {
   const InfoCard({
@@ -37,7 +37,7 @@ class InfoCard extends StatelessWidget {
           );
         }
         if (state is UserError) {
-          return Text("Error: ${state.error}");
+          return Text("${Localization.error}: ${state.error}");
         }
         return SizedBox();
       },

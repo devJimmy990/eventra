@@ -38,7 +38,7 @@ class _SignInScreenState extends State<SignInScreen> {
     emailController = TextEditingController();
     rememberController = RememberController();
     super.initState();
-    strings = Localization(context);
+    strings = Localization();
     validator = InputValidator(context);
   }
 
@@ -65,14 +65,14 @@ class _SignInScreenState extends State<SignInScreen> {
                 spacing: 18.h,
                 children: [
                   TextInputField(
-                    label: strings.authInputEmail,
+                    label: Localization.authInputEmail,
                     hint: "abc@example.com",
                     validator: validator.validateEmpty,
                     controller: emailController,
                     icon: const Icon(Icons.email_outlined),
                   ),
                   PasswordInputField(
-                    label: strings.authInputPassword,
+                    label: Localization.authInputPassword,
                     controller: passwordController,
                     validator: validator.validateEmpty,
                     hint: "123456789",
@@ -89,13 +89,13 @@ class _SignInScreenState extends State<SignInScreen> {
                           onChanged: (val) => setState(() => remember = val),
                         ),
                         title: Text(
-                          strings.authToggleRemember,
+                          Localization.authToggleRemember,
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                         trailing: TextButton(
                           onPressed: () {},
                           child: Text(
-                            strings.authBtnForgetPassword,
+                            Localization.authBtnForgetPassword,
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),
@@ -104,7 +104,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: Text(
-                            strings.authRememberMsg,
+                            Localization.authRememberMsg,
                             style: TextStyle(
                                 fontSize: 12.sp,
                                 color: Colors.red,
@@ -128,7 +128,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     gravity: ToastGravity.BOTTOM,
                     backgroundColor: Colors.red,
                     toastLength: Toast.LENGTH_LONG,
-                    msg: FirebaseValidator(context).login(state.error),
+                    msg: FirebaseValidator().login(state.error),
                   );
                 }
               },
@@ -140,7 +140,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   spacing: 10.h,
                   children: [
                     CustomButton(
-                        text: strings.authBtnSignIn,
+                        text: Localization.authBtnSignIn,
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             context
@@ -161,7 +161,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           Image.asset(StringsManager.googleImage),
                           Padding(
                             padding: REdgeInsets.only(left: 10),
-                            child: Text(strings.authBtnSignInWithGoogle),
+                            child: Text(Localization.authBtnSignInWithGoogle),
                           )
                         ],
                       ),

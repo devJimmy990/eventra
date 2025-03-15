@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/core/routes/routes.dart';
 
 import 'rive_model.dart';
@@ -16,7 +17,7 @@ class Menu {
 
 List<Menu> sidebarMenus = [
   Menu(
-    title: "Home",
+    title: Localization.userSideHome,
     routeName: UserRoutes.home,
     rive: RiveModel(
         src: "assets/RiveAssets/icons.riv",
@@ -24,7 +25,7 @@ List<Menu> sidebarMenus = [
         stateMachineName: "HOME_interactivity"),
   ),
   Menu(
-    title: "Calendar",
+    title: Localization.userSideCalendar,
     routeName: UserRoutes.calendar,
     rive: RiveModel(
         src: "assets/RiveAssets/icons.riv",
@@ -32,7 +33,7 @@ List<Menu> sidebarMenus = [
         stateMachineName: "TIMER_Interactivity"),
   ),
   Menu(
-    title: "Bookmarks",
+    title: Localization.userSideBookmark,
     routeName: UserRoutes.bookmark,
     rive: RiveModel(
         src: "assets/RiveAssets/icons.riv",
@@ -40,7 +41,7 @@ List<Menu> sidebarMenus = [
         stateMachineName: "STAR_Interactivity"),
   ),
   Menu(
-    title: "Profile",
+    title: Localization.userSideProfile,
     routeName: UserRoutes.profile,
     rive: RiveModel(
         src: "assets/RiveAssets/icons.riv",
@@ -50,7 +51,7 @@ List<Menu> sidebarMenus = [
 ];
 List<Menu> sidebarMenus2 = [
   Menu(
-    title: "Contact us",
+    title: Localization.userSideContact,
     routeName: UserRoutes.contact,
     rive: RiveModel(
         src: "assets/RiveAssets/icons.riv",

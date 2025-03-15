@@ -8,7 +8,8 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) { final strings = Localization(context);
+  Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -18,7 +19,8 @@ class SettingsScreen extends StatelessWidget {
               bool isDark = context.read<SettingsCubit>().isDarkTheme;
               return SwitchListTile(
                 secondary: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
-                title: Text("Switch ${isDark ? "Light" : "Dark"}"),
+                title: Text(
+                    "${Localization.themeSwitch} ${isDark ? Localization.themeLight : Localization.themeDark}"),
                 value: isDark,
                 onChanged: (value) {
                   context.read<SettingsCubit>().toggleTheme();
@@ -28,8 +30,9 @@ class SettingsScreen extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.browse_gallery_outlined),
-            title:
-                Text(SettingsCubit().state.locale == "ar" ? "العربية" : strings.english),
+            title: Text(SettingsCubit().state.locale == "ar"
+                ? Localization.languageArabic
+                : Localization.languageEnglish),
             trailing: InkWell(
               onTap: () {
                 context.read<SettingsCubit>().toggleLanguage();
@@ -37,7 +40,7 @@ class SettingsScreen extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("strings.appName"),
+                  Text(Localization.languageSwitch),
                   Icon(Icons.change_circle_outlined),
                 ],
               ),

@@ -48,7 +48,7 @@ class _CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Localization strings = Localization(context);
+    
     return SizedBox(
       width: 0.8.sw,
       child: Container(
@@ -73,7 +73,7 @@ class _CustomTabBar extends StatelessWidget {
           labelStyle: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
           unselectedLabelStyle: TextStyle(fontSize: 14.sp),
           dividerColor: Colors.transparent,
-          tabs: [strings.authTabSignIn, strings.authTabSignUp]
+          tabs: [Localization.authTabSignIn, Localization.authTabSignUp]
               .map((label) => Tab(text: label))
               .toList(),
         ),

@@ -1,4 +1,3 @@
-import 'package:eventra/core/constants/bottom_sheet_theme.dart';
 import 'package:eventra/core/constants/color_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,6 @@ class AppTheme {
     colorScheme: const ColorScheme.light(
       primary: ColorManager.textPrimaryLight,
       secondary: ColorManager.textSecondaryLight,
-      background: ColorManager.bgLight,
       // bottomSheetTheme:BottomSheetTheme.lightBottomSheetTheme ,
       surface: Colors.white,
       error: ColorManager.error,
@@ -32,7 +30,6 @@ class AppTheme {
     colorScheme: const ColorScheme.dark(
       primary: ColorManager.textPrimaryDark,
       secondary: ColorManager.textSecondaryDark,
-      background: ColorManager.bgDark,
       // bottomSheetTheme:BottomSheetTheme.darkBottomSheetTheme ,
 
       surface: ColorManager.lightGrey,

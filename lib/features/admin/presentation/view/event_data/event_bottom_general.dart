@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:eventra/core/ui/inputs.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,6 +20,7 @@ class EventBottomGeneral extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Card(
       elevation: 12,
       shadowColor: Colors.grey,
@@ -27,11 +29,11 @@ class EventBottomGeneral extends StatelessWidget {
         child: Column(
           children: [
             TextInputField(
-              label: "Event Title",
+              label: Localization.adminEventInputTitle,
               controller: titleController,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return "required";
+                  return Localization.validatorEmpty;
                 }
                 return null;
               },
@@ -62,7 +64,7 @@ class EventBottomGeneral extends StatelessWidget {
                   flex: 1,
                   child: TextInputField(
                     phone: true,
-                    label: 'Price',
+                    label: Localization.adminEventInputPrice,
                     controller: priceController,
                   ),
                 )
@@ -71,7 +73,7 @@ class EventBottomGeneral extends StatelessWidget {
             SizedBox(height: 10.h),
             TextInputField(
               maxLines: 3,
-              label: "description",
+              label: Localization.adminEventInputDescription,
               controller: descriptionController,
             ),
           ],

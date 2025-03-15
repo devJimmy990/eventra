@@ -105,22 +105,22 @@ class _BuildSignupForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final InputValidator validator = InputValidator(context);
-    final Localization strings = Localization(context);
+    
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
       child: Column(
         spacing: 18.h,
         children: [
           TextInputField(
-            label: strings.authInputFullName,
+            label: Localization.authInputFullName,
             controller: nameController,
-            hint: strings.authInputFullName,
+            hint: Localization.authInputFullName,
             validator: validator.validateName,
             icon: const Icon(Icons.person),
           ),
           TextInputField(
             email: true,
-            label: strings.authInputEmail,
+            label: Localization.authInputEmail,
             controller: emailController,
             hint: "abc@example.com",
             validator: validator.validateEmail,
@@ -130,21 +130,21 @@ class _BuildSignupForm extends StatelessWidget {
             phone: true,
             hint: "01289223643",
             controller: phoneController,
-            label: strings.authInputPhone,
+            label: Localization.authInputPhone,
             validator: validator.validatePhone,
             icon: const Icon(Icons.phone_android),
           ),
           PasswordInputField(
             hint: "123456789",
             controller: passController,
-            label: strings.authInputPassword,
+            label: Localization.authInputPassword,
             validator: validator.validatePassword,
             icon: const Icon(Icons.lock_outline),
           ),
           PasswordInputField(
             hint: "123456789",
             controller: confirmController,
-            label: strings.authInputConfirmPassword,
+            label: Localization.authInputConfirmPassword,
             icon: const Icon(Icons.lock_outline),
             validator: (value) =>
                 validator.validateConfirmPassword(value, passController.text),
@@ -161,7 +161,6 @@ class _BuildSignupAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final strings = Localization(context);
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if (state is UserCreated) {
@@ -180,7 +179,7 @@ class _BuildSignupAction extends StatelessWidget {
             gravity: ToastGravity.BOTTOM,
             backgroundColor: Colors.red,
             toastLength: Toast.LENGTH_LONG,
-            msg: FirebaseValidator(context).register(state.error),
+            msg: FirebaseValidator().register(state.error),
           );
         }
       },
@@ -193,7 +192,7 @@ class _BuildSignupAction extends StatelessWidget {
           children: [
             CustomButton(
               onTap: callback,
-              text: strings.authBtnSignUp,
+              text: Localization.authBtnSignUp,
             ).animate().fade(duration: const Duration(seconds: 4)),
             InkWell(
               onTap: () async {
@@ -212,7 +211,7 @@ class _BuildSignupAction extends StatelessWidget {
                   Image.asset(StringsManager.googleImage),
                   Padding(
                     padding: REdgeInsets.only(left: 10),
-                    child: Text(strings.authBtnSignInWithGoogle),
+                    child: Text(Localization.authBtnSignInWithGoogle),
                   )
                 ],
               ),

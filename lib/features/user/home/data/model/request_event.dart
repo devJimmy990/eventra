@@ -1,5 +1,4 @@
 import 'package:eventra/features/landing/data/model/user.dart';
-import 'package:eventra/features/user/event/data/models/booked_event.dart';
 
 enum RequestStatus {
   waiting, // when user create request and admin didn`t take action {accepted, rejected}

@@ -69,14 +69,12 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       User user, String password) async {
     emit(AuthenticationLoading());
     try {
-      print("debug-user: register - $user");
       User? model = await AuthenticationRepository(AuthenticationDataSource())
           .createUserWithEmailAndPassword(user, password);
       if (model == null) {
         emit(AuthenticationError("Error creating user"));
         return;
       }
-      print("debug-user: register-created-model - $model");
 
       SharedPreference.setString(key: "uid", value: model.id!);
       emit(UserCreated(model));
