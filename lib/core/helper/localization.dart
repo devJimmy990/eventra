@@ -94,10 +94,10 @@ class Localization {
   get userBookmarkDeletingMsg => S.of(_context).user_bookmark_deleting_msg;
   get userBookmarkDeleted => S.of(_context).user_bookmark_deleted_msg;
   get userBookmark => S.of(_context).admin_explore_tab_previous;
+  //-------------------- User --------------------------------------------
+
 //----------------------------------------------------------------------
   // get googleSignIn => S.of(_context).SignInWithGoogle;
-  get events => S.of(_context).events;
-  get welcomeAdmin => S.of(_context).welcomeAdmin;
   get upcoming => S.of(_context).upcoming;
   get previous => S.of(_context).previous;
   get eventDetails => S.of(_context).eventDetails;
@@ -125,8 +125,6 @@ class Localization {
   get callUs => S.of(_context).callUs;
   get emailUs => S.of(_context).emailUs;
 
-  // get create => S.of(_context).create;
-  // get create => S.of(_context).create;
   // Added for GeneralInfoBottomSheet
   get accAddress => S.of(_context).accAddress;
   get accAddressDetails => S.of(_context).accAddressDetails;

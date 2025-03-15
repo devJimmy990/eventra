@@ -16,4 +16,10 @@ class StringsManager {
   static const String notificationsIcon = "assets/icons/notification.svg";
   static const String bookmarkIcon = "assets/icons/bookMark.svg";
   static const String bookmarkEmptyImage = "assets/images/nobookmark.gif";
+
+  //Banner images
+  static const String bannerOne = "assets/images/banner1.png";
+  static const String bannerTwo = "assets/images/banner2.png";
+  static const String bannerThree = "assets/images/banner3.png";
+
 }

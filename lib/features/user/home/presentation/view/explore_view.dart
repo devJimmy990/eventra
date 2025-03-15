@@ -1,3 +1,4 @@
+import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,9 +18,9 @@ class _EventExploreViewState extends State<EventExploreView> {
   final PageController _pageController = PageController(viewportFraction: 1);
 
   final List<String> bannerImages = [
-    "assets/images/banner3.png",
-    "assets/images/banner1.png",
-    "assets/images/banner2.png",
+    StringsManager.bannerThree,
+    StringsManager.bannerOne,
+    StringsManager.bannerTwo,
   ];
 
   @override
@@ -69,7 +70,7 @@ class _EventExploreViewState extends State<EventExploreView> {
                   itemCount: bannerImages.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 8.w),
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
                         child: Image.asset(
@@ -110,14 +111,15 @@ class _EventExploreViewState extends State<EventExploreView> {
                   } else if (state is EventLoaded) {
                     var events = state.events;
                     return ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(), // Disable ListView scrolling
-                      shrinkWrap: true, // Fit content inside scrollable view
+                      physics: const NeverScrollableScrollPhysics(),
+                      // Disable ListView scrolling
+                      shrinkWrap: true,
+                      // Fit content inside scrollable view
                       itemCount: events.length,
                       padding: EdgeInsets.symmetric(horizontal: 10.w),
-                      itemBuilder: (context, index) =>
-                    EventCard(event: events[index], isBookmarkScreen: false),
-
-                  );
+                      itemBuilder: (context, index) => EventCard(
+                          event: events[index], isBookmarkScreen: false),
+                    );
                   }
                   return Container();
                 },
