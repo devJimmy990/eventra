@@ -22,178 +22,223 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "aboutEvent": MessageLookupByLibrary.simpleMessage("About Event"),
-        "accAddress": MessageLookupByLibrary.simpleMessage("ACC Address:"),
-        "accAddressDetails": MessageLookupByLibrary.simpleMessage(
-            "U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City."),
-        "address": MessageLookupByLibrary.simpleMessage("Address"),
-        "admin_app_bar_title":
-            MessageLookupByLibrary.simpleMessage("Welcome Admin"),
-        "admin_explore_tab_previous":
-            MessageLookupByLibrary.simpleMessage("Previous"),
-        "admin_explore_tab_up_coming":
-            MessageLookupByLibrary.simpleMessage("Upcoming"),
-        "alreadyHaveAnAccount":
-            MessageLookupByLibrary.simpleMessage("Already have an account?"),
-        "appName": MessageLookupByLibrary.simpleMessage("Eventra"),
-        "areaName": MessageLookupByLibrary.simpleMessage("Area Name"),
-        "attendees": MessageLookupByLibrary.simpleMessage("Attendees"),
-        "auth_btn_forget_password":
-            MessageLookupByLibrary.simpleMessage("Forget Password?"),
-        "auth_btn_logout": MessageLookupByLibrary.simpleMessage("Logout"),
-        "auth_btn_sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
-        "auth_btn_sign_in_google":
-            MessageLookupByLibrary.simpleMessage("Sign in With Google"),
-        "auth_btn_sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
-        "auth_input_confirm_password":
-            MessageLookupByLibrary.simpleMessage("Confirm Password"),
-        "auth_input_email": MessageLookupByLibrary.simpleMessage("E-Mail"),
-        "auth_input_full_name":
-            MessageLookupByLibrary.simpleMessage("Full Name"),
-        "auth_input_password": MessageLookupByLibrary.simpleMessage("Password"),
-        "auth_input_phone":
-            MessageLookupByLibrary.simpleMessage("Phone Number"),
-        "auth_remember_msg": MessageLookupByLibrary.simpleMessage(
-            "need to login every time open the app"),
-        "auth_tab_sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
-        "auth_tab_sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
-        "auth_toggle_remember_me":
-            MessageLookupByLibrary.simpleMessage("Remember Me"),
-        "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
-        "bookmark": MessageLookupByLibrary.simpleMessage("Bookmark"),
-        "buyTicket": MessageLookupByLibrary.simpleMessage("Buy Ticket"),
-        "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
-        "callUs": MessageLookupByLibrary.simpleMessage("Call us"),
-        "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
-        "create": MessageLookupByLibrary.simpleMessage("Create"),
-        "createEvent": MessageLookupByLibrary.simpleMessage("Create Event"),
-        "dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "dialog_confirm_delete":
-            MessageLookupByLibrary.simpleMessage("Confirm Delete"),
-        "dialog_delete": MessageLookupByLibrary.simpleMessage("Delete"),
-        "dialog_ok": MessageLookupByLibrary.simpleMessage("Ok"),
-        "dontHaveAnAccount":
-            MessageLookupByLibrary.simpleMessage("Don\'t have An Account?"),
-        "emailUs": MessageLookupByLibrary.simpleMessage("Email us"),
-        "english": MessageLookupByLibrary.simpleMessage("English"),
-        "eventCalendar": MessageLookupByLibrary.simpleMessage("Event Calendar"),
-        "eventDeletedSuccessfully":
-            MessageLookupByLibrary.simpleMessage("Event Deleted Successfully"),
-        "eventDetails": MessageLookupByLibrary.simpleMessage("Event Details"),
-        "eventWillBeHeldInEmbassy": MessageLookupByLibrary.simpleMessage(
-            "Event will be held in embassy"),
-        "eventWillBeHeldInOther":
-            MessageLookupByLibrary.simpleMessage("Event will be held in other"),
-        "events": MessageLookupByLibrary.simpleMessage("Events"),
-        "eventsRequest": MessageLookupByLibrary.simpleMessage("Events Request"),
-        "explore": MessageLookupByLibrary.simpleMessage("Explore"),
-        "favoriteEvents":
-            MessageLookupByLibrary.simpleMessage("Bookmark Events"),
-        "freeMembership":
-            MessageLookupByLibrary.simpleMessage("Free Membership"),
-        "freeMembershipDetails": MessageLookupByLibrary.simpleMessage(
-            "Join us now and get a free membership for 3 months."),
-        "furtherInquiries":
-            MessageLookupByLibrary.simpleMessage("Further Inquiries"),
-        "furtherInquiriesDetails":
-            MessageLookupByLibrary.simpleMessage("ACCairo@state.gov"),
-        "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
-        "googleMapUrl": MessageLookupByLibrary.simpleMessage("Google Map URL"),
-        "language_arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
-        "language_english": MessageLookupByLibrary.simpleMessage("English"),
-        "language_switch":
-            MessageLookupByLibrary.simpleMessage("تغيير للغة العربية"),
-        "login": MessageLookupByLibrary.simpleMessage("Login"),
-        "noAttendeesPresent":
-            MessageLookupByLibrary.simpleMessage("No attendees present"),
-        "noDataAvailable":
-            MessageLookupByLibrary.simpleMessage("No data available"),
-        "noEventsAvailable":
-            MessageLookupByLibrary.simpleMessage("No events available"),
-        "noUpcomingEvents":
-            MessageLookupByLibrary.simpleMessage("No Upcoming Events"),
-        "notificationScreen":
-            MessageLookupByLibrary.simpleMessage("Notification Screen"),
-        "ok": MessageLookupByLibrary.simpleMessage("OK"),
-        "openingHours": MessageLookupByLibrary.simpleMessage("Opening Hours:"),
-        "openingHoursDetails": MessageLookupByLibrary.simpleMessage(
-            "Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays."),
-        "pleaseAddAnEvent":
-            MessageLookupByLibrary.simpleMessage("Please add an event"),
-        "previous": MessageLookupByLibrary.simpleMessage("Previous"),
-        "profile_avatar_change":
-            MessageLookupByLibrary.simpleMessage("change avatar"),
-        "profile_avatar_save":
-            MessageLookupByLibrary.simpleMessage("avatar is uploading..."),
-        "profile_avatar_upload":
-            MessageLookupByLibrary.simpleMessage("upload avatar"),
-        "profile_data_updated":
-            MessageLookupByLibrary.simpleMessage("User updated successfully"),
-        "profile_info":
-            MessageLookupByLibrary.simpleMessage("Personal Information"),
-        "profile_info_email": MessageLookupByLibrary.simpleMessage("Email:"),
-        "profile_info_interests":
-            MessageLookupByLibrary.simpleMessage("Interests"),
-        "profile_info_name": MessageLookupByLibrary.simpleMessage("Name:"),
-        "profile_info_phone": MessageLookupByLibrary.simpleMessage("Phone:"),
-        "profile_info_phone_empty":
-            MessageLookupByLibrary.simpleMessage("Empty Phone Number"),
-        "profile_save_changes":
-            MessageLookupByLibrary.simpleMessage("Save Changes"),
-        "profile_settings":
-            MessageLookupByLibrary.simpleMessage("Account Settings"),
-        "profile_settings_language": MessageLookupByLibrary.simpleMessage(""),
-        "profile_settings_theme": MessageLookupByLibrary.simpleMessage(""),
-        "required": MessageLookupByLibrary.simpleMessage("Required"),
-        "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
-        "seeMore": MessageLookupByLibrary.simpleMessage("See More.."),
-        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
-        "snackbar_undo": MessageLookupByLibrary.simpleMessage("Undo"),
-        "specialAnnouncements":
-            MessageLookupByLibrary.simpleMessage("Special Announcements"),
-        "specialAnnouncementsDetails": MessageLookupByLibrary.simpleMessage(
-            "Stay tuned for our special announcements."),
-        "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-        "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-        "theme_switch": MessageLookupByLibrary.simpleMessage("Switch"),
-        "upComingEvents":
-            MessageLookupByLibrary.simpleMessage("Upcoming Events"),
-        "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
-        "user_bookmark_deleted_msg": MessageLookupByLibrary.simpleMessage(
-            "Event removed from favorites"),
-        "user_bookmark_deleting_msg": MessageLookupByLibrary.simpleMessage(
-            "Are you sure you want to remove this Event from bookmark?"),
-        "user_bookmark_empty": MessageLookupByLibrary.simpleMessage(
-            "No bookmark events available"),
-        "user_event_details_qr":
-            MessageLookupByLibrary.simpleMessage("Show QR Code"),
-        "user_event_details_reject":
-            MessageLookupByLibrary.simpleMessage("Request is Rejected"),
-        "user_event_details_wait":
-            MessageLookupByLibrary.simpleMessage("Request is in Waiting State"),
-        "validator_empty": MessageLookupByLibrary.simpleMessage("required"),
-        "validator_firebase_invalid_credentials":
-            MessageLookupByLibrary.simpleMessage("invalid email or password"),
-        "validator_firebase_used_email": MessageLookupByLibrary.simpleMessage(
-            "The account already exists for that email"),
-        "validator_firebase_weak_password":
-            MessageLookupByLibrary.simpleMessage("password is too weak"),
-        "validator_invalid_email": MessageLookupByLibrary.simpleMessage(
-            "invalid email format e.g. abc@email.com"),
-        "validator_invalid_phone": MessageLookupByLibrary.simpleMessage(
-            "invalid phone number format e.g. 0128223643"),
-        "validator_long_name": MessageLookupByLibrary.simpleMessage(
-            "Name must be less than 25 characters"),
-        "validator_password_not_match":
-            MessageLookupByLibrary.simpleMessage("Passwords do not match"),
-        "validator_short_message":
-            MessageLookupByLibrary.simpleMessage("Name is too short"),
-        "validator_short_name":
-            MessageLookupByLibrary.simpleMessage("Name is too short"),
-        "validator_short_password": MessageLookupByLibrary.simpleMessage(
-            "Password must be more than 6 characters"),
-        "welcomeAdmin": MessageLookupByLibrary.simpleMessage("Welcome Admin"),
-        "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome back")
-      };
+    "aboutEvent": MessageLookupByLibrary.simpleMessage("About Event"),
+    "accAddress": MessageLookupByLibrary.simpleMessage("ACC Address:"),
+    "accAddressDetails": MessageLookupByLibrary.simpleMessage(
+      "U.S. Embassy Cairo, 5 Tawfik Diab Street, Garden City.",
+    ),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "admin_app_bar_title": MessageLookupByLibrary.simpleMessage(
+      "Welcome Admin",
+    ),
+    "admin_explore_tab_previous": MessageLookupByLibrary.simpleMessage(
+      "Previous",
+    ),
+    "admin_explore_tab_up_coming": MessageLookupByLibrary.simpleMessage(
+      "Upcoming",
+    ),
+    "alreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
+    "appName": MessageLookupByLibrary.simpleMessage("Eventra"),
+    "areaName": MessageLookupByLibrary.simpleMessage("Area Name"),
+    "attendees": MessageLookupByLibrary.simpleMessage("Attendees"),
+    "auth_btn_forget_password": MessageLookupByLibrary.simpleMessage(
+      "Forget Password?",
+    ),
+    "auth_btn_logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "auth_btn_sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
+    "auth_btn_sign_in_google": MessageLookupByLibrary.simpleMessage(
+      "Sign in With Google",
+    ),
+    "auth_btn_sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "auth_input_confirm_password": MessageLookupByLibrary.simpleMessage(
+      "Confirm Password",
+    ),
+    "auth_input_email": MessageLookupByLibrary.simpleMessage("E-Mail"),
+    "auth_input_full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "auth_input_password": MessageLookupByLibrary.simpleMessage("Password"),
+    "auth_input_phone": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "auth_remember_msg": MessageLookupByLibrary.simpleMessage(
+      "need to login every time open the app",
+    ),
+    "auth_tab_sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
+    "auth_tab_sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "auth_toggle_remember_me": MessageLookupByLibrary.simpleMessage(
+      "Remember Me",
+    ),
+    "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
+    "bookmark": MessageLookupByLibrary.simpleMessage("Bookmark"),
+    "buyTicket": MessageLookupByLibrary.simpleMessage("Buy Ticket"),
+    "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
+    "callUs": MessageLookupByLibrary.simpleMessage("Call us"),
+    "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
+    "create": MessageLookupByLibrary.simpleMessage("Create"),
+    "createEvent": MessageLookupByLibrary.simpleMessage("Create Event"),
+    "dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "dialog_confirm_delete": MessageLookupByLibrary.simpleMessage(
+      "Confirm Delete",
+    ),
+    "dialog_delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "dialog_ok": MessageLookupByLibrary.simpleMessage("Ok"),
+    "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have An Account?",
+    ),
+    "emailUs": MessageLookupByLibrary.simpleMessage("Email us"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
+    "eventCalendar": MessageLookupByLibrary.simpleMessage("Event Calendar"),
+    "eventDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Event Deleted Successfully",
+    ),
+    "eventDetails": MessageLookupByLibrary.simpleMessage("Event Details"),
+    "eventWillBeHeldInEmbassy": MessageLookupByLibrary.simpleMessage(
+      "Event will be held in embassy",
+    ),
+    "eventWillBeHeldInOther": MessageLookupByLibrary.simpleMessage(
+      "Event will be held in other",
+    ),
+    "events": MessageLookupByLibrary.simpleMessage("Events"),
+    "eventsRequest": MessageLookupByLibrary.simpleMessage("Events Request"),
+    "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+    "favoriteEvents": MessageLookupByLibrary.simpleMessage("Bookmark Events"),
+    "freeMembership": MessageLookupByLibrary.simpleMessage("Free Membership"),
+    "freeMembershipDetails": MessageLookupByLibrary.simpleMessage(
+      "Join us now and get a free membership for 3 months.",
+    ),
+    "furtherInquiries": MessageLookupByLibrary.simpleMessage(
+      "Further Inquiries",
+    ),
+    "furtherInquiriesDetails": MessageLookupByLibrary.simpleMessage(
+      "ACCairo@state.gov",
+    ),
+    "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "googleMapUrl": MessageLookupByLibrary.simpleMessage("Google Map URL"),
+    "language_arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "language_english": MessageLookupByLibrary.simpleMessage("English"),
+    "language_switch": MessageLookupByLibrary.simpleMessage(
+      "تغيير للغة العربية",
+    ),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "noAttendeesPresent": MessageLookupByLibrary.simpleMessage(
+      "No attendees present",
+    ),
+    "noDataAvailable": MessageLookupByLibrary.simpleMessage(
+      "No data available",
+    ),
+    "noEventsAvailable": MessageLookupByLibrary.simpleMessage(
+      "No events available",
+    ),
+    "noUpcomingEvents": MessageLookupByLibrary.simpleMessage(
+      "No Upcoming Events",
+    ),
+    "notificationScreen": MessageLookupByLibrary.simpleMessage(
+      "Notification Screen",
+    ),
+    "ok": MessageLookupByLibrary.simpleMessage("OK"),
+    "openingHours": MessageLookupByLibrary.simpleMessage("Opening Hours:"),
+    "openingHoursDetails": MessageLookupByLibrary.simpleMessage(
+      "Monday - Thursday, 10:00 AM - 3:00 PM, Closed U.S. and Egyptian holidays.",
+    ),
+    "pleaseAddAnEvent": MessageLookupByLibrary.simpleMessage(
+      "Please add an event",
+    ),
+    "previous": MessageLookupByLibrary.simpleMessage("Previous"),
+    "profile_avatar_change": MessageLookupByLibrary.simpleMessage(
+      "change avatar",
+    ),
+    "profile_avatar_save": MessageLookupByLibrary.simpleMessage(
+      "avatar is uploading...",
+    ),
+    "profile_avatar_upload": MessageLookupByLibrary.simpleMessage(
+      "upload avatar",
+    ),
+    "profile_data_updated": MessageLookupByLibrary.simpleMessage(
+      "User updated successfully",
+    ),
+    "profile_info": MessageLookupByLibrary.simpleMessage(
+      "Personal Information",
+    ),
+    "profile_info_email": MessageLookupByLibrary.simpleMessage("Email:"),
+    "profile_info_interests": MessageLookupByLibrary.simpleMessage("Interests"),
+    "profile_info_name": MessageLookupByLibrary.simpleMessage("Name:"),
+    "profile_info_phone": MessageLookupByLibrary.simpleMessage("Phone:"),
+    "profile_info_phone_empty": MessageLookupByLibrary.simpleMessage(
+      "Empty Phone Number",
+    ),
+    "profile_save_changes": MessageLookupByLibrary.simpleMessage(
+      "Save Changes",
+    ),
+    "profile_settings": MessageLookupByLibrary.simpleMessage(
+      "Account Settings",
+    ),
+    "profile_settings_language": MessageLookupByLibrary.simpleMessage(""),
+    "profile_settings_theme": MessageLookupByLibrary.simpleMessage(""),
+    "required": MessageLookupByLibrary.simpleMessage("Required"),
+    "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
+    "seeMore": MessageLookupByLibrary.simpleMessage("See More.."),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "snackbar_undo": MessageLookupByLibrary.simpleMessage("Undo"),
+    "specialAnnouncements": MessageLookupByLibrary.simpleMessage(
+      "Special Announcements",
+    ),
+    "specialAnnouncementsDetails": MessageLookupByLibrary.simpleMessage(
+      "Stay tuned for our special announcements.",
+    ),
+    "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
+    "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+    "theme_switch": MessageLookupByLibrary.simpleMessage("Switch"),
+    "upComingEvents": MessageLookupByLibrary.simpleMessage("Upcoming Events"),
+    "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
+    "user_bookmark_deleted_msg": MessageLookupByLibrary.simpleMessage(
+      "Event removed from favorites",
+    ),
+    "user_bookmark_deleting_msg": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to remove this Event from bookmark?",
+    ),
+    "user_bookmark_empty": MessageLookupByLibrary.simpleMessage(
+      "No bookmark events available",
+    ),
+    "user_event_details_qr": MessageLookupByLibrary.simpleMessage(
+      "Show QR Code",
+    ),
+    "user_event_details_reject": MessageLookupByLibrary.simpleMessage(
+      "Request is Rejected",
+    ),
+    "user_event_details_wait": MessageLookupByLibrary.simpleMessage(
+      "Request is in Waiting State",
+    ),
+    "validator_empty": MessageLookupByLibrary.simpleMessage("required"),
+    "validator_firebase_invalid_credentials":
+        MessageLookupByLibrary.simpleMessage("invalid email or password"),
+    "validator_firebase_used_email": MessageLookupByLibrary.simpleMessage(
+      "The account already exists for that email",
+    ),
+    "validator_firebase_weak_password": MessageLookupByLibrary.simpleMessage(
+      "password is too weak",
+    ),
+    "validator_invalid_email": MessageLookupByLibrary.simpleMessage(
+      "invalid email format e.g. abc@email.com",
+    ),
+    "validator_invalid_phone": MessageLookupByLibrary.simpleMessage(
+      "invalid phone number format e.g. 0128223643",
+    ),
+    "validator_long_name": MessageLookupByLibrary.simpleMessage(
+      "Name must be less than 25 characters",
+    ),
+    "validator_password_not_match": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match",
+    ),
+    "validator_short_message": MessageLookupByLibrary.simpleMessage(
+      "Name is too short",
+    ),
+    "validator_short_name": MessageLookupByLibrary.simpleMessage(
+      "Name is too short",
+    ),
+    "validator_short_password": MessageLookupByLibrary.simpleMessage(
+      "Password must be more than 6 characters",
+    ),
+    "welcomeAdmin": MessageLookupByLibrary.simpleMessage("Welcome Admin"),
+    "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome back"),
+  };
 }
