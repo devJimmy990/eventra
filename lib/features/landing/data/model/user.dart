@@ -27,6 +27,16 @@ class User {
         role: "user",
       );
 
+  factory User.copyWith(User user, {required Map<String, dynamic> json}) =>
+      User._(
+        id: user.id,
+        role: user.role,
+        email: user.email,
+        name: json['name'] ?? user.name,
+        phone: json['phone'] ?? user.phone,
+        avatar: json['avatar'] ?? user.avatar,
+      );
+
   factory User.event({
     String? avatar,
     required String id,

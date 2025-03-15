@@ -30,10 +30,7 @@ class AdminEvent extends BaseEvent {
           ? EventLocation.fromJson(json['location'] as Map<String, dynamic>)
           : null,
       attendees: [],
-      category: EventCategory.values.firstWhere(
-        (e) => e.toString().split('.').last == json['category'],
-        orElse: () => EventCategory.software,
-      ),
+      category: EventCategory.values[json['category']],
     );
   }
   Map<String, dynamic> toJson() {
@@ -46,7 +43,7 @@ class AdminEvent extends BaseEvent {
       'admin': admin.toJson(),
       "location": location.toJson(),
       'schedule': schedule.toJson(),
-      'category': category.toString(),
+      'category': category.index,
       'attendees': attendees.map((txt) => txt).toList(),
     };
   }

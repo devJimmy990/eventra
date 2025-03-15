@@ -44,7 +44,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                   context
                       .read<UserCubit>()
                       .updateUserProfile(data: {"avatar": state.url});
-                } else if (state is UserUpdated) {
+                } else if (state is UserLoaded) {
                   Fluttertoast.showToast(
                     textColor: Colors.white,
                     gravity: ToastGravity.BOTTOM,

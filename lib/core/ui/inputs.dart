@@ -8,14 +8,16 @@ class TextInputField extends StatelessWidget {
   final bool? email, phone, enabled;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
   const TextInputField({
     super.key,
     this.icon,
+    this.hint,
     this.email,
     this.phone,
     this.maxLines,
     this.validator,
-    this.hint,
+    this.onChanged,
     this.enabled = true,
     required this.label,
     required this.controller,
@@ -28,6 +30,7 @@ class TextInputField extends StatelessWidget {
       maxLines: maxLines,
       validator: validator,
       controller: controller,
+      onChanged: onChanged,
       textAlignVertical: maxLines == null || maxLines == 1
           ? TextAlignVertical.center
           : TextAlignVertical.top,
@@ -41,10 +44,10 @@ class TextInputField extends StatelessWidget {
         prefixIcon: icon,
         labelText: label,
         hintText: hint,
-        // fillColor: Colors.white,
+        fillColor: Colors.white,
         alignLabelWithHint: maxLines != null && maxLines! > 1,
         border: _buildInputBorder(),
-        enabledBorder: _buildInputEnabledBorder(),
+        enabledBorder: _buildInputBorder(),
         focusedBorder: _buildInputBorder(),
       ),
     );
@@ -105,8 +108,5 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
 
 InputBorder _buildInputBorder() => OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Colors.transparent),
-    );
-InputBorder _buildInputEnabledBorder() => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
+      borderSide: const BorderSide(color: Colors.grey),
     );

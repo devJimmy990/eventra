@@ -22,12 +22,14 @@ class ProfileAboutSection extends StatefulWidget {
 }
 
 class _ProfileAboutSectionState extends State<ProfileAboutSection> {
+  bool isAnyUpdate = false;
   late User user;
   File? _pickedImage;
   late Localization strings;
   final List<String> interests = [];
   late EventCategoryController categoryController;
-  late TextEditingController  _phoneController;
+  late TextEditingController _phoneController, _nameController;
+
   @override
   void initState() {
     super.initState();
@@ -35,13 +37,22 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
     user = context.read<UserCubit>().user!;
     categoryController = EventCategoryController();
     _phoneController = TextEditingController(text: user.phone);
+    _nameController = TextEditingController(text: user.name);
   }
 
   @override
   void dispose() {
     _phoneController.dispose();
+    _nameController.dispose();
     categoryController.dispose();
     super.dispose();
+  }
+
+  void _checkUpdates() {
+    setState(() {
+      isAnyUpdate = _nameController.text != user.name ||
+          _phoneController.text != user.phone;
+    });
   }
 
   @override
@@ -56,13 +67,13 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                 context
                     .read<UserCubit>()
                     .updateUserProfile(data: {"avatar": state.url});
-              } else if (state is UserUpdated) {
+              } else if (state is UserLoaded) {
                 Fluttertoast.showToast(
                   textColor: Colors.white,
                   gravity: ToastGravity.BOTTOM,
                   backgroundColor: Colors.green,
                   toastLength: Toast.LENGTH_LONG,
-                  msg: "user updated",
+                  msg: "User updated successfully",
                 );
                 setState(() => _pickedImage = null);
               }
@@ -106,7 +117,7 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                       },
                       child: Text(
                         _pickedImage != null
-                            ? "save changes"
+                            ? "Save Changes"
                             : user.avatar != null
                                 ? strings.adminProfileAvatarChange
                                 : strings.adminProfileAvatarUpload,
@@ -132,14 +143,24 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                 ),
               ),
               TextInputField(
-                label: "email",
-                enabled: false,
-                controller: TextEditingController(text: user.email),
+                label: "Full Name",
+                controller: _nameController,
+                onChanged: (val) {
+                  _checkUpdates();
+                },
               ),
               TextInputField(
-                label: "phone number",
+                label: "Phone Number",
                 enabled: true,
                 controller: _phoneController,
+                onChanged: (val) {
+                  _checkUpdates();
+                },
+              ),
+              TextInputField(
+                label: "Email",
+                enabled: false,
+                controller: TextEditingController(text: user.email),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -155,20 +176,18 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                       items: [
                         DropdownMenuItem(
                           value: null,
-                          child: Text("select interest"),
+                          child: Text("Select Interest"),
                         ),
-                        ...EventCategory.values.map((
-                          category,
-                        ) =>
-                            DropdownMenuItem(
-                              value: category.toString(),
-                              child: Text(category.name),
-                            ))
+                        ...EventCategory.values
+                            .map((category) => DropdownMenuItem(
+                                  value: category.toString(),
+                                  child: Text(category.name),
+                                ))
                       ],
                       onChanged: (value) =>
                           setState(() => interests.add(value!)),
                       decoration: InputDecoration(
-                          labelText: 'interests',
+                          labelText: 'Interests',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                             borderSide:
@@ -189,6 +208,22 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                   ],
                 ),
               ),
+              if (isAnyUpdate)
+                Padding(
+                  padding: EdgeInsets.only(top: 20.h),
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        context.read<UserCubit>().updateUserProfile(data: {
+                          "name": _nameController.text,
+                          "phone": _phoneController.text,
+                        });
+                        setState(() => isAnyUpdate = false);
+                      },
+                      child: Text("Save Changes"),
+                    ),
+                  ),
+                ),
             ],
           ),
         ],

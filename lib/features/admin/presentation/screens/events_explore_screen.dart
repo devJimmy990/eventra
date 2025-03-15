@@ -46,32 +46,30 @@ class _AdminEventsExploreScreenState extends State<AdminEventsExploreScreen>
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: _CustomTabBar(),
-        ),
-        body: BlocBuilder<AdminEventCubit, AdminEventState>(
-          builder: (context, state) {
-            return TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                UpcomingEvents(),
-                PreviousEvents(),
-              ],
-            );
-          },
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: _CustomTabBar(_tabController),
+      ),
+      body: BlocBuilder<AdminEventCubit, AdminEventState>(
+        builder: (context, state) {
+          return TabBarView(
+            controller: _tabController,
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              UpcomingEvents(),
+              PreviousEvents(),
+            ],
+          );
+        },
       ),
     );
   }
 }
 
 class _CustomTabBar extends StatelessWidget {
-  const _CustomTabBar();
+  final TabController? controller;
+  const _CustomTabBar(this.controller);
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +83,7 @@ class _CustomTabBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.r),
         ),
         child: TabBar(
+          controller: controller,
           indicatorSize: TabBarIndicatorSize.tab,
           indicator: BoxDecoration(
             color: Colors.white,

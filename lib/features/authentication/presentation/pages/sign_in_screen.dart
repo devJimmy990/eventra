@@ -120,20 +120,8 @@ class _SignInScreenState extends State<SignInScreen> {
             BlocConsumer<AuthenticationCubit, AuthenticationState>(
               listener: (context, state) {
                 if (state is Authenticated) {
-                  Fluttertoast.showToast(
-                    textColor: Colors.white,
-                    gravity: ToastGravity.BOTTOM,
-                    backgroundColor: Colors.red,
-                    toastLength: Toast.LENGTH_LONG,
-                    msg: state.uid,
-                  );
                   context.read<UserCubit>().loadUser();
                   context.goNamed(Routes.landing);
-                } else if (state is UnAuthenticated) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text("unauthenticated"),
-                    backgroundColor: Colors.red,
-                  ));
                 } else if (state is AuthenticationError) {
                   Fluttertoast.showToast(
                     textColor: Colors.white,

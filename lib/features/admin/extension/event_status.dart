@@ -12,3 +12,8 @@ extension EventStatus on BaseEvent {
       schedule.start.isBefore(DateTime.now()) &&
       schedule.end.isAfter(DateTime.now());
 }
+
+/**
+ * event: {start:17-Mar, end:17-Mar}
+ * 
+ * */

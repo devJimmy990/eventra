@@ -1,3 +1,4 @@
+import 'package:eventra/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -6,6 +7,7 @@ import 'package:eventra/features/landing/cubit/user_state.dart';
 import 'package:eventra/features/notification/cubit/notification_cubit.dart';
 import 'package:eventra/features/admin/presentation/screens/home_screen.dart';
 import 'package:eventra/features/user/home/presentation/screens/home_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -24,6 +26,7 @@ class LandingScreen extends StatelessWidget {
                 backgroundColor: Colors.red,
                 toastLength: Toast.LENGTH_SHORT,
               );
+              context.goNamed(Routes.auth);
             } else if (state is UserLoaded) {
               if (state.user.role == "user") {
                 context.read<NotificationCubit>().subscribeToTopic();
@@ -32,7 +35,6 @@ class LandingScreen extends StatelessWidget {
           },
           builder: (context, state) {
             if (state is UserLoaded) {
-              print("debug-user: user-loaded-builder -  ${state.user}");
               return state.user.role == "user"
                   ? UserHomeScreen()
                   : AdminHomeScreen();

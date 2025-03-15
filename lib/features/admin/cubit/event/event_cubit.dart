@@ -103,5 +103,4 @@ class AdminEventCubit extends Cubit<AdminEventState> {
       }
     }
   }
-
 }

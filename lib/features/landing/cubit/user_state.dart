@@ -6,8 +6,6 @@ class UserInitial extends UserState {}
 
 class UserLoading extends UserState {}
 
-class UserUpdated extends UserState {}
-
 class UserImageUploaded extends UserState {
   final String url;
   UserImageUploaded(this.url);

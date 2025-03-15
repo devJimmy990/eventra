@@ -51,8 +51,8 @@ class UserCubit extends Cubit<UserState> {
     try {
       await UserRepository(UserDataSource())
           .updateUserProfile(uid: user!.id, data: data);
-      user!.avatar = data["avatar"];
-      emit(UserUpdated());
+      _user = User.copyWith(_user, json: data);
+      emit(UserLoaded(_user));
     } catch (e) {
       emit(UserError(e.toString()));
     }
