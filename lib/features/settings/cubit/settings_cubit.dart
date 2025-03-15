@@ -1,6 +1,6 @@
+import 'package:eventra/features/settings/cubit/app_theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
-import 'package:eventra/features/settings/cubit/theme_data.dart';
 import 'package:eventra/features/settings/cubit/settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {

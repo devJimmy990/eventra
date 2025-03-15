@@ -1,51 +1,44 @@
+import 'package:eventra/core/constants/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppTheme {
-  static const Color primaryColor = Color(0xFF6200EE);
-  static const Color secondaryColor = Color(0xFF03DAC6);
-  static const Color backgroundColor = Color(0xFFF5F5F5);
-  static const Color textColor = Color(0xFF000000);
-  static const Color errorColor = Color(0xFFB00020);
-
-  static final ThemeData light = ThemeData.light(
-    // brightness: Brightness.light,
-    // primaryColor: primaryColor,
-    // colorScheme: const ColorScheme.light(
-    //   primary: primaryColor,
-    //   secondary: secondaryColor,
-    //   background: backgroundColor,
-    //   surface: Colors.white,
-    //   error: errorColor,
-    // ),
-    // scaffoldBackgroundColor: backgroundColor,
-    // appBarTheme: const AppBarTheme(
-    //   color: primaryColor,
-    //   iconTheme: IconThemeData(color: Colors.white),
-    // ),
-    // textTheme: const TextTheme(
-    //   bodyLarge: TextStyle(color: textColor),
-    //   bodyMedium: TextStyle(color: textColor),
-    // ),
-  );
-
-  static final ThemeData dark = ThemeData.dark(
-    // brightness: Brightness.dark,
-    // primaryColor: primaryColor,
-    // colorScheme: const ColorScheme.dark(
-    //   primary: primaryColor,
-    //   secondary: secondaryColor,
-    //   background: Colors.black,
-    //   surface: Colors.grey[900]!,
-    //   error: errorColor,
-    // ),
-    // scaffoldBackgroundColor: Colors.grey[900],
-    // appBarTheme: const AppBarTheme(
-    //   color: primaryColor,
-    //   iconTheme: IconThemeData(color: Colors.white),
-    // ),
-    // textTheme: const TextTheme(
-    //   bodyLarge: TextStyle(color: Colors.white),
-    //   bodyMedium: TextStyle(color: Colors.white),
-    // ),
+class AppThemeData {
+  static ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: ColorManager.bgColor,
+    appBarTheme: const AppBarTheme(
+        actionsIconTheme: IconThemeData(
+            color: ColorManager.purpleColor
+        ),
+        iconTheme: IconThemeData(
+            color: ColorManager.purpleColor
+        )
+    ),
+    useMaterial3: true,
+    textTheme:  TextTheme(
+        titleLarge: TextStyle(
+          color: ColorManager.purpleColor,
+          fontSize: 36.sp,
+          fontWeight: FontWeight.w400,
+        ),
+        titleMedium: TextStyle(
+          color: ColorManager.darkPurpleColor,
+          fontSize: 26.sp,
+          fontWeight: FontWeight.w400,),
+        titleSmall: TextStyle(
+          color: ColorManager.purpleColor,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w400,
+        ),
+        labelSmall: TextStyle(
+          color: ColorManager.whiteColor,
+          fontSize: 20.sp,
+          fontWeight: FontWeight.bold
+          ,),
+        labelMedium: TextStyle(
+            color: ColorManager.darkPurpleColor,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w400
+        )
+    ),
   );
 }
