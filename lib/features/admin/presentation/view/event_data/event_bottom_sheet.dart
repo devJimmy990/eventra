@@ -101,8 +101,6 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return BlocListener<AdminEventCubit, AdminEventState>(
       listener: (context, state) {
         if (state is ImageUploading) {
@@ -114,23 +112,17 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
             msg: "upload event cover",
           );
         } else if (state is ImageUploaded) {
-          /**
-           * in case of add new real event, uncomment this lines to working with bottom logic of upload event cover image
-           * after adding dummy events data please comment this again
-           *
-           * final String uid = SharedPreference.getString(key: "uid")!;
-              context.read<EventCubit>().addEvent(
-              AdminEvent(
-              admin: uid,
-              cover: state.url,
-              title: _titleController.text,
-              schedule: _dateController.value,
-              desc: _descriptionController.text,
-              category: _categoryController.value!,
-              price: int.tryParse(_priceController.text) ?? 0,
-              ),
+          context.read<AdminEventCubit>().addEvent(
+                AdminEvent(
+                  admin: context.read<UserCubit>().user!,
+                  cover: state.url,
+                  title: _titleController.text,
+                  schedule: _dateController.value,
+                  desc: _descriptionController.text,
+                  category: _categoryController.value!,
+                  price: int.tryParse(_priceController.text) ?? 0,
+                ),
               );
-           */
           Fluttertoast.showToast(
             textColor: Colors.white,
             gravity: ToastGravity.BOTTOM,
@@ -187,62 +179,9 @@ class _EventBottomSheetState extends State<EventBottomSheet> {
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // context
-                      //     .read<EventCubit>()
-                      //     .uploadImage(File(_pickImage!.path));
-
-                      /** this  comment to reduce uploading file to storage
-                       * uncomment it when create real dummy data
-                       * re-comment after creating the data
-                       * please, note that in check comments in  listener in the same page at line 101
-                          final String uid =
-                          SharedPreference.getString(key: "uid")!;
-                          context.read<EventCubit>().addEvent(
-                          AdminEvent(
-                          admin: uid,
-                          title: _titleController.text,
-                          schedule: _dateController.value,
-                          desc: _descriptionController.text,
-                          category: _categoryController.value!,
-                          price: int.tryParse(_priceController.text) ?? 0,
-                          cover:
-                          "https://firebasestorage.googleapis.com/v0/b/eventra-1eb59.firebasestorage.app/o/events%2F1741408725868.jpg?alt=media&token=1b9ad231-b257-4fed-a14d-d90b7c52ec42",
-                          ),
-                          );
-                       **/
-                      final admin = context.read<UserCubit>().user!;
-                      widget.event == null
-                          ? context.read<AdminEventCubit>().addEvent(
-                                AdminEvent(
-                                  admin: admin,
-                                  title: _titleController.text,
-                                  schedule: _dateController.value,
-                                  desc: _descriptionController.text,
-                                  category: _categoryController.value!,
-                                  location: _locationNameController.text.isEmpty
-                                      ? null
-                                      : EventLocation(
-                                          name: _locationNameController.text,
-                                          address:
-                                              _locationAddressController.text,
-                                          url: _locationUrlController.text,
-                                        ),
-                                  price:
-                                      int.tryParse(_priceController.text) ?? 0,
-                                  cover:
-                                      "https://firebasestorage.googleapis.com/v0/b/eventra-1eb59.firebasestorage.app/o/events%2F1741408725868.jpg?alt=media&token=1b9ad231-b257-4fed-a14d-d90b7c52ec42",
-                                ),
-                              )
-                          : context.read<AdminEventCubit>().updateEvent(
-                                AdminEvent(
-                                  admin: admin,
-                                  id: widget.event!.id,
-                                  title: _titleController.text,
-                                  schedule: _dateController.value,
-                                  desc: _descriptionController.text,
-                                  category: _categoryController.value!,
-                                ),
-                              );
+                      context
+                          .read<AdminEventCubit>()
+                          .uploadImage(File(_pickImage!.path));
                     }
                   },
                   child:

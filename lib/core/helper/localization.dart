@@ -68,6 +68,8 @@ class Localization {
 //----------------------------------------------------------------------
 
 //-------------------- Profile --------------------------------------------
+  static get userProfile => S.current.user_profile;
+  static get adminProfile => S.current.admin_profile;
   static get profileInfo => S.current.profile_info;
   static get profileSettings => S.current.profile_settings;
   static get profileInfoName => S.current.profile_info_name;

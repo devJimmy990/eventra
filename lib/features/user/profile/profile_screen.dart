@@ -14,7 +14,9 @@ class MyProfilePage extends StatelessWidget {
     
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(Localization.userProfile),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),

@@ -27,18 +27,18 @@ class AdminProfileScreen extends StatefulWidget {
 class _AdminProfileScreenState extends State<AdminProfileScreen> {
   late User admin;
   File? _pickedImage;
-  late Localization strings;
   @override
   void initState() {
     super.initState();
-    strings = Localization();
     admin = context.read<UserCubit>().user!;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(Localization.adminProfile),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
         child: Column(
@@ -148,7 +148,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(Localization.languageSwitch),
+                        Text(Localization.languageSwitch,style: TextStyle(fontSize: 16.sp),),
                         SizedBox(width: 5.w),
                         Icon(Icons.change_circle_outlined),
                       ],
