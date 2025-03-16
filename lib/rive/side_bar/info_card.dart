@@ -1,3 +1,4 @@
+import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/constants/extensions.dart';
 import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/landing/cubit/user_cubit.dart';
@@ -26,13 +27,13 @@ class InfoCard extends StatelessWidget {
             ),
             title: Text(
               user.name,
-              style: TextStyle(
+              style: TextStyle(color: ColorManager.white,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
             subtitle: Text(
-              user.email,
+              user.email,style: TextStyle(color: ColorManager.white,fontStyle:FontStyle.italic ),
             ),
           );
         }

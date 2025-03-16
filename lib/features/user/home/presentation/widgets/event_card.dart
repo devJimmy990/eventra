@@ -1,3 +1,4 @@
+import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/constants/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,7 +54,7 @@ class EventCard extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: ColorManager.sideBarLight,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(12.r)),
                           ),
@@ -62,8 +63,8 @@ class EventCard extends StatelessWidget {
                             children: [
                               Text(
                                 event.schedule.date.day.toString(),
-                                style: TextStyle(
-                                  fontSize: 18,
+                                style: TextStyle(color: ColorManager.white,
+                                  fontSize: 18,fontWeight: FontWeight.bold,
                                   shadows: [
                                     Shadow(
                                       blurRadius: 3.r,
@@ -73,8 +74,8 @@ class EventCard extends StatelessWidget {
                               ),
                               Text(
                                 event.schedule.date.encodeMonth(),
-                                style: TextStyle(
-                                  fontSize: 12,
+                                style: TextStyle(color: ColorManager.white,
+                                  fontSize: 14,
                                   shadows: [
                                     Shadow(
                                       blurRadius: 3.r,
@@ -95,16 +96,18 @@ class EventCard extends StatelessWidget {
                                 });
                               }
 
-                              return IconButton(
+                              return IconButton(splashColor: Colors.white,
                                 icon: AnimatedSwitcher(
                                   duration: Duration(milliseconds: 300),
-                                  child: Icon(
-                                    isBookmarked
-                                        ? Icons.bookmark
-                                        : Icons.bookmark_border,
-                                    key: ValueKey(isBookmarked),
-                                    color:
-                                        isBookmarked ? Colors.red : Colors.grey,
+                                  child: CircleAvatar(backgroundColor: ColorManager.sideBarLight,
+                                    child: Icon(
+                                      isBookmarked
+                                          ? Icons.bookmark
+                                          : Icons.bookmark_border,
+                                      key: ValueKey(isBookmarked),
+                                      color: Colors.white
+
+                                    ),
                                   ),
                                 ),
                                 onPressed: () {

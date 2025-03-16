@@ -174,12 +174,14 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                       items: [
                         DropdownMenuItem(
                           value: null,
-                          child: Text(Localization.profileInfoSelectInterests),
+                          child: Text(Localization.profileInfoSelectInterests,style: TextStyle(fontSize: 18.sp,
+                          ),),
                         ),
                         ...EventCategory.values
                             .map((category) => DropdownMenuItem(
                                   value: category.toString(),
-                                  child: Text(category.name),
+                                  child: Text(category.name,style: TextStyle(fontSize: 14.sp,
+                                  ),),
                                 ))
                       ],
                       onChanged: (value) =>

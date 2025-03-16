@@ -1,3 +1,4 @@
+import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/features/authentication/cubit/auth_cubit.dart';
 import 'package:eventra/features/authentication/cubit/auth_state.dart';
@@ -26,7 +27,7 @@ class _SideBarState extends State<SideBar> {
       width: 288,
       height: double.infinity,
       decoration: const BoxDecoration(
-        color: Color(0xFF17203A),
+        color: ColorManager.sideBarLight
       ),
       child: DefaultTextStyle(
         style: const TextStyle(color: Colors.white),

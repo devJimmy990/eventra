@@ -53,7 +53,7 @@ class EventBottomGeneral extends StatelessWidget {
                         ) =>
                             DropdownMenuItem(
                               value: category,
-                              child: Text(category.name),
+                              child: Text(category.name, style: TextStyle(fontSize: 21.sp ),),
                             ))
                         .toList(),
                     onChanged: (value) => categoryController.value = value,

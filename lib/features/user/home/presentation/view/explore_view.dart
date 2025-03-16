@@ -1,3 +1,4 @@
+import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +41,7 @@ class _EventExploreViewState extends State<EventExploreView> {
       length: 2,
       initialIndex: 0,
       child: Scaffold(
-        appBar: AppBar(
+        appBar: AppBar(backgroundColor: ColorManager.sideBarLight,
           toolbarHeight: 80.h,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -48,7 +49,7 @@ class _EventExploreViewState extends State<EventExploreView> {
               bottomRight: Radius.circular(28),
             ),
           ),
-          backgroundColor: const Color(0xFF151E37),
+          // backgroundColor: const Color(0xFF151E37),
           iconTheme: const IconThemeData(color: Colors.white, size: 30),
           centerTitle: true,
           title: Text(

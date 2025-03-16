@@ -44,7 +44,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
               pinned: true,
               iconTheme: IconThemeData(color: Colors.white),
               flexibleSpace: FlexibleSpaceBar(
-                title: Text(Localization.adminEventDetailsAppBar),
+
                 background: Stack(
                   fit: StackFit.expand,
                   children: [

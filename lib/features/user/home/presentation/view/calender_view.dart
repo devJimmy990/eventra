@@ -1,11 +1,14 @@
+import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/core/routes/routes.dart';
 import 'package:eventra/features/admin/extension/event.dart';
+import 'package:eventra/features/settings/cubit/settings_cubit.dart';
 import 'package:eventra/features/user/home/cubit/event_cubit.dart';
 import 'package:eventra/features/user/home/cubit/event_state.dart';
 import 'package:eventra/features/user/home/controller/calender_data_source.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -20,7 +23,7 @@ class EventCalendarView extends StatelessWidget {
     
 
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text(Localization.userEventCalendar))),
+      appBar: AppBar(title: Text(Localization.userEventCalendar,style: TextStyle(fontSize: 24.sp),)),
       body: BlocBuilder<UserEventCubit, UserEventState>(
         builder: (context, state) {
           if (state is EventLoading) {
@@ -30,6 +33,9 @@ class EventCalendarView extends StatelessWidget {
           } else if (state is EventLoaded) {
             final dataSource = UserEventCalendarDataSource(state.events);
             return SfCalendar(
+              todayHighlightColor: context.read<SettingsCubit>().isDarkTheme? ColorManager.white:ColorManager.sideBarLight,
+
+
               dataSource: dataSource,
               view: CalendarView.month,
               initialSelectedDate: DateTime.now(),

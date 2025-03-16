@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class TextInputField extends StatelessWidget {
   final Icon? icon;
@@ -44,7 +45,6 @@ class TextInputField extends StatelessWidget {
         prefixIcon: icon,
         labelText: label,
         hintText: hint,
-        fillColor: Colors.white,
         alignLabelWithHint: maxLines != null && maxLines! > 1,
         border: _buildInputBorder(),
         enabledBorder: _buildInputBorder(),
@@ -88,16 +88,16 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
         filled: true,
         hintText: widget.hint,
         labelText: widget.label,
-        fillColor: Colors.white,
-        prefixIcon: Icon(Icons.lock),
+
+        prefixIcon: Icon(Iconsax.password_check),
         border: _buildInputBorder(),
         enabledBorder: _buildInputBorder(),
         focusedBorder: _buildInputBorder(),
-        labelStyle: const TextStyle(color: Colors.black),
+
         suffixIcon: IconButton(
           icon: Icon(
-            color: Colors.black,
-            obscureText ? Icons.visibility : Icons.visibility_off,
+
+            obscureText ? Iconsax.eye : Iconsax.eye_slash,
           ),
           onPressed: () => setState(() => obscureText = !obscureText),
         ),

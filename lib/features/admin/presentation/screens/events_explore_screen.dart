@@ -77,9 +77,9 @@ class _CustomTabBar extends StatelessWidget {
     return SizedBox(
       width: 0.8.sw,
       child: Container(
-        height: 40.h,
+        height: 45.h,
         decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Colors.grey[100],
           borderRadius: BorderRadius.circular(30.r),
         ),
         child: TabBar(

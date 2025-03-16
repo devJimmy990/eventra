@@ -34,10 +34,6 @@ class UserEventDetailsScreen extends StatelessWidget {
               pinned: true,
               // Display the event cover image in the flexible space.
               flexibleSpace: FlexibleSpaceBar(
-                title: Text(
-                  Localization.userEventDetailsAppBar,
-                  style: TextStyle(color: Colors.white),
-                ),
                 background: event.cover == null
                     ? Image.asset(
                         StringsManager.eventImage,

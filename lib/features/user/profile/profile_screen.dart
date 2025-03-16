@@ -58,7 +58,8 @@ class MyProfilePage extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(Localization.languageSwitch),
+                          Text(Localization.languageSwitch,style: TextStyle(fontSize: 16.sp,
+                            ),),
                           SizedBox(width: 5.w),
                           Icon(Icons.change_circle_outlined),
                         ],

@@ -70,8 +70,7 @@ class _UserHomeScreenState extends State<UserHomeScreen>
     return Scaffold(
       extendBody: true,
       resizeToAvoidBottomInset: false,
-      backgroundColor: ColorManager.whiteColor,
-      body: Stack(
+            body: Stack(
         children: [
           if (isSideBarOpen)
             GestureDetector(

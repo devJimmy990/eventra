@@ -16,6 +16,7 @@ import 'package:eventra/features/authentication/cubit/auth_cubit.dart';
 import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/features/authentication/presentation/widgets/auth_header.dart';
 import 'package:eventra/features/authentication/presentation/widgets/custom_button.dart';
+import 'package:iconsax/iconsax.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -116,7 +117,7 @@ class _BuildSignupForm extends StatelessWidget {
             controller: nameController,
             hint: Localization.authInputFullName,
             validator: validator.validateName,
-            icon: const Icon(Icons.person),
+            icon: const Icon(Iconsax.user),
           ),
           TextInputField(
             email: true,
@@ -124,7 +125,7 @@ class _BuildSignupForm extends StatelessWidget {
             controller: emailController,
             hint: "abc@example.com",
             validator: validator.validateEmail,
-            icon: const Icon(Icons.email_outlined),
+            icon: const Icon(Iconsax.sms),
           ),
           TextInputField(
             phone: true,
@@ -132,7 +133,7 @@ class _BuildSignupForm extends StatelessWidget {
             controller: phoneController,
             label: Localization.authInputPhone,
             validator: validator.validatePhone,
-            icon: const Icon(Icons.phone_android),
+            icon: const Icon(Iconsax.call),
           ),
           PasswordInputField(
             hint: "123456789",

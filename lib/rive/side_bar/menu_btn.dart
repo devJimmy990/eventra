@@ -19,7 +19,7 @@ class MenuBtn extends StatelessWidget {
           height: 40,
           width: 40,
           decoration: const BoxDecoration(
-            color: Colors.white,
+
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(

@@ -16,7 +16,7 @@ class BookmarkScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(Localization.userBookmarkAppBar),
-        centerTitle: true,
+
       ),
       body: SafeArea(
         child: BlocBuilder<BookmarkCubit, BookmarkState>(

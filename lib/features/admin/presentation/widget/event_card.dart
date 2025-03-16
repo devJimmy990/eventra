@@ -1,3 +1,4 @@
+import 'package:eventra/core/constants/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -135,7 +136,7 @@ class _BuildEventCard extends StatelessWidget {
                             child: Text(
                               event.title,
                               style: TextStyle(
-                                fontSize: 16.sp,
+                                fontSize: 19.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                               overflow: TextOverflow.ellipsis,
@@ -162,17 +163,17 @@ class _BuildEventCard extends StatelessWidget {
                       // Event schedule
                       Text(
                         event.schedule.date.encodeDate(),
-                        style: TextStyle(fontSize: 14.sp),
+                        style: TextStyle(fontSize: 14.sp,color: ColorManager.primary,fontWeight: FontWeight.bold),
                       ),
                       Text(
                         event.encodeLongDateTime(),
-                        style: TextStyle(fontSize: 14.sp),
+                        style: TextStyle(fontSize: 14.sp,color: ColorManager.primary),
                       ),
                       SizedBox(height: 5.h),
                       // Event location
                       Text(
                         event.location.address,
-                        style: TextStyle(fontSize: 14.sp),
+                        style: TextStyle(fontSize: 14.sp,color: ColorManager.primary ),
                       ),
                       // You can add extra details here, such as location or event date
                     ],

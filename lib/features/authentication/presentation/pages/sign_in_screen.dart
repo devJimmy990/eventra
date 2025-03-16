@@ -15,6 +15,7 @@ import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/features/authentication/controller/remember_controller.dart';
 import 'package:eventra/features/authentication/presentation/widgets/auth_header.dart';
 import 'package:eventra/features/authentication/presentation/widgets/custom_button.dart';
+import 'package:iconsax/iconsax.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -69,14 +70,14 @@ class _SignInScreenState extends State<SignInScreen> {
                     hint: "abc@example.com",
                     validator: validator.validateEmpty,
                     controller: emailController,
-                    icon: const Icon(Icons.email_outlined),
+                    icon: const Icon(Iconsax.sms),
                   ),
                   PasswordInputField(
                     label: Localization.authInputPassword,
                     controller: passwordController,
                     validator: validator.validateEmpty,
                     hint: "123456789",
-                    icon: const Icon(Icons.lock_outline),
+                    icon: const Icon(Iconsax.password_check),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
