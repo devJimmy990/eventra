@@ -4,13 +4,13 @@ import 'package:eventra/features/user/home/data/model/request_event.dart';
 class AdminEventsRequestsDataSource {
   final Firebase _firebase = Firebase();
 
-  Future<List<Map<String, dynamic>>> getAdminEventsRequests(String uid) async {
+  Stream<List<Map<String, dynamic>>> getAdminEventsRequests(String uid) {
     try {
-      return await _firebase.store
+      return _firebase.store
           .collection("requests")
           .where("admin", isEqualTo: uid)
-          .get()
-          .then((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
+          .snapshots()
+          .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
     } catch (e) {
       rethrow;
     }

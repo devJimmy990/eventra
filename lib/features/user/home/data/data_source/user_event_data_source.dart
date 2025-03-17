@@ -1,16 +1,12 @@
-import 'package:eventra/core/firebase/firebase.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserEventDataSource {
-  Firebase firebase = Firebase();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<List<Map<String, dynamic>>> getEvents() async {
-    try {
-      return await firebase.store
-          .collection("events")
-          .get()
-          .then((value) => value.docs.map((doc) => doc.data()).toList());
-    } catch (e) {
-      rethrow;
-    }
+  Stream<List<Map<String, dynamic>>> getEventsStream() {
+    return firestore
+        .collection("events")
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
   }
 }

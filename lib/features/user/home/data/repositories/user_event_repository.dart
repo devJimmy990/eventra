@@ -6,12 +6,9 @@ class UserEventRepository {
 
   UserEventRepository(this._dataSource);
 
-  Future<List<UserEvent>> getEvents() async {
-    try {
-      List<Map<String, dynamic>> list = await _dataSource.getEvents();
-      return list.map((e) => UserEvent.fromJson(e)).toList();
-    } catch (e) {
-      rethrow;
-    }
+  Stream<List<UserEvent>> getEventsStream() {
+    return _dataSource
+        .getEventsStream()
+        .map((list) => list.map((e) => UserEvent.fromJson(e)).toList());
   }
 }

@@ -6,11 +6,10 @@ class AdminEventsRequestsRepository {
 
   AdminEventsRequestsRepository(this._dataSource);
 
-  Future<List<RequestEvent>> getAdminEventsRequests(String uid) async {
+  Stream<List<RequestEvent>> getAdminEventsRequests(String uid) {
     try {
-      List<Map<String, dynamic>> data =
-          await _dataSource.getAdminEventsRequests(uid);
-      return data.map((eventData) => RequestEvent.fromJson(eventData)).toList();
+      return _dataSource.getAdminEventsRequests(uid).map((list) =>
+          list.map((eventData) => RequestEvent.fromJson(eventData)).toList());
     } catch (e) {
       rethrow;
     }
@@ -27,7 +26,6 @@ class AdminEventsRequestsRepository {
   Future<bool> onRejectRequest(
       {required String id, required Map<String, int> data}) async {
     try {
-
       return _dataSource.onRejectRequest(id: id, data: data);
     } catch (e) {
       rethrow;

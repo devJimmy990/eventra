@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/admin/cubit/requests/request_state.dart';
 import 'package:eventra/features/admin/data/data_source/admin_events_requests_data_source.dart';
@@ -13,18 +15,23 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
   final List<RequestEvent> _pendingRequests = [];
   final List<RequestEvent> _approvedRequests = [];
   final List<RequestEvent> _rejectedRequests = [];
+  late StreamSubscription<List<RequestEvent>> _eventsSubscription;
 
-  void getRequests() async {
+  void getRequests() {
     emit(EventRequestLoading());
     try {
       String uid = SharedPreference.getString(key: "uid")!;
-      List<RequestEvent> requests =
-          await AdminEventsRequestsRepository(AdminEventsRequestsDataSource())
-              .getAdminEventsRequests(uid);
-      _handleRequestsDate(requests);
-      emit(_waitingRequests.isEmpty
-          ? EventRequestEmpty()
-          : EventRequestsLoaded(_waitingRequests));
+      _eventsSubscription =
+          AdminEventsRequestsRepository(AdminEventsRequestsDataSource())
+              .getAdminEventsRequests(uid)
+              .listen((requests) {
+        _handleRequestsDate(requests);
+        emit(_waitingRequests.isEmpty
+            ? EventRequestEmpty()
+            : EventRequestsLoaded(_waitingRequests));
+      }, onError: (error) {
+        emit(EventRequestError(error));
+      });
     } catch (e) {
       emit(EventRequestError(e.toString()));
     }
@@ -123,5 +130,11 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
         _rejectedRequests.add(request);
       }
     }
+  }
+
+  @override
+  Future<void> close() {
+    _eventsSubscription.cancel();
+    return super.close();
   }
 }
