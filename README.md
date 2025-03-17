@@ -80,6 +80,9 @@ Eventra is a modern events management application designed to help users discove
 
 ## Getting Started
 
+
+![White   Green Mobile Mockup Photo Collage Beauty Facebook Post](https://github.com/user-attachments/assets/f8a0952b-5612-489a-95d7-2fdec217bdb9)
+
 ### Prerequisites
 - Flutter SDK (v3.6.0 or higher)
 - Firebase account (for backend services)
