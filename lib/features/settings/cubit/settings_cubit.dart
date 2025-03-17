@@ -1,53 +1,41 @@
 import 'package:eventra/features/settings/cubit/app_theme.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/settings/cubit/settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit()
-      : super(SettingsState(
-          theme: AppTheme.light,
-          locale: "en",
-        )) {
-    loadSettings();
+  SettingsCubit() : super(SettingsState()) {
+    _loadSettings();
   }
-
-  void _loadTheme() {
+  late String _locale;
+  late ThemeData _theme;
+  void _loadSettings() {
     final theme = SharedPreference.getString(key: "theme");
-    emit(state.copyWith(
-      theme: theme == "dark" ? AppTheme.dark : AppTheme.light,
-    ));
-  }
-
-  void _loadLanguage() async {
-    final locale = SharedPreference.getString(key: "locale");
-    emit(state.copyWith(locale: locale ?? "en"));
+    _locale = SharedPreference.getString(key: "locale") ?? "en";
+    _theme = theme == "dark" ? AppTheme.dark : AppTheme.light;
+    emit(SettingsLoadedState(theme: _theme, locale: _locale));
   }
 
   void toggleTheme() {
+    _theme == AppTheme.dark ? AppTheme.light : AppTheme.dark;
     SharedPreference.setString(
       key: "theme",
-      value: state.theme == AppTheme.dark ? "light" : "dark",
+      value: _theme == AppTheme.dark ? "light" : "dark",
     );
-    emit(state.copyWith(
-      theme: state.theme == AppTheme.dark ? AppTheme.light : AppTheme.dark,
-    ));
+    emit(SettingsLoadedState(theme: _theme, locale: _locale));
   }
 
   void toggleLanguage() {
+    _locale = _locale == "en" ? "ar" : "en";
     SharedPreference.setString(
       key: "locale",
-      value: state.locale == "en" ? "ar" : "en",
+      value: _locale,
     );
-    emit(state.copyWith(
-      locale: state.locale == "en" ? "ar" : "en",
-    ));
+    print("toggleLanguage: $_locale, $_theme");
+    emit(SettingsLoadedState(theme: _theme, locale: _locale));
   }
 
-  void loadSettings() {
-    _loadTheme();
-    _loadLanguage();
-  }
-
-  bool get isDarkTheme => state.theme == AppTheme.dark;
+  bool get isDarkTheme => _theme == AppTheme.dark;
+  String get locale => _locale;
 }

@@ -109,7 +109,7 @@ final router = GoRouter(
             GoRoute(
               path: "profile",
               name: UserRoutes.profile,
-              builder: (context, state) => MyProfilePage(),
+              builder: (context, state) => UserProfileScreen(),
             ),
             GoRoute(
               path: "calendar",

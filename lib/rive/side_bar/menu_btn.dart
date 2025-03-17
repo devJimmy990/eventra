@@ -1,4 +1,6 @@
+import 'package:eventra/features/settings/cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart';
 
 class MenuBtn extends StatelessWidget {
@@ -19,7 +21,6 @@ class MenuBtn extends StatelessWidget {
           height: 40,
           width: 40,
           decoration: const BoxDecoration(
-
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
@@ -29,20 +30,23 @@ class MenuBtn extends StatelessWidget {
               ),
             ],
           ),
-          child: RiveAnimation.asset(
-            "assets/RiveAssets/menu_button.riv",
-            onInit: (artboard) {
-              final controller = StateMachineController.fromArtboard(
-                  artboard, "State Machine");
-              artboard.addController(controller!);
-              final isMenuOpenInput = controller.findInput<bool>("isOpen") as SMIBool;
+          child: RotatedBox(
+            quarterTurns: context.read<SettingsCubit>().locale == "en" ? 0 : 2,
+            child: RiveAnimation.asset(
+              "assets/RiveAssets/menu_button.riv",
+              onInit: (artboard) {
+                final controller = StateMachineController.fromArtboard(
+                    artboard, "State Machine");
+                artboard.addController(controller!);
+                final isMenuOpenInput =
+                    controller.findInput<bool>("isOpen") as SMIBool;
 
+                // Reverse the logic: Default to open (X icon) when sidebar is closed
+                isMenuOpenInput.value = false; // Show X when sidebar is closed
 
-              // Reverse the logic: Default to open (X icon) when sidebar is closed
-              isMenuOpenInput.value = false; // Show X when sidebar is closed
-
-              riveOnInit(artboard); // Pass the artboard back to parent
-            },
+                riveOnInit(artboard); // Pass the artboard back to parent
+              },
+            ),
           ),
         ),
       ),

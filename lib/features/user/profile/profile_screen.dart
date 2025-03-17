@@ -6,13 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyProfilePage extends StatelessWidget {
-  const MyProfilePage({super.key});
+class UserProfileScreen extends StatelessWidget {
+  const UserProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
       appBar: AppBar(
         title: Text(Localization.userProfile),
@@ -29,14 +27,16 @@ class MyProfilePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 10.h),
                 child: Text(
                   Localization.profileSettings,
-                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+                  style:
+                      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
               ),
               BlocBuilder<SettingsCubit, SettingsState>(
                 builder: (context, state) {
                   bool isDark = context.read<SettingsCubit>().isDarkTheme;
                   return SwitchListTile(
-                    secondary: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+                    secondary:
+                        Icon(isDark ? Icons.light_mode : Icons.dark_mode),
                     title: Text(
                         "${Localization.themeSwitch} ${isDark ? Localization.themeLight : Localization.themeDark}"),
                     value: isDark,
@@ -46,7 +46,12 @@ class MyProfilePage extends StatelessWidget {
                 },
               ),
               BlocSelector<SettingsCubit, SettingsState, String>(
-                selector: (state) => state.locale,
+                selector: (state) {
+                  if (state is SettingsLoadedState) {
+                    return state.locale;
+                  }
+                  return "en";
+                },
                 builder: (context, locale) {
                   return ListTile(
                     leading: Icon(Icons.language),
@@ -56,12 +61,17 @@ class MyProfilePage extends StatelessWidget {
                           : Localization.languageEnglish,
                     ),
                     trailing: InkWell(
-                      onTap: () => context.read<SettingsCubit>().toggleLanguage(),
+                      onTap: () =>
+                          context.read<SettingsCubit>().toggleLanguage(),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(Localization.languageSwitch,style: TextStyle(fontSize: 16.sp,
-                            ),),
+                          Text(
+                            Localization.languageSwitch,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            ),
+                          ),
                           SizedBox(width: 5.w),
                           Icon(Icons.change_circle_outlined),
                         ],

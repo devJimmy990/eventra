@@ -134,7 +134,12 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
               },
             ),
             BlocSelector<SettingsCubit, SettingsState, String>(
-              selector: (state) => state.locale,
+              selector: (state) {
+                if (state is SettingsLoadedState) {
+                  return state.locale;
+                }
+                return "en";
+              },
               builder: (context, locale) {
                 return ListTile(
                   leading: Icon(Icons.language),
@@ -148,7 +153,10 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(Localization.languageSwitch,style: TextStyle(fontSize: 16.sp),),
+                        Text(
+                          Localization.languageSwitch,
+                          style: TextStyle(fontSize: 16.sp),
+                        ),
                         SizedBox(width: 5.w),
                         Icon(Icons.change_circle_outlined),
                       ],

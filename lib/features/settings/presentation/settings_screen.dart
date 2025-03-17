@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.browse_gallery_outlined),
-            title: Text(SettingsCubit().state.locale == "ar"
+            title: Text(SettingsCubit().locale == "ar"
                 ? Localization.languageArabic
                 : Localization.languageEnglish),
             trailing: InkWell(

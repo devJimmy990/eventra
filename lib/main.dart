@@ -55,19 +55,22 @@ class MyApp extends StatelessWidget {
             builder: (context) {
               return BlocBuilder<SettingsCubit, SettingsState>(
                 builder: (context, state) {
-                  return MaterialApp.router(
-                    debugShowCheckedModeBanner: false,
-                    localizationsDelegates: [
-                      S.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                    ],
-                    supportedLocales: S.delegate.supportedLocales,
-                    locale: Locale(state.locale),
-                    routerConfig: router,
-                    theme: state.theme,
-                  );
+                  if (state is SettingsLoadedState) {
+                    return MaterialApp.router(
+                      debugShowCheckedModeBanner: false,
+                      localizationsDelegates: [
+                        S.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        GlobalMaterialLocalizations.delegate,
+                        GlobalCupertinoLocalizations.delegate,
+                      ],
+                      supportedLocales: S.delegate.supportedLocales,
+                      locale: Locale(state.locale),
+                      routerConfig: router,
+                      theme: state.theme,
+                    );
+                  }
+                  return Center(child: CircularProgressIndicator());
                 },
               );
             },

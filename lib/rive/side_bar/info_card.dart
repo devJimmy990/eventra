@@ -6,6 +6,7 @@ import 'package:eventra/features/landing/cubit/user_state.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard({
@@ -18,22 +19,30 @@ class InfoCard extends StatelessWidget {
       builder: (context, state) {
         if (state is UserLoaded) {
           final User user = state.user;
-          return ListTile(
-            leading: CircleAvatar(
-              radius: 30,
-              backgroundImage:
-                  user.avatar != null ? NetworkImage(user.avatar!) : null,
-              child: user.avatar == null ? Text(user.name.abbreviate()) : null,
-            ),
-            title: Text(
-              user.name,
-              style: TextStyle(color: ColorManager.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+          return Padding(
+            padding: EdgeInsetsDirectional.only(start: 8.w),
+            child: ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage:
+                    user.avatar != null ? NetworkImage(user.avatar!) : null,
+                child:
+                    user.avatar == null ? Text(user.name.abbreviate()) : null,
               ),
-            ),
-            subtitle: Text(
-              user.email,style: TextStyle(color: ColorManager.white,fontStyle:FontStyle.italic ),
+              title: Text(
+                user.name,
+                style: TextStyle(
+                  color: ColorManager.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Text(
+                user.email,
+                style: TextStyle(
+                    color: ColorManager.white, fontStyle: FontStyle.italic),
+              ),
             ),
           );
         }
