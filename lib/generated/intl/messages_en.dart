@@ -46,7 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "admin_event_details_dialog_personal_info":
             MessageLookupByLibrary.simpleMessage("Personal Information"),
         "admin_event_details_dialog_phone":
-            MessageLookupByLibrary.simpleMessage("Phone Number"),
+            MessageLookupByLibrary.simpleMessage("Phone"),
         "admin_event_details_see_all":
             MessageLookupByLibrary.simpleMessage("See All"),
         "admin_event_held_in_embassy": MessageLookupByLibrary.simpleMessage(
@@ -136,11 +136,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("User updated successfully"),
         "profile_info":
             MessageLookupByLibrary.simpleMessage("Personal Information"),
-        "profile_info_email": MessageLookupByLibrary.simpleMessage("Email:"),
+        "profile_info_email": MessageLookupByLibrary.simpleMessage("E-Mail"),
         "profile_info_interests":
             MessageLookupByLibrary.simpleMessage("Interests"),
-        "profile_info_name": MessageLookupByLibrary.simpleMessage("Name:"),
-        "profile_info_phone": MessageLookupByLibrary.simpleMessage("Phone:"),
+        "profile_info_name": MessageLookupByLibrary.simpleMessage("Name"),
+        "profile_info_phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "profile_info_phone_empty":
             MessageLookupByLibrary.simpleMessage("Empty Phone Number"),
         "profile_info_select_interests":
@@ -311,8 +311,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No upcoming events"),
         "user_profile": MessageLookupByLibrary.simpleMessage("User Profile"),
         "user_side_bookmark": MessageLookupByLibrary.simpleMessage("Bookmark"),
+        "user_side_browse": MessageLookupByLibrary.simpleMessage("Browse"),
         "user_side_calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
         "user_side_contact": MessageLookupByLibrary.simpleMessage("Contact us"),
+        "user_side_helper": MessageLookupByLibrary.simpleMessage("Helper"),
         "user_side_home": MessageLookupByLibrary.simpleMessage("Home"),
         "user_side_profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "validator_empty": MessageLookupByLibrary.simpleMessage("required"),

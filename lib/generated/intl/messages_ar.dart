@@ -139,11 +139,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "profile_info":
             MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
         "profile_info_email":
-            MessageLookupByLibrary.simpleMessage("البريد الإلكتروني:"),
+            MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "profile_info_interests":
             MessageLookupByLibrary.simpleMessage("الاهتمامات"),
-        "profile_info_name": MessageLookupByLibrary.simpleMessage("الاسم:"),
-        "profile_info_phone": MessageLookupByLibrary.simpleMessage("الهاتف:"),
+        "profile_info_name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "profile_info_phone": MessageLookupByLibrary.simpleMessage("الهاتف"),
         "profile_info_phone_empty":
             MessageLookupByLibrary.simpleMessage("رقم الهاتف فارغ"),
         "profile_info_select_interests":
@@ -307,8 +307,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا توجد فعاليات قادمة"),
         "user_profile": MessageLookupByLibrary.simpleMessage("الحساب الشخصى"),
         "user_side_bookmark": MessageLookupByLibrary.simpleMessage("المفضلة"),
+        "user_side_browse": MessageLookupByLibrary.simpleMessage("التصفح"),
         "user_side_calendar": MessageLookupByLibrary.simpleMessage("التقويم"),
         "user_side_contact": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+        "user_side_helper": MessageLookupByLibrary.simpleMessage("المساعدة"),
         "user_side_home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "user_side_profile":
             MessageLookupByLibrary.simpleMessage("الملف الشخصي"),

@@ -460,20 +460,20 @@ class S {
     );
   }
 
-  /// `Name:`
+  /// `Name`
   String get profile_info_name {
     return Intl.message(
-      'Name:',
+      'Name',
       name: 'profile_info_name',
       desc: '',
       args: [],
     );
   }
 
-  /// `Email:`
+  /// `E-Mail`
   String get profile_info_email {
     return Intl.message(
-      'Email:',
+      'E-Mail',
       name: 'profile_info_email',
       desc: '',
       args: [],
@@ -500,10 +500,10 @@ class S {
     );
   }
 
-  /// `Phone:`
+  /// `Phone`
   String get profile_info_phone {
     return Intl.message(
-      'Phone:',
+      'Phone',
       name: 'profile_info_phone',
       desc: '',
       args: [],
