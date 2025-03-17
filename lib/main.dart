@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       designSize: const Size(375, 812),
       builder: (context, child) {
-        return MultiBlocProvider(
+        return MultiBlocProvider(//test
           providers: [
             BlocProvider<UserCubit>(create: (context) => UserCubit()),
             BlocProvider<SettingsCubit>(create: (context) => SettingsCubit()),
