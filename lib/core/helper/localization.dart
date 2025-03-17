@@ -150,6 +150,8 @@ class Localization {
   static get userBookmarkEmpty => S.current.user_bookmark_empty;
   static get userBookmarkAppBar => S.current.user_bookmark_app_bar;
 
+  static get userSideBrowse => S.current.user_side_browse;
+  static get userSideHelper => S.current.user_side_helper;
   static get userSideHome => S.current.user_side_home;
   static get userSideCalendar => S.current.user_side_calendar;
   static get userSideBookmark => S.current.user_side_bookmark;

@@ -79,6 +79,8 @@
   "no_event_available": "No events available",
   "event_calendar": "Event Calendar",
   "favoriteEvents": "Bookmark Events",
+  "user_side_browse":"Browse",
+  "user_side_helper":"Helper",
   "user_side_home":"Home",
   "user_side_calendar":"Calendar",
   "user_side_bookmark":"Bookmark",

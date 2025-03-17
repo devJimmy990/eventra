@@ -778,6 +778,26 @@ class S {
     );
   }
 
+  /// `Browse`
+  String get user_side_browse {
+    return Intl.message(
+      'Browse',
+      name: 'user_side_browse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Helper`
+  String get user_side_helper {
+    return Intl.message(
+      'Helper',
+      name: 'user_side_helper',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Home`
   String get user_side_home {
     return Intl.message(
@@ -1772,10 +1792,10 @@ class S {
     );
   }
 
-  /// `Phone Number`
+  /// `Phone`
   String get admin_event_details_dialog_phone {
     return Intl.message(
-      'Phone Number',
+      'Phone',
       name: 'admin_event_details_dialog_phone',
       desc: '',
       args: [],
