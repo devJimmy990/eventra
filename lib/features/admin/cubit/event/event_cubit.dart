@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:eventra/features/admin/data/data_source/admin_event_data_source.dart';
+import 'package:eventra/features/admin/data/model/base_event.dart';
 import 'package:eventra/features/admin/data/repositories/admin_event_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
@@ -38,19 +39,29 @@ class AdminEventCubit extends Cubit<AdminEventState> {
       event =
           await AdminEventRepository(AdminEventDataSource()).addEvent(event);
       _upcomingEvents.add(event);
-      emit(EventLoaded(_upcomingEvents));
+      emit(EventLoaded(_upcomingEvents, msg: "event created successfully"));
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
   }
 
-  Future<void> updateEvent(AdminEvent event) async {
+  Future<void> updateEvent(AdminEvent event,
+      {required EventLocation location,
+      required EventSchedule schedule}) async {
     emit(EventLoading());
     try {
-      await AdminEventRepository(AdminEventDataSource()).updateEvent(event);
-      int index = _upcomingEvents.indexWhere((e) => e == event);
-      _upcomingEvents[index] = event;
-      emit(EventLoaded(_upcomingEvents));
+      bool res = await AdminEventRepository(AdminEventDataSource()).updateEvent(
+          event.id!,
+          data: {"location": location.toJson(), "schedule": schedule.toJson()});
+      if (res) {
+        int index = _upcomingEvents.indexWhere((e) => e.id == event.id);
+        _upcomingEvents[index] = AdminEvent.copyWith(
+          event,
+          location: location,
+          schedule: schedule,
+        );
+        emit(EventLoaded(_upcomingEvents, msg: "event updated successfully"));
+      }
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
@@ -58,11 +69,14 @@ class AdminEventCubit extends Cubit<AdminEventState> {
 
   Future<void> deleteEvent(AdminEvent event) async {
     try {
-      await AdminEventRepository(AdminEventDataSource()).deleteEvent(event);
-      _upcomingEvents.removeWhere((e) => e == event);
-      emit(_upcomingEvents.isEmpty
-          ? EventEmpty()
-          : EventLoaded(_upcomingEvents));
+      bool res = await AdminEventRepository(AdminEventDataSource())
+          .deleteEvent(event.id!);
+      if (res) {
+        _upcomingEvents.removeWhere((e) => e == event);
+        emit(_upcomingEvents.isEmpty
+            ? EventEmpty()
+            : EventLoaded(_upcomingEvents, msg: "event deleted successfully"));
+      }
     } catch (e) {
       emit(EventError(message: e.toString()));
     }

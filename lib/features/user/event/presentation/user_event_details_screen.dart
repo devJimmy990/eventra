@@ -20,7 +20,6 @@ class UserEventDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return BlocProvider(
       create: (context) => UserEventRequestCubit(event.id!),
       child: Scaffold(
@@ -66,7 +65,6 @@ class UserEventDetailsScreen extends StatelessWidget {
               child: Container(
                 margin: const EdgeInsets.only(top: 16),
                 decoration: const BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),

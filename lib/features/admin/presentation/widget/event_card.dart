@@ -1,4 +1,5 @@
 import 'package:eventra/core/constants/color_manager.dart';
+import 'package:eventra/features/admin/presentation/screens/event_data_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +11,6 @@ import 'package:eventra/features/admin/extension/event.dart';
 import 'package:eventra/features/admin/data/model/admin_event.dart';
 import 'package:eventra/features/admin/cubit/event/event_cubit.dart';
 import 'package:eventra/features/admin/cubit/event/event_state.dart';
-import 'package:eventra/features/admin/presentation/view/event_data/event_bottom_sheet.dart';
 
 class EventCard extends StatelessWidget {
   final AdminEvent event;
@@ -94,15 +94,12 @@ class _BuildEventCard extends StatelessWidget {
           child: InkWell(
             borderRadius: BorderRadius.circular(12),
             onLongPress: isEditable
-                ? () => showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (bottomCtx) => EventBottomSheet(
-                          event: event,
-                          onSave: (updatedEvent) => context
-                              .read<AdminEventCubit>()
-                              .updateEvent(updatedEvent),
-                        ))
+                ? () => Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (_) => EventDataScreen(event: event),
+                      ),
+                    )
                 : null,
             onTap: () =>
                 context.pushNamed(AdminRoutes.eventDetails, extra: event),
@@ -163,17 +160,22 @@ class _BuildEventCard extends StatelessWidget {
                       // Event schedule
                       Text(
                         event.schedule.date.encodeDate(),
-                        style: TextStyle(fontSize: 14.sp,color: ColorManager.primary,fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 14.sp,
+                            color: ColorManager.primary,
+                            fontWeight: FontWeight.bold),
                       ),
                       Text(
                         event.encodeLongDateTime(),
-                        style: TextStyle(fontSize: 14.sp,color: ColorManager.primary),
+                        style: TextStyle(
+                            fontSize: 14.sp, color: ColorManager.primary),
                       ),
                       SizedBox(height: 5.h),
                       // Event location
                       Text(
                         event.location.address,
-                        style: TextStyle(fontSize: 14.sp,color: ColorManager.primary ),
+                        style: TextStyle(
+                            fontSize: 14.sp, color: ColorManager.primary),
                       ),
                       // You can add extra details here, such as location or event date
                     ],

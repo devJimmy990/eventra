@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EventImagePicker extends StatefulWidget {
-  final File? initialImage;
+  final String? initialImage;
   final Function(File?) onImagePicked;
 
   const EventImagePicker({
@@ -22,13 +22,12 @@ class _EventImagePickerState extends State<EventImagePicker> {
 
   @override
   void initState() {
-    _pickedImage = widget.initialImage;
     super.initState();
   }
 
   Future<void> _pickImage() async {
     final pickedFile =
-    await _imagePicker.pickImage(source: ImageSource.gallery);
+        await _imagePicker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _pickedImage = File(pickedFile.path);
@@ -39,25 +38,32 @@ class _EventImagePickerState extends State<EventImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _pickImage,
-      child: _pickedImage != null
-          ? Image.file(
-        _pickedImage!,
-        height: 200,
-        width: double.infinity,
-        fit: BoxFit.cover,
-      )
-          : Container(
-        height: 200,
-        width: double.infinity,
-        color: Colors.grey[300],
-        child: Icon(
-          Icons.add_a_photo,
-          size: 50,
-          color: Colors.grey[700],
-        ),
-      ),
-    );
+    return widget.initialImage != null
+        ? Image.network(
+            widget.initialImage!,
+            height: 200,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          )
+        : GestureDetector(
+            onTap: _pickImage,
+            child: _pickedImage != null
+                ? Image.file(
+                    _pickedImage!,
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  )
+                : Container(
+                    height: 200,
+                    width: double.infinity,
+                    color: Colors.grey[300],
+                    child: Icon(
+                      Icons.add_a_photo,
+                      size: 50,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+          );
   }
 }

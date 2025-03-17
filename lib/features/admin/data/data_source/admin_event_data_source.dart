@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:eventra/core/firebase/firebase.dart';
 import 'package:eventra/features/admin/data/model/admin_event.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/services.dart';
+import 'package:googleapis_auth/auth_io.dart';
 
 class AdminEventDataSource {
   // firebase contain firestore used here  *singleton*
@@ -32,6 +35,7 @@ class AdminEventDataSource {
       Map<String, dynamic> eventData = event.toJson();
       eventData['id'] = docRef.id;
       await docRef.set(eventData);
+      await sendFirebaseMessage();
       return eventData;
     } catch (e) {
       rethrow;
@@ -66,21 +70,59 @@ class AdminEventDataSource {
   }
 
 // update event on firestore
-  Future<void> updateEvent(AdminEvent event) async {
+  Future<bool> updateEvent(String id,
+      {required Map<String, dynamic> data}) async {
     try {
-      await firebase.store
-          .collection('events')
-          .doc(event.id)
-          .update(event.toJson());
+      await firebase.store.collection('events').doc(id).update(data);
+      return true;
     } catch (e) {
       rethrow;
     }
   }
 
 // delete event from firestore
-  Future<void> deleteEvent(AdminEvent event) async {
+  Future<bool> deleteEvent(String id) async {
     try {
-      await firebase.store.collection('events').doc(event.id).delete();
+      await firebase.store.collection('events').doc(id).delete();
+      return true;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> sendFirebaseMessage() async {
+    try {
+      final serviceAccountJson =
+          await rootBundle.loadString('assets/files/eventra-firebase.json');
+
+      final serviceAccountCredentials =
+          ServiceAccountCredentials.fromJson(serviceAccountJson);
+
+      const scopes = ['https://www.googleapis.com/auth/firebase.messaging'];
+
+      var client =
+          await clientViaServiceAccount(serviceAccountCredentials, scopes);
+
+      final projectId = 'eventra-1eb59';
+      final url =
+          'https://fcm.googleapis.com/v1/projects/$projectId/messages:send';
+
+      final messagePayload = {
+        "message": {
+          "topic": "new_event",
+          "notification": {"title": "Eventra", "body": "New Upcoming Event"},
+        }
+      };
+
+      await client.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(messagePayload),
+      );
+
+      client.close();
     } catch (e) {
       rethrow;
     }

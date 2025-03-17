@@ -14,7 +14,8 @@ class EventAdded extends AdminEventState {}
 
 class EventLoaded extends AdminEventState {
   final List<AdminEvent> events;
-  EventLoaded(this.events);
+  final String? msg;
+  EventLoaded(this.events, {this.msg});
 }
 
 class EventError extends AdminEventState {

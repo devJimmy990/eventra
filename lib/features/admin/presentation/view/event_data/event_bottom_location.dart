@@ -20,13 +20,13 @@ class _EventBottomLocationState extends State<EventBottomLocation> {
   late bool isInEmbassy;
   @override
   void initState() {
-    isInEmbassy = true;
+    isInEmbassy = widget.nameController.text.isEmpty ||
+        widget.nameController.text.contains("U.S. Embassy Cairo");
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Card(
       elevation: 12,
       shadowColor: Colors.grey,

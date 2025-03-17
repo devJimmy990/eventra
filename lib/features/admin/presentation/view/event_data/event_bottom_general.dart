@@ -20,7 +20,6 @@ class EventBottomGeneral extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Card(
       elevation: 12,
       shadowColor: Colors.grey,
@@ -29,8 +28,9 @@ class EventBottomGeneral extends StatelessWidget {
         child: Column(
           children: [
             TextInputField(
-              label: Localization.adminEventInputTitle,
               controller: titleController,
+              enabled: titleController.text.isEmpty,
+              label: Localization.adminEventInputTitle,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return Localization.validatorEmpty;
@@ -47,13 +47,17 @@ class EventBottomGeneral extends StatelessWidget {
                   flex: 2,
                   child: DropdownButtonFormField<EventCategory>(
                     value: categoryController.value,
+                    borderRadius: BorderRadius.circular(8),
                     items: EventCategory.values
                         .map((
                           category,
                         ) =>
                             DropdownMenuItem(
                               value: category,
-                              child: Text(category.name, style: TextStyle(fontSize: 21.sp ),),
+                              child: Text(
+                                category.name,
+                                style: TextStyle(fontSize: 21.sp),
+                              ),
                             ))
                         .toList(),
                     onChanged: (value) => categoryController.value = value,
@@ -64,6 +68,7 @@ class EventBottomGeneral extends StatelessWidget {
                   flex: 1,
                   child: TextInputField(
                     phone: true,
+                    enabled: priceController.text.isEmpty,
                     label: Localization.adminEventInputPrice,
                     controller: priceController,
                   ),
@@ -73,6 +78,7 @@ class EventBottomGeneral extends StatelessWidget {
             SizedBox(height: 10.h),
             TextInputField(
               maxLines: 3,
+              enabled: descriptionController.text.isEmpty,
               label: Localization.adminEventInputDescription,
               controller: descriptionController,
             ),

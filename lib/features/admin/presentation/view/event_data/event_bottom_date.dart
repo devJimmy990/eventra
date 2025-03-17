@@ -72,10 +72,11 @@ class _EventBottomDateState extends State<EventBottomDate> {
           children: [
             InkWell(
               onTap: () async => await showDateDialog(),
-              child: TextInputField(
-                enabled: false,
-                label:Localization.selectDate,
-                controller: dateController,
+              child: IgnorePointer(
+                child: TextInputField(
+                  label:Localization.selectDate,
+                  controller: dateController,
+                ),
               ),
             ),
             Row(
@@ -84,20 +85,22 @@ class _EventBottomDateState extends State<EventBottomDate> {
                 Expanded(
                   child: InkWell(
                     onTap: () async => await showDateDialog(),
-                    child: TextInputField(
-                      enabled: false,
-                      label: Localization.from,
-                      controller: startController,
+                    child: IgnorePointer(
+                      child: TextInputField(
+                        label: Localization.from,
+                        controller: startController,
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
                   child: InkWell(
                     onTap: () async => await showDateDialog(),
-                    child: TextInputField(
-                      enabled: false,
-                      label: Localization.to,
-                      controller: endController,
+                    child: IgnorePointer(
+                      child: TextInputField(
+                        label: Localization.to,
+                        controller: endController,
+                      ),
                     ),
                   ),
                 ),

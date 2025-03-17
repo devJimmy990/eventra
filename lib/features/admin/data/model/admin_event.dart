@@ -16,7 +16,20 @@ class AdminEvent extends BaseEvent {
     required super.category,
     this.attendees = const [],
   });
-
+  factory AdminEvent.copyWith(AdminEvent event,
+      {required EventSchedule schedule, required EventLocation location}) {
+    return AdminEvent(
+      id: event.id,
+      desc: event.desc,
+      title: event.title,
+      cover: event.cover,
+      price: event.price,
+      admin: event.admin,
+      category: event.category,
+      schedule: schedule ,
+      location: location ,
+    );
+  }
   factory AdminEvent.fromJson(Map<String, dynamic> json) {
     return AdminEvent(
       id: json['id'],

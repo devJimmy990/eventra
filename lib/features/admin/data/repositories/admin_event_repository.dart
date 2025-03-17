@@ -27,17 +27,18 @@ class AdminEventRepository {
     }
   }
 
-  Future<void> updateEvent(AdminEvent event) async {
+  Future<bool> updateEvent(String id,
+      {required Map<String, dynamic> data}) async {
     try {
-      await _dataSource.updateEvent(event);
+      return await _dataSource.updateEvent(id, data: data);
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<void> deleteEvent(AdminEvent event) async {
+  Future<bool> deleteEvent(String id) async {
     try {
-      await _dataSource.deleteEvent(event);
+      return await _dataSource.deleteEvent(id);
     } catch (e) {
       rethrow;
     }
