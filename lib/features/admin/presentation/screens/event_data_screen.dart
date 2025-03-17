@@ -198,14 +198,28 @@ class _EventDataScreenState extends State<EventDataScreen> {
                               .read<AdminEventCubit>()
                               .uploadImage(_pickImage!);
                         } else {
+                          print("debug-event: ${widget.event}");
                           context.read<AdminEventCubit>().updateEvent(
-                                widget.event!,
-                                location: EventLocation(
-                                  name: _locationNameController.text,
-                                  address: _locationAddressController.text,
-                                  url: _locationUrlController.text,
+                                AdminEvent(
+                                  id: widget.event!.id,
+                                  cover: widget.event!.cover,
+                                  
+                                  title: _titleController.text,
+                                  admin: widget.event!.admin,
+                                  desc: _descriptionController.text,
+                                  schedule: _dateController.value,
+                                  category: _categoryController.value!,
+                                  price:
+                                      int.tryParse(_priceController.text) ?? 0,
+                                  location: _locationNameController.text.isEmpty
+                                      ? null
+                                      : EventLocation(
+                                          name: _locationNameController.text,
+                                          address:
+                                              _locationAddressController.text,
+                                          url: _locationUrlController.text,
+                                        ),
                                 ),
-                                schedule: _dateController.value,
                               );
                         }
                       }

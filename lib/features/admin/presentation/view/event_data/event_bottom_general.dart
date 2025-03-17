@@ -29,7 +29,6 @@ class EventBottomGeneral extends StatelessWidget {
           children: [
             TextInputField(
               controller: titleController,
-              enabled: titleController.text.isEmpty,
               label: Localization.adminEventInputTitle,
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -61,14 +60,19 @@ class EventBottomGeneral extends StatelessWidget {
                             ))
                         .toList(),
                     onChanged: (value) => categoryController.value = value,
-                    decoration: const InputDecoration(labelText: 'category'),
+                    decoration: InputDecoration(
+                        labelText: Localization.profileInfoInterests,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                        )),
                   ),
                 ),
                 Expanded(
                   flex: 1,
                   child: TextInputField(
                     phone: true,
-                    enabled: priceController.text.isEmpty,
                     label: Localization.adminEventInputPrice,
                     controller: priceController,
                   ),
@@ -78,7 +82,6 @@ class EventBottomGeneral extends StatelessWidget {
             SizedBox(height: 10.h),
             TextInputField(
               maxLines: 3,
-              enabled: descriptionController.text.isEmpty,
               label: Localization.adminEventInputDescription,
               controller: descriptionController,
             ),

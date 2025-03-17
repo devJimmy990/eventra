@@ -45,21 +45,14 @@ class AdminEventCubit extends Cubit<AdminEventState> {
     }
   }
 
-  Future<void> updateEvent(AdminEvent event,
-      {required EventLocation location,
-      required EventSchedule schedule}) async {
+  Future<void> updateEvent(AdminEvent event) async {
     emit(EventLoading());
     try {
-      bool res = await AdminEventRepository(AdminEventDataSource()).updateEvent(
-          event.id!,
-          data: {"location": location.toJson(), "schedule": schedule.toJson()});
+      bool res = await AdminEventRepository(AdminEventDataSource())
+          .updateEvent(event.id!, data: event.toJson());
       if (res) {
         int index = _upcomingEvents.indexWhere((e) => e.id == event.id);
-        _upcomingEvents[index] = AdminEvent.copyWith(
-          event,
-          location: location,
-          schedule: schedule,
-        );
+        _upcomingEvents[index] = event;
         emit(EventLoaded(_upcomingEvents, msg: "event updated successfully"));
       }
     } catch (e) {
