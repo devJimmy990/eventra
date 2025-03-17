@@ -103,7 +103,6 @@ class _ContactUsMailFormBottomSheetState
                     ),
                     TextInputField(
                       maxLines: 4,
-                      phone: true,
                       label: Localization.userContactFormMessage,
                       controller: messageController,
                       hint: Localization.userContactFormMessageHint,

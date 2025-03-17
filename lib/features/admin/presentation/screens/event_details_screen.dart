@@ -31,7 +31,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
             Fluttertoast.showToast(
               textColor: Colors.white,
               gravity: ToastGravity.BOTTOM,
-              backgroundColor: Colors.red,
+              backgroundColor: Colors.green,
               toastLength: Toast.LENGTH_LONG,
               msg: Localization.adminRequestApprovedMsg,
             );
@@ -117,7 +117,7 @@ class AdminEventDetailsScreen extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   )),
                                   content: SizedBox(
-                                    height: 250.h,
+                                    height: 270.h,
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
