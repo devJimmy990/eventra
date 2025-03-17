@@ -1,18 +1,19 @@
 import 'package:eventra/rive/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+
 class SideMenu extends StatelessWidget {
   const SideMenu(
       {super.key,
       required this.menu,
       required this.press,
       required this.riveOnInit,
-      required this.selectedMenu});
+      this.isActive = false});
 
   final Menu menu;
   final VoidCallback press;
   final ValueChanged<Artboard> riveOnInit;
-  final Menu selectedMenu;
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class SideMenu extends StatelessWidget {
             AnimatedPositioned(
               duration: const Duration(milliseconds: 300),
               curve: Curves.fastOutSlowIn,
-              width: selectedMenu == menu ? 288 : 0,
+              width: isActive ? 288 : 0,
               height: 56,
               left: 0,
               child: Container(
