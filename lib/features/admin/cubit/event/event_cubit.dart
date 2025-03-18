@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:eventra/features/notification/data/data_source/notification_data_source.dart';
+import 'package:eventra/features/notification/data/model/notification.dart';
+import 'package:eventra/features/notification/data/repositories/notification_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/admin/data/model/admin_event.dart';
@@ -8,6 +11,8 @@ import 'package:eventra/features/admin/data/data_source/admin_event_data_source.
 import 'package:eventra/features/admin/data/repositories/admin_event_repository.dart';
 
 enum EventFilter { upcoming, past }
+
+enum EventAction { add, update, delete }
 
 class AdminEventCubit extends Cubit<AdminEventState> {
   AdminEventCubit() : super(EventInitial()) {
@@ -35,10 +40,22 @@ class AdminEventCubit extends Cubit<AdminEventState> {
   Future<void> addEvent(AdminEvent event) async {
     emit(EventLoading());
     try {
-      event =
+      event = //add new Event
           await AdminEventRepository(AdminEventDataSource()).addEvent(event);
       _upcomingEvents.add(event);
-      emit(EventLoaded(_upcomingEvents, msg: "event created successfully"));
+
+      /** send event notification to all users */
+      NotificationRepository(NotificationDataSource()).sendTopicNotification(
+        "new_event",
+        notification: Notification(
+          title: event.title,
+          body: "New Upcoming Event",
+        ),
+      );
+      emit(EventLoaded(
+        _upcomingEvents,
+        action: EventAction.add,
+      ));
     } catch (e) {
       emit(EventError(message: e.toString()));
     }
@@ -52,7 +69,10 @@ class AdminEventCubit extends Cubit<AdminEventState> {
       if (res) {
         int index = _upcomingEvents.indexWhere((e) => e.id == event.id);
         _upcomingEvents[index] = event;
-        emit(EventLoaded(_upcomingEvents, msg: "event updated successfully"));
+        emit(EventLoaded(
+          _upcomingEvents,
+          action: EventAction.update,
+        ));
       }
     } catch (e) {
       emit(EventError(message: e.toString()));
@@ -67,7 +87,10 @@ class AdminEventCubit extends Cubit<AdminEventState> {
         _upcomingEvents.removeWhere((e) => e == event);
         emit(_upcomingEvents.isEmpty
             ? EventEmpty()
-            : EventLoaded(_upcomingEvents, msg: "event deleted successfully"));
+            : EventLoaded(
+                _upcomingEvents,
+                action: EventAction.delete,
+              ));
       }
     } catch (e) {
       emit(EventError(message: e.toString()));

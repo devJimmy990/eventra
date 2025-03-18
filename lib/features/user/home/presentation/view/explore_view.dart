@@ -1,5 +1,5 @@
-import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/constants/strings_manager.dart';
+import 'package:eventra/core/helper/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +8,6 @@ import 'package:eventra/features/user/home/cubit/event_state.dart';
 import 'package:eventra/features/user/home/presentation/widgets/event_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../../core/helper/localization.dart';
 
 class EventExploreView extends StatefulWidget {
   const EventExploreView({super.key});

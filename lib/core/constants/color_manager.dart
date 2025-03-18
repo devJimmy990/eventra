@@ -41,7 +41,7 @@ class ColorManager {
 
   // Background Container colors
   static const Color lightContainer = Color(0xFFF6F6F6); // Light mode container color
-  static Color darkContainer = ColorManager.white.withOpacity(0.1); // Dark mode container with transparency
+  static Color darkContainer = Color.fromRGBO(255, 255, 255, .1); // Dark mode container with transparency
 
   // Button colors
   static const Color buttonPrimaryLight = Color(0xFF4b68ff); // Light theme primary button color

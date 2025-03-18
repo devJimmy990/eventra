@@ -133,23 +133,29 @@ class _EventDataScreenState extends State<EventDataScreen> {
                           ),
                   ),
                 );
-            Fluttertoast.showToast(
-              textColor: Colors.white,
-              gravity: ToastGravity.BOTTOM,
-              backgroundColor: Colors.blue,
-              toastLength: Toast.LENGTH_LONG,
-              msg: Localization.adminEventCreate,
-            );
           } else if (state is EventLoaded) {
-            if (state.msg != null) {
-              Fluttertoast.showToast(
-                textColor: Colors.white,
-                gravity: ToastGravity.BOTTOM,
-                backgroundColor: Colors.green,
-                toastLength: Toast.LENGTH_LONG,
-                msg: state.msg!,
-              );
+            switch (state.action) {
+              case EventAction.add:
+                Fluttertoast.showToast(
+                  textColor: Colors.white,
+                  gravity: ToastGravity.BOTTOM,
+                  backgroundColor: Colors.green,
+                  toastLength: Toast.LENGTH_LONG,
+                  msg: Localization.adminEventCreate,
+                );
+                break;
+              case EventAction.update:
+                Fluttertoast.showToast(
+                  textColor: Colors.white,
+                  gravity: ToastGravity.BOTTOM,
+                  backgroundColor: Colors.green,
+                  toastLength: Toast.LENGTH_LONG,
+                  msg:Localization.adminEventUpdate,
+                );
+                break;
+              default:
             }
+            if (state.action != null) {}
             Navigator.pop(context);
           } else if (state is EventError) {
             Fluttertoast.showToast(
@@ -198,12 +204,10 @@ class _EventDataScreenState extends State<EventDataScreen> {
                               .read<AdminEventCubit>()
                               .uploadImage(_pickImage!);
                         } else {
-                          print("debug-event: ${widget.event}");
                           context.read<AdminEventCubit>().updateEvent(
                                 AdminEvent(
                                   id: widget.event!.id,
                                   cover: widget.event!.cover,
-                                  
                                   title: _titleController.text,
                                   admin: widget.event!.admin,
                                   desc: _descriptionController.text,

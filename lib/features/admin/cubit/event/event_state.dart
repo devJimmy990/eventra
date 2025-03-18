@@ -1,21 +1,18 @@
+import 'package:eventra/features/admin/cubit/event/event_cubit.dart';
 import 'package:eventra/features/admin/data/model/admin_event.dart';
 
 sealed class AdminEventState {}
 
-class EventInitial extends AdminEventState {
-  EventInitial();
-}
+class EventInitial extends AdminEventState {}
 
-class EventLoading extends AdminEventState {
-  EventLoading();
-}
+class EventLoading extends AdminEventState {}
 
-class EventAdded extends AdminEventState {}
+class EventEmpty extends AdminEventState {}
 
 class EventLoaded extends AdminEventState {
+  final EventAction? action;
   final List<AdminEvent> events;
-  final String? msg;
-  EventLoaded(this.events, {this.msg});
+  EventLoaded(this.events, {this.action});
 }
 
 class EventError extends AdminEventState {
@@ -23,16 +20,9 @@ class EventError extends AdminEventState {
   EventError({required this.message});
 }
 
-class EventEmpty extends AdminEventState {}
-
 class ImageUploading extends AdminEventState {}
 
 class ImageUploaded extends AdminEventState {
   final String url;
   ImageUploaded(this.url);
-}
-
-class EventDeleted extends AdminEventState {
-  final List<AdminEvent> events;
-  EventDeleted(this.events);
 }

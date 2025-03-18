@@ -1,4 +1,3 @@
-import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/core/routes/routes.dart';
 
 import 'rive_model.dart';

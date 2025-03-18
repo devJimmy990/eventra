@@ -30,7 +30,13 @@ class LandingScreen extends StatelessWidget {
               context.goNamed(Routes.auth);
             } else if (state is UserLoaded) {
               if (state.user.role == "user") {
-                context.read<NotificationCubit>().subscribeToTopic();
+                context
+                    .read<NotificationCubit>()
+                    .subscribeToUserTopics(state.user.id!);
+              } else {
+                context
+                    .read<NotificationCubit>()
+                    .subscribeToAdminTopics(state.user.id!);
               }
             }
           },

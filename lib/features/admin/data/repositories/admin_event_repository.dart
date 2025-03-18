@@ -10,7 +10,7 @@ class AdminEventRepository {
 
   Future<AdminEvent> addEvent(AdminEvent event) async {
     try {
-      return AdminEvent.fromJson(await _dataSource.addEvent(event));
+      return AdminEvent.fromJson(await _dataSource.addEvent(event.toJson()));
     } catch (e) {
       rethrow;
     }

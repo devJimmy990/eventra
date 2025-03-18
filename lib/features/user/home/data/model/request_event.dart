@@ -50,4 +50,15 @@ class RequestEvent {
   String toString() {
     return 'RequestEvent{id: $id, userId: $user, eventId: $eventId}';
   }
+
+  RequestEvent copyWith({required RequestStatus status}) {
+    return RequestEvent(
+      id: id,
+      user: user,
+      admin: admin,
+      eventId: eventId,
+      eventName: eventName,
+      status: status,
+    );
+  }
 }

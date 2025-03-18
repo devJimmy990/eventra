@@ -1,3 +1,4 @@
+import 'package:eventra/core/helper/connection.dart';
 import 'package:eventra/features/admin/cubit/requests/request_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,8 +30,24 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.detached) Connection.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +58,13 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider<UserCubit>(create: (context) => UserCubit()),
-            BlocProvider<SettingsCubit>(create: (context) => SettingsCubit()),
             BlocProvider(create: (context) => BookmarkCubit()),
             BlocProvider(create: (context) => UserEventCubit()),
             BlocProvider(create: (context) => AdminEventCubit()),
-            BlocProvider(create: (context) => AdminEventRequestCubit()),
             BlocProvider(create: (context) => NotificationCubit()),
+            BlocProvider<UserCubit>(create: (context) => UserCubit()),
+            BlocProvider(create: (context) => AdminEventRequestCubit()),
+            BlocProvider<SettingsCubit>(create: (context) => SettingsCubit()),
             BlocProvider<AuthenticationCubit>(
                 create: (context) => AuthenticationCubit()),
           ],

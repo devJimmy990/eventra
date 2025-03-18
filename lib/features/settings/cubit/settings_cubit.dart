@@ -32,7 +32,6 @@ class SettingsCubit extends Cubit<SettingsState> {
       key: "locale",
       value: _locale,
     );
-    print("toggleLanguage: $_locale, $_theme");
     emit(SettingsLoadedState(theme: _theme, locale: _locale));
   }
 

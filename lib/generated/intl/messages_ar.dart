@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "admin_event_add_msg":
             MessageLookupByLibrary.simpleMessage("يرجى إضافة حدث"),
         "admin_event_create":
-            MessageLookupByLibrary.simpleMessage("إنشاء الحدث"),
+            MessageLookupByLibrary.simpleMessage("تم إنشاء الحدث بنجاح"),
         "admin_event_deleted_msg":
             MessageLookupByLibrary.simpleMessage("تم حذف الحدث بنجاح"),
         "admin_event_details_about":
@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("السعر"),
         "admin_event_input_title":
             MessageLookupByLibrary.simpleMessage("العنوان"),
+        "admin_event_update":
+            MessageLookupByLibrary.simpleMessage("تم تحديث الحدث بنجاح"),
         "admin_explore_tab_previous":
             MessageLookupByLibrary.simpleMessage("السابقة"),
         "admin_explore_tab_up_coming":

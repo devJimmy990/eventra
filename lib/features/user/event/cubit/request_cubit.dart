@@ -1,3 +1,6 @@
+import 'package:eventra/features/notification/data/data_source/notification_data_source.dart';
+import 'package:eventra/features/notification/data/model/notification.dart';
+import 'package:eventra/features/notification/data/repositories/notification_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
@@ -26,6 +29,19 @@ class UserEventRequestCubit extends Cubit<UserEventRequestState> {
           admin: event.admin.id!,
         ),
       );
+
+      /**
+       * send notification to admin by admin token
+       * call firebase to get admin token based on admin id
+       * use notification repository to send token notification 
+       */
+      NotificationRepository(NotificationDataSource()).sendTokenNotification(
+        await _getFCMToken(event.admin.id!),
+        notification: Notification(
+          title: event.title,
+          body: "new book request",
+        ),
+      );
       emit(EventRequestLoaded(request));
     } catch (e) {
       emit(EventRequestError(e.toString()));
@@ -52,6 +68,15 @@ class UserEventRequestCubit extends Cubit<UserEventRequestState> {
       }
     } catch (e) {
       emit(EventRequestError(e.toString()));
+    }
+  }
+
+  Future<String> _getFCMToken(String id) async {
+    try {
+      return await NotificationRepository(NotificationDataSource())
+          .getFCMToken(id);
+    } catch (e) {
+      rethrow;
     }
   }
 }

@@ -23,19 +23,19 @@ class AdminEventsRequestsRepository {
     }
   }
 
-  Future<bool> onRejectRequest(
-      {required String id, required Map<String, int> data}) async {
+  Future<bool> onRejectRequest(String id,
+      {required Map<String, int> data}) async {
     try {
-      return _dataSource.onRejectRequest(id: id, data: data);
+      return _dataSource.onRejectRequest(id, data: data);
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<bool> onAcceptRequest(
-      {required String id, required Map<String, int> data}) async {
+  Future<bool> onAcceptRequest(String id,
+      {required Map<String, int> data}) async {
     try {
-      return _dataSource.onAcceptRequest(id: id, data: data);
+      return _dataSource.onAcceptRequest(id, data: data);
     } catch (e) {
       rethrow;
     }

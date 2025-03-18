@@ -3,7 +3,6 @@ import 'package:eventra/features/user/home/data/model/request_event.dart';
 
 class AdminEventsRequestsDataSource {
   final Firebase _firebase = Firebase();
-
   Stream<List<Map<String, dynamic>>> getAdminEventsRequests(String uid) {
     try {
       return _firebase.store
@@ -28,15 +27,14 @@ class AdminEventsRequestsDataSource {
             .collection("attendees")
             .doc(request.user.id);
       });
-
       return true;
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<bool> onRejectRequest(
-      {required String id, required Map<String, int> data}) async {
+  Future<bool> onRejectRequest(String id,
+      {required Map<String, int> data}) async {
     try {
       await _firebase.store.collection("requests").doc(id).update(data);
       return true;
@@ -45,11 +43,23 @@ class AdminEventsRequestsDataSource {
     }
   }
 
-  Future<bool> onAcceptRequest(
-      {required String id, required Map<String, int> data}) async {
+  Future<bool> onAcceptRequest(String id,
+      {required Map<String, int> data}) async {
     try {
       await _firebase.store.collection("requests").doc(id).update(data);
       return true;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<bool> getUserTokenById(String id) async {
+    try {
+      return await _firebase.store
+          .collection("fcm")
+          .doc(id)
+          .get()
+          .then((value) => value.data()!["token"]!);
     } catch (e) {
       rethrow;
     }

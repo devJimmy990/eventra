@@ -16,7 +16,7 @@ class UpcomingEvents extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<AdminEventCubit, AdminEventState>(
         listener: (context, state) {
-          if (state is EventDeleted) {
+          if (state is EventLoaded && state.action == EventAction.delete) {
             Fluttertoast.showToast(
               textColor: Colors.white,
               gravity: ToastGravity.BOTTOM,

@@ -4,6 +4,9 @@ import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/admin/cubit/requests/request_state.dart';
 import 'package:eventra/features/admin/data/data_source/admin_events_requests_data_source.dart';
 import 'package:eventra/features/admin/data/repositories/admin_events_requests_repository.dart';
+import 'package:eventra/features/notification/data/data_source/notification_data_source.dart';
+import 'package:eventra/features/notification/data/model/notification.dart';
+import 'package:eventra/features/notification/data/repositories/notification_repository.dart';
 import 'package:eventra/features/user/home/data/model/request_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,10 +14,7 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
   AdminEventRequestCubit() : super(EventRequestInitial()) {
     getRequests();
   }
-  final List<RequestEvent> _waitingRequests = [];
-  final List<RequestEvent> _pendingRequests = [];
-  final List<RequestEvent> _approvedRequests = [];
-  final List<RequestEvent> _rejectedRequests = [];
+  List<RequestEvent> _requests = [];
   late StreamSubscription<List<RequestEvent>> _eventsSubscription;
 
   void getRequests() {
@@ -25,13 +25,9 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
           AdminEventsRequestsRepository(AdminEventsRequestsDataSource())
               .getAdminEventsRequests(uid)
               .listen((requests) {
-        _handleRequestsDate(requests);
-        emit(_waitingRequests.isEmpty
-            ? EventRequestEmpty()
-            : EventRequestsLoaded(_waitingRequests));
-      }, onError: (error) {
-        emit(EventRequestError(error));
-      });
+        _requests = requests;
+        filteredRequests();
+      }, onError: (error) => emit(EventRequestError(error)));
     } catch (e) {
       emit(EventRequestError(e.toString()));
     }
@@ -42,15 +38,25 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
       bool data =
           await AdminEventsRequestsRepository(AdminEventsRequestsDataSource())
               .onAcceptRequest(
-        id: request.id!,
+        request.id!,
         data: {"status": 2},
       );
       if (data) {
-        _waitingRequests.remove(request);
-        _pendingRequests.add(request);
-        emit(_waitingRequests.isEmpty
-            ? EventRequestEmpty()
-            : EventRequestsLoaded(_waitingRequests));
+        _updateRequestStatus(request.id!, RequestStatus.pending);
+        /**
+         * after the request is accepted by admin
+         * user should be notified of the request status
+         */
+        NotificationRepository(NotificationDataSource()).sendTokenNotification(
+          await _getFCMToken(request.user.id!),
+          notification: Notification(
+            body:
+                "your request is accepted, don`t forget to be available at the time",
+            title: request.eventName,
+          ),
+        );
+
+        filteredRequests();
       }
     } catch (e) {
       emit(EventRequestError(e.toString()));
@@ -62,15 +68,24 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
       bool data =
           await AdminEventsRequestsRepository(AdminEventsRequestsDataSource())
               .onRejectRequest(
-        id: request.id!,
+        request.id!,
         data: {"status": 1},
       );
       if (data) {
-        _waitingRequests.remove(request);
-        _rejectedRequests.add(request);
-        emit(_waitingRequests.isEmpty
-            ? EventRequestEmpty()
-            : EventRequestsLoaded(_waitingRequests));
+        _updateRequestStatus(request.id!, RequestStatus.rejected);
+        /**
+         * after the request is rejected by admin
+         * user should be notified of the request status
+         */
+        NotificationRepository(NotificationDataSource()).sendTokenNotification(
+          await _getFCMToken(request.user.id!),
+          notification: Notification(
+            body:
+                "we are very sorry, the attendees list is full.. you will be in waiting list",
+            title: request.eventName,
+          ),
+        );
+        filteredRequests();
       }
     } catch (e) {
       emit(EventRequestError(e.toString()));
@@ -84,8 +99,18 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
               .onRequestApproved(request);
 
       if (data) {
-        _waitingRequests.remove(request);
-        _pendingRequests.add(request);
+        /**
+         * after the request is approved by admin
+         * this mean the attendee in event place and ready to enter
+         * user should be notified of the request status
+         */
+        NotificationRepository(NotificationDataSource()).sendTokenNotification(
+          await _getFCMToken(request.user.id!),
+          notification: Notification(
+            body: "enjoy with our event",
+            title: request.eventName,
+          ),
+        );
         emit(RequestEventApproved());
       }
     } catch (e) {
@@ -93,48 +118,32 @@ class AdminEventRequestCubit extends Cubit<AdminEventRequestState> {
     }
   }
 
-  void filterEvents(RequestStatus filter) {
-    switch (filter) {
-      case RequestStatus.waiting:
-        emit(_waitingRequests.isEmpty
-            ? EventRequestEmpty()
-            : EventRequestsLoaded(_waitingRequests));
-        break;
-      case RequestStatus.pending:
-        emit(_pendingRequests.isEmpty
-            ? EventRequestEmpty()
-            : EventRequestsLoaded(_pendingRequests));
-        break;
-      case RequestStatus.approved:
-        emit(_approvedRequests.isEmpty
-            ? EventRequestEmpty()
-            : EventRequestsLoaded(_approvedRequests));
-        break;
-      case RequestStatus.rejected:
-        emit(_rejectedRequests.isEmpty
-            ? EventRequestEmpty()
-            : EventRequestsLoaded(_rejectedRequests));
-        break;
-    }
-  }
-
-  void _handleRequestsDate(List<RequestEvent> requests) {
-    for (RequestEvent request in requests) {
-      if (request.status == RequestStatus.waiting) {
-        _waitingRequests.add(request);
-      } else if (request.status == RequestStatus.pending) {
-        _pendingRequests.add(request);
-      } else if (request.status == RequestStatus.approved) {
-        _approvedRequests.add(request);
-      } else {
-        _rejectedRequests.add(request);
-      }
-    }
+  void filteredRequests({RequestStatus filter = RequestStatus.waiting}) {
+    emit(_requests.isEmpty
+        ? EventRequestEmpty()
+        : EventRequestsLoaded(
+            _requests.where((req) => req.status == filter).toList()));
   }
 
   @override
   Future<void> close() {
     _eventsSubscription.cancel();
     return super.close();
+  }
+
+  Future<String> _getFCMToken(String id) async {
+    try {
+      return await NotificationRepository(NotificationDataSource())
+          .getFCMToken(id);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  void _updateRequestStatus(String requestId, RequestStatus newStatus) {
+    int index = _requests.indexWhere((req) => req.id == requestId);
+    if (index != -1) {
+      _requests[index] = _requests[index].copyWith(status: newStatus);
+    }
   }
 }

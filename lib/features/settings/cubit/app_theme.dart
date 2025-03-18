@@ -10,7 +10,6 @@ class AppTheme {
     primaryColor: ColorManager.primary,
     // Main primary color
     colorScheme: const ColorScheme.light(
-      background: ColorManager.bgLight,
       primary: ColorManager.textPrimaryLight,
       // Used for main text color in light theme
       secondary: ColorManager.textSecondaryLight,
@@ -81,7 +80,6 @@ class AppTheme {
     primaryColor: ColorManager.primary,
     // Primary color remains the same
     colorScheme: const ColorScheme.dark(
-      background: ColorManager.bgDark,
       primary: ColorManager.textPrimaryDark,
       // Main text color for dark theme
       secondary: ColorManager.textSecondaryDark,

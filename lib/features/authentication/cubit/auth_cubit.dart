@@ -7,6 +7,19 @@ import 'package:eventra/features/authentication/data/repositories/auth_repositor
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit() : super(AuthenticationInitial());
+
+  Future<void> _storeUserToken(String id) async {
+    try {
+      String? token = await AuthenticationRepository(AuthenticationDataSource())
+          .storeUserToken(id);
+      if (token != null) {
+        SharedPreference.setString(key: "fcm-token", value: token);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   void checkAuthentication() {
     String? uid = SharedPreference.getString(key: "uid");
     if (uid != null) {
@@ -28,6 +41,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
       if (remember) SharedPreference.setBool(key: "remember", value: remember);
       SharedPreference.setString(key: "uid", value: uid);
+      _storeUserToken(uid);
       emit(Authenticated(uid));
     } catch (e) {
       emit(AuthenticationError(e.toString()));
@@ -52,13 +66,16 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   void logout() async {
     try {
+      String uid = SharedPreference.getString(key: "uid")!;
       bool isLoggedOut =
-          await AuthenticationRepository(AuthenticationDataSource()).logout();
+          await AuthenticationRepository(AuthenticationDataSource())
+              .logout(uid);
       if (!isLoggedOut) {
         emit(AuthenticationError("Error logging out"));
         return;
       }
       SharedPreference.remove(key: "uid");
+      SharedPreference.remove(key: "fcm-token");
       emit(UnAuthenticated());
     } catch (e) {
       emit(AuthenticationError(e.toString()));
@@ -75,8 +92,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(AuthenticationError("Error creating user"));
         return;
       }
-
       SharedPreference.setString(key: "uid", value: model.id!);
+      _storeUserToken(model.id!);
       emit(UserCreated(model));
     } catch (e) {
       emit(AuthenticationError(e.toString()));

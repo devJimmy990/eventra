@@ -36,9 +36,10 @@ class AuthenticationDataSource {
     }
   }
 
-  Future<bool> logout() async {
+  Future<bool> logout(String uid) async {
     try {
       await firebase.auth.signOut();
+      await firebase.store.collection("fcm").doc(uid).delete();
       return true;
     } catch (e) {
       rethrow;
@@ -85,6 +86,19 @@ class AuthenticationDataSource {
               "avatar": user.photoURL ?? "",
               "phone": user.phoneNumber ?? "",
             };
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<String?> storeUserToken(String id) async {
+    try {
+      String? token = await firebase.messaging.getToken();
+      if (token == null) throw Exception("error getting token");
+      await firebase.store.collection("fcm").doc(id).set({
+        "token": token,
+      });
+      return token;
     } catch (e) {
       rethrow;
     }

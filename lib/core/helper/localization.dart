@@ -172,6 +172,7 @@ class Localization {
   static get adminEventInputAddress => S.current.admin_event_input_address;
   static get adminEventInputMap => S.current.admin_event_input_map;
   static get adminEventCreate => S.current.admin_event_create;
+  static get adminEventUpdate => S.current.admin_event_update;
   static get adminEventDeletedMsg => S.current.admin_event_deleted_msg;
   static get adminEventAddMsg => S.current.admin_event_add_msg;
   static get adminEventInputTitle => S.current.admin_event_input_title;

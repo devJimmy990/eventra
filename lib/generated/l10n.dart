@@ -1688,11 +1688,21 @@ class S {
     );
   }
 
-  /// `Create Event`
+  /// `event created successfully`
   String get admin_event_create {
     return Intl.message(
-      'Create Event',
+      'event created successfully',
       name: 'admin_event_create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `event updated successfully`
+  String get admin_event_update {
+    return Intl.message(
+      'event updated successfully',
+      name: 'admin_event_update',
       desc: '',
       args: [],
     );

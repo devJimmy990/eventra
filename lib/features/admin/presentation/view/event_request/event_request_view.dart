@@ -41,16 +41,16 @@ class _AdminEventsRequestsBottomSheetState
       final requestCubit = context.read<AdminEventRequestCubit>();
       switch (_tabController.index) {
         case 0:
-          requestCubit.filterEvents(RequestStatus.rejected);
+          requestCubit.filteredRequests(filter: RequestStatus.rejected);
           break;
         case 1:
-          requestCubit.filterEvents(RequestStatus.approved);
+          requestCubit.filteredRequests(filter: RequestStatus.approved);
           break;
         case 2:
-          requestCubit.filterEvents(RequestStatus.waiting);
+          requestCubit.filteredRequests(filter: RequestStatus.waiting);
           break;
         case 3:
-          requestCubit.filterEvents(RequestStatus.pending);
+          requestCubit.filteredRequests(filter: RequestStatus.pending);
           break;
       }
     }
@@ -150,13 +150,15 @@ class _AdminEventsRequestsBottomSheetState
                                                     .read<
                                                         AdminEventRequestCubit>()
                                                     .onRejectRequest(request),
-                                                child: Text(Localization.reject)),
+                                                child:
+                                                    Text(Localization.reject)),
                                             ElevatedButton(
                                                 onPressed: () => context
                                                     .read<
                                                         AdminEventRequestCubit>()
                                                     .onAcceptRequest(request),
-                                                child: Text(Localization.accept)),
+                                                child:
+                                                    Text(Localization.accept)),
                                           ],
                                         )
                                       : null,
@@ -187,7 +189,6 @@ class _CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       width: double.infinity.sw,
       height: 40.h,

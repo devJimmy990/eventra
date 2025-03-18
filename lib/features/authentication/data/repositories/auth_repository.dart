@@ -22,9 +22,9 @@ class AuthenticationRepository {
     }
   }
 
-  Future<bool> logout() async {
+  Future<bool> logout(String uid) async {
     try {
-      return await _dataSource.logout();
+      return await _dataSource.logout(uid);
     } catch (e) {
       rethrow;
     }
@@ -36,6 +36,14 @@ class AuthenticationRepository {
   ) async {
     try {
       return await _dataSource.createUserWithEmailAndPassword(user, password);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<String?> storeUserToken(String id) async {
+    try {
+      return await _dataSource.storeUserToken(id);
     } catch (e) {
       rethrow;
     }

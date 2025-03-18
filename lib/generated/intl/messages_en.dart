@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "admin_event_add_msg":
             MessageLookupByLibrary.simpleMessage("Please add an event"),
         "admin_event_create":
-            MessageLookupByLibrary.simpleMessage("Create Event"),
+            MessageLookupByLibrary.simpleMessage("event created successfully"),
         "admin_event_deleted_msg":
             MessageLookupByLibrary.simpleMessage("Event Deleted Successfully"),
         "admin_event_details_about":
@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Price"),
         "admin_event_input_title":
             MessageLookupByLibrary.simpleMessage("Title"),
+        "admin_event_update":
+            MessageLookupByLibrary.simpleMessage("event updated successfully"),
         "admin_explore_tab_previous":
             MessageLookupByLibrary.simpleMessage("Previous"),
         "admin_explore_tab_up_coming":
