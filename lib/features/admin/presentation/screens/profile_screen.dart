@@ -122,46 +122,44 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
             _buildSectionTitle(Localization.profileSettings),
             BlocBuilder<SettingsCubit, SettingsState>(
               builder: (context, state) {
+                state as SettingsLoadedState;
+
                 bool isDark = context.read<SettingsCubit>().isDarkTheme;
-                return SwitchListTile(
-                  secondary: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
-                  title: Text(
-                      "${Localization.themeSwitch} ${isDark ? Localization.themeLight : Localization.themeDark}"),
-                  value: isDark,
-                  onChanged: (value) =>
-                      context.read<SettingsCubit>().toggleTheme(),
-                );
-              },
-            ),
-            BlocSelector<SettingsCubit, SettingsState, String>(
-              selector: (state) {
-                if (state is SettingsLoadedState) {
-                  return state.locale;
-                }
-                return "en";
-              },
-              builder: (context, locale) {
-                return ListTile(
-                  leading: Icon(Icons.language),
-                  title: Text(
-                    locale == "ar"
-                        ? Localization.languageArabic
-                        : Localization.languageEnglish,
-                  ),
-                  trailing: InkWell(
-                    onTap: () => context.read<SettingsCubit>().toggleLanguage(),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          Localization.languageSwitch,
-                          style: TextStyle(fontSize: 16.sp),
-                        ),
-                        SizedBox(width: 5.w),
-                        Icon(Icons.change_circle_outlined),
-                      ],
+                return Column(
+                  children: [
+                    SwitchListTile(
+                      secondary:
+                          Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+                      title: Text(
+                          "${Localization.themeSwitch} ${isDark ? Localization.themeLight : Localization.themeDark}"),
+                      value: isDark,
+                      onChanged: (value) =>
+                          context.read<SettingsCubit>().toggleTheme(),
                     ),
-                  ),
+                    ListTile(
+                      leading: Icon(Icons.language),
+                      title: Text(
+                        state.locale == "ar"
+                            ? Localization.languageArabic
+                            : Localization.languageEnglish,
+                      ),
+                      trailing: InkWell(
+                        onTap: () =>
+                            context.read<SettingsCubit>().toggleLanguage(),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              Localization.languageSwitch,
+                              style: TextStyle(fontSize: 16.sp),
+                            ),
+                            SizedBox(width: 5.w),
+                            Icon(Icons.change_circle_outlined),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 );
               },
             ),

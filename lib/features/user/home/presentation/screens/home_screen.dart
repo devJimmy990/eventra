@@ -13,7 +13,6 @@ import 'package:eventra/rive/side_bar/menu_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rive/rive.dart';
 
 class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({super.key});
@@ -28,7 +27,6 @@ class _UserHomeScreenState extends State<UserHomeScreen>
   late AnimationController _animationController;
   late Animation<double> scaleAnimation;
   late Animation<double> animation;
-  late SMIBool isMenuOpenInput;
 
   @override
   void initState() {
@@ -49,7 +47,6 @@ class _UserHomeScreenState extends State<UserHomeScreen>
       isSideBarOpen = !isSideBarOpen;
     });
 
-    isMenuOpenInput.value = isSideBarOpen; // Update Rive animation state
 
     if (isSideBarOpen) {
       _animationController.forward();
@@ -69,14 +66,6 @@ class _UserHomeScreenState extends State<UserHomeScreen>
               automaticallyImplyLeading: false,
               leading: MenuBtn(
                 press: toggleSidebar,
-                riveOnInit: (artboard) {
-                  final controller = StateMachineController.fromArtboard(
-                      artboard, "State Machine");
-                  artboard.addController(controller!);
-                  isMenuOpenInput =
-                      controller.findInput<bool>("isOpen") as SMIBool;
-                  isMenuOpenInput.value = !isSideBarOpen;
-                },
               ),
               backgroundColor: ColorManager.sideBarLight,
               toolbarHeight: 80.h,

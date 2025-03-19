@@ -6,12 +6,11 @@ import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/features/settings/cubit/settings_cubit.dart';
 import 'package:eventra/features/settings/cubit/settings_state.dart';
 import 'package:eventra/rive/menu.dart';
-import 'package:eventra/rive/rive_model.dart';
-import 'package:eventra/rive/rive_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'side_bar/info_card.dart';
 import 'side_menu.dart';
 
@@ -24,47 +23,27 @@ class SideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Menu> sidebarMenus = [
       Menu(
-        title: Localization.userSideHome,
-        routeName: UserRoutes.home,
-        rive: RiveModel(
-            src: "assets/RiveAssets/icons.riv",
-            artboard: "HOME",
-            stateMachineName: "HOME_interactivity"),
-      ),
+          title: Localization.userSideHome,
+          routeName: UserRoutes.home,
+          icon: Iconsax.home_1_outline),
       Menu(
-        title: Localization.userSideCalendar,
-        routeName: UserRoutes.calendar,
-        rive: RiveModel(
-            src: "assets/RiveAssets/icons.riv",
-            artboard: "TIMER",
-            stateMachineName: "TIMER_Interactivity"),
-      ),
+          title: Localization.userSideCalendar,
+          routeName: UserRoutes.calendar,
+          icon: Iconsax.calendar_1_outline),
       Menu(
-        title: Localization.userSideBookmark,
-        routeName: UserRoutes.bookmark,
-        rive: RiveModel(
-            src: "assets/RiveAssets/icons.riv",
-            artboard: "LIKE/STAR",
-            stateMachineName: "STAR_Interactivity"),
-      ),
+          title: Localization.userSideBookmark,
+          routeName: UserRoutes.bookmark,
+          icon: Iconsax.bookmark_outline),
       Menu(
-        title: Localization.userSideProfile,
-        routeName: UserRoutes.profile,
-        rive: RiveModel(
-            src: "assets/RiveAssets/icons.riv",
-            artboard: "USER",
-            stateMachineName: "USER_Interactivity"),
-      ),
+          title: Localization.userSideProfile,
+          routeName: UserRoutes.profile,
+          icon: Iconsax.user_outline),
     ];
     final List<Menu> sidebarMenus2 = [
       Menu(
-        title: Localization.userSideContact,
-        routeName: UserRoutes.contact,
-        rive: RiveModel(
-            src: "assets/RiveAssets/icons.riv",
-            artboard: "CHAT",
-            stateMachineName: "CHAT_Interactivity"),
-      ),
+          title: Localization.userSideContact,
+          routeName: UserRoutes.contact,
+          icon: Iconsax.message_outline),
     ];
     return BlocBuilder<SettingsCubit, SettingsState>(builder: (context, state) {
       return Container(
@@ -112,12 +91,8 @@ class SideBar extends StatelessWidget {
                       press: () {
                         onRoute(sidebarMenus.indexOf(menu));
                         context.pushNamed(menu.routeName);
-                        RiveUtils.changeSMIBoolState(menu.rive.status!);
                       },
-                      riveOnInit: (artboard) {
-                        menu.rive.status = RiveUtils.getRiveInput(artboard,
-                            stateMachineName: menu.rive.stateMachineName);
-                      },
+                      icon: menu.icon,
                     )),
                 Padding(
                   padding: const EdgeInsets.only(left: 24, top: 40, bottom: 16),
@@ -134,12 +109,8 @@ class SideBar extends StatelessWidget {
                       press: () {
                         onRoute(4);
                         context.pushNamed(menu.routeName);
-                        RiveUtils.changeSMIBoolState(menu.rive.status!);
                       },
-                      riveOnInit: (artboard) {
-                        menu.rive.status = RiveUtils.getRiveInput(artboard,
-                            stateMachineName: menu.rive.stateMachineName);
-                      },
+                      icon: menu.icon,
                     )),
                 const Spacer(),
                 BlocListener<AuthenticationCubit, AuthenticationState>(

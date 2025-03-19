@@ -1,20 +1,18 @@
 import 'package:eventra/rive/menu.dart';
 import 'package:flutter/material.dart';
-import 'package:rive/rive.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu(
       {super.key,
       required this.menu,
       required this.press,
-      required this.riveOnInit,
+      required this.icon,
       this.isActive = false});
 
   final Menu menu;
   final VoidCallback press;
-  final ValueChanged<Artboard> riveOnInit;
   final bool isActive;
-
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,14 +38,10 @@ class SideMenu extends StatelessWidget {
             ),
             ListTile(
               onTap: press,
-              leading: SizedBox(
-                height: 36,
-                width: 36,
-                child: RiveAnimation.asset(
-                  menu.rive.src,
-                  artboard: menu.rive.artboard,
-                  onInit: riveOnInit,
-                ),
+              leading: CircleAvatar(
+                radius: 15,
+                backgroundColor: Colors.transparent,
+                child: Icon(icon),
               ),
               title: Text(
                 menu.title,

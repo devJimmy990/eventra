@@ -18,8 +18,8 @@ class StringsManager {
   static const String bookmarkEmptyImage = "assets/images/nobookmark.gif";
 
   //Banner images
-  static const String bannerOne = "assets/images/banner1.png";
-  static const String bannerTwo = "assets/images/banner2.png";
-  static const String bannerThree = "assets/images/banner3.png";
+  static const String bannerOne = "assets/images/banners/banner-1.png";
+  static const String bannerTwo = "assets/images/banners/banner-2.png";
+  static const String bannerThree = "assets/images/banners/banner-3.png";
 
 }

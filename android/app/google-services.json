@@ -7,20 +7,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:70365746998:android:e4a8a53e6d9a08c9920597",
+        "mobilesdk_app_id": "1:70365746998:android:a399e5d2fc1844d8920597",
         "android_client_info": {
-          "package_name": "com.example.eventra"
+          "package_name": "com.jimmy.eventra"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "70365746998-k542f2e2vlrtvap6cdglmc7oukkv9l86.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.eventra",
-            "certificate_hash": "ee5eeef55a5d1bae04401cb340692dde39853860"
-          }
-        },
         {
           "client_id": "70365746998-rhr4f8l50ml73raj6b3nkguntf4l3c3u.apps.googleusercontent.com",
           "client_type": 3

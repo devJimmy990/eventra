@@ -1,6 +1,5 @@
 import 'package:eventra/rive/menu.dart';
 import 'package:flutter/material.dart';
-import 'package:rive/rive.dart';
 
 import 'animated_bar.dart';
 
@@ -9,12 +8,10 @@ class BtmNavItem extends StatelessWidget {
       {super.key,
       required this.navBar,
       required this.press,
-      required this.riveOnInit,
       required this.selectedNav});
 
   final Menu navBar;
   final VoidCallback press;
-  final ValueChanged<Artboard> riveOnInit;
   final Menu selectedNav;
 
   @override
@@ -30,11 +27,7 @@ class BtmNavItem extends StatelessWidget {
             width: 36,
             child: Opacity(
               opacity: selectedNav == navBar ? 1 : 0.5,
-              child: RiveAnimation.asset(
-                navBar.rive.src,
-                artboard: navBar.rive.artboard,
-                onInit: riveOnInit,
-              ),
+              child: Icon(Icons.add)
             ),
           ),
         ],

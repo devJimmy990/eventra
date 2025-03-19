@@ -48,7 +48,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyBpJJd0lM9JFktkWMfiSDW-iKx4jLYMSbM',
-    appId: '1:70365746998:web:af4431b2ceaa8229920597',
+    appId: '1:70365746998:web:509f76f007dee744920597',
     messagingSenderId: '70365746998',
     projectId: 'eventra-1eb59',
     authDomain: 'eventra-1eb59.firebaseapp.com',
@@ -57,7 +57,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBLCXqOO8O3Q2EbjL5I7sz4oPNFQA5ttgs',
-    appId: '1:70365746998:android:e4a8a53e6d9a08c9920597',
+    appId: '1:70365746998:android:a399e5d2fc1844d8920597',
     messagingSenderId: '70365746998',
     projectId: 'eventra-1eb59',
     storageBucket: 'eventra-1eb59.firebasestorage.app',
@@ -65,11 +65,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBg8JQc3qfU9azqH9z-0H1hNiadxSXl56Q',
-    appId: '1:70365746998:ios:124f6e28f2fd2b5a920597',
+    appId: '1:70365746998:ios:ece4ca9389ec574c920597',
     messagingSenderId: '70365746998',
     projectId: 'eventra-1eb59',
     storageBucket: 'eventra-1eb59.firebasestorage.app',
-    iosClientId: '70365746998-gvh1fvrldf385ugv57gpjougphtj0ha4.apps.googleusercontent.com',
-    iosBundleId: 'com.example.eventra',
+    androidClientId: '70365746998-k542f2e2vlrtvap6cdglmc7oukkv9l86.apps.googleusercontent.com',
+    iosClientId: '70365746998-n84e4bpee2ok1j6i6r1rnhbuq8vpiu1e.apps.googleusercontent.com',
+    iosBundleId: 'com.jimmy.eventra',
   );
 }

@@ -18,10 +18,10 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void toggleTheme() {
-    _theme == AppTheme.dark ? AppTheme.light : AppTheme.dark;
+    _theme = _theme == AppTheme.dark ? AppTheme.light : AppTheme.dark;
     SharedPreference.setString(
       key: "theme",
-      value: _theme == AppTheme.dark ? "light" : "dark",
+      value: _theme == AppTheme.dark ? "dark" : "light",
     );
     emit(SettingsLoadedState(theme: _theme, locale: _locale));
   }

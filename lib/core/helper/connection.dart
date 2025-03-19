@@ -52,11 +52,7 @@ class Connection {
             "https://fcm.googleapis.com/v1/projects/eventra-1eb59/messages:send"),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
-          "message": {
-            "token":
-                "fuDSzUH0RZqG_ghUJMEdai:APA91bGCCJxfk86YfLakePy2B5Nuuh9uSqxMrBcWmY98YzetinRMH7_IzwN8Bav1rh_eodgqufjK1bB34plG_5t3yAolT196dGQt35HiYuy-9nsz9-EZhbg",
-            "notification": payload
-          }
+          "message": {"token": token, "notification": payload}
         }),
       );
     } catch (e) {
@@ -64,11 +60,10 @@ class Connection {
     }
   }
 
- static void dispose() {
+  static void dispose() {
     if (_client != null) {
       _client!.close();
       _client = null;
-      print("debug: Client closed");
     }
   }
 }

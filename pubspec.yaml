@@ -15,34 +15,27 @@ dependencies:
 
   # Core
   go_router: ^14.8.1
-  local_auth: ^2.3.0
-  qr_flutter: ^4.1.0
   url_launcher: ^6.3.1
   image_picker: ^1.1.2
   ai_barcode_scanner: ^6.0.1
   shared_preferences: ^2.5.2
   google_maps_flutter: ^2.10.1
+  icons_plus: ^5.0.0
+  iconsax: ^0.0.8
 
 
   # Helper
   intl: ^0.19.0
-  lottie: ^3.3.1
   fluttertoast: ^8.2.12
-  flutter_animate: ^4.5.2
   flutter_screenutil: ^5.9.3
-  omni_datetime_picker: ^2.1.0
   flutter_native_splash: ^2.4.3
   flutter_local_notifications: ^18.0.1
 
   #UI
-  icons_plus: ^5.0.0
-  awesome_dialog: ^3.2.1
   cupertino_icons: ^1.0.8
   introduction_screen: ^3.1.17
-  syncfusion_flutter_calendar: ^28.2.7
-  rive: ^0.13.20
   smooth_page_indicator: ^1.2.1
-  iconsax: ^0.0.8
+  syncfusion_flutter_calendar: ^28.2.7
 
   # Controller
   flutter_bloc: ^9.0.0
@@ -51,10 +44,13 @@ dependencies:
   firebase_auth: ^5.5.1
   google_sign_in: ^6.2.2
   firebase_core: ^3.12.1
+  googleapis_auth: ^1.6.0
   cloud_firestore: ^5.6.5
   firebase_storage: ^12.4.4
   firebase_messaging: ^15.2.4
-  googleapis_auth: ^1.6.0
+  qr_flutter: ^4.1.0
+  flutter_animate: ^4.5.2
+  omni_datetime_picker: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -67,11 +63,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/files/
-    - assets/images/
-    - assets/images/on_boarding_images/
-    - assets/animations/
     - assets/icons/
-    - assets/RiveAssets/
+    - assets/images/
+    - assets/images/banners/
 
   # fonts:
   #   - family: Schyler
