@@ -88,6 +88,9 @@ Eventra is a modern events management application designed to help users discove
 - Firebase account (for backend services)
 - Android Studio or VS Code (for development)
 
+### Application-Documentation
+[Eventra_App_Documentation.pdf](..%2F..%2FDesktop%2FEventra%2FEventra_App_Documentation.pdf)
+
 ### Installation
 1. Clone the repository:
    https://github.com/devJimmy990/eventra.git
