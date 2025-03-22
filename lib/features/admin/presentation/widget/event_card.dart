@@ -1,4 +1,5 @@
 import 'package:eventra/core/constants/color_manager.dart';
+import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/admin/presentation/screens/event_data_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -41,25 +42,27 @@ class EventCard extends StatelessWidget {
             builder: (context) => AlertDialog(
               title: Center(
                   child: Text(
-                'Confirm Delete',
+                      Localization.confirmDelete,
                 style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               )),
               content: Text(
-                'Are you sure you want to delete this event?',
+                Localization.userEventDeletingMsg,
                 style: TextStyle(fontSize: 14.sp),
               ),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(false),
                   child: Text(
-                    'Cancel',
+                    Localization.cancel,
+
                     style: TextStyle(color: Colors.green, fontSize: 14.sp),
                   ),
                 ),
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(true),
                   child: Text(
-                    'Delete',
+                    Localization.delete,
+
                     style: TextStyle(color: Colors.red, fontSize: 14.sp),
                   ),
                 ),

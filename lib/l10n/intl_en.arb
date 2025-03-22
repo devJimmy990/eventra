@@ -143,6 +143,7 @@
   "_========  End User-Event-Details ========================================================": "",
   "_======== User-Bookmark ========================================================": "",
   "user_bookmark_deleting_msg": "Are you sure you want to remove this Event from bookmark?",
+  "user_event_deleting_msg": "Are you sure you want to remove this Event?",
   "user_bookmark_deleted_msg": "Event removed from favorites",
   "user_bookmark_empty": "No bookmark events available",
   "user_bookmark_app_bar": "Event Details",

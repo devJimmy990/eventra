@@ -146,6 +146,7 @@ class Localization {
       S.current.user_contact_general_inquiry_info;
 
   static get userBookmarkDeletingMsg => S.current.user_bookmark_deleting_msg;
+  static get userEventDeletingMsg => S.current.user_event_deleting_msg;
   static get userBookmarkDeleted => S.current.user_bookmark_deleted_msg;
   static get userBookmarkEmpty => S.current.user_bookmark_empty;
   static get userBookmarkAppBar => S.current.user_bookmark_app_bar;
