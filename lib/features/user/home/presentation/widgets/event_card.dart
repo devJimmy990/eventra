@@ -54,7 +54,7 @@ class EventCard extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: ColorManager.sideBarLight,
+                            // color: ColorManager.sideBarLight,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(12.r)),
                           ),
@@ -99,7 +99,7 @@ class EventCard extends StatelessWidget {
                               return IconButton(splashColor: Colors.white,
                                 icon: AnimatedSwitcher(
                                   duration: Duration(milliseconds: 300),
-                                  child: CircleAvatar(backgroundColor: ColorManager.sideBarLight,
+                                  child: CircleAvatar(/*backgroundColor: ColorManager.sideBarLight,*/
                                     child: Icon(
                                       isBookmarked
                                           ? Icons.bookmark

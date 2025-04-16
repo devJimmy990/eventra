@@ -169,30 +169,44 @@ class _ProfileAboutSectionState extends State<ProfileAboutSection> {
                 ),
                 child: Column(
                   children: [
+                    // DropdownMenu<String>(
+                    //   initialSelection: 'Option 1',
+                    //   onSelected: (String? value) {
+                    //     setState(() {});
+                    //   },
+                    //   dropdownMenuEntries: const [
+                    //     DropdownMenuEntry(value: 'Option 1', label: 'Option 1'),
+                    //     DropdownMenuEntry(value: 'Option 2', label: 'Option 2'),
+                    //     DropdownMenuEntry(value: 'Option 3', label: 'Option 3'),
+                    //   ],
+                    // ),
                     DropdownButtonFormField<String>(
                       value: null,
                       items: [
                         DropdownMenuItem(
                           value: null,
-                          child: Text(Localization.profileInfoSelectInterests,style: TextStyle(fontSize: 18.sp,
-                          ),),
+                          child: Text(
+                            Localization.profileInfoSelectInterests,
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                            ),
+                          ),
                         ),
                         ...EventCategory.values
                             .map((category) => DropdownMenuItem(
                                   value: category.toString(),
-                                  child: Text(category.name,style: TextStyle(fontSize: 14.sp,
-                                  ),),
+                                  child: Text(
+                                    category.name,
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
                                 ))
                       ],
                       onChanged: (value) =>
                           setState(() => interests.add(value!)),
                       decoration: InputDecoration(
-                          labelText: Localization.profileInfoInterests,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide:
-                                const BorderSide(color: Colors.transparent),
-                          )),
+                          labelText: Localization.profileInfoInterests),
                     ),
                     Wrap(
                       children: interests

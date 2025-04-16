@@ -35,4 +35,9 @@ class SharedPreference {
     if (_shared == null) throw Exception('SharedPreferences not initialized');
     return _shared!.remove(key);
   }
+
+  static Future<bool> clear() async {
+    if (_shared == null) throw Exception('SharedPreferences not initialized');
+    return _shared!.clear();
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:iconsax/iconsax.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventra/core/ui/inputs.dart';
@@ -15,7 +16,6 @@ import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/features/authentication/controller/remember_controller.dart';
 import 'package:eventra/features/authentication/presentation/widgets/auth_header.dart';
 import 'package:eventra/features/authentication/presentation/widgets/custom_button.dart';
-import 'package:iconsax/iconsax.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -28,9 +28,9 @@ class _SignInScreenState extends State<SignInScreen> {
   late bool remember = true;
   late Localization strings;
   late InputValidator validator;
-  late TextEditingController passwordController;
   late TextEditingController emailController;
   late RememberController rememberController;
+  late TextEditingController passwordController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -120,9 +120,11 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             BlocConsumer<AuthenticationCubit, AuthenticationState>(
               listener: (context, state) {
-                if (state is Authenticated) {
-                  context.read<UserCubit>().loadUser();
+                if (state is AuthenticationSuccess) {
+                  context.read<UserCubit>().setUser(state.json);
                   context.goNamed(Routes.landing);
+                } else if (state is Authenticated) {
+                  context.read<AuthenticationCubit>().getUserById(state.uid);
                 } else if (state is AuthenticationError) {
                   Fluttertoast.showToast(
                     textColor: Colors.white,
@@ -149,7 +151,6 @@ class _SignInScreenState extends State<SignInScreen> {
                                 .loginWithEmailAndPassword(
                                   emailController.text,
                                   passwordController.text,
-                                  remember,
                                 );
                           }
                         }),

@@ -1,6 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
-import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:eventra/features/authentication/cubit/auth_state.dart';
 import 'package:eventra/features/authentication/data/data_source/auth_data_source.dart';
 import 'package:eventra/features/authentication/data/repositories/auth_repository.dart';
@@ -20,26 +19,20 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  void checkAuthentication() {
-    String? uid = SharedPreference.getString(key: "uid");
-    if (uid != null) {
-      emit(Authenticated(uid));
-    } else {
-      emit(UnAuthenticated());
-    }
-  }
+  // void checkAuthentication() {
+  //   String? uid = SharedPreference.getString(key: "uid");
+  //   if (uid != null) {
+  //     emit(Authenticated(uid));
+  //   } else {
+  //     emit(UnAuthenticated());
+  //   }
+  // }
 
-  void loginWithEmailAndPassword(
-      String email, String password, bool remember) async {
+  void loginWithEmailAndPassword(String email, String password) async {
     emit(AuthenticationLoading());
     try {
-      String? uid = await AuthenticationRepository(AuthenticationDataSource())
+      String uid = await AuthenticationRepository(AuthenticationDataSource())
           .loginWithEmailAndPassword(email, password);
-      if (uid == null) {
-        emit(AuthenticationError("Invalid email or password"));
-        return;
-      }
-      if (remember) SharedPreference.setBool(key: "remember", value: remember);
       SharedPreference.setString(key: "uid", value: uid);
       _storeUserToken(uid);
       emit(Authenticated(uid));
@@ -51,14 +44,14 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   void loginWithGoogle() async {
     emit(AuthenticationLoading());
     try {
-      String? uid = await AuthenticationRepository(AuthenticationDataSource())
-          .loginWithGoogle();
-      if (uid == null) {
-        emit(AuthenticationError("Invalid Login with Google"));
-        return;
+      Map<String, dynamic>? user =
+          await AuthenticationRepository(AuthenticationDataSource())
+              .loginWithGoogle();
+      if (user == null) {
+        emit(UnAuthenticated());
+      } else {
+        storeUserData(user);
       }
-      SharedPreference.setString(key: "uid", value: uid);
-      emit(Authenticated(uid));
     } catch (e) {
       emit(AuthenticationError(e.toString()));
     }
@@ -66,38 +59,68 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   void logout() async {
     try {
-      String uid = SharedPreference.getString(key: "uid")!;
-      bool isLoggedOut =
-          await AuthenticationRepository(AuthenticationDataSource())
-              .logout(uid);
-      if (!isLoggedOut) {
-        emit(AuthenticationError("Error logging out"));
-        return;
-      }
+      await AuthenticationRepository(AuthenticationDataSource()).logout();
       SharedPreference.remove(key: "uid");
-      SharedPreference.remove(key: "fcm-token");
       emit(UnAuthenticated());
+      return;
     } catch (e) {
       emit(AuthenticationError(e.toString()));
     }
   }
 
   Future<void> createUserWithEmailAndPassword(
-      User user, String password) async {
+      String email, String password) async {
     emit(AuthenticationLoading());
     try {
-      User? model = await AuthenticationRepository(AuthenticationDataSource())
-          .createUserWithEmailAndPassword(user, password);
-      if (model == null) {
-        emit(AuthenticationError("Error creating user"));
-        return;
-      }
-      SharedPreference.setString(key: "uid", value: model.id!);
-      _storeUserToken(model.id!);
-      emit(UserCreated(model));
+      String uid = await AuthenticationRepository(AuthenticationDataSource())
+          .createUserWithEmailAndPassword(email, password);
+      emit(Authenticated(uid));
     } catch (e) {
       emit(AuthenticationError(e.toString()));
     }
     return;
   }
+
+  Future<void> storeUserData(Map<String, dynamic> user) async {
+    emit(AuthenticationLoading());
+    try {
+      await AuthenticationRepository(AuthenticationDataSource())
+          .storeUserData(user);
+      SharedPreference.setString(key: "uid", value: user["id"]);
+      _storeUserToken(user["id"]);
+      emit(AuthenticationSuccess(user));
+    } catch (e) {
+      emit(AuthenticationError(e.toString()));
+    }
+    return;
+  }
+
+  Future<void> getUserById(String uid) async {
+    emit(AuthenticationLoading());
+    try {
+      Map<String, dynamic> user =
+          await AuthenticationRepository(AuthenticationDataSource())
+              .getUserById(uid);
+      emit(AuthenticationSuccess(user));
+    } catch (e) {
+      emit(AuthenticationError(e.toString()));
+    }
+    return;
+  }
+
+  Future<void> deleteAccount(String id) async {
+    try {
+      bool isDeleted =
+          await AuthenticationRepository(AuthenticationDataSource())
+              .deleteAccount(id);
+      if (isDeleted) {
+        SharedPreference.clear();
+        emit(UnAuthenticated());
+      }
+    } catch (e) {
+      emit(AuthenticationError(e.toString()));
+    }
+  }
+
+  bool get isAuthenticated => state is Authenticated;
 }

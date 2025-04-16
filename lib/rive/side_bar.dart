@@ -46,94 +46,98 @@ class SideBar extends StatelessWidget {
           icon: Iconsax.message_outline),
     ];
     return BlocBuilder<SettingsCubit, SettingsState>(builder: (context, state) {
-      return Container(
+      return SizedBox(
         width: 288,
         height: double.infinity,
-        decoration: const BoxDecoration(color: ColorManager.sideBarLight),
-        child: DefaultTextStyle(
-          style: const TextStyle(color: Colors.white),
-          child: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: AlignmentDirectional.topEnd,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.only(top: 12.h, end: 12.w),
-                    child: CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Colors.white,
-                      child: IconButton(
-                          onPressed: onClose,
-                          selectedIcon: Icon(Icons.card_travel),
-                          icon: Icon(
-                            Icons.close,
-                            size: 20,
-                            color: ColorManager.sideBarLight,
-                          )),
-                    ),
-                  ),
-                ),
-                InfoCard(),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24, top: 32, bottom: 16),
-                  child: Text(
-                    Localization.userSideBrowse.toUpperCase(),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(color: Colors.white70),
-                  ),
-                ),
-                ...sidebarMenus.map((menu) => SideMenu(
-                      menu: menu,
-                      isActive: menu == sidebarMenus[0],
-                      press: () {
-                        onRoute(sidebarMenus.indexOf(menu));
-                        context.pushNamed(menu.routeName);
-                      },
-                      icon: menu.icon,
-                    )),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24, top: 40, bottom: 16),
-                  child: Text(
-                    Localization.userSideHelper.toUpperCase(),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(color: Colors.white70),
-                  ),
-                ),
-                ...sidebarMenus2.map((menu) => SideMenu(
-                      menu: menu,
-                      press: () {
-                        onRoute(4);
-                        context.pushNamed(menu.routeName);
-                      },
-                      icon: menu.icon,
-                    )),
-                const Spacer(),
-                BlocListener<AuthenticationCubit, AuthenticationState>(
-                  listener: (context, state) {
-                    if (state is UnAuthenticated) {
-                      context.goNamed(Routes.auth);
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 52, bottom: 42),
-                    child: ListTile(
-                      onTap: () {
-                        context.read<AuthenticationCubit>().logout();
-                      },
-                      leading: const Icon(Icons.logout, color: Colors.white),
-                      title: const Text(
-                        "Logout",
-                        style: TextStyle(color: Colors.red),
+        child: ColoredBox(
+          color: ColorManager.sideBarLight,
+          child: DefaultTextStyle(
+            style: const TextStyle(color: Colors.white),
+            child: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional.topEnd,
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.only(top: 12.h, end: 12.w),
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                            onPressed: onClose,
+                            selectedIcon: Icon(Icons.card_travel),
+                            icon: Icon(
+                              Icons.close,
+                              size: 20,
+                              color: ColorManager.darkPrimary,
+                            )),
                       ),
                     ),
                   ),
-                ),
-              ],
+                  InfoCard(),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 24, top: 32, bottom: 16),
+                    child: Text(
+                      Localization.userSideBrowse.toUpperCase(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: Colors.white70),
+                    ),
+                  ),
+                  ...sidebarMenus.map((menu) => SideMenu(
+                        menu: menu,
+                        isActive: menu == sidebarMenus[0],
+                        press: () {
+                          onRoute(sidebarMenus.indexOf(menu));
+                          context.pushNamed(menu.routeName);
+                        },
+                        icon: menu.icon,
+                      )),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 24, top: 40, bottom: 16),
+                    child: Text(
+                      Localization.userSideHelper.toUpperCase(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: Colors.white70),
+                    ),
+                  ),
+                  ...sidebarMenus2.map((menu) => SideMenu(
+                        menu: menu,
+                        press: () {
+                          onRoute(4);
+                          context.pushNamed(menu.routeName);
+                        },
+                        icon: menu.icon,
+                      )),
+                  const Spacer(),
+                  BlocListener<AuthenticationCubit, AuthenticationState>(
+                    listener: (context, state) {
+                      if (state is UnAuthenticated) {
+                        context.goNamed(Routes.auth);
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 52, bottom: 42),
+                      child: ListTile(
+                        onTap: () {
+                          context.read<AuthenticationCubit>().logout();
+                        },
+                        leading: const Icon(Icons.logout, color: Colors.white),
+                        title: const Text(
+                          "Logout",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -12,31 +12,51 @@ import 'package:eventra/features/settings/cubit/settings_cubit.dart';
 import 'package:eventra/features/settings/cubit/settings_state.dart';
 import 'package:eventra/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+
 // fake user data to run test for profile widgets
-class DummyUserCubit extends Cubit<UserState> implements UserCubit {
+class DummyUserCubit extends HydratedCubit<UserState> implements UserCubit {
   DummyUserCubit()
       : super(UserLoaded(
-    User.register(
-      name: 'Test User',
-      email: 'test@example.com',
-      phone: '1234567890',
-    ),
-  ));
+          User.register(
+            id: '1',
+            name: 'Test User',
+            email: 'test@example.com',
+            phone: '1234567890',
+          ),
+        ));
 
   @override
   User? get user => (state as UserLoaded).user;
-
-  @override
-  Future<void> loadUser() async {}
-
-  @override
-  void setUser(User user) {}
 
   @override
   Future<void> updateUserProfile({required Map<String, String> data}) async {}
 
   @override
   Future<void> uploadImage(File image) async {}
+
+  @override
+  UserState? fromJson(Map<String, dynamic> json) {
+    // TODO: implement fromJson
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> reset() {
+    // TODO: implement reset
+    throw UnimplementedError();
+  }
+
+  @override
+  void setUser(Map<String, dynamic> user) {
+    // TODO: implement setUser
+  }
+
+  @override
+  Map<String, dynamic>? toJson(UserState state) {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
 }
 
 class DummySettingsCubit extends Cubit<SettingsState> implements SettingsCubit {
@@ -57,7 +77,8 @@ class DummySettingsCubit extends Cubit<SettingsState> implements SettingsCubit {
 }
 
 void main() {
-  testWidgets('ProfileScreen renders and displays Test User', (WidgetTester tester) async {
+  testWidgets('ProfileScreen renders and displays Test User',
+      (WidgetTester tester) async {
     final dummyUserCubit = DummyUserCubit();
     final dummySettingsCubit = DummySettingsCubit();
 

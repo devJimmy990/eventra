@@ -1,4 +1,3 @@
-import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/admin/presentation/screens/event_data_screen.dart';
 import 'package:flutter/material.dart';
@@ -165,20 +164,19 @@ class _BuildEventCard extends StatelessWidget {
                         event.schedule.date.encodeDate(),
                         style: TextStyle(
                             fontSize: 14.sp,
-                            color: ColorManager.primary,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         event.encodeLongDateTime(),
                         style: TextStyle(
-                            fontSize: 14.sp, color: ColorManager.primary),
+                            fontSize: 14.sp,),
                       ),
                       SizedBox(height: 5.h),
                       // Event location
                       Text(
                         event.location.address,
                         style: TextStyle(
-                            fontSize: 14.sp, color: ColorManager.primary),
+                            fontSize: 14.sp, ),
                       ),
                       // You can add extra details here, such as location or event date
                     ],

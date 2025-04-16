@@ -14,7 +14,7 @@ class Connection {
   Future<void> _getAuthorizedClient() async {
     try {
       final serviceAccountJson =
-          await rootBundle.loadString('assets/files/eventra-firebase.json');
+          await rootBundle.loadString('assets/json/eventra-firebase.json');
 
       final serviceAccountCredentials =
           ServiceAccountCredentials.fromJson(serviceAccountJson);

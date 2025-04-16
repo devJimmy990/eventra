@@ -12,7 +12,8 @@ class ColorManager {
   static const Color whiteColor = Colors.white; // White color for text/icons
 
   // App theme colors
-  static const Color primary = Color(0xff5669fd); // Used as Primary color across Light and Dark theme
+  static const Color lightPrimary = Color(0xff5669fd); // Used as Primary color across Light and Dark theme
+  static const Color darkPrimary = Color(0xFF1E2745); // Used as Primary color across Light and Dark theme
   static const Color sideBarLight = Color(0xFF1E2745); // Used as Primary color across Light and Dark theme
   static const Color secondary = Color(0xFF00F6FD); // Secondary/Accent color
   static const Color accent = Color(0xFFb0c7ff); // Another accent color (Might be used for hover effects, etc.)

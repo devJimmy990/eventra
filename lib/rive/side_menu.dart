@@ -10,9 +10,9 @@ class SideMenu extends StatelessWidget {
       this.isActive = false});
 
   final Menu menu;
-  final VoidCallback press;
   final bool isActive;
   final IconData icon;
+  final VoidCallback press;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,7 +41,7 @@ class SideMenu extends StatelessWidget {
               leading: CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
-                child: Icon(icon),
+                child: Icon(icon, color: Colors.white),
               ),
               title: Text(
                 menu.title,

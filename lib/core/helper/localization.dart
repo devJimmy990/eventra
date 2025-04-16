@@ -17,7 +17,7 @@ class Localization {
   static get confirmDelete => S.current.confirm_delete;
   static get ok => S.current.ok;
   static get send => S.current.send;
-  static get error => S.current.send;
+  static get error => S.current.error;
   static get undo => S.current.undo;
   static get reject => S.current.reject;
   static get accept => S.current.accept;

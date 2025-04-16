@@ -23,7 +23,6 @@ class AdminEventDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: BlocListener<AdminEventRequestCubit, AdminEventRequestState>(
         listener: (context, state) {
@@ -44,7 +43,6 @@ class AdminEventDetailsScreen extends StatelessWidget {
               pinned: true,
               iconTheme: IconThemeData(color: Colors.white),
               flexibleSpace: FlexibleSpaceBar(
-
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
@@ -143,7 +141,10 @@ class AdminEventDetailsScreen extends StatelessWidget {
                                             request.user.email),
                                         _buildInfoTile(
                                             "${Localization.adminEventDetailsDialogPhone}:",
-                                            request.user.phone),
+                                            request.user.phone??""),
+                                        _buildInfoTile(
+                                            "Status:",
+                                            request.status.toString()),
                                       ],
                                     ),
                                   ),

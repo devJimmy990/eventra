@@ -20,5 +20,3 @@ class UserError extends UserState {
   final String error;
   UserError(this.error);
 }
-
-class UserNotAuthenticated extends UserState {}

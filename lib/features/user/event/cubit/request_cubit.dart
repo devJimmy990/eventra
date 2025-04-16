@@ -1,12 +1,12 @@
-import 'package:eventra/features/notification/data/data_source/notification_data_source.dart';
-import 'package:eventra/features/notification/data/model/notification.dart';
-import 'package:eventra/features/notification/data/repositories/notification_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventra/core/helper/shared_preference.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:eventra/features/user/event/cubit/request_state.dart';
 import 'package:eventra/features/user/home/data/model/request_event.dart';
 import 'package:eventra/features/user/event/data/models/booked_event.dart';
+import 'package:eventra/features/notification/data/model/notification.dart';
+import 'package:eventra/features/notification/data/data_source/notification_data_source.dart';
+import 'package:eventra/features/notification/data/repositories/notification_repository.dart';
 import 'package:eventra/features/user/event/data/data_source/user_event_request_data_source.dart';
 import 'package:eventra/features/user/event/data/repositories/user_event_request_repository.dart';
 
@@ -26,7 +26,7 @@ class UserEventRequestCubit extends Cubit<UserEventRequestState> {
           user: user,
           eventId: event.id!,
           eventName: event.title,
-          admin: event.admin.id!,
+          admin: event.admin.id,
         ),
       );
 
@@ -36,7 +36,7 @@ class UserEventRequestCubit extends Cubit<UserEventRequestState> {
        * use notification repository to send token notification 
        */
       NotificationRepository(NotificationDataSource()).sendTokenNotification(
-        await _getFCMToken(event.admin.id!),
+        await _getFCMToken(event.admin.id),
         notification: Notification(
           title: event.title,
           body: "new book request",

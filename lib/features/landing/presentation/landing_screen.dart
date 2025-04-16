@@ -32,11 +32,11 @@ class LandingScreen extends StatelessWidget {
               if (state.user.role == "user") {
                 context
                     .read<NotificationCubit>()
-                    .subscribeToUserTopics(state.user.id!);
+                    .subscribeToUserTopics(state.user.id);
               } else {
                 context
                     .read<NotificationCubit>()
-                    .subscribeToAdminTopics(state.user.id!);
+                    .subscribeToAdminTopics(state.user.id);
               }
             }
           },

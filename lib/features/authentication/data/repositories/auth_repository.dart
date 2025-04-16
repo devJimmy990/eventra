@@ -1,11 +1,10 @@
 import 'package:eventra/features/authentication/data/data_source/auth_data_source.dart';
-import 'package:eventra/features/landing/data/model/user.dart';
 
 class AuthenticationRepository {
   final AuthenticationDataSource _dataSource;
   AuthenticationRepository(this._dataSource);
 
-  Future<String?> loginWithEmailAndPassword(
+  Future<String> loginWithEmailAndPassword(
       String email, String password) async {
     try {
       return await _dataSource.loginWithEmailAndPassword(email, password);
@@ -14,7 +13,7 @@ class AuthenticationRepository {
     }
   }
 
-  Future<String?> loginWithGoogle() async {
+  Future<Map<String, dynamic>?> loginWithGoogle() async {
     try {
       return await _dataSource.loginWithGoogle();
     } catch (e) {
@@ -22,20 +21,18 @@ class AuthenticationRepository {
     }
   }
 
-  Future<bool> logout(String uid) async {
+  Future<bool> logout() async {
     try {
-      return await _dataSource.logout(uid);
+      return await _dataSource.logout();
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<User?> createUserWithEmailAndPassword(
-    User user,
-    String password,
-  ) async {
+  Future<String> createUserWithEmailAndPassword(
+      String email, String password) async {
     try {
-      return await _dataSource.createUserWithEmailAndPassword(user, password);
+      return await _dataSource.createUserWithEmailAndPassword(email, password);
     } catch (e) {
       rethrow;
     }
@@ -44,6 +41,30 @@ class AuthenticationRepository {
   Future<String?> storeUserToken(String id) async {
     try {
       return await _dataSource.storeUserToken(id);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<bool> deleteAccount(String id) async {
+    try {
+      return await _dataSource.deleteAccount(id);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<bool> storeUserData(Map<String, dynamic> user) {
+    try {
+      return _dataSource.storeUserData(user);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Map<String, dynamic>> getUserById(String uid) async{
+    try {
+      return await _dataSource.getUserById(uid);
     } catch (e) {
       rethrow;
     }

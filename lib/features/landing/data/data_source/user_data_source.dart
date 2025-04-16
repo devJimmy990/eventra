@@ -18,10 +18,10 @@ class UserDataSource {
     }
   }
 
-  Future<void> updateUserData(
-      String uid, Map<String, dynamic> updatedData) async {
+  Future<void> updateUser(String uid,
+      {required Map<String, dynamic> json}) async {
     try {
-      await firebase.store.collection("users").doc(uid).update(updatedData);
+      await firebase.store.collection("users").doc(uid).update(json);
     } catch (e) {
       rethrow;
     }
@@ -39,15 +39,6 @@ class UserDataSource {
       String downloadURL = await snapshot.ref.getDownloadURL();
 
       return downloadURL;
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<bool> updateUserProfile(String? uid, Map<String, String> data) async {
-    try {
-      await firebase.store.collection("users").doc(uid).update(data);
-      return true;
     } catch (e) {
       rethrow;
     }

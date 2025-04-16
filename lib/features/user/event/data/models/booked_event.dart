@@ -46,6 +46,6 @@ class UserEvent extends BaseEvent {
 
   @override
   String toString() {
-    return 'Event{title: $title, desc: $desc, price: $price, category: $category, location: $location, schedule: $schedule}';
+    return 'Event{id:$id, title: $title, desc: $desc, price: $price, category: $category, location: $location, schedule: $schedule}';
   }
 }

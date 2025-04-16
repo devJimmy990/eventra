@@ -1,39 +1,16 @@
 import 'dart:io';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:eventra/core/helper/shared_preference.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:eventra/features/landing/data/model/user.dart';
 import 'package:eventra/features/landing/cubit/user_state.dart';
 import 'package:eventra/features/landing/data/data_source/user_data_source.dart';
 import 'package:eventra/features/landing/data/repositories/user_repository.dart';
 
-class UserCubit extends Cubit<UserState> {
-  late User _user;
+class UserCubit extends HydratedCubit<UserState> {
+  UserCubit() : super(UserInitial());
 
-  UserCubit() : super(UserInitial()) {
-    loadUser();
+  void setUser(Map<String, dynamic> user) {
+    emit(UserLoaded(User.fromJson(user)));
   }
-
-  void loadUser() async {
-    emit(UserLoading());
-    try {
-      final String? uid = SharedPreference.getString(key: "uid");
-      if (uid == null) {
-        emit(UserNotAuthenticated());
-        return;
-      }
-      _user = await UserRepository(UserDataSource()).getUserData(uid);
-      emit(UserLoaded(_user));
-    } catch (e) {
-      emit(UserError(e.toString()));
-    }
-  }
-
-  void setUser(User user) {
-    emit(UserLoaded(user));
-  }
-
-  User? get user => _user;
 
   Future<void> uploadImage(File pickedImage) async {
     try {
@@ -47,12 +24,33 @@ class UserCubit extends Cubit<UserState> {
 
   Future<void> updateUserProfile({required Map<String, String> data}) async {
     try {
-      await UserRepository(UserDataSource())
-          .updateUserProfile(uid: user!.id, data: data);
-      _user = User.copyWith(_user, json: data);
-      emit(UserLoaded(_user));
+      if (state is! UserLoaded) return;
+      final user = (state as UserLoaded).user;
+      await UserRepository(UserDataSource()).updateUser(user.id, json: data);
+      emit(UserLoaded(User.copyWith(user, json: data)));
     } catch (e) {
       emit(UserError(e.toString()));
     }
+  }
+
+  Future<void> reset() async => await clear();
+
+  @override
+  UserState? fromJson(Map<String, dynamic> json) {
+    try {
+      return UserLoaded(User.fromJson(json["user"]));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  User? get user => state is UserLoaded ? (state as UserLoaded).user : null;
+
+  @override
+  Map<String, dynamic>? toJson(UserState state) {
+    if (state is UserLoaded) {
+      return {"user":state.user.toJson()};
+    }
+    return null;
   }
 }

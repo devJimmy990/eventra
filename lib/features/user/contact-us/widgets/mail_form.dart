@@ -34,7 +34,7 @@ class _ContactUsMailFormBottomSheetState
     lNameController = TextEditingController()
       ..text = user.name.split(" ")[1].trim();
     emailController = TextEditingController()..text = user.email;
-    phoneController = TextEditingController()..text = user.phone;
+    phoneController = TextEditingController()..text = user.phone ?? "";
     messageController = TextEditingController();
   }
 

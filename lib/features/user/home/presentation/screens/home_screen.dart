@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:eventra/core/constants/color_manager.dart';
 import 'package:eventra/core/helper/localization.dart';
 import 'package:eventra/features/settings/cubit/settings_cubit.dart';
 import 'package:eventra/features/settings/cubit/settings_state.dart';
@@ -67,7 +66,6 @@ class _UserHomeScreenState extends State<UserHomeScreen>
               leading: MenuBtn(
                 press: toggleSidebar,
               ),
-              backgroundColor: ColorManager.sideBarLight,
               toolbarHeight: 80.h,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(

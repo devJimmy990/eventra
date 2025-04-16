@@ -46,9 +46,6 @@ class TextInputField extends StatelessWidget {
         labelText: label,
         hintText: hint,
         alignLabelWithHint: maxLines != null && maxLines! > 1,
-        border: _buildInputBorder(),
-        enabledBorder: _buildInputBorder(),
-        focusedBorder: _buildInputBorder(),
       ),
     );
   }
@@ -88,25 +85,12 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
         filled: true,
         hintText: widget.hint,
         labelText: widget.label,
-
         prefixIcon: Icon(Iconsax.password_check),
-        border: _buildInputBorder(),
-        enabledBorder: _buildInputBorder(),
-        focusedBorder: _buildInputBorder(),
-
         suffixIcon: IconButton(
-          icon: Icon(
-
-            obscureText ? Iconsax.eye : Iconsax.eye_slash,
-          ),
+          icon: Icon(obscureText ? Iconsax.eye : Iconsax.eye_slash),
           onPressed: () => setState(() => obscureText = !obscureText),
         ),
       ),
     );
   }
 }
-
-InputBorder _buildInputBorder() => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Colors.grey),
-    );

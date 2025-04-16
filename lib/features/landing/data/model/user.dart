@@ -2,12 +2,12 @@ import 'package:eventra/features/admin/data/model/booked_event.dart';
 
 class User {
   List<BookedEvent>? _events;
-  String? id, avatar;
-  final String name, phone, email, role;
+  final String? avatar, phone;
+  final String id, name, email, role;
 
   User._({
-    this.id,
     this.avatar,
+    required this.id,
     required this.name,
     this.role = "user",
     required this.phone,
@@ -16,15 +16,18 @@ class User {
   }) : _events = events ?? [];
 
   factory User.register({
+    required String id,
     required String name,
     required String email,
     required String phone,
   }) =>
       User._(
+        id: id,
         name: name,
         email: email,
         phone: phone,
         role: "user",
+        avatar: null,
       );
 
   factory User.copyWith(User user, {required Map<String, dynamic> json}) =>
